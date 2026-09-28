@@ -1,47 +1,48 @@
-import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
-import { JsonLd } from '@/components/JsonLd';
-import { PageBuilder } from '@/components/PageBuilder';
-import { HOME_SLUG } from '@/lib/links';
-import { client } from '@/sanity/client';
-import { pageFaqs, pageJsonLd } from '@/lib/json-ld';
-import { pageMetadata, seoImageUrl } from '@/sanity/metadata';
-import { getSiteInformation } from '@/sanity/site-information';
-import { PAGE_QUERY } from '@/sanity/queries';
+import { HomeHero } from '@/components/home/HomeHero';
+import { Paths } from '@/components/home/Paths';
+import { Reviews } from '@/components/home/Reviews';
+import { Services } from '@/components/home/Services';
+import { ZakelijkBand } from '@/components/home/ZakelijkBand';
+import { ContactCta } from '@/components/sections/ContactCta';
+import { ProjectGrid } from '@/components/sections/ProjectGrid';
+import { Werkgebied } from '@/components/sections/Werkgebied';
+import { Werkwijze } from '@/components/sections/Werkwijze';
+import { Divider } from '@/components/ui/Divider';
+import { SectionHead } from '@/components/ui/SectionHead';
+import { Wrap } from '@/components/ui/Wrap';
+import { PROJECTS, STEPS } from '@/lib/content/home';
 
-const options = { next: { revalidate: 30 } };
-
-export async function generateMetadata(): Promise<Metadata> {
-  const page = await client.fetch(PAGE_QUERY, { slug: HOME_SLUG }, options);
-
-  return pageMetadata(page, { isHome: true });
-}
-
-export default async function HomePage() {
-  const [page, site] = await Promise.all([
-    client.fetch(PAGE_QUERY, { slug: HOME_SLUG }, options),
-    getSiteInformation(),
-  ]);
-
-  if (!page) {
-    notFound();
-  }
-
+export default function HomePage() {
   return (
-    <>
-      <JsonLd
-        data={pageJsonLd({
-          path: '/',
-          title: page.seo?.title || page.title,
-          description: page.seo?.description,
-          imageUrl: seoImageUrl(page.seo),
-          faqs: pageFaqs(page.content),
-          language: site.language,
-        })}
+    <main>
+      <HomeHero />
+      <Paths />
+      <Services />
+      <Werkwijze
+        title='Van eerste gesprek tot opgeleverd werk'
+        lead='U weet vooraf wat er gebeurt, wat het kost en wanneer we klaar zijn.'
+        steps={STEPS}
+        divider={
+          <Divider
+            fill='#0d2a3a'
+            path='M0,90 L0,44 C260,-4 520,74 780,44 C1020,16 1220,52 1440,30 L1440,90 Z'
+          />
+        }
       />
-      <main>
-        <PageBuilder content={page.content} path='/' />
-      </main>
-    </>
+      <ZakelijkBand />
+      <section id='projecten' className='relative py-24'>
+        <Wrap>
+          <SectionHead
+            kicker='Projecten'
+            title='Recent opgeleverd werk'
+            lead='Een greep uit de tuinen, terrassen en terreinen die we de afgelopen periode hebben aangepakt.'
+          />
+          <ProjectGrid projects={PROJECTS} />
+        </Wrap>
+      </section>
+      <Reviews />
+      <Werkgebied image='/images/zakelijk-terrein.jpg' />
+      <ContactCta />
+    </main>
   );
 }

@@ -1,22 +1,28 @@
-import type { ReactNode } from "react";
-import { cn } from "@/lib/cn";
+import type { ReactNode } from 'react';
+import { cn } from '@/lib/cn';
+import { Kicker } from './Kicker';
+import { Reveal } from './Reveal';
 
 type SectionHeadProps = {
-  children: ReactNode;
+  kicker: string;
+  title: ReactNode;
+  lead?: ReactNode;
+  align?: 'center' | 'left';
   className?: string;
 };
 
-export function SectionHead({ children, className }: SectionHeadProps) {
+export function SectionHead({ kicker, title, lead, align = 'center', className }: SectionHeadProps) {
   return (
-    <div
+    <Reveal
       className={cn(
-        "mb-[60px] flex flex-wrap items-end justify-between gap-10",
-        "[&_h2]:max-w-[16ch] [&_h2]:text-[clamp(2rem,3.6vw,3.1rem)]",
-        "max-sm:mb-10 max-sm:gap-[22px] max-sm:[&>a]:w-full max-sm:[&>a]:justify-center",
+        'mb-[52px] max-w-[660px]',
+        align === 'center' ? 'mx-auto text-center' : 'text-left',
         className,
       )}
     >
-      {children}
-    </div>
+      <Kicker>{kicker}</Kicker>
+      <h2 className='text-[38px]'>{title}</h2>
+      {lead ? <p className='mt-4 text-[17px] text-muted'>{lead}</p> : null}
+    </Reveal>
   );
 }

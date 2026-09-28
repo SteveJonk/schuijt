@@ -44,3 +44,6 @@ next-env.d.ts
 # sentry
 .env.sentry-build-plugin
 .sentryclirc
+
+.DS_Store
+

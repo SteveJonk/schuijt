@@ -1,170 +1,166 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { LogoMark } from '@/components/ui/LogoMark';
+import { buttonClass } from '@/components/ui/Button';
 import { useMobileNav } from '@/hooks/useMobileNav';
 import { useStickyTopbar } from '@/hooks/useStickyTopbar';
+import { MAIN_NAV } from '@/lib/chrome';
 import { cn } from '@/lib/cn';
-import { SITE_DEFAULTS, type NavLink } from '@/lib/site';
+import { SITE, telHref } from '@/lib/site';
 
 function isActivePath(pathname: string, href: string) {
-  if (href === '#' || href === '/') return pathname === href;
+  if (href.includes('#')) return false;
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 
-function DesktopNav({
-  links,
-  align = 'start',
-  stuck,
-}: {
-  links: NavLink[];
-  align?: 'start' | 'end';
-  stuck: boolean;
-}) {
+export function SiteHeader() {
   const pathname = usePathname();
+  const stuck = useStickyTopbar();
+  const { open, toggle, close } = useMobileNav();
+  const tel = telHref(SITE.phone);
 
   return (
-    <ul
-      className={cn(
-        'flex list-none items-center gap-[30px] max-lg:gap-[18px] max-md:hidden',
-        align === 'end' && 'justify-end',
-      )}
-    >
-      {links.map((link) => {
-        const active = isActivePath(pathname, link.href);
-        return (
-          <li key={link.label}>
+    <>
+      <header
+        className={cn(
+          'sticky top-0 z-50 bg-white/82 backdrop-blur-[14px] backdrop-saturate-[180%] transition-shadow duration-300',
+          stuck && 'shadow-[0_8px_30px_-18px_rgb(13_42_58/0.35)]',
+        )}
+      >
+        <div
+          className={cn(
+            'mx-auto flex max-w-site items-center justify-between gap-5 px-[26px] transition-[height] duration-300',
+            stuck ? 'h-[68px]' : 'h-[82px] max-sm:h-[66px]',
+          )}
+        >
+          <Link href='/' onClick={close}>
+            <Image
+              src='/images/logo.png'
+              alt={SITE.name}
+              width={520}
+              height={174}
+              priority
+              className={cn('w-auto transition-[height] duration-300', stuck ? 'h-[34px]' : 'h-10')}
+            />
+          </Link>
+
+          <nav className='flex gap-1.5 font-display text-[15px] font-medium max-nav:hidden'>
+            {MAIN_NAV.map((link) => {
+              const active = isActivePath(pathname, link.href);
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={cn(
+                    'relative rounded-full px-3.5 py-2 transition-[color,background-color] duration-250',
+                    active
+                      ? 'bg-tint text-blue-deep'
+                      : cn(
+                          'text-ink-soft hover:text-ink',
+                          'after:absolute after:inset-x-3.5 after:bottom-1 after:h-[1.5px] after:origin-left after:scale-x-0 after:bg-blue',
+                          'after:transition-transform after:duration-300 after:ease-brand hover:after:scale-x-100',
+                        ),
+                  )}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
+          </nav>
+
+          <div className='flex items-center gap-3.5 max-nav:ml-auto max-sm:hidden'>
+            <a
+              href={tel}
+              className='font-display text-[15px] font-semibold whitespace-nowrap text-ink-soft transition-colors duration-200 hover:text-blue-deep'
+            >
+              {SITE.phone}
+            </a>
+            <Link href='#contact' className={buttonClass('primary', 'sm')}>
+              Offerte aanvragen
+            </Link>
+          </div>
+
+          <button
+            type='button'
+            onClick={toggle}
+            aria-label={open ? 'Menu sluiten' : 'Menu openen'}
+            aria-expanded={open}
+            aria-controls='mnav'
+            className={cn(
+              'relative hidden size-11 flex-none cursor-pointer rounded-full transition-colors duration-250 max-nav:block',
+              open ? 'bg-blue' : 'bg-tint',
+            )}
+          >
+            {[
+              open ? 'top-[15px] translate-y-1.5 rotate-45' : 'top-[15px]',
+              open ? 'top-[21px] scale-x-0 opacity-0' : 'top-[21px]',
+              open ? 'top-[27px] -translate-y-1.5 -rotate-45' : 'top-[27px]',
+            ].map((position, index) => (
+              <span
+                key={index}
+                className={cn(
+                  'absolute inset-x-[13px] h-0.5 rounded-[2px] transition-[translate,rotate,scale,opacity] duration-350 ease-[cubic-bezier(.7,0,.3,1)]',
+                  'motion-reduce:transition-none',
+                  open ? 'bg-white' : 'bg-ink',
+                  position,
+                )}
+              />
+            ))}
+          </button>
+        </div>
+      </header>
+
+      <div
+        id='mnav'
+        className={cn(
+          // Top padding clears the header: its height + 20px.
+          'fixed inset-0 z-49 flex flex-col overflow-y-auto bg-white px-6 pb-8 min-nav:hidden',
+          stuck ? 'pt-[88px]' : 'pt-[102px] max-sm:pt-[86px]',
+          'transition-[clip-path,visibility] duration-550 ease-[cubic-bezier(.7,0,.2,1)] motion-reduce:transition-none',
+          open
+            ? 'visible [clip-path:inset(0_0_0_0_round_0)]'
+            : 'invisible delay-[0s,550ms] [clip-path:inset(0_0_100%_0_round_0_0_28px_28px)]',
+        )}
+      >
+        <nav className='flex flex-col border-t border-line'>
+          {MAIN_NAV.map((link, index) => (
             <Link
+              key={link.href}
               href={link.href}
+              onClick={close}
+              style={open ? { transitionDelay: `${150 + index * 50}ms` } : undefined}
               className={cn(
-                'relative py-1.5 text-nav font-medium transition-colors duration-[400ms] ease-brand max-lg:text-[0.79rem]',
-                stuck ? 'text-fg' : 'text-white',
-                'after:absolute after:bottom-0 after:left-0 after:h-px after:w-full after:origin-right after:scale-x-0 after:bg-current',
-                'after:transition-transform after:duration-[350ms] after:ease-brand',
-                'hover:after:origin-left hover:after:scale-x-100',
-                active && 'after:origin-left after:scale-x-100',
+                'flex items-center justify-between border-b border-line px-1 py-[17px] font-display text-[22px] font-semibold',
+                'after:text-[18px] after:text-blue after:transition-transform after:duration-250 after:content-["→"] hover:after:translate-x-1',
+                'motion-reduce:transition-none',
+                isActivePath(pathname, link.href) ? 'text-blue-deep' : 'text-ink',
+                open
+                  ? 'translate-y-0 opacity-100 transition-[opacity,translate] duration-450 ease-[cubic-bezier(.2,.7,.2,1)]'
+                  : 'translate-y-3.5 opacity-0 transition-[opacity,translate] duration-250',
               )}
             >
               {link.label}
             </Link>
-          </li>
-        );
-      })}
-    </ul>
-  );
-}
-
-function Burger({
-  open,
-  stuck,
-  onToggle,
-}: {
-  open: boolean;
-  stuck: boolean;
-  onToggle: () => void;
-}) {
-  const barTone = open || stuck ? 'bg-inverse' : 'bg-white';
-
-  return (
-    <button
-      type='button'
-      aria-label='Menu'
-      aria-expanded={open}
-      onClick={onToggle}
-      className='relative z-[130] mr-[-8px] hidden size-11 max-md:block'
-    >
-      <span
-        className={cn(
-          'absolute left-[9px] h-[1.5px] w-[26px] transition duration-300 ease-brand',
-          barTone,
-          open ? 'top-[22px] rotate-45' : 'top-[15px]',
-        )}
-      />
-      <span
-        className={cn(
-          'absolute top-[22px] left-[9px] h-[1.5px] w-[26px] transition duration-300 ease-brand',
-          barTone,
-          open && 'opacity-0',
-        )}
-      />
-      <span
-        className={cn(
-          'absolute left-[9px] h-[1.5px] w-[26px] transition duration-300 ease-brand',
-          barTone,
-          open ? 'top-[22px] -rotate-45' : 'top-[29px]',
-        )}
-      />
-    </button>
-  );
-}
-
-type SiteHeaderProps = {
-  siteName?: string;
-  navLeft?: NavLink[] | null;
-  navRight?: NavLink[] | null;
-};
-
-export function SiteHeader({
-  siteName = SITE_DEFAULTS.name,
-  navLeft = [],
-  navRight = [],
-}: SiteHeaderProps) {
-  const stuck = useStickyTopbar();
-  const { open, toggle, close } = useMobileNav();
-  const left = navLeft ?? [];
-  const right = navRight ?? [];
-  const navMobile = left.concat(right);
-
-  return (
-    <>
-      <div
-        className={cn(
-          'fixed inset-x-0 top-0 z-[120] grid grid-cols-[1fr_auto_1fr] items-center gap-[30px] px-wrap',
-          'transition-[padding,background-color,box-shadow] duration-[400ms] ease-brand',
-          stuck ? 'bg-surface py-2.5 shadow-topbar' : 'bg-transparent py-5',
-          'max-md:flex max-md:justify-between max-md:gap-4 max-md:px-wrap-md',
-          stuck ? 'max-md:py-[9px]' : 'max-md:py-[14px]',
-          'max-xs:px-wrap-sm',
-          'before:pointer-events-none before:absolute before:inset-0 before:-z-10',
-          'before:bg-gradient-to-b before:from-[rgba(28,22,19,0.5)] before:to-transparent',
-          'before:transition-opacity before:duration-[400ms] before:ease-brand',
-          (stuck || open) && 'before:opacity-0',
-        )}
-      >
-        <DesktopNav links={left} stuck={stuck} />
-        <Link href='/' aria-label={siteName}>
-          <LogoMark name={siteName} stuck={stuck} />
-        </Link>
-        <DesktopNav links={right} align='end' stuck={stuck} />
-        <Burger open={open} stuck={stuck} onToggle={toggle} />
-      </div>
-
-      <nav
-        aria-hidden={!open}
-        className={cn(
-          'fixed inset-0 z-[115] flex flex-col justify-center gap-1.5 bg-surface px-wrap',
-          'transition-transform duration-[550ms] ease-brand',
-          open ? 'translate-y-0' : '-translate-y-full',
-          'max-md:justify-start max-md:overflow-y-auto max-md:px-wrap-md max-md:pt-[110px] max-md:pb-11',
-          'max-xs:px-wrap-sm',
-        )}
-      >
-        {navMobile.map((link) => (
-          <Link
-            key={link.label}
-            href={link.href}
-            onClick={close}
-            className={cn(
-              'border-b border-fg/10 py-[9px] font-display text-[2rem]',
-              'max-md:py-[13px] max-md:text-[1.72rem]',
-              'max-xs:py-[11px] max-xs:text-[1.5rem]',
-            )}
-          >
-            {link.label}
+          ))}
+        </nav>
+        <div
+          className={cn(
+            'mt-7 grid gap-2.5 motion-reduce:transition-none',
+            open
+              ? 'translate-y-0 opacity-100 transition-[opacity,translate] delay-450 duration-450 ease-[cubic-bezier(.2,.7,.2,1)]'
+              : 'translate-y-3.5 opacity-0 transition-[opacity,translate] duration-250',
+          )}
+        >
+          <a href={tel} onClick={close} className={buttonClass('soft', 'md', 'w-full justify-center')}>
+            {SITE.phone}
+          </a>
+          <Link href='#contact' onClick={close} className={buttonClass('primary', 'md', 'w-full justify-center')}>
+            Offerte aanvragen
           </Link>
-        ))}
-      </nav>
+        </div>
+      </div>
     </>
   );
 }

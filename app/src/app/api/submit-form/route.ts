@@ -1,14 +1,9 @@
 import { NextResponse } from 'next/server';
 import { renderFormMail } from '@/lib/form-mail';
-import { SITE_DEFAULTS } from '@/lib/site';
-import { client } from '@/sanity/client';
-import { imageSrc } from '@/sanity/image';
-import { FORM_QUERY, FORM_SETTINGS_QUERY } from '@/sanity/queries';
+import { OFFERTE_FIELDS, OFFERTE_FORM_ID } from '@/lib/forms';
+import { SITE_DEFAULTS, SITE_URL } from '@/lib/site';
 
 export const runtime = 'nodejs';
-
-/** Bigger uploads are rejected rather than silently dropped from the mail. */
-const MAX_ATTACHMENT_BYTES = 5 * 1024 * 1024;
 
 /** Google's siteverify. Returns false on any doubt — this gate fails closed. */
 async function verifyRecaptcha(token: string, secret: string) {
@@ -30,14 +25,6 @@ function fail(message: string, status: number) {
   return NextResponse.json({ success: false, message }, { status });
 }
 
-/** "a@x.com, b@x.com" -> ["a@x.com", "b@x.com"]. Semicolons separate too. */
-function splitEmails(value?: string | null) {
-  return (value ?? '')
-    .split(/[,;]/)
-    .map((email) => email.trim())
-    .filter(Boolean);
-}
-
 /**
  * Sends via Mailjet's HTTP API (v3.1). Throws on a non-2xx response.
  *
@@ -54,7 +41,6 @@ async function sendViaMailjet(
     subject: string;
     html: string;
     text: string;
-    attachments: { filename: string; content: Buffer }[];
   },
 ) {
   const auth = Buffer.from(`${apiKey}:${apiSecret}`).toString('base64');
@@ -74,11 +60,6 @@ async function sendViaMailjet(
           Subject: message.subject,
           HTMLPart: message.html,
           TextPart: message.text,
-          Attachments: message.attachments.map((attachment) => ({
-            ContentType: 'application/octet-stream',
-            Filename: attachment.filename,
-            Base64Content: attachment.content.toString('base64'),
-          })),
         },
       ],
     }),
@@ -95,63 +76,28 @@ export async function POST(request: Request) {
   try {
     body = await request.formData();
   } catch {
-    return fail('Could not read the request.', 400);
+    return fail('Het verzoek kon niet worden gelezen.', 400);
   }
 
   const formId = String(body.get('formId') ?? '');
-  if (!formId) return fail('No form specified.', 400);
+  if (formId !== OFFERTE_FORM_ID) return fail('Unknown form.', 404);
 
-  // The form definition is the allow-list: a key the document does not declare
-  // never reaches the mail, whatever the browser posted.
-  const [form, settings] = await Promise.all([
-    client.fetch(FORM_QUERY, { formId }, { cache: 'no-store' }),
-    client.fetch(FORM_SETTINGS_QUERY, {}, { cache: 'no-store' }),
-  ]);
-  if (!form) return fail('Unknown form.', 404);
-
-  // Spam gate before any real work. The secret belongs in the environment: a
-  // Sanity dataset is world-readable, so the studio value is only a fallback.
-  const recaptchaSecret = process.env.RECAPTCHA_SECRET_KEY || settings?.recaptchaSecretKey;
-  if (settings?.recaptchaEnabled) {
-    if (!recaptchaSecret) {
-      console.error('submit-form: reCAPTCHA is enabled but no secret key is set');
-      return fail('This form is not fully configured yet.', 500);
-    }
+  // Spam gate before any real work. Only on when the secret is configured.
+  const recaptchaSecret = process.env.RECAPTCHA_SECRET_KEY;
+  if (recaptchaSecret) {
     const token = String(body.get('recaptchaToken') ?? '');
     if (!token || !(await verifyRecaptcha(token, recaptchaSecret))) {
-      return fail('The reCAPTCHA check failed. Please try again.', 400);
+      return fail('De reCAPTCHA-controle is mislukt. Probeer het opnieuw.', 400);
     }
   }
 
   const answers: { label: string; value: string }[] = [];
-  const attachments: { filename: string; content: Buffer }[] = [];
-  /** First answer to an e-mail field — the address the copy mail goes to. */
+  /** First answer to an e-mail field — the reply-to address. */
   let submitterEmail = '';
 
-  for (const field of form.fields ?? []) {
-    if (!field?.name) continue;
-
+  for (const field of OFFERTE_FIELDS) {
     const values = body.getAll(field.name);
-    const label = field.label || field.name;
-
-    if (field.type === 'file') {
-      const file = values.find(
-        (value): value is File => value instanceof File && value.size > 0,
-      );
-      if (file) {
-        if (file.size > MAX_ATTACHMENT_BYTES) {
-          return fail(`File "${file.name}" is larger than 5 MB.`, 413);
-        }
-        attachments.push({
-          filename: file.name,
-          content: Buffer.from(await file.arrayBuffer()),
-        });
-        answers.push({ label, value: file.name });
-      } else if (field.isRequired) {
-        return fail(`"${label}" is required.`, 400);
-      }
-      continue;
-    }
+    const label = field.label;
 
     const text = values
       .filter((value): value is string => typeof value === 'string')
@@ -160,58 +106,43 @@ export async function POST(request: Request) {
       .join(', ');
 
     if (!text) {
-      if (field.isRequired) return fail(`"${label}" is required.`, 400);
+      if (field.isRequired) return fail(`"${label}" is verplicht.`, 400);
       continue;
     }
     if (field.type === 'email' && !submitterEmail) submitterEmail = text;
     answers.push({ label, value: text });
   }
 
-  if (answers.length === 0) return fail('The form was empty.', 400);
+  if (answers.length === 0) return fail('Het formulier was leeg.', 400);
 
-  // Env wins over the studio settings: a dataset is readable by anyone with the
-  // project id, so credentials belong in the environment.
-  const mailjetApiKey = process.env.MAILJET_API_KEY || settings?.mailjetApiKey;
-  const mailjetApiSecret = process.env.MAILJET_API_SECRET || settings?.mailjetApiSecret;
-  const adminEmail = process.env.CONTACT_ADMIN_EMAIL || settings?.adminEmail;
+  const mailjetApiKey = process.env.MAILJET_API_KEY;
+  const mailjetApiSecret = process.env.MAILJET_API_SECRET;
+  const adminEmail = process.env.CONTACT_ADMIN_EMAIL;
   // Mailjet only accepts a sender it has validated; fall back to the recipient,
   // which is the one address known to belong to this account.
-  const fromEmail = process.env.MAILJET_FROM_EMAIL || settings?.fromEmail || adminEmail;
-  const fromName = settings?.fromName || SITE_DEFAULTS.name;
+  const fromEmail = process.env.MAILJET_FROM_EMAIL || adminEmail;
+  const fromName = SITE_DEFAULTS.name;
 
-  // Per-form recipients win over the shared admin address; both are valid.
-  const recipients = splitEmails(form.mailRecipients);
-  if (recipients.length === 0 && adminEmail) recipients.push(adminEmail);
-
-  if (recipients.length === 0 || !fromEmail || !mailjetApiKey || !mailjetApiSecret) {
-    console.error('submit-form: missing mail settings (env or formGeneralSettings)');
-    return fail('This form is not configured yet. Please contact us directly.', 500);
+  if (!adminEmail || !fromEmail || !mailjetApiKey || !mailjetApiSecret) {
+    console.error('submit-form: missing mail settings (MAILJET_* / CONTACT_ADMIN_EMAIL)');
+    return fail('Het formulier is nog niet ingesteld. Neem direct contact met ons op.', 500);
   }
 
-  // Logo and colours come from Form settings, so the template itself stays
-  // generic — there is no brand name or fixed colour in form-mail.ts.
   const branding = {
-    logoUrl: imageSrc(settings?.mailLogo, 300),
+    logoUrl: `${SITE_URL}/images/logo.png`,
     logoAlt: fromName,
-    primaryColor: settings?.primaryColor,
-    textColor: settings?.textColor,
-    footer: `Sent through the "${form.title ?? 'website'}" form on ${fromName}.`,
+    primaryColor: '#069fdf',
+    textColor: '#16202b',
+    footer: `Verstuurd via het offerteformulier op de website van ${fromName}.`,
   };
 
-  const subject =
-    form.mailSubject ||
-    settings?.confirmationSubject ||
-    `New message from ${form.title ?? 'the website'}`;
+  const subject = 'Nieuwe offerteaanvraag via de website';
   const mail = renderFormMail({
     title: subject,
-    intro:
-      form.mailMessage ||
-      settings?.confirmationMessage ||
-      'A new message came in through the website.',
+    intro: 'Er is een nieuwe offerteaanvraag binnengekomen via de website.',
     answers,
     branding,
   });
-  const replyTo = submitterEmail || answers.find(({ label }) => /mail/i.test(label))?.value;
 
   const credentials = { apiKey: mailjetApiKey, apiSecret: mailjetApiSecret };
 
@@ -219,38 +150,15 @@ export async function POST(request: Request) {
     await sendViaMailjet(credentials, {
       fromEmail,
       fromName,
-      to: recipients,
-      replyTo,
+      to: [adminEmail],
+      replyTo: submitterEmail || undefined,
       subject,
       html: mail.html,
       text: mail.text,
-      attachments,
     });
   } catch (error) {
     console.error('submit-form: sending failed', error);
-    return fail('Sending failed. Please try again later.', 502);
-  }
-
-  // The sender's copy is a courtesy: the submission already succeeded above, so
-  // a failure here is logged, not reported back as a failed submission.
-  if (form.sendCopyToSubmitter && submitterEmail) {
-    try {
-      await sendViaMailjet(credentials, {
-        fromEmail,
-        fromName,
-        to: [submitterEmail],
-        subject: form.copySubject || subject,
-        ...renderFormMail({
-          title: form.copySubject || subject,
-          intro: form.copyMessage || '',
-          answers,
-          branding,
-        }),
-        attachments: [],
-      });
-    } catch (error) {
-      console.error('submit-form: copy to submitter failed', error);
-    }
+    return fail('Versturen is mislukt. Probeer het later opnieuw.', 502);
   }
 
   return NextResponse.json({ success: true });

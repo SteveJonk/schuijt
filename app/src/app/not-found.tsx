@@ -1,24 +1,18 @@
 import { Button } from '@/components/ui/Button';
-import { Eyebrow } from '@/components/ui/Eyebrow';
+import { Kicker } from '@/components/ui/Kicker';
 import { Wrap } from '@/components/ui/Wrap';
 
 export default function NotFound() {
   return (
-    <main className='flex min-h-[70vh] items-center py-32 max-sm:py-24'>
-      <Wrap className='max-w-160'>
-        <Eyebrow>404</Eyebrow>
-        <h1 className='mb-5 text-[clamp(2.2rem,4vw,3.4rem)]'>
-          This page does not exist
-        </h1>
-        <p className='mb-9 max-w-[36ch] leading-[1.7] text-muted'>
-          The link has expired, moved, or never existed. Head back to the home page, or
-          get in touch if you were looking for something specific.
+    <main className='flex min-h-[70vh] items-center py-24'>
+      <Wrap className='w-full'>
+        <Kicker>404</Kicker>
+        <h1 className='mb-5 text-[40px]'>Deze pagina bestaat niet</h1>
+        <p className='mb-9 max-w-[42ch] text-[17px] text-muted'>
+          De link is verlopen, verplaatst of heeft nooit bestaan. Ga terug naar de homepage of
+          neem contact met ons op.
         </p>
-        <div className='flex flex-wrap gap-3.5'>
-          <Button href='/' variant='primary'>
-            Back to home
-          </Button>
-        </div>
+        <Button href='/'>Terug naar home</Button>
       </Wrap>
     </main>
   );

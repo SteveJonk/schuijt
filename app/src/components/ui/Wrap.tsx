@@ -1,5 +1,5 @@
-import type { ReactNode } from "react";
-import { cn } from "@/lib/cn";
+import type { ReactNode } from 'react';
+import { cn } from '@/lib/cn';
 
 type WrapProps = {
   children: ReactNode;
@@ -8,14 +8,5 @@ type WrapProps = {
 
 /** Site content width shell. */
 export function Wrap({ children, className }: WrapProps) {
-  return (
-    <div
-      className={cn(
-        "mx-auto max-w-site px-wrap max-md:px-wrap-md max-xs:px-wrap-sm",
-        className,
-      )}
-    >
-      {children}
-    </div>
-  );
+  return <div className={cn('mx-auto max-w-site px-[26px]', className)}>{children}</div>;
 }

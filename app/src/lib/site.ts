@@ -12,18 +12,18 @@
  * component, or an editor's change will not show up there.
  */
 export const SITE_DEFAULTS = {
-  name: 'Fieldnote',
+  name: 'L. Schuijt Klussenbedrijf',
   description:
-    'A small design and engineering studio. We take on a handful of projects a year and stay on them until they are finished.',
+    "Klussenbedrijf gespecialiseerd in sierbestrating, schuttingbouw en tuinaanleg. Voor particulieren, VvE's en bedrijven in Noord-Holland.",
   /** BCP 47 language tag. Sets `<html lang>` and `inLanguage` in the graph. */
-  language: 'en',
-  phone: '+31 (0)20 123 4567',
-  email: 'hello@fieldnote.example',
-  address: ['Prinsengracht 263', '1016 GV Amsterdam'],
+  language: 'nl',
+  phone: '06 46 87 49 92',
+  email: 'info@schuijtklussenbedrijf.nl',
+  address: ['Heemskerk'],
   /** ISO 3166-1 alpha-2 code for the address above. Structured data only. */
   addressCountry: 'NL',
   /** Memberships, certifications, awards. Empty hides the footer row. */
-  badges: ['B CORP', 'ISO 27001'],
+  badges: [],
 } as const;
 
 /**
@@ -118,3 +118,9 @@ export type FooterLinkGroup = {
   title: string;
   links: NavLink[];
 };
+
+/**
+ * Resolved site details for the static build. Swap for `getSiteInformation()`
+ * when the pages are wired to Sanity.
+ */
+export const SITE = resolveSiteInformation(null);

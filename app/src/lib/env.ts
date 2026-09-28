@@ -19,10 +19,10 @@ function required(name: string, value: string | undefined): string {
 }
 
 export const env = {
-  projectId: required(
-    'NEXT_PUBLIC_SANITY_PROJECT_ID',
-    process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
-  ),
+  // A getter, so only code that actually talks to Sanity needs the id.
+  get projectId() {
+    return required('NEXT_PUBLIC_SANITY_PROJECT_ID', process.env.NEXT_PUBLIC_SANITY_PROJECT_ID);
+  },
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET ?? 'production',
   /** Pin this: Sanity treats the date as the API contract version. */
   apiVersion: process.env.NEXT_PUBLIC_SANITY_API_VERSION ?? '2026-07-26',

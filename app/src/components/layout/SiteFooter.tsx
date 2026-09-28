@@ -1,126 +1,65 @@
-import { LogoMark } from '@/components/ui/LogoMark';
-import { Wrap } from '@/components/ui/Wrap';
-import { cn } from '@/lib/cn';
-import {
-  mailtoHref,
-  resolveSiteInformation,
-  telHref,
-  type FooterLinkGroup,
-  type NavLink,
-  type SiteInformation,
-} from '@/lib/site';
+import Image from 'next/image';
 import Link from 'next/link';
+import { FOOTER_GROUPS } from '@/lib/chrome';
+import { SITE, mailtoHref, telHref } from '@/lib/site';
 
-function FooterLinkList({ links }: { links: NavLink[] }) {
-  return (
-    <ul className='list-none'>
-      {links.map((link) => (
-        <li key={link.label} className='mb-[11px] text-[0.92rem] max-md:mb-0.5'>
-          <Link
-            href={link.href}
-            className='opacity-90 transition-opacity duration-200 hover:underline hover:opacity-100 hover:underline-offset-4 max-md:inline-block max-md:py-3'
-          >
-            {link.label}
-          </Link>
-        </li>
-      ))}
-    </ul>
-  );
-}
-
-type SiteFooterProps = {
-  /** From `getSiteInformation()`; the defaults stand in when not passed. */
-  site?: SiteInformation;
-  linkGroups?: FooterLinkGroup[] | null;
-  copyright?: string | null;
-};
-
-export function SiteFooter({
-  site = resolveSiteInformation(null),
-  linkGroups = [],
-  copyright,
-}: SiteFooterProps) {
-  const groups = linkGroups ?? [];
+export function SiteFooter() {
+  const linkClass = 'transition-colors duration-200 hover:text-blue-light';
 
   return (
-    <footer className='bg-inverse pt-24 pb-[34px] text-surface-alt max-sm:pt-[74px]'>
-      <Wrap>
-        <div
-          className={cn(
-            'mb-[70px] grid grid-cols-[1.5fr_1fr_1fr_1.1fr] gap-12',
-            'max-md:grid-cols-2 max-md:gap-10',
-            'max-sm:mb-[46px] max-sm:grid-cols-1 max-sm:gap-[38px]',
-          )}
-        >
+    <footer className='relative bg-linear-160 from-deep to-[#0a1e2a] pt-[70px] pb-7 text-[14.5px] text-[#93a6b4]'>
+      <div className='mx-auto max-w-site px-[26px]'>
+        <div className='grid grid-cols-[1.5fr_1fr_1fr_1fr] gap-[38px] max-lg:grid-cols-2 max-xs:grid-cols-1'>
           <div>
-            <LogoMark name={site.name} variant='footer' />
-            <p className='max-w-[270px] text-[0.9rem] leading-[1.75] text-subtle'>
-              {site.description}
-            </p>
+            <Image
+              src='/images/logo.png'
+              alt={SITE.name}
+              width={520}
+              height={174}
+              className='mb-[18px] h-[38px] w-auto brightness-0 invert'
+            />
+            <p>{SITE.description}</p>
           </div>
-          {groups.map((group) => (
+          {FOOTER_GROUPS.map((group) => (
             <div key={group.title}>
-              <h5 className='mb-5 text-eyebrow font-semibold tracking-[0.22em] text-subtle uppercase'>
-                {group.title}
-              </h5>
-              <FooterLinkList links={group.links ?? []} />
+              <h4 className='mb-4 text-[15px] text-white'>{group.title}</h4>
+              <ul className='grid gap-[9px]'>
+                {group.links.map((link) => (
+                  <li key={link.label}>
+                    <Link href={link.href} className={linkClass}>
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
           ))}
           <div>
-            <h5 className='mb-5 text-eyebrow font-semibold tracking-[0.22em] text-subtle uppercase'>
-              Contact
-            </h5>
-            <ul className='list-none'>
-              <li className='mb-[11px] text-[0.92rem] max-md:mb-0.5'>
-                {site.address.map((line, index) => (
-                  <span key={line}>
-                    {index > 0 ? <br /> : null}
-                    {line}
-                  </span>
-                ))}
+            <h4 className='mb-4 text-[15px] text-white'>Contact</h4>
+            <ul className='grid gap-[9px]'>
+              <li>
+                <a href={telHref(SITE.phone)} className={linkClass}>
+                  {SITE.phone}
+                </a>
               </li>
-              <li className='mb-[11px] text-[0.92rem] max-md:mb-0.5'>
-                <Link
-                  href={telHref(site.phone)}
-                  className='opacity-90 transition-opacity duration-200 hover:underline hover:opacity-100 hover:underline-offset-4 max-md:inline-block max-md:py-3'
-                >
-                  {site.phone}
-                </Link>
+              <li>
+                <a href={mailtoHref(SITE.email)} className={linkClass}>
+                  {SITE.email}
+                </a>
               </li>
-              <li className='mb-[11px] text-[0.92rem] max-md:mb-0.5'>
-                <Link
-                  href={mailtoHref(site.email)}
-                  className='opacity-90 transition-opacity duration-200 hover:underline hover:opacity-100 hover:underline-offset-4 max-md:inline-block max-md:py-3'
-                >
-                  {site.email}
-                </Link>
-              </li>
+              {SITE.address.map((line) => (
+                <li key={line}>{line}</li>
+              ))}
             </ul>
           </div>
         </div>
-        <div
-          className={cn(
-            'flex flex-wrap items-center justify-between gap-4 border-t border-white/13 pt-[26px]',
-            'text-[0.78rem] text-subtle max-sm:gap-[18px] max-sm:text-[0.74rem]',
-          )}
-        >
-          <span>
-            {copyright || `© ${new Date().getFullYear()} ${site.name}`}
-          </span>
-          {site.badges.length > 0 ? (
-            <div className='flex gap-2.5 max-sm:flex-wrap'>
-              {site.badges.map((badge) => (
-                <span
-                  key={badge}
-                  className='rounded-pill border border-white/22 px-[13px] py-[5px] text-[0.65rem] tracking-[0.14em]'
-                >
-                  {badge}
-                </span>
-              ))}
-            </div>
-          ) : null}
+        <div className='mt-[46px] flex flex-wrap justify-between gap-4 border-t border-white/10 pt-[22px] text-[13px]'>
+          <div>
+            © {new Date().getFullYear()} {SITE.name}
+          </div>
+          <div>KvK-nummer · Algemene voorwaarden · Privacyverklaring</div>
         </div>
-      </Wrap>
+      </div>
     </footer>
   );
 }
