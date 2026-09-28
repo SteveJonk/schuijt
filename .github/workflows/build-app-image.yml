@@ -1,0 +1,88 @@
+name: Build App Image
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "app/**"
+      - ".github/workflows/build-app-image.yml"
+  workflow_dispatch:
+
+# Image-naam is standaard de repo-naam; zet repo-variable IMAGE_NAME om te
+# overriden.
+env:
+  IMAGE_NAME: ${{ vars.IMAGE_NAME || github.event.repository.name }}
+
+# Eén build tegelijk; een nieuwe push annuleert een lopende run.
+concurrency:
+  group: build-app-image
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      # Docker-image-namen moeten lowercase zijn; github.repository_owner is
+      # dat niet altijd (bv. "SteveJonk").
+      - name: Lowercase image naam
+        id: image
+        run: echo "name=ghcr.io/${OWNER,,}/${IMAGE_NAME,,}" >> "$GITHUB_OUTPUT"
+        env:
+          OWNER: ${{ github.repository_owner }}
+
+      # NEXT_PUBLIC_* worden in de client-bundle gebakken, dus die moeten bij
+      # het bouwen bekend zijn — geen geheimen, dus gewoon als build-arg.
+      # SENTRY_AUTH_TOKEN gaat via --secret (BuildKit), zodat hij niet in de
+      # image-laag-historie belandt. Alle Sentry-waardes zijn optioneel: zonder
+      # NEXT_PUBLIC_SENTRY_DSN bouwt de app zonder Sentry.
+      - name: Build en push image
+        uses: docker/build-push-action@v6
+        with:
+          context: ./app
+          file: ./app/Dockerfile
+          push: true
+          tags: |
+            ${{ steps.image.outputs.name }}:latest
+            ${{ steps.image.outputs.name }}:${{ github.sha }}
+          build-args: |
+            NEXT_PUBLIC_SANITY_PROJECT_ID=${{ vars.NEXT_PUBLIC_SANITY_PROJECT_ID }}
+            NEXT_PUBLIC_SANITY_DATASET=${{ vars.NEXT_PUBLIC_SANITY_DATASET }}
+            NEXT_PUBLIC_SENTRY_DSN=${{ vars.NEXT_PUBLIC_SENTRY_DSN }}
+            SENTRY_ORG=${{ vars.SENTRY_ORG }}
+            SENTRY_PROJECT=${{ vars.SENTRY_PROJECT }}
+          secrets: |
+            sentry_auth_token=${{ secrets.SENTRY_AUTH_TOKEN }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      # Coolify pulled de image zelf niet automatisch bij een nieuwe :latest
+      # push — dit vertelt hem expliciet om te redeployen. URL + token komen
+      # uit de Webhooks-tab van de resource in Coolify.
+      # /api/v1/deploy is POST (de GET-voorbeelden in Coolify's eigen docs
+      # zijn verouderd — GET geeft nu 405 "This endpoint has changed to a
+      # POST request.").
+      - name: Coolify redeploy triggeren
+        run: |
+          curl --fail --request POST "$COOLIFY_WEBHOOK_URL" \
+            --header "Authorization: Bearer $COOLIFY_API_TOKEN"
+        env:
+          COOLIFY_WEBHOOK_URL: ${{ secrets.COOLIFY_WEBHOOK_URL }}
+          COOLIFY_API_TOKEN: ${{ secrets.COOLIFY_API_TOKEN }}
