@@ -2,19 +2,19 @@
   "version": 1,
   "created_at": "2026-09-28T09:51:01.839Z",
   "lifetime": {
-    "total_tokens_estimated": 6370,
-    "total_reads": 5,
+    "total_tokens_estimated": 7644,
+    "total_reads": 6,
     "total_writes": 0,
     "total_sessions": 1,
-    "anatomy_hits": 5,
+    "anatomy_hits": 6,
     "anatomy_misses": 0,
     "repeated_reads_blocked": 0,
-    "estimated_savings_vs_bare_cli": 1000,
-    "real_input_tokens": 158,
-    "real_output_tokens": 16703,
-    "real_cache_read_tokens": 6412144,
-    "real_cache_creation_tokens": 273154,
-    "real_api_calls": 79
+    "estimated_savings_vs_bare_cli": 1200,
+    "real_input_tokens": 206,
+    "real_output_tokens": 22379,
+    "real_cache_read_tokens": 8491992,
+    "real_cache_creation_tokens": 351648,
+    "real_api_calls": 103
   },
   "sessions": [
     {
@@ -165,6 +165,36 @@
         "cache_read_input_tokens": 1861631,
         "cache_creation_input_tokens": 63350,
         "api_calls": 22
+      }
+    },
+    {
+      "id": "session-2026-09-29-0902",
+      "agent": "claude",
+      "started": "2026-09-29T07:02:54.898Z",
+      "ended": "2026-09-29T07:44:53.863Z",
+      "reads": [
+        {
+          "file": "/Users/stevejonk/Documents/Prive Projecten/schuijt/app/src/lib/site.ts",
+          "tokens_estimated": 1274,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [],
+      "totals": {
+        "input_tokens_estimated": 1274,
+        "output_tokens_estimated": 0,
+        "reads_count": 1,
+        "writes_count": 0,
+        "repeated_reads_blocked": 0,
+        "anatomy_lookups": 1
+      },
+      "real_usage": {
+        "input_tokens": 48,
+        "output_tokens": 5676,
+        "cache_read_input_tokens": 2079848,
+        "cache_creation_input_tokens": 78494,
+        "api_calls": 24
       }
     }
   ],

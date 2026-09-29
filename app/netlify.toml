@@ -6,4 +6,4 @@
 # NEXT_PUBLIC_* values ship in the browser bundle by design and are short,
 # common strings ("production"), so the scanner flags them in source files.
 [build.environment]
-  SECRETS_SCAN_OMIT_KEYS = "NEXT_PUBLIC_SANITY_API_VERSION,NEXT_PUBLIC_SANITY_DATASET"
+  SECRETS_SCAN_OMIT_KEYS = "NEXT_PUBLIC_SANITY_API_VERSION,NEXT_PUBLIC_SANITY_DATASET,NEXT_PUBLIC_SANITY_PROJECT_ID"
