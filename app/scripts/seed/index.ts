@@ -4,6 +4,8 @@
  *
  *   npm run seed              create what is missing, leave existing documents alone
  *   npm run seed -- --force   overwrite every seeded document (discards studio edits!)
+ *   npm run seed -- --reset   like --force, then delete the old documents whose id
+ *                             contains a dot (private in Sanity), e.g. review.1
  *   npm run seed:dry          no Sanity at all: writes the dataset to
  *                             scripts/seed/dataset.ndjson for `npm run check:queries`
  *
@@ -48,7 +50,8 @@ import { ZAKELIJK_PAGES } from './content/zakelijk-pages';
 const DIR = path.dirname(fileURLToPath(import.meta.url));
 const IMAGES_DIR = path.join(DIR, 'images');
 const DRY = process.argv.includes('--dry');
-const FORCE = process.argv.includes('--force');
+const RESET = process.argv.includes('--reset');
+const FORCE = RESET || process.argv.includes('--force');
 
 type Doc = { _id: string; _type: string; [key: string]: unknown };
 const docs: Doc[] = [];
@@ -808,6 +811,17 @@ function withKeys(value: unknown, trail = ''): unknown {
   return value;
 }
 
+/**
+ * Sanity treats ids containing a dot as private (unreadable without a token, even
+ * in a public dataset), so ids and references use dashes instead: review-1.
+ * Asset placeholders keep their dots (file names).
+ */
+function undot<T>(value: T): T {
+  return JSON.parse(JSON.stringify(value), (key, v) =>
+    (key === '_id' || key === '_ref') && typeof v === 'string' && !v.startsWith(ASSET) ? v.replaceAll('.', '-') : v,
+  );
+}
+
 function resolveAssets(value: unknown, assets: Map<string, string>): unknown {
   return JSON.parse(JSON.stringify(value), (_, v) =>
     typeof v === 'string' && v.startsWith(ASSET) ? assets.get(v.slice(ASSET.length)) : v,
@@ -815,7 +829,7 @@ function resolveAssets(value: unknown, assets: Map<string, string>): unknown {
 }
 
 async function main() {
-  const all = [...docs, FORM_SETTINGS].map((doc) => withKeys(doc, doc._id) as Doc);
+  const all = [...docs, FORM_SETTINGS].map((doc) => undot(withKeys(doc, doc._id)) as Doc);
   const unused = readdirSync(IMAGES_DIR).filter((file) => !usedImages.has(file));
   console.log(`${all.length} documents, ${usedImages.size} images${unused.length ? ` (unused: ${unused.join(', ')})` : ''}`);
 
@@ -869,7 +883,30 @@ async function main() {
     else if (FORCE) tx.createOrReplace(doc);
     else tx.createIfNotExists(doc);
   }
+  // Form settings hold studio-entered credentials, so only repoint its reference.
+  if (RESET) tx.patch('formGeneralSettings', (p) => p.set({ defaultForm: ref('form-offerte') }));
   await tx.commit();
+
+  if (RESET) {
+    // The new documents exist now. Sanity refuses to delete a document that is still
+    // referenced, so remove them in passes: first those nothing else in the set points to.
+    let left = await client.fetch<string[]>(
+      `*[count(string::split(_id, ".")) > 1 && !(_type match "sanity.*") && !(_type match "system.*") && !(_id in path("_.**"))]._id`,
+    );
+    const total = left.length;
+    while (left.length) {
+      const leaves = await client.fetch<string[]>(
+        `*[_id in $ids && count(*[_id in $ids && _id != ^._id && references(^._id)]) == 0]._id`,
+        { ids: left },
+      );
+      if (!leaves.length) throw new Error(`Cannot delete (circular references): ${left.join(', ')}`);
+      const del = client.transaction();
+      leaves.forEach((id) => del.delete(id));
+      await del.commit();
+      left = left.filter((id) => !leaves.includes(id));
+    }
+    console.log(`Deleted ${total} old documents with a dot in their id.`);
+  }
   console.log(`Done: ${resolved.length} documents ${FORCE ? 'written' : 'created where missing'}.`);
 }
 
