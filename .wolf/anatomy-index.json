@@ -1,12 +1,12 @@
 {
   "version": 1,
   "meta": {
-    "lastScanned": "2026-09-28T09:51:02.560Z",
+    "lastScanned": "2026-09-28T10:00:00.114Z",
     "fileCount": 156,
     "hits": 0,
     "misses": 0,
-    "renderedHash": "645b9b111770ec3014c67e5e8721f4c9f59a72c5e1d5a0506f2f5518652b45e7",
-    "storeUpdatedAt": "2026-09-28T09:51:02.561Z"
+    "renderedHash": "4bd57314dc6b2a41e636cda44903db758ff81624b1d6962a8e6b682562da9c47",
+    "storeUpdatedAt": "2026-09-28T10:00:00.115Z"
   },
   "files": {
     ".claude/commands/reframe.md": {
@@ -15,7 +15,7 @@
       "hash": "17a75695be5d4629",
       "size": 2221,
       "mtimeMs": 1790589062489.8354,
-      "updatedAt": "2026-09-28T09:51:02.498Z",
+      "updatedAt": "2026-09-28T10:00:00.034Z",
       "source": "scan"
     },
     ".claude/commands/security-audit.md": {
@@ -24,7 +24,7 @@
       "hash": "e6f7e0b7337c9c86",
       "size": 2060,
       "mtimeMs": 1790589062489.5464,
-      "updatedAt": "2026-09-28T09:51:02.498Z",
+      "updatedAt": "2026-09-28T10:00:00.035Z",
       "source": "scan"
     },
     ".claude/launch.json": {
@@ -33,7 +33,7 @@
       "hash": "2809eb3b8cff780b",
       "size": 166,
       "mtimeMs": 1790587893632.232,
-      "updatedAt": "2026-09-28T09:51:02.499Z",
+      "updatedAt": "2026-09-28T10:00:00.036Z",
       "source": "scan"
     },
     ".claude/rules/openwolf.md": {
@@ -42,7 +42,7 @@
       "hash": "6d735b2c1c54a916",
       "size": 1323,
       "mtimeMs": 1790589061844.7742,
-      "updatedAt": "2026-09-28T09:51:02.499Z",
+      "updatedAt": "2026-09-28T10:00:00.037Z",
       "source": "scan"
     },
     ".claude/settings.json": {
@@ -51,7 +51,7 @@
       "hash": "f68759bb50af5ee4",
       "size": 1799,
       "mtimeMs": 1790589061844.345,
-      "updatedAt": "2026-09-28T09:51:02.499Z",
+      "updatedAt": "2026-09-28T10:00:00.038Z",
       "source": "scan"
     },
     ".cursor/rules/openwolf.mdc": {
@@ -60,7 +60,7 @@
       "hash": "25a895da2047ef4d",
       "size": 323,
       "mtimeMs": 1790589062488.7083,
-      "updatedAt": "2026-09-28T09:51:02.500Z",
+      "updatedAt": "2026-09-28T10:00:00.039Z",
       "source": "scan"
     },
     ".DS_Store": {
@@ -69,7 +69,7 @@
       "hash": "0fe00154a3fc363b",
       "size": 8196,
       "mtimeMs": 1790586862902.7468,
-      "updatedAt": "2026-09-28T09:51:02.500Z",
+      "updatedAt": "2026-09-28T10:00:00.039Z",
       "source": "scan"
     },
     ".github/workflows/build-app-image.yml": {
@@ -78,7 +78,7 @@
       "hash": "bf84c04ea3934b66",
       "size": 3110,
       "mtimeMs": 1790582563624.138,
-      "updatedAt": "2026-09-28T09:51:02.501Z",
+      "updatedAt": "2026-09-28T10:00:00.040Z",
       "source": "scan"
     },
     ".github/workflows/deploy-sanity-studio.yml": {
@@ -87,7 +87,7 @@
       "hash": "0f6355d3b127c4ce",
       "size": 2620,
       "mtimeMs": 1790582563624.275,
-      "updatedAt": "2026-09-28T09:51:02.501Z",
+      "updatedAt": "2026-09-28T10:00:00.040Z",
       "source": "scan"
     },
     ".opencode/command/reframe.md": {
@@ -96,7 +96,7 @@
       "hash": "17a75695be5d4629",
       "size": 2221,
       "mtimeMs": 1790589062490.2454,
-      "updatedAt": "2026-09-28T09:51:02.501Z",
+      "updatedAt": "2026-09-28T10:00:00.041Z",
       "source": "scan"
     },
     ".opencode/command/security-audit.md": {
@@ -105,7 +105,7 @@
       "hash": "e6f7e0b7337c9c86",
       "size": 2060,
       "mtimeMs": 1790589062490.0703,
-      "updatedAt": "2026-09-28T09:51:02.501Z",
+      "updatedAt": "2026-09-28T10:00:00.041Z",
       "source": "scan"
     },
     ".opencode/plugin/openwolf/anatomy.ts": {
@@ -114,7 +114,7 @@
       "hash": "de2a14445289179f",
       "size": 10257,
       "mtimeMs": 1790589062484.7732,
-      "updatedAt": "2026-09-28T09:51:02.503Z",
+      "updatedAt": "2026-09-28T10:00:00.044Z",
       "source": "scan",
       "symbols": [
         {
@@ -230,7 +230,7 @@
       "hash": "0193b1022c8e098b",
       "size": 1881,
       "mtimeMs": 1790589062485.1326,
-      "updatedAt": "2026-09-28T09:51:02.503Z",
+      "updatedAt": "2026-09-28T10:00:00.045Z",
       "source": "scan",
       "symbols": [
         {
@@ -311,7 +311,7 @@
       "hash": "5044a1f76c74f535",
       "size": 3782,
       "mtimeMs": 1790589062485.3848,
-      "updatedAt": "2026-09-28T09:51:02.503Z",
+      "updatedAt": "2026-09-28T10:00:00.046Z",
       "source": "scan"
     },
     ".opencode/plugin/openwolf/post-read.ts": {
@@ -320,7 +320,7 @@
       "hash": "1bc80c56ad0cfd32",
       "size": 2200,
       "mtimeMs": 1790589062485.6528,
-      "updatedAt": "2026-09-28T09:51:02.504Z",
+      "updatedAt": "2026-09-28T10:00:00.046Z",
       "source": "scan",
       "symbols": [
         {
@@ -338,7 +338,7 @@
       "hash": "02ba6ccd8d82475c",
       "size": 11300,
       "mtimeMs": 1790589062485.9824,
-      "updatedAt": "2026-09-28T09:51:02.504Z",
+      "updatedAt": "2026-09-28T10:00:00.047Z",
       "source": "scan",
       "symbols": [
         {
@@ -405,7 +405,7 @@
       "hash": "88c051b64b073c6a",
       "size": 2401,
       "mtimeMs": 1790589062486.4067,
-      "updatedAt": "2026-09-28T09:51:02.504Z",
+      "updatedAt": "2026-09-28T10:00:00.047Z",
       "source": "scan",
       "symbols": [
         {
@@ -423,7 +423,7 @@
       "hash": "c3b34d216601e76f",
       "size": 4092,
       "mtimeMs": 1790589062486.7078,
-      "updatedAt": "2026-09-28T09:51:02.504Z",
+      "updatedAt": "2026-09-28T10:00:00.047Z",
       "source": "scan",
       "symbols": [
         {
@@ -469,7 +469,7 @@
       "hash": "dda2df097f6d5874",
       "size": 3340,
       "mtimeMs": 1790589062487.1445,
-      "updatedAt": "2026-09-28T09:51:02.505Z",
+      "updatedAt": "2026-09-28T10:00:00.048Z",
       "source": "scan",
       "symbols": [
         {
@@ -508,7 +508,7 @@
       "hash": "5f8633a3904ee5ce",
       "size": 5057,
       "mtimeMs": 1790589062487.4653,
-      "updatedAt": "2026-09-28T09:51:02.505Z",
+      "updatedAt": "2026-09-28T10:00:00.048Z",
       "source": "scan",
       "symbols": [
         {
@@ -547,7 +547,7 @@
       "hash": "47f4dfb03abf55f9",
       "size": 757,
       "mtimeMs": 1790589062487.8105,
-      "updatedAt": "2026-09-28T09:51:02.505Z",
+      "updatedAt": "2026-09-28T10:00:00.049Z",
       "source": "scan"
     },
     ".opencode/plugin/openwolf.ts": {
@@ -556,7 +556,7 @@
       "hash": "a29f91aadb9a324d",
       "size": 261,
       "mtimeMs": 1790589062487.971,
-      "updatedAt": "2026-09-28T09:51:02.505Z",
+      "updatedAt": "2026-09-28T10:00:00.049Z",
       "source": "scan"
     },
     "AGENTS.md": {
@@ -565,7 +565,7 @@
       "hash": "8c90778623bf50ac",
       "size": 271,
       "mtimeMs": 1790589062488.3596,
-      "updatedAt": "2026-09-28T09:51:02.505Z",
+      "updatedAt": "2026-09-28T10:00:00.050Z",
       "source": "scan"
     },
     "app/.DS_Store": {
@@ -574,7 +574,7 @@
       "hash": "02ca0ad8f6af0692",
       "size": 6148,
       "mtimeMs": 1790584683198.2363,
-      "updatedAt": "2026-09-28T09:51:02.506Z",
+      "updatedAt": "2026-09-28T10:00:00.051Z",
       "source": "scan"
     },
     "app/.gitignore": {
@@ -583,7 +583,7 @@
       "hash": "db0fefc72f568fbb",
       "size": 564,
       "mtimeMs": 1790586841800.3047,
-      "updatedAt": "2026-09-28T09:51:02.506Z",
+      "updatedAt": "2026-09-28T10:00:00.051Z",
       "source": "scan"
     },
     "app/design/blog-artikel-voorbeeld.html": {
@@ -592,7 +592,7 @@
       "hash": "ab4b32e36db16d93",
       "size": 924988,
       "mtimeMs": 1790586074116.3813,
-      "updatedAt": "2026-09-28T09:51:02.510Z",
+      "updatedAt": "2026-09-28T10:00:00.058Z",
       "source": "scan"
     },
     "app/design/contact.html": {
@@ -601,7 +601,7 @@
       "hash": "36342e607d7316c6",
       "size": 38077,
       "mtimeMs": 1790586074119.4915,
-      "updatedAt": "2026-09-28T09:51:02.511Z",
+      "updatedAt": "2026-09-28T10:00:00.059Z",
       "source": "scan"
     },
     "app/design/index.html": {
@@ -610,7 +610,7 @@
       "hash": "9b5c90942878bf27",
       "size": 5055,
       "mtimeMs": 1790586074123.876,
-      "updatedAt": "2026-09-28T09:51:02.511Z",
+      "updatedAt": "2026-09-28T10:00:00.059Z",
       "source": "scan"
     },
     "app/design/project-zakelijk-voorbeeld.html": {
@@ -619,7 +619,7 @@
       "hash": "565c9a9324ce51a4",
       "size": 304605,
       "mtimeMs": 1790586074131.5283,
-      "updatedAt": "2026-09-28T09:51:02.513Z",
+      "updatedAt": "2026-09-28T10:00:00.062Z",
       "source": "scan"
     },
     "app/design/reviews.html": {
@@ -628,7 +628,7 @@
       "hash": "2ade610580f8e146",
       "size": 37829,
       "mtimeMs": 1790586074132.2136,
-      "updatedAt": "2026-09-28T09:51:02.514Z",
+      "updatedAt": "2026-09-28T10:00:00.063Z",
       "source": "scan"
     },
     "app/design/zakelijk-hub-v2.html": {
@@ -637,7 +637,7 @@
       "hash": "386e5594e1e8807a",
       "size": 771160,
       "mtimeMs": 1790586074148.6326,
-      "updatedAt": "2026-09-28T09:51:02.517Z",
+      "updatedAt": "2026-09-28T10:00:00.068Z",
       "source": "scan"
     },
     "app/design/zakelijk-projecten.html": {
@@ -646,7 +646,7 @@
       "hash": "162f1650b06c552e",
       "size": 34941,
       "mtimeMs": 1790586074149.295,
-      "updatedAt": "2026-09-28T09:51:02.518Z",
+      "updatedAt": "2026-09-28T10:00:00.069Z",
       "source": "scan"
     },
     "app/design/zakelijk-vve-vastgoedbeheer.html": {
@@ -655,7 +655,7 @@
       "hash": "c14f89b7b783bb0b",
       "size": 994958,
       "mtimeMs": 1790586074150.9111,
-      "updatedAt": "2026-09-28T09:51:02.522Z",
+      "updatedAt": "2026-09-28T10:00:00.075Z",
       "source": "scan"
     },
     "app/Dockerfile": {
@@ -664,7 +664,7 @@
       "hash": "c8a0488797cac4e8",
       "size": 1100,
       "mtimeMs": 1790582563624.9915,
-      "updatedAt": "2026-09-28T09:51:02.522Z",
+      "updatedAt": "2026-09-28T10:00:00.075Z",
       "source": "scan"
     },
     "app/eslint.config.mjs": {
@@ -673,7 +673,7 @@
       "hash": "870f1adccecf3051",
       "size": 465,
       "mtimeMs": 1790582563625.1084,
-      "updatedAt": "2026-09-28T09:51:02.522Z",
+      "updatedAt": "2026-09-28T10:00:00.076Z",
       "source": "scan"
     },
     "app/next-env.d.ts": {
@@ -682,7 +682,7 @@
       "hash": "7ad303e40d4fddf4",
       "size": 251,
       "mtimeMs": 1790587898851.654,
-      "updatedAt": "2026-09-28T09:51:02.523Z",
+      "updatedAt": "2026-09-28T10:00:00.076Z",
       "source": "scan"
     },
     "app/next.config.ts": {
@@ -691,7 +691,7 @@
       "hash": "8a7393f02ec13739",
       "size": 1840,
       "mtimeMs": 1790582563625.2266,
-      "updatedAt": "2026-09-28T09:51:02.523Z",
+      "updatedAt": "2026-09-28T10:00:00.076Z",
       "source": "scan"
     },
     "app/package-lock.json": {
@@ -700,7 +700,7 @@
       "hash": "d9585d8e01a25eb5",
       "size": 729717,
       "mtimeMs": 1790582609347.4048,
-      "updatedAt": "2026-09-28T09:51:02.524Z",
+      "updatedAt": "2026-09-28T10:00:00.079Z",
       "source": "scan"
     },
     "app/package.json": {
@@ -709,7 +709,7 @@
       "hash": "48f12de504e58f33",
       "size": 910,
       "mtimeMs": 1790587872362.3198,
-      "updatedAt": "2026-09-28T09:51:02.524Z",
+      "updatedAt": "2026-09-28T10:00:00.080Z",
       "source": "scan"
     },
     "app/postcss.config.mjs": {
@@ -718,7 +718,7 @@
       "hash": "dfac7ac2d86d326a",
       "size": 94,
       "mtimeMs": 1790582563627.292,
-      "updatedAt": "2026-09-28T09:51:02.525Z",
+      "updatedAt": "2026-09-28T10:00:00.080Z",
       "source": "scan"
     },
     "app/public/__design/blog-artikel-voorbeeld.html": {
@@ -727,7 +727,7 @@
       "hash": "b40ece396e4ba980",
       "size": 23375,
       "mtimeMs": 1790587919946.6245,
-      "updatedAt": "2026-09-28T09:51:02.525Z",
+      "updatedAt": "2026-09-28T10:00:00.081Z",
       "source": "scan"
     },
     "app/public/__design/blog-overzicht.html": {
@@ -736,7 +736,7 @@
       "hash": "8937621caddf8d09",
       "size": 25086,
       "mtimeMs": 1790587919947.545,
-      "updatedAt": "2026-09-28T09:51:02.525Z",
+      "updatedAt": "2026-09-28T10:00:00.081Z",
       "source": "scan"
     },
     "app/public/__design/contact.html": {
@@ -745,7 +745,7 @@
       "hash": "cb57312e6f071c09",
       "size": 25849,
       "mtimeMs": 1790587919948.397,
-      "updatedAt": "2026-09-28T09:51:02.526Z",
+      "updatedAt": "2026-09-28T10:00:00.081Z",
       "source": "scan"
     },
     "app/public/__design/homepage.html": {
@@ -754,7 +754,7 @@
       "hash": "f00a7e0ad7eca18c",
       "size": 44661,
       "mtimeMs": 1790587919949.4128,
-      "updatedAt": "2026-09-28T09:51:02.526Z",
+      "updatedAt": "2026-09-28T10:00:00.082Z",
       "source": "scan"
     },
     "app/public/__design/particulier-projecten.html": {
@@ -763,7 +763,7 @@
       "hash": "859c36b8ad53852c",
       "size": 24879,
       "mtimeMs": 1790587919950.1873,
-      "updatedAt": "2026-09-28T09:51:02.527Z",
+      "updatedAt": "2026-09-28T10:00:00.082Z",
       "source": "scan"
     },
     "app/public/__design/project-particulier-voorbeeld.html": {
@@ -772,7 +772,7 @@
       "hash": "e9a0447b18bdcd70",
       "size": 24401,
       "mtimeMs": 1790587919951.018,
-      "updatedAt": "2026-09-28T09:51:02.527Z",
+      "updatedAt": "2026-09-28T10:00:00.083Z",
       "source": "scan"
     },
     "app/public/__design/project-zakelijk-voorbeeld.html": {
@@ -781,7 +781,7 @@
       "hash": "9fd29ac68598800d",
       "size": 24113,
       "mtimeMs": 1790587919951.894,
-      "updatedAt": "2026-09-28T09:51:02.528Z",
+      "updatedAt": "2026-09-28T10:00:00.083Z",
       "source": "scan"
     },
     "app/public/__design/reviews.html": {
@@ -790,7 +790,7 @@
       "hash": "3db84786215c1e52",
       "size": 25601,
       "mtimeMs": 1790587919952.5422,
-      "updatedAt": "2026-09-28T09:51:02.528Z",
+      "updatedAt": "2026-09-28T10:00:00.083Z",
       "source": "scan"
     },
     "app/public/__design/schuttingbouw.html": {
@@ -799,7 +799,7 @@
       "hash": "0465b26f7826ba91",
       "size": 35464,
       "mtimeMs": 1790587919953.252,
-      "updatedAt": "2026-09-28T09:51:02.529Z",
+      "updatedAt": "2026-09-28T10:00:00.084Z",
       "source": "scan"
     },
     "app/public/__design/seo-schuttingbouw-heemskerk.html": {
@@ -808,7 +808,7 @@
       "hash": "6d1103205abb8ace",
       "size": 36903,
       "mtimeMs": 1790587919954.1707,
-      "updatedAt": "2026-09-28T09:51:02.529Z",
+      "updatedAt": "2026-09-28T10:00:00.084Z",
       "source": "scan"
     },
     "app/public/__design/sierbestrating.html": {
@@ -817,7 +817,7 @@
       "hash": "06b7e0dec7e3f6a0",
       "size": 35568,
       "mtimeMs": 1790587919954.801,
-      "updatedAt": "2026-09-28T09:51:02.529Z",
+      "updatedAt": "2026-09-28T10:00:00.084Z",
       "source": "scan"
     },
     "app/public/__design/terrasreiniging.html": {
@@ -826,7 +826,7 @@
       "hash": "69ddd1966a9084b8",
       "size": 35408,
       "mtimeMs": 1790587919955.6055,
-      "updatedAt": "2026-09-28T09:51:02.530Z",
+      "updatedAt": "2026-09-28T10:00:00.085Z",
       "source": "scan"
     },
     "app/public/__design/tuinaanleg.html": {
@@ -835,7 +835,7 @@
       "hash": "587a489f594b8f0e",
       "size": 35256,
       "mtimeMs": 1790587919956.496,
-      "updatedAt": "2026-09-28T09:51:02.530Z",
+      "updatedAt": "2026-09-28T10:00:00.086Z",
       "source": "scan"
     },
     "app/public/__design/zakelijk-hub-v2.html": {
@@ -844,7 +844,7 @@
       "hash": "96c42d2d65c48619",
       "size": 39982,
       "mtimeMs": 1790587919957.049,
-      "updatedAt": "2026-09-28T09:51:02.531Z",
+      "updatedAt": "2026-09-28T10:00:00.086Z",
       "source": "scan"
     },
     "app/public/__design/zakelijk-projecten.html": {
@@ -853,7 +853,7 @@
       "hash": "4784057ebcb60c4e",
       "size": 22713,
       "mtimeMs": 1790587919961.145,
-      "updatedAt": "2026-09-28T09:51:02.531Z",
+      "updatedAt": "2026-09-28T10:00:00.086Z",
       "source": "scan"
     },
     "app/public/__design/zakelijk-vve-vastgoedbeheer.html": {
@@ -862,7 +862,7 @@
       "hash": "6f03e8a0bdd6d73d",
       "size": 35945,
       "mtimeMs": 1790587919962.1023,
-      "updatedAt": "2026-09-28T09:51:02.532Z",
+      "updatedAt": "2026-09-28T10:00:00.087Z",
       "source": "scan"
     },
     "app/public/__design/zakelijk-woningcorporaties.html": {
@@ -871,7 +871,7 @@
       "hash": "9a46ba89ccd4e55e",
       "size": 35867,
       "mtimeMs": 1790587919963.022,
-      "updatedAt": "2026-09-28T09:51:02.532Z",
+      "updatedAt": "2026-09-28T10:00:00.087Z",
       "source": "scan"
     },
     "app/scripts/check-jsonld.ts": {
@@ -880,7 +880,7 @@
       "hash": "03449dcb6bc36e88",
       "size": 9161,
       "mtimeMs": 1790582563628.5178,
-      "updatedAt": "2026-09-28T09:51:02.533Z",
+      "updatedAt": "2026-09-28T10:00:00.088Z",
       "source": "scan",
       "symbols": [
         {
@@ -898,7 +898,7 @@
       "hash": "a1c8602a5143bb25",
       "size": 256,
       "mtimeMs": 1790582563629.886,
-      "updatedAt": "2026-09-28T09:51:02.534Z",
+      "updatedAt": "2026-09-28T10:00:00.088Z",
       "source": "scan"
     },
     "app/sentry.options.ts": {
@@ -907,7 +907,7 @@
       "hash": "b89936601be8277c",
       "size": 985,
       "mtimeMs": 1790582563630.0076,
-      "updatedAt": "2026-09-28T09:51:02.534Z",
+      "updatedAt": "2026-09-28T10:00:00.088Z",
       "source": "scan"
     },
     "app/sentry.server.config.ts": {
@@ -916,7 +916,7 @@
       "hash": "cd70f1e833d830dd",
       "size": 240,
       "mtimeMs": 1790582563630.1338,
-      "updatedAt": "2026-09-28T09:51:02.534Z",
+      "updatedAt": "2026-09-28T10:00:00.089Z",
       "source": "scan"
     },
     "app/src/app/api/submit-form/route.ts": {
@@ -925,7 +925,7 @@
       "hash": "5bc74738be6f821c",
       "size": 5393,
       "mtimeMs": 1790587624207.855,
-      "updatedAt": "2026-09-28T09:51:02.535Z",
+      "updatedAt": "2026-09-28T10:00:00.089Z",
       "source": "scan",
       "symbols": [
         {
@@ -964,7 +964,7 @@
       "hash": "43ef850981c27370",
       "size": 836,
       "mtimeMs": 1790582563630.994,
-      "updatedAt": "2026-09-28T09:51:02.535Z",
+      "updatedAt": "2026-09-28T10:00:00.090Z",
       "source": "scan"
     },
     "app/src/app/globals.css": {
@@ -973,7 +973,7 @@
       "hash": "a5a79c2dba75f75a",
       "size": 3217,
       "mtimeMs": 1790587393056.6196,
-      "updatedAt": "2026-09-28T09:51:02.535Z",
+      "updatedAt": "2026-09-28T10:00:00.090Z",
       "source": "scan"
     },
     "app/src/app/layout.tsx": {
@@ -982,7 +982,7 @@
       "hash": "ccc9be0563c86f9e",
       "size": 1827,
       "mtimeMs": 1790587548847.417,
-      "updatedAt": "2026-09-28T09:51:02.535Z",
+      "updatedAt": "2026-09-28T10:00:00.091Z",
       "source": "scan",
       "symbols": [
         {
@@ -1000,7 +1000,7 @@
       "hash": "5f0aa6d3efda2301",
       "size": 159,
       "mtimeMs": 1790582563631.4722,
-      "updatedAt": "2026-09-28T09:51:02.536Z",
+      "updatedAt": "2026-09-28T10:00:00.091Z",
       "source": "scan"
     },
     "app/src/app/not-found.tsx": {
@@ -1009,7 +1009,7 @@
       "hash": "f94c6e2e512ba813",
       "size": 675,
       "mtimeMs": 1790587548851.7263,
-      "updatedAt": "2026-09-28T09:51:02.536Z",
+      "updatedAt": "2026-09-28T10:00:00.091Z",
       "source": "scan"
     },
     "app/src/app/page.tsx": {
@@ -1018,7 +1018,7 @@
       "hash": "f79636086c73f114",
       "size": 1727,
       "mtimeMs": 1790587851720.9785,
-      "updatedAt": "2026-09-28T09:51:02.536Z",
+      "updatedAt": "2026-09-28T10:00:00.091Z",
       "source": "scan"
     },
     "app/src/app/robots.ts": {
@@ -1027,7 +1027,7 @@
       "hash": "32a9a14000924349",
       "size": 526,
       "mtimeMs": 1790582563631.7917,
-      "updatedAt": "2026-09-28T09:51:02.536Z",
+      "updatedAt": "2026-09-28T10:00:00.092Z",
       "source": "scan"
     },
     "app/src/app/sitemap.ts": {
@@ -1036,7 +1036,7 @@
       "hash": "ad74d223d7159f6b",
       "size": 1093,
       "mtimeMs": 1790582563631.916,
-      "updatedAt": "2026-09-28T09:51:02.536Z",
+      "updatedAt": "2026-09-28T10:00:00.092Z",
       "source": "scan"
     },
     "app/src/components/home/HomeHero.tsx": {
@@ -1045,7 +1045,7 @@
       "hash": "3bda361fc2e4daa3",
       "size": 3321,
       "mtimeMs": 1790587950624.7678,
-      "updatedAt": "2026-09-28T09:51:02.536Z",
+      "updatedAt": "2026-09-28T10:00:00.092Z",
       "source": "scan",
       "symbols": [
         {
@@ -1063,7 +1063,7 @@
       "hash": "bd702fdc896f432f",
       "size": 2108,
       "mtimeMs": 1790587851704.4917,
-      "updatedAt": "2026-09-28T09:51:02.537Z",
+      "updatedAt": "2026-09-28T10:00:00.092Z",
       "source": "scan",
       "symbols": [
         {
@@ -1081,7 +1081,7 @@
       "hash": "d5973242879e03af",
       "size": 1731,
       "mtimeMs": 1790587950626.3022,
-      "updatedAt": "2026-09-28T09:51:02.537Z",
+      "updatedAt": "2026-09-28T10:00:00.093Z",
       "source": "scan"
     },
     "app/src/components/home/Services.tsx": {
@@ -1090,7 +1090,7 @@
       "hash": "e8e9e5e7cc25ff1f",
       "size": 2277,
       "mtimeMs": 1790587950625.9429,
-      "updatedAt": "2026-09-28T09:51:02.537Z",
+      "updatedAt": "2026-09-28T10:00:00.093Z",
       "source": "scan",
       "symbols": [
         {
@@ -1108,7 +1108,7 @@
       "hash": "5d060ae4736c730e",
       "size": 3844,
       "mtimeMs": 1790587851713.498,
-      "updatedAt": "2026-09-28T09:51:02.537Z",
+      "updatedAt": "2026-09-28T10:00:00.093Z",
       "source": "scan",
       "symbols": [
         {
@@ -1126,7 +1126,7 @@
       "hash": "2f919953f124cec0",
       "size": 342,
       "mtimeMs": 1790582563632.1165,
-      "updatedAt": "2026-09-28T09:51:02.538Z",
+      "updatedAt": "2026-09-28T10:00:00.093Z",
       "source": "scan"
     },
     "app/src/components/layout/SiteFooter.tsx": {
@@ -1135,7 +1135,7 @@
       "hash": "44761698c126b235",
       "size": 2311,
       "mtimeMs": 1790587505767.3455,
-      "updatedAt": "2026-09-28T09:51:02.538Z",
+      "updatedAt": "2026-09-28T10:00:00.093Z",
       "source": "scan",
       "symbols": [
         {
@@ -1153,7 +1153,7 @@
       "hash": "d40803b754df781e",
       "size": 6649,
       "mtimeMs": 1790587520955.3025,
-      "updatedAt": "2026-09-28T09:51:02.538Z",
+      "updatedAt": "2026-09-28T10:00:00.094Z",
       "source": "scan",
       "symbols": [
         {
@@ -1178,7 +1178,7 @@
       "hash": "b3836ed998bf5c5c",
       "size": 8202,
       "mtimeMs": 1790587974014.395,
-      "updatedAt": "2026-09-28T09:51:02.538Z",
+      "updatedAt": "2026-09-28T10:00:00.094Z",
       "source": "scan",
       "symbols": [
         {
@@ -1210,7 +1210,7 @@
       "hash": "a2944f02084225e7",
       "size": 2147,
       "mtimeMs": 1790587950626.674,
-      "updatedAt": "2026-09-28T09:51:02.539Z",
+      "updatedAt": "2026-09-28T10:00:00.095Z",
       "source": "scan",
       "symbols": [
         {
@@ -1228,7 +1228,7 @@
       "hash": "df5b75a6cde28243",
       "size": 2240,
       "mtimeMs": 1790587950625.373,
-      "updatedAt": "2026-09-28T09:51:02.539Z",
+      "updatedAt": "2026-09-28T10:00:00.095Z",
       "source": "scan",
       "symbols": [
         {
@@ -1246,7 +1246,7 @@
       "hash": "3df93582f725b9b8",
       "size": 1790,
       "mtimeMs": 1790588023659.469,
-      "updatedAt": "2026-09-28T09:51:02.539Z",
+      "updatedAt": "2026-09-28T10:00:00.095Z",
       "source": "scan",
       "symbols": [
         {
@@ -1264,7 +1264,7 @@
       "hash": "1bddb2fd5d9e869c",
       "size": 1863,
       "mtimeMs": 1790587950624.234,
-      "updatedAt": "2026-09-28T09:51:02.540Z",
+      "updatedAt": "2026-09-28T10:00:00.095Z",
       "source": "scan",
       "symbols": [
         {
@@ -1282,7 +1282,7 @@
       "hash": "0440e74947f94f6b",
       "size": 1578,
       "mtimeMs": 1790587805080.702,
-      "updatedAt": "2026-09-28T09:51:02.540Z",
+      "updatedAt": "2026-09-28T10:00:00.096Z",
       "source": "scan"
     },
     "app/src/components/TrackingScripts.tsx": {
@@ -1291,7 +1291,7 @@
       "hash": "0a7755b4be8a0b61",
       "size": 3032,
       "mtimeMs": 1790582563632.4517,
-      "updatedAt": "2026-09-28T09:51:02.540Z",
+      "updatedAt": "2026-09-28T10:00:00.096Z",
       "source": "scan",
       "symbols": [
         {
@@ -1316,7 +1316,7 @@
       "hash": "dac37b0222983517",
       "size": 1593,
       "mtimeMs": 1790587474703.408,
-      "updatedAt": "2026-09-28T09:51:02.540Z",
+      "updatedAt": "2026-09-28T10:00:00.096Z",
       "source": "scan"
     },
     "app/src/components/ui/CountUp.tsx": {
@@ -1325,7 +1325,7 @@
       "hash": "84cbd665ae0037f1",
       "size": 1289,
       "mtimeMs": 1790587805076.4348,
-      "updatedAt": "2026-09-28T09:51:02.541Z",
+      "updatedAt": "2026-09-28T10:00:00.096Z",
       "source": "scan"
     },
     "app/src/components/ui/Divider.tsx": {
@@ -1334,7 +1334,7 @@
       "hash": "4053e0773f58d95c",
       "size": 537,
       "mtimeMs": 1790587474723.9216,
-      "updatedAt": "2026-09-28T09:51:02.541Z",
+      "updatedAt": "2026-09-28T10:00:00.097Z",
       "source": "scan"
     },
     "app/src/components/ui/icons.tsx": {
@@ -1343,7 +1343,7 @@
       "hash": "7a2ccda9e7565760",
       "size": 1672,
       "mtimeMs": 1790587474719.8542,
-      "updatedAt": "2026-09-28T09:51:02.541Z",
+      "updatedAt": "2026-09-28T10:00:00.097Z",
       "source": "scan"
     },
     "app/src/components/ui/Kicker.tsx": {
@@ -1352,7 +1352,7 @@
       "hash": "d45a4b383f815b05",
       "size": 686,
       "mtimeMs": 1790587474707.759,
-      "updatedAt": "2026-09-28T09:51:02.541Z",
+      "updatedAt": "2026-09-28T10:00:00.097Z",
       "source": "scan"
     },
     "app/src/components/ui/Reveal.tsx": {
@@ -1361,7 +1361,7 @@
       "hash": "9247f91890302eef",
       "size": 999,
       "mtimeMs": 1790587474715.4377,
-      "updatedAt": "2026-09-28T09:51:02.541Z",
+      "updatedAt": "2026-09-28T10:00:00.097Z",
       "source": "scan"
     },
     "app/src/components/ui/SectionHead.tsx": {
@@ -1370,7 +1370,7 @@
       "hash": "5238f31cded9ef75",
       "size": 738,
       "mtimeMs": 1790587474711.672,
-      "updatedAt": "2026-09-28T09:51:02.542Z",
+      "updatedAt": "2026-09-28T10:00:00.097Z",
       "source": "scan"
     },
     "app/src/components/ui/Wrap.tsx": {
@@ -1379,7 +1379,7 @@
       "hash": "c2372f5464a3dcf6",
       "size": 324,
       "mtimeMs": 1790587474698.5498,
-      "updatedAt": "2026-09-28T09:51:02.542Z",
+      "updatedAt": "2026-09-28T10:00:00.097Z",
       "source": "scan"
     },
     "app/src/hooks/useMobileNav.ts": {
@@ -1388,7 +1388,7 @@
       "hash": "59f2e48a7765bf83",
       "size": 984,
       "mtimeMs": 1790582563636.6584,
-      "updatedAt": "2026-09-28T09:51:02.542Z",
+      "updatedAt": "2026-09-28T10:00:00.098Z",
       "source": "scan"
     },
     "app/src/hooks/useRevealOnScroll.ts": {
@@ -1397,7 +1397,7 @@
       "hash": "ff5027d1717a5bf1",
       "size": 906,
       "mtimeMs": 1790582563636.8904,
-      "updatedAt": "2026-09-28T09:51:02.542Z",
+      "updatedAt": "2026-09-28T10:00:00.098Z",
       "source": "scan"
     },
     "app/src/hooks/useStickyTopbar.ts": {
@@ -1406,7 +1406,7 @@
       "hash": "73bea92640f59716",
       "size": 468,
       "mtimeMs": 1790587505746.7903,
-      "updatedAt": "2026-09-28T09:51:02.542Z",
+      "updatedAt": "2026-09-28T10:00:00.098Z",
       "source": "scan"
     },
     "app/src/instrumentation-client.ts": {
@@ -1415,7 +1415,7 @@
       "hash": "fd8bd47a20347fe6",
       "size": 976,
       "mtimeMs": 1790582563637.107,
-      "updatedAt": "2026-09-28T09:51:02.542Z",
+      "updatedAt": "2026-09-28T10:00:00.098Z",
       "source": "scan"
     },
     "app/src/instrumentation.ts": {
@@ -1424,7 +1424,7 @@
       "hash": "a53714662dd6eff4",
       "size": 722,
       "mtimeMs": 1790582563637.2139,
-      "updatedAt": "2026-09-28T09:51:02.543Z",
+      "updatedAt": "2026-09-28T10:00:00.098Z",
       "source": "scan"
     },
     "app/src/lib/chrome.ts": {
@@ -1433,7 +1433,7 @@
       "hash": "56ac602bcddbbda2",
       "size": 1285,
       "mtimeMs": 1790587418261.9739,
-      "updatedAt": "2026-09-28T09:51:02.543Z",
+      "updatedAt": "2026-09-28T10:00:00.098Z",
       "source": "scan"
     },
     "app/src/lib/cn.ts": {
@@ -1442,7 +1442,7 @@
       "hash": "ec1499e69cf8ab14",
       "size": 129,
       "mtimeMs": 1790582563637.496,
-      "updatedAt": "2026-09-28T09:51:02.543Z",
+      "updatedAt": "2026-09-28T10:00:00.098Z",
       "source": "scan"
     },
     "app/src/lib/content/home.ts": {
@@ -1451,7 +1451,7 @@
       "hash": "00e29f859908f5fc",
       "size": 4785,
       "mtimeMs": 1790587728611.9387,
-      "updatedAt": "2026-09-28T09:51:02.543Z",
+      "updatedAt": "2026-09-28T10:00:00.099Z",
       "source": "scan"
     },
     "app/src/lib/env.ts": {
@@ -1460,7 +1460,7 @@
       "hash": "05051ded0098ef5b",
       "size": 1418,
       "mtimeMs": 1790587548839.293,
-      "updatedAt": "2026-09-28T09:51:02.543Z",
+      "updatedAt": "2026-09-28T10:00:00.099Z",
       "source": "scan"
     },
     "app/src/lib/form-mail.ts": {
@@ -1469,7 +1469,7 @@
       "hash": "b537639e4583d7d2",
       "size": 5910,
       "mtimeMs": 1790582563638.1455,
-      "updatedAt": "2026-09-28T09:51:02.544Z",
+      "updatedAt": "2026-09-28T10:00:00.099Z",
       "source": "scan",
       "symbols": [
         {
@@ -1515,7 +1515,7 @@
       "hash": "6f1d474f5e2e8b49",
       "size": 1230,
       "mtimeMs": 1790587614568.686,
-      "updatedAt": "2026-09-28T09:51:02.544Z",
+      "updatedAt": "2026-09-28T10:00:00.099Z",
       "source": "scan"
     },
     "app/src/lib/json-ld.ts": {
@@ -1524,7 +1524,7 @@
       "hash": "5659969d69b5c77d",
       "size": 10350,
       "mtimeMs": 1790582563638.3835,
-      "updatedAt": "2026-09-28T09:51:02.544Z",
+      "updatedAt": "2026-09-28T10:00:00.100Z",
       "source": "scan",
       "symbols": [
         {
@@ -1633,7 +1633,7 @@
       "hash": "3a4fd193d899c506",
       "size": 1563,
       "mtimeMs": 1790582563638.4976,
-      "updatedAt": "2026-09-28T09:51:02.544Z",
+      "updatedAt": "2026-09-28T10:00:00.100Z",
       "source": "scan"
     },
     "app/src/lib/site.ts": {
@@ -1642,7 +1642,7 @@
       "hash": "f93501b4c30560b6",
       "size": 4467,
       "mtimeMs": 1790587418257.646,
-      "updatedAt": "2026-09-28T09:51:02.545Z",
+      "updatedAt": "2026-09-28T10:00:00.100Z",
       "source": "scan",
       "symbols": [
         {
@@ -1688,7 +1688,7 @@
       "hash": "3224719ec2ccece7",
       "size": 1055,
       "mtimeMs": 1790582563638.8252,
-      "updatedAt": "2026-09-28T09:51:02.545Z",
+      "updatedAt": "2026-09-28T10:00:00.100Z",
       "source": "scan"
     },
     "app/src/sanity/image.ts": {
@@ -1697,7 +1697,7 @@
       "hash": "b01cf2114cc455b3",
       "size": 1024,
       "mtimeMs": 1790582563638.9265,
-      "updatedAt": "2026-09-28T09:51:02.545Z",
+      "updatedAt": "2026-09-28T10:00:00.101Z",
       "source": "scan"
     },
     "app/src/sanity/metadata.ts": {
@@ -1706,7 +1706,7 @@
       "hash": "a0c09875b49d2b49",
       "size": 2223,
       "mtimeMs": 1790582563639.0452,
-      "updatedAt": "2026-09-28T09:51:02.545Z",
+      "updatedAt": "2026-09-28T10:00:00.101Z",
       "source": "scan",
       "symbols": [
         {
@@ -1731,7 +1731,7 @@
       "hash": "566dd62e4f5c4d82",
       "size": 4781,
       "mtimeMs": 1790582563639.2007,
-      "updatedAt": "2026-09-28T09:51:02.546Z",
+      "updatedAt": "2026-09-28T10:00:00.101Z",
       "source": "scan"
     },
     "app/src/sanity/sanity.types.ts": {
@@ -1740,7 +1740,7 @@
       "hash": "41c9799ce6b08024",
       "size": 34042,
       "mtimeMs": 1790582563639.3594,
-      "updatedAt": "2026-09-28T09:51:02.546Z",
+      "updatedAt": "2026-09-28T10:00:00.102Z",
       "source": "scan"
     },
     "app/src/sanity/schema.json": {
@@ -1749,7 +1749,7 @@
       "hash": "a59c242ae384f92e",
       "size": 90068,
       "mtimeMs": 1790582563639.59,
-      "updatedAt": "2026-09-28T09:51:02.547Z",
+      "updatedAt": "2026-09-28T10:00:00.103Z",
       "source": "scan"
     },
     "app/src/sanity/site-information.ts": {
@@ -1758,7 +1758,7 @@
       "hash": "ece6072bc41e7ce8",
       "size": 1081,
       "mtimeMs": 1790582563639.714,
-      "updatedAt": "2026-09-28T09:51:02.547Z",
+      "updatedAt": "2026-09-28T10:00:00.103Z",
       "source": "scan"
     },
     "app/tsconfig.json": {
@@ -1767,7 +1767,7 @@
       "hash": "5c51df4c59f4510d",
       "size": 670,
       "mtimeMs": 1790582563639.83,
-      "updatedAt": "2026-09-28T09:51:02.548Z",
+      "updatedAt": "2026-09-28T10:00:00.103Z",
       "source": "scan"
     },
     "app/tsconfig.tsbuildinfo": {
@@ -1776,7 +1776,7 @@
       "hash": "71fe6a8cbd69a350",
       "size": 302269,
       "mtimeMs": 1790588013809.861,
-      "updatedAt": "2026-09-28T09:51:02.549Z",
+      "updatedAt": "2026-09-28T10:00:00.104Z",
       "source": "scan"
     },
     "CLAUDE.md": {
@@ -1785,7 +1785,7 @@
       "hash": "b1ca356fa9d5f3a6",
       "size": 225,
       "mtimeMs": 1790589061845.0986,
-      "updatedAt": "2026-09-28T09:51:02.549Z",
+      "updatedAt": "2026-09-28T10:00:00.105Z",
       "source": "scan"
     },
     "README.md": {
@@ -1794,7 +1794,7 @@
       "hash": "15257d97e82129d7",
       "size": 27878,
       "mtimeMs": 1790582563624.4817,
-      "updatedAt": "2026-09-28T09:51:02.549Z",
+      "updatedAt": "2026-09-28T10:00:00.105Z",
       "source": "scan"
     },
     "studio/.gitignore": {
@@ -1803,7 +1803,7 @@
       "hash": "b07fe2b926636cc1",
       "size": 537,
       "mtimeMs": 1790582563640.1204,
-      "updatedAt": "2026-09-28T09:51:02.550Z",
+      "updatedAt": "2026-09-28T10:00:00.105Z",
       "source": "scan"
     },
     "studio/eslint.config.mjs": {
@@ -1812,7 +1812,7 @@
       "hash": "c5807d719bd7e7fe",
       "size": 78,
       "mtimeMs": 1790582563640.325,
-      "updatedAt": "2026-09-28T09:51:02.550Z",
+      "updatedAt": "2026-09-28T10:00:00.105Z",
       "source": "scan"
     },
     "studio/package-lock.json": {
@@ -1821,7 +1821,7 @@
       "hash": "6b8df2182ca68269",
       "size": 601081,
       "mtimeMs": 1790582563641.8333,
-      "updatedAt": "2026-09-28T09:51:02.552Z",
+      "updatedAt": "2026-09-28T10:00:00.107Z",
       "source": "scan"
     },
     "studio/package.json": {
@@ -1830,7 +1830,7 @@
       "hash": "be311e0cb10e6e95",
       "size": 1051,
       "mtimeMs": 1790582563641.9795,
-      "updatedAt": "2026-09-28T09:51:02.552Z",
+      "updatedAt": "2026-09-28T10:00:00.107Z",
       "source": "scan"
     },
     "studio/README.md": {
@@ -1839,7 +1839,7 @@
       "hash": "3dbf91d1dea727f3",
       "size": 1720,
       "mtimeMs": 1790582563640.228,
-      "updatedAt": "2026-09-28T09:51:02.552Z",
+      "updatedAt": "2026-09-28T10:00:00.107Z",
       "source": "scan"
     },
     "studio/sanity.cli.ts": {
@@ -1848,7 +1848,7 @@
       "hash": "0d56f29c93d9de3c",
       "size": 946,
       "mtimeMs": 1790582563642.0789,
-      "updatedAt": "2026-09-28T09:51:02.552Z",
+      "updatedAt": "2026-09-28T10:00:00.108Z",
       "source": "scan"
     },
     "studio/sanity.config.ts": {
@@ -1857,7 +1857,7 @@
       "hash": "b7edd634723c05c1",
       "size": 934,
       "mtimeMs": 1790582563642.18,
-      "updatedAt": "2026-09-28T09:51:02.552Z",
+      "updatedAt": "2026-09-28T10:00:00.108Z",
       "source": "scan"
     },
     "studio/schemaTypes/blocks/benefitsType.ts": {
@@ -1866,7 +1866,7 @@
       "hash": "c8fc75e0c430d858",
       "size": 2232,
       "mtimeMs": 1790582563642.4092,
-      "updatedAt": "2026-09-28T09:51:02.552Z",
+      "updatedAt": "2026-09-28T10:00:00.108Z",
       "source": "scan"
     },
     "studio/schemaTypes/blocks/contactFormType.ts": {
@@ -1875,7 +1875,7 @@
       "hash": "93853ff8c90e06ac",
       "size": 2792,
       "mtimeMs": 1790582563642.525,
-      "updatedAt": "2026-09-28T09:51:02.553Z",
+      "updatedAt": "2026-09-28T10:00:00.108Z",
       "source": "scan"
     },
     "studio/schemaTypes/blocks/crossLinksType.ts": {
@@ -1884,7 +1884,7 @@
       "hash": "84229b651aa969e7",
       "size": 1115,
       "mtimeMs": 1790582563642.633,
-      "updatedAt": "2026-09-28T09:51:02.553Z",
+      "updatedAt": "2026-09-28T10:00:00.108Z",
       "source": "scan"
     },
     "studio/schemaTypes/blocks/ctaBandType.ts": {
@@ -1893,7 +1893,7 @@
       "hash": "9c112bfd109e89c0",
       "size": 1166,
       "mtimeMs": 1790582563642.7395,
-      "updatedAt": "2026-09-28T09:51:02.553Z",
+      "updatedAt": "2026-09-28T10:00:00.108Z",
       "source": "scan"
     },
     "studio/schemaTypes/blocks/faqsType.ts": {
@@ -1902,7 +1902,7 @@
       "hash": "9f84992a20aef4df",
       "size": 924,
       "mtimeMs": 1790582563642.8318,
-      "updatedAt": "2026-09-28T09:51:02.553Z",
+      "updatedAt": "2026-09-28T10:00:00.108Z",
       "source": "scan"
     },
     "studio/schemaTypes/blocks/heroType.ts": {
@@ -1911,7 +1911,7 @@
       "hash": "754fbb8a0fef4a47",
       "size": 2186,
       "mtimeMs": 1790582563642.9326,
-      "updatedAt": "2026-09-28T09:51:02.553Z",
+      "updatedAt": "2026-09-28T10:00:00.109Z",
       "source": "scan"
     },
     "studio/schemaTypes/blocks/introType.ts": {
@@ -1920,7 +1920,7 @@
       "hash": "ae44a87e0aff4737",
       "size": 2387,
       "mtimeMs": 1790582563643.0293,
-      "updatedAt": "2026-09-28T09:51:02.554Z",
+      "updatedAt": "2026-09-28T10:00:00.109Z",
       "source": "scan"
     },
     "studio/schemaTypes/blocks/mediaTextType.ts": {
@@ -1929,7 +1929,7 @@
       "hash": "a2b19db266fc7fc8",
       "size": 1192,
       "mtimeMs": 1790582563643.148,
-      "updatedAt": "2026-09-28T09:51:02.554Z",
+      "updatedAt": "2026-09-28T10:00:00.109Z",
       "source": "scan"
     },
     "studio/schemaTypes/blocks/pageHeroType.ts": {
@@ -1938,7 +1938,7 @@
       "hash": "43e2cb51d144a34b",
       "size": 1674,
       "mtimeMs": 1790582563643.2407,
-      "updatedAt": "2026-09-28T09:51:02.554Z",
+      "updatedAt": "2026-09-28T10:00:00.109Z",
       "source": "scan"
     },
     "studio/schemaTypes/blocks/servicesType.ts": {
@@ -1947,7 +1947,7 @@
       "hash": "168b18b4fc33daea",
       "size": 2383,
       "mtimeMs": 1790582563643.3462,
-      "updatedAt": "2026-09-28T09:51:02.554Z",
+      "updatedAt": "2026-09-28T10:00:00.109Z",
       "source": "scan"
     },
     "studio/schemaTypes/blocks/stepsType.ts": {
@@ -1956,7 +1956,7 @@
       "hash": "c748e46a3ca14f11",
       "size": 1581,
       "mtimeMs": 1790582563643.435,
-      "updatedAt": "2026-09-28T09:51:02.554Z",
+      "updatedAt": "2026-09-28T10:00:00.109Z",
       "source": "scan"
     },
     "studio/schemaTypes/faqType.ts": {
@@ -1965,7 +1965,7 @@
       "hash": "1f7a05e01a3cc9f2",
       "size": 830,
       "mtimeMs": 1790582563643.5435,
-      "updatedAt": "2026-09-28T09:51:02.554Z",
+      "updatedAt": "2026-09-28T10:00:00.109Z",
       "source": "scan"
     },
     "studio/schemaTypes/footerType.ts": {
@@ -1974,7 +1974,7 @@
       "hash": "4c3de80938e93040",
       "size": 2041,
       "mtimeMs": 1790582563643.6538,
-      "updatedAt": "2026-09-28T09:51:02.554Z",
+      "updatedAt": "2026-09-28T10:00:00.109Z",
       "source": "scan"
     },
     "studio/schemaTypes/formGeneralSettingsType.ts": {
@@ -1983,7 +1983,7 @@
       "hash": "cc7e275139a972fe",
       "size": 5062,
       "mtimeMs": 1790582563643.8252,
-      "updatedAt": "2026-09-28T09:51:02.555Z",
+      "updatedAt": "2026-09-28T10:00:00.110Z",
       "source": "scan"
     },
     "studio/schemaTypes/formType.ts": {
@@ -1992,7 +1992,7 @@
       "hash": "dccc82fe3141c082",
       "size": 9026,
       "mtimeMs": 1790582563644.0266,
-      "updatedAt": "2026-09-28T09:51:02.555Z",
+      "updatedAt": "2026-09-28T10:00:00.110Z",
       "source": "scan",
       "symbols": [
         {
@@ -2010,7 +2010,7 @@
       "hash": "1c3ac94797112c53",
       "size": 1843,
       "mtimeMs": 1790582563644.1335,
-      "updatedAt": "2026-09-28T09:51:02.555Z",
+      "updatedAt": "2026-09-28T10:00:00.110Z",
       "source": "scan"
     },
     "studio/schemaTypes/navigationType.ts": {
@@ -2019,7 +2019,7 @@
       "hash": "be12c9ef0727712d",
       "size": 1269,
       "mtimeMs": 1790582563644.2495,
-      "updatedAt": "2026-09-28T09:51:02.555Z",
+      "updatedAt": "2026-09-28T10:00:00.110Z",
       "source": "scan"
     },
     "studio/schemaTypes/objects/ctaType.ts": {
@@ -2028,7 +2028,7 @@
       "hash": "d016fc7939d21106",
       "size": 326,
       "mtimeMs": 1790582563644.4268,
-      "updatedAt": "2026-09-28T09:51:02.555Z",
+      "updatedAt": "2026-09-28T10:00:00.110Z",
       "source": "scan"
     },
     "studio/schemaTypes/objects/formFieldType.ts": {
@@ -2037,7 +2037,7 @@
       "hash": "2cb8c42eae5fee0a",
       "size": 4571,
       "mtimeMs": 1790582563644.5906,
-      "updatedAt": "2026-09-28T09:51:02.556Z",
+      "updatedAt": "2026-09-28T10:00:00.111Z",
       "source": "scan"
     },
     "studio/schemaTypes/objects/linkFields.ts": {
@@ -2046,7 +2046,7 @@
       "hash": "bdc930395402f7a6",
       "size": 1422,
       "mtimeMs": 1790582563644.7117,
-      "updatedAt": "2026-09-28T09:51:02.556Z",
+      "updatedAt": "2026-09-28T10:00:00.111Z",
       "source": "scan"
     },
     "studio/schemaTypes/objects/linkType.ts": {
@@ -2055,7 +2055,7 @@
       "hash": "4a6dec2e72655f28",
       "size": 188,
       "mtimeMs": 1790582563644.8208,
-      "updatedAt": "2026-09-28T09:51:02.556Z",
+      "updatedAt": "2026-09-28T10:00:00.111Z",
       "source": "scan"
     },
     "studio/schemaTypes/objects/seoType.ts": {
@@ -2064,7 +2064,7 @@
       "hash": "c3937d54e6fc72e3",
       "size": 806,
       "mtimeMs": 1790582563644.9243,
-      "updatedAt": "2026-09-28T09:51:02.556Z",
+      "updatedAt": "2026-09-28T10:00:00.111Z",
       "source": "scan"
     },
     "studio/schemaTypes/pageBuilderType.ts": {
@@ -2073,7 +2073,7 @@
       "hash": "617f58f2d68669a5",
       "size": 833,
       "mtimeMs": 1790582563645.0222,
-      "updatedAt": "2026-09-28T09:51:02.556Z",
+      "updatedAt": "2026-09-28T10:00:00.111Z",
       "source": "scan"
     },
     "studio/schemaTypes/pageType.ts": {
@@ -2082,7 +2082,7 @@
       "hash": "302e9947730ed839",
       "size": 744,
       "mtimeMs": 1790582563645.126,
-      "updatedAt": "2026-09-28T09:51:02.557Z",
+      "updatedAt": "2026-09-28T10:00:00.111Z",
       "source": "scan"
     },
     "studio/schemaTypes/siteInformationType.ts": {
@@ -2091,7 +2091,7 @@
       "hash": "dad20a1229f10c66",
       "size": 3548,
       "mtimeMs": 1790582563645.2302,
-      "updatedAt": "2026-09-28T09:51:02.557Z",
+      "updatedAt": "2026-09-28T10:00:00.111Z",
       "source": "scan"
     },
     "studio/structure.ts": {
@@ -2100,7 +2100,7 @@
       "hash": "0275d94724312302",
       "size": 2509,
       "mtimeMs": 1790582563645.3308,
-      "updatedAt": "2026-09-28T09:51:02.557Z",
+      "updatedAt": "2026-09-28T10:00:00.111Z",
       "source": "scan"
     },
     "studio/tools/mediaData.ts": {
@@ -2109,7 +2109,7 @@
       "hash": "2afb234e4afe433d",
       "size": 7041,
       "mtimeMs": 1790582563645.9133,
-      "updatedAt": "2026-09-28T09:51:02.558Z",
+      "updatedAt": "2026-09-28T10:00:00.112Z",
       "source": "scan",
       "symbols": [
         {
@@ -2197,7 +2197,7 @@
       "hash": "9c537d6dbd51c896",
       "size": 4958,
       "mtimeMs": 1790582563646.0654,
-      "updatedAt": "2026-09-28T09:51:02.558Z",
+      "updatedAt": "2026-09-28T10:00:00.112Z",
       "source": "scan"
     },
     "studio/tools/MediaTool.tsx": {
@@ -2206,7 +2206,7 @@
       "hash": "dcd34fb382f53316",
       "size": 16044,
       "mtimeMs": 1790582563645.6125,
-      "updatedAt": "2026-09-28T09:51:02.558Z",
+      "updatedAt": "2026-09-28T10:00:00.112Z",
       "source": "scan",
       "symbols": [
         {
@@ -2238,7 +2238,7 @@
       "hash": "e809be7d33595a60",
       "size": 1174,
       "mtimeMs": 1790582563646.168,
-      "updatedAt": "2026-09-28T09:51:02.559Z",
+      "updatedAt": "2026-09-28T10:00:00.112Z",
       "source": "scan"
     },
     "studio/tsconfig.json": {
@@ -2247,7 +2247,7 @@
       "hash": "e5a67d7d8cdee156",
       "size": 417,
       "mtimeMs": 1790582563646.2756,
-      "updatedAt": "2026-09-28T09:51:02.559Z",
+      "updatedAt": "2026-09-28T10:00:00.112Z",
       "source": "scan"
     }
   }

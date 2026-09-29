@@ -2,25 +2,24 @@ import type { ReactNode } from 'react';
 import { Reveal } from '@/components/ui/Reveal';
 import { SectionHead } from '@/components/ui/SectionHead';
 import { Wrap } from '@/components/ui/Wrap';
-
-export type Step = { title: string; text: string };
+import type { WerkwijzeData } from '@/sanity/types';
 
 type WerkwijzeProps = {
-  title: string;
-  lead?: string;
-  steps: Step[];
+  werkwijze: WerkwijzeData | null;
   /** Wave into the next section. */
   divider?: ReactNode;
 };
 
-export function Werkwijze({ title, lead, steps, divider }: WerkwijzeProps) {
+export function Werkwijze({ werkwijze, divider }: WerkwijzeProps) {
+  if (!werkwijze) return null;
+
   return (
     <section id='werkwijze' className='relative bg-linear-180 from-[#fbfdfe] to-[#f2f9fd] py-24'>
       <Wrap>
-        <SectionHead kicker='Werkwijze' title={title} lead={lead} />
+        <SectionHead head={werkwijze} />
         <div className='grid grid-cols-4 gap-6 max-lg:grid-cols-2 max-xs:grid-cols-1'>
-          {steps.map((step, index) => (
-            <Reveal key={step.title} index={index}>
+          {(werkwijze.steps ?? []).map((step, index) => (
+            <Reveal key={step._key} index={index}>
               <div className='h-full rounded-card border border-line bg-white px-6 py-7 transition-[translate,box-shadow] duration-350 ease-brand hover:-translate-y-[7px] hover:shadow-soft'>
                 <div className='flex size-[42px] items-center justify-center rounded-[14px] bg-linear-135 from-blue to-blue-light font-display text-[17px] font-bold text-white shadow-[0_10px_20px_-10px_rgb(6_159_223/0.9)]'>
                   {index + 1}

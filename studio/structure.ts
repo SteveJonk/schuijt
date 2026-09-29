@@ -1,71 +1,112 @@
-import {BlockElementIcon} from '@sanity/icons/BlockElement'
 import {CogIcon} from '@sanity/icons/Cog'
+import {ComposeIcon} from '@sanity/icons/Compose'
+import {DocumentsIcon} from '@sanity/icons/Documents'
 import {EnvelopeIcon} from '@sanity/icons/Envelope'
 import {ImagesIcon} from '@sanity/icons/Images'
-import {MenuIcon} from '@sanity/icons/Menu'
-import type {StructureResolver} from 'sanity/structure'
+import {StarIcon} from '@sanity/icons/Star'
+import {TagIcon} from '@sanity/icons/Tag'
+import type {StructureBuilder, StructureResolver} from 'sanity/structure'
 import {MediaLibrary} from './tools/MediaTool'
 
-/**
- * Documents that exist exactly once. They get a fixed `_id` and a top-level
- * menu entry, and are filtered out of the generic document list below so they
- * cannot be created twice.
- */
-const SINGLETONS = ['siteInformation', 'navigation', 'footer', 'formGeneralSettings']
+const singleton = (S: StructureBuilder, type: string, title: string) =>
+  S.listItem()
+    .title(title)
+    .id(type)
+    .schemaType(type)
+    .child(S.document().schemaType(type).documentId(type).title(title))
+
+/** Dienstpagina's of one kind, created with that kind preset. */
+const servicePages = (S: StructureBuilder, kind: string, title: string) =>
+  S.listItem()
+    .title(title)
+    .id(`servicePage-${kind}`)
+    .schemaType('servicePage')
+    .child(
+      S.documentTypeList('servicePage')
+        .title(title)
+        .filter('_type == "servicePage" && kind == $kind')
+        .params({kind})
+        .defaultOrdering([{field: 'title', direction: 'asc'}])
+        .initialValueTemplates([S.initialValueTemplateItem(`servicePage-${kind}`)]),
+    )
 
 export const structure: StructureResolver = (S) =>
   S.list()
-    .title('Content')
+    .title('Inhoud')
     .items([
       S.listItem()
-        .title('Site information')
-        .id('siteInformation')
+        .title('Pagina’s')
+        .id('pages')
+        .icon(DocumentsIcon)
+        .child(
+          S.list()
+            .title('Pagina’s')
+            .items([
+              S.listItem()
+                .title('Algemeen')
+                .id('general')
+                .child(
+                  S.list()
+                    .title('Algemeen')
+                    .items([
+                      singleton(S, 'homePage', 'Home'),
+                      singleton(S, 'zakelijkPage', 'Zakelijk'),
+                      singleton(S, 'projectsPage', 'Projecten-overzicht'),
+                      singleton(S, 'zakelijkProjectsPage', 'Zakelijke projecten'),
+                      singleton(S, 'reviewsPage', 'Reviews'),
+                      singleton(S, 'blogPage', 'Blog-overzicht'),
+                      singleton(S, 'contactPage', 'Contact'),
+                      S.documentTypeListItem('textPage').title('Tekstpagina’s'),
+                    ]),
+                ),
+              servicePages(S, 'dienst', 'Diensten'),
+              servicePages(S, 'lokaal', 'Lokale pagina’s'),
+              servicePages(S, 'zakelijk', 'Zakelijk'),
+            ]),
+        ),
+      S.documentTypeListItem('project')
+        .title('Projecten')
+        .child(
+          S.documentTypeList('project')
+            .title('Projecten')
+            .defaultOrdering([{field: 'date', direction: 'desc'}]),
+        ),
+      S.documentTypeListItem('blogPost').title('Blog').icon(ComposeIcon),
+      S.documentTypeListItem('review').title('Reviews').icon(StarIcon),
+      S.documentTypeListItem('category').title('Categorieën').icon(TagIcon),
+      S.divider(),
+      S.listItem()
+        .title('Formulieren')
+        .id('forms')
+        .icon(EnvelopeIcon)
+        .child(
+          S.list()
+            .title('Formulieren')
+            .items([
+              S.documentTypeListItem('form').title('Formulieren').icon(EnvelopeIcon),
+              singleton(S, 'formGeneralSettings', 'Formulierinstellingen'),
+            ]),
+        ),
+      S.listItem()
+        .title('Instellingen')
+        .id('settings')
         .icon(CogIcon)
         .child(
-          S.document()
-            .schemaType('siteInformation')
-            .documentId('siteInformation')
-            .title('Site information'),
+          S.list()
+            .title('Instellingen')
+            .items([
+              singleton(S, 'siteSettings', 'Website'),
+              singleton(S, 'navigation', 'Navigatie'),
+              singleton(S, 'footer', 'Footer'),
+              singleton(S, 'uiText', 'Vaste teksten'),
+            ]),
         ),
-      S.listItem()
-        .title('Navigation')
-        .id('navigation')
-        .icon(MenuIcon)
-        .child(
-          S.document().schemaType('navigation').documentId('navigation').title('Navigation'),
-        ),
-      S.listItem()
-        .title('Footer')
-        .id('footer')
-        .icon(BlockElementIcon)
-        .child(S.document().schemaType('footer').documentId('footer').title('Footer')),
-      S.divider(),
-      S.documentTypeListItem('page').title('Pages'),
-      S.documentTypeListItem('faq').title('FAQs'),
       S.divider(),
       // Not a document type but a panel of its own: Sanity's asset browser only
-      // opens from a field on a document, so without this the media library as
-      // a whole is invisible. See `tools/MediaTool.tsx`.
+      // opens from a field on a document. See `tools/MediaTool.tsx`.
       S.listItem()
         .title('Media')
         .id('media')
         .icon(ImagesIcon)
         .child(S.component(MediaLibrary).title('Media').id('media')),
-      S.divider(),
-      S.documentTypeListItem('form').title('Forms').icon(EnvelopeIcon),
-      S.listItem()
-        .title('Form settings')
-        .id('formGeneralSettings')
-        .icon(EnvelopeIcon)
-        .child(
-          S.document()
-            .schemaType('formGeneralSettings')
-            .documentId('formGeneralSettings')
-            .title('Form settings'),
-        ),
-      S.divider(),
-      ...S.documentTypeListItems().filter(
-        (item) =>
-          item.getId() && !['page', 'faq', 'form', ...SINGLETONS].includes(item.getId()!),
-      ),
     ])

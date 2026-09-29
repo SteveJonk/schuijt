@@ -9,7 +9,11 @@
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
     "typegen": "npm --prefix ../studio run typegen",
-    "check:jsonld": "tsx scripts/check-jsonld.ts"
+    "check:jsonld": "tsx scripts/check-jsonld.ts",
+    "check:links": "node scripts/check-links.mjs",
+    "seed": "tsx --env-file=.env scripts/seed/index.ts",
+    "seed:dry": "tsx scripts/seed/index.ts --dry",
+    "check:queries": "tsx scripts/check-queries.ts"
   },
   "dependencies": {
     "@sanity/image-url": "^2.1.1",

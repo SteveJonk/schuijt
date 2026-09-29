@@ -31,7 +31,7 @@ import {
   websiteJsonLd,
   type JsonLdNode,
 } from '@/lib/json-ld';
-import { SITE_DEFAULTS, SITE_URL, resolveSiteInformation } from '@/lib/site';
+import { SITE_URL, resolveSiteInformation } from '@/lib/site';
 
 /** The node with this `@type` from a graph — `@type` may also be a list. */
 function node(graph: JsonLdNode | null, type: string): JsonLdNode {
@@ -73,33 +73,29 @@ assert.deepEqual(postalAddress(['Prinsengracht 263', '1016 GV Amsterdam']), {
   streetAddress: 'Prinsengracht 263',
   postalCode: '1016 GV',
   addressLocality: 'Amsterdam',
-  addressCountry: SITE_DEFAULTS.addressCountry,
+  addressCountry: 'NL',
 });
 assert.deepEqual(postalAddress(['Chausseestrasse 1', '10115 Berlin']), {
   '@type': 'PostalAddress',
   streetAddress: 'Chausseestrasse 1',
   postalCode: '10115',
   addressLocality: 'Berlin',
-  addressCountry: SITE_DEFAULTS.addressCountry,
+  addressCountry: 'NL',
 });
 // Without a recognisable postcode line everything stays street — better than guessing.
 assert.deepEqual(postalAddress(['Somewhere 1']), {
   '@type': 'PostalAddress',
   streetAddress: 'Somewhere 1',
-  addressCountry: SITE_DEFAULTS.addressCountry,
+  addressCountry: 'NL',
 });
 assert.equal(postalAddress([]), undefined);
 assert.equal(postalAddress(null), undefined);
 
-const defaults = resolveSiteInformation(null);
-const fallback = organizationJsonLd(defaults);
-assert.equal(fallback['@id'], ORGANIZATION_ID);
-assert.equal(fallback.name, SITE_DEFAULTS.name);
-assert.equal(fallback.telephone, SITE_DEFAULTS.phone);
-assert.equal(prune(fallback)!.sameAs, undefined, 'no social links, no sameAs');
+const empty = organizationJsonLd(resolveSiteInformation(null));
+assert.equal(empty['@id'], ORGANIZATION_ID);
+assert.equal(prune(empty)!.sameAs, undefined, 'no social links, no sameAs');
 
-// The CMS wins field by field; anything an editor left blank falls back, and an
-// unreachable CMS (null) is the same as every field being blank.
+// Values from the CMS are trimmed; blanks and nulls drop out of lists.
 const merged = resolveSiteInformation({
   name: 'Other Co',
   phone: '  +31 (0)20 000 0000  ',
@@ -110,16 +106,9 @@ const merged = resolveSiteInformation({
 });
 assert.equal(merged.name, 'Other Co');
 assert.equal(merged.phone, '+31 (0)20 000 0000', 'values are trimmed');
-assert.equal(merged.description, SITE_DEFAULTS.description, 'a blank field falls back');
-assert.equal(merged.email, SITE_DEFAULTS.email, 'a missing field falls back');
+assert.equal(merged.description, '', 'a blank field stays blank');
 assert.deepEqual(merged.address, ['Chausseestrasse 1', '10115 Berlin']);
 assert.deepEqual(merged.socialLinks, ['https://example.com/profile']);
-assert.deepEqual(
-  resolveSiteInformation({ address: [], badges: [null, ''] }).address,
-  [...SITE_DEFAULTS.address],
-  'an emptied list falls back too',
-);
-assert.deepEqual(resolveSiteInformation(null).socialLinks, [], 'sameAs has nothing to fall back to');
 
 const fromCms = prune(organizationJsonLd(merged)) as JsonLdNode;
 assert.equal(fromCms.name, 'Other Co');
@@ -130,11 +119,12 @@ assert.deepEqual(fromCms.address, {
   streetAddress: 'Chausseestrasse 1',
   postalCode: '10115',
   addressLocality: 'Berlin',
-  addressCountry: SITE_DEFAULTS.addressCountry,
+  addressCountry: 'NL',
 });
 
+const defaults = resolveSiteInformation(null);
 assert.deepEqual(websiteJsonLd(defaults).publisher, { '@id': ORGANIZATION_ID });
-assert.equal(websiteJsonLd(defaults).inLanguage, SITE_DEFAULTS.language);
+assert.equal(websiteJsonLd(defaults).inLanguage, 'nl');
 assert.equal(websiteJsonLd(merged).inLanguage, 'de', 'the language follows the CMS');
 
 const site = siteJsonLd(defaults);
@@ -179,7 +169,7 @@ const about = pageJsonLd({
 const aboutPage = node(about, 'WebPage');
 assert.deepEqual(aboutPage['@type'], ['WebPage', 'FAQPage']);
 assert.equal(aboutPage['@id'], `${SITE_URL}/about#page`);
-assert.equal(aboutPage.inLanguage, SITE_DEFAULTS.language);
+assert.equal(aboutPage.inLanguage, 'nl');
 assert.equal(
   (pageJsonLd({ path: '/x', language: 'de' })?.['@graph'] as JsonLdNode[])[0].inLanguage,
   'de',

@@ -1,27 +1,37 @@
-import { HomeHero } from '@/components/home/HomeHero';
+import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 import { Paths } from '@/components/home/Paths';
 import { Reviews } from '@/components/home/Reviews';
 import { Services } from '@/components/home/Services';
 import { ZakelijkBand } from '@/components/home/ZakelijkBand';
 import { ContactCta } from '@/components/sections/ContactCta';
+import { Hero } from '@/components/sections/Hero';
 import { ProjectGrid } from '@/components/sections/ProjectGrid';
 import { Werkgebied } from '@/components/sections/Werkgebied';
 import { Werkwijze } from '@/components/sections/Werkwijze';
 import { Divider } from '@/components/ui/Divider';
 import { SectionHead } from '@/components/ui/SectionHead';
 import { Wrap } from '@/components/ui/Wrap';
-import { PROJECTS, STEPS } from '@/lib/content/home';
+import { sanityFetch } from '@/sanity/fetch';
+import { pageMetadata } from '@/sanity/metadata';
+import { HOME_QUERY } from '@/sanity/queries';
 
-export default function HomePage() {
+export async function generateMetadata(): Promise<Metadata> {
+  const home = await sanityFetch(HOME_QUERY);
+  return pageMetadata(home?.seo, undefined, { absolute: true });
+}
+
+export default async function HomePage() {
+  const home = await sanityFetch(HOME_QUERY);
+  if (!home) notFound();
+
   return (
     <main>
-      <HomeHero />
-      <Paths />
-      <Services />
+      <Hero hero={home.hero} variant='home' />
+      <Paths paths={home.paths} />
+      <Services services={home.services} />
       <Werkwijze
-        title='Van eerste gesprek tot opgeleverd werk'
-        lead='U weet vooraf wat er gebeurt, wat het kost en wanneer we klaar zijn.'
-        steps={STEPS}
+        werkwijze={home.werkwijze}
         divider={
           <Divider
             fill='#0d2a3a'
@@ -29,20 +39,18 @@ export default function HomePage() {
           />
         }
       />
-      <ZakelijkBand />
-      <section id='projecten' className='relative py-24'>
-        <Wrap>
-          <SectionHead
-            kicker='Projecten'
-            title='Recent opgeleverd werk'
-            lead='Een greep uit de tuinen, terrassen en terreinen die we de afgelopen periode hebben aangepakt.'
-          />
-          <ProjectGrid projects={PROJECTS} />
-        </Wrap>
-      </section>
-      <Reviews />
-      <Werkgebied image='/images/zakelijk-terrein.jpg' />
-      <ContactCta />
+      <ZakelijkBand zakelijk={home.zakelijk} />
+      {home.projects?.tiles?.length ? (
+        <section id='projecten' className='relative py-24'>
+          <Wrap>
+            <SectionHead head={home.projects.head} />
+            <ProjectGrid tiles={home.projects.tiles} />
+          </Wrap>
+        </section>
+      ) : null}
+      <Reviews reviews={home.reviews} />
+      <Werkgebied werkgebied={home.werkgebied} />
+      <ContactCta cta={home.cta} size='home' padding='lg' />
     </main>
   );
 }

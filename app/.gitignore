@@ -47,3 +47,6 @@ next-env.d.ts
 
 .DS_Store
 
+
+# seed dry-run output
+scripts/seed/dataset.ndjson

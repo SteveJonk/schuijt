@@ -13,17 +13,17 @@ npm run dev            # http://localhost:3333
 
 ## Layout
 
-- `schemaTypes/blocks/` — one file per page-builder block
-- `schemaTypes/objects/` — shared field groups (`seo`, `link`, `cta`)
-- `schemaTypes/pageBuilderType.ts` — which blocks editors can insert
-- `schemaTypes/formType.ts` + `objects/formFieldType.ts` — forms and their
-  fields; `formGeneralSettingsType.ts` holds the shared mail and spam settings
-- `structure.ts` — the studio's left-hand menu, including the singletons
-- `schemaTypes/siteInformationType.ts` — the site's own details (name, contact,
-  language, social links); the app falls back to `app/src/lib/site.ts` per field
-  and `npm run seed:site` fills it from there
-- `sanity.cli.ts` — CLI config, including the `typegen` paths that point at the
-  app
+- `schemaTypes/documents/` — repeatable content: `servicePage` (services, local
+  and zakelijk pages; `kind` decides the URL), `project`, `blogPost`,
+  `review`, `category`, `textPage`, and the form creator (`formType`)
+- `schemaTypes/singletons/` — one-off documents: the fixed pages (Home,
+  Zakelijk, overviews, Contact), Website, Navigatie, Footer, Vaste teksten and
+  Formulierinstellingen. Each has `_id` equal to its type name.
+- `schemaTypes/objects/` — shared field groups (hero, FAQ, link, seo, …) and
+  the form field type
+- `schemaTypes/fields.ts` — small helpers for common fields; titles are Dutch
+- `structure.ts` — the studio menu (Pagina's, Projecten, Blog, Reviews,
+  Categorieën, Formulieren, Instellingen, Media)
 
 ## Types
 

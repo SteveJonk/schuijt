@@ -17,7 +17,7 @@
  * any object left empty by that, so a half-filled document never emits
  * `"telephone": null`.
  */
-import { SITE_DEFAULTS, SITE_URL, type SiteInformation } from '@/lib/site';
+import { SITE_URL, type SiteInformation } from '@/lib/site';
 
 export type JsonLdNode = Record<string, unknown>;
 
@@ -96,7 +96,7 @@ const POSTAL_CODE_LINE =
 
 export function postalAddress(
   lines: readonly (string | null | undefined)[] | null | undefined,
-  addressCountry: string = SITE_DEFAULTS.addressCountry,
+  addressCountry: string = 'NL',
 ): JsonLdNode | undefined {
   const parts = (lines ?? []).map((line) => line?.trim()).filter(Boolean) as string[];
   if (!parts.length) return undefined;
@@ -253,7 +253,7 @@ export function webPageJsonLd(input: PageInput): JsonLdNode {
     url,
     name: input.title,
     description: input.description,
-    inLanguage: input.language ?? SITE_DEFAULTS.language,
+    inLanguage: input.language ?? 'nl',
     isPartOf: WEBSITE_REF,
     // Deliberately NO `about` pointing at the organisation. The company already
     // hangs off the page via `isPartOf` -> WebSite -> `publisher`, and a second

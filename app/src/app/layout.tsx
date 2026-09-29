@@ -9,7 +9,9 @@ import { SiteFooter } from '@/components/layout/SiteFooter';
 import { SiteHeader } from '@/components/layout/SiteHeader';
 import { TrackingScriptsBody, TrackingScriptsHead } from '@/components/TrackingScripts';
 import { siteJsonLd } from '@/lib/json-ld';
-import { SITE, SITE_URL } from '@/lib/site';
+import { SITE_URL, resolveSiteInformation } from '@/lib/site';
+import { getLayout } from '@/sanity/fetch';
+import { imageUrl } from '@/sanity/image';
 import './globals.css';
 
 const display = Plus_Jakarta_Sans({
@@ -24,27 +26,31 @@ const sans = Inter({
   weight: ['400', '500', '600'],
 });
 
-export const metadata: Metadata = {
-  metadataBase: new URL(SITE_URL),
-  title: {
-    default: `${SITE.name} — Sierbestrating, schuttingbouw en tuinaanleg`,
-    template: `%s - ${SITE.name}`,
-  },
-  description: SITE.description,
-  openGraph: {
-    type: 'website',
-    siteName: SITE.name,
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const { site } = await getLayout();
+  const name = site?.name ?? '';
 
-export default function RootLayout({
+  return {
+    metadataBase: new URL(SITE_URL),
+    title: { default: name, template: `%s - ${name}` },
+    description: site?.description ?? undefined,
+    openGraph: { type: 'website', siteName: name },
+  };
+}
+
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const { site, navigation } = await getLayout();
+  const logoSrc = imageUrl(site?.logo);
+  const dims = site?.logo?.dimensions;
+  const info = resolveSiteInformation({ ...site, logoUrl: logoSrc });
+
   return (
     <html
-      lang={SITE.language}
+      lang={info.language}
       data-scroll-behavior='smooth'
       className={`${display.variable} ${sans.variable} antialiased`}
     >
@@ -55,8 +61,18 @@ export default function RootLayout({
         {/* Vendor-specified position: first element inside <body>. */}
         <TrackingScriptsBody />
         {/* The organisation and the site belong on every page. */}
-        <JsonLd data={siteJsonLd(SITE)} />
-        <SiteHeader />
+        <JsonLd data={siteJsonLd(info)} />
+        <SiteHeader
+          siteName={info.name}
+          logo={logoSrc && dims ? { src: logoSrc, width: dims.width, height: dims.height } : null}
+          phone={site?.phone ?? null}
+          links={(navigation?.links ?? []).flatMap((link) =>
+            link.href && link.label ? [{ href: link.href, label: link.label }] : [],
+          )}
+          ctaLabel={navigation?.ctaLabel ?? null}
+          menuOpen={navigation?.menuOpen ?? null}
+          menuClose={navigation?.menuClose ?? null}
+        />
         {children}
         <SiteFooter />
       </body>

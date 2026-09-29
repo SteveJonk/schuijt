@@ -1,53 +1,67 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { FOOTER_GROUPS } from '@/lib/chrome';
-import { SITE, mailtoHref, telHref } from '@/lib/site';
+import { mailtoHref, telHref } from '@/lib/site';
+import { getLayout } from '@/sanity/fetch';
+import { imageUrl } from '@/sanity/image';
 
-export function SiteFooter() {
+export async function SiteFooter() {
+  const { site, footer } = await getLayout();
   const linkClass = 'transition-colors duration-200 hover:text-blue-light';
+  const logo = imageUrl(site?.logo);
+  const dims = site?.logo?.dimensions;
 
   return (
     <footer className='relative bg-linear-160 from-deep to-[#0a1e2a] pt-[70px] pb-7 text-[14.5px] text-[#93a6b4]'>
       <div className='mx-auto max-w-site px-[26px]'>
         <div className='grid grid-cols-[1.5fr_1fr_1fr_1fr] gap-[38px] max-lg:grid-cols-2 max-xs:grid-cols-1'>
           <div>
-            <Image
-              src='/images/logo.png'
-              alt={SITE.name}
-              width={520}
-              height={174}
-              className='mb-[18px] h-[38px] w-auto brightness-0 invert'
-            />
-            <p>{SITE.description}</p>
+            {logo && dims ? (
+              <Image
+                src={logo}
+                alt={site?.name ?? ''}
+                width={dims.width}
+                height={dims.height}
+                className='mb-[18px] h-[38px] w-auto brightness-0 invert'
+              />
+            ) : null}
+            <p>{site?.description}</p>
           </div>
-          {FOOTER_GROUPS.map((group) => (
-            <div key={group.title}>
+          {(footer?.groups ?? []).map((group) => (
+            <div key={group._key}>
               <h4 className='mb-4 text-[15px] text-white'>{group.title}</h4>
               <ul className='grid gap-[9px]'>
-                {group.links.map((link) => (
-                  <li key={link.label}>
-                    <Link href={link.href} className={linkClass}>
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
+                {(group.links ?? []).map((link) =>
+                  link.href ? (
+                    <li key={`${link.label}-${link.href}`}>
+                      <Link href={link.href} className={linkClass}>
+                        {link.label}
+                      </Link>
+                    </li>
+                  ) : null,
+                )}
               </ul>
             </div>
           ))}
           <div>
-            <h4 className='mb-4 text-[15px] text-white'>Contact</h4>
+            {footer?.contactTitle ? (
+              <h4 className='mb-4 text-[15px] text-white'>{footer.contactTitle}</h4>
+            ) : null}
             <ul className='grid gap-[9px]'>
-              <li>
-                <a href={telHref(SITE.phone)} className={linkClass}>
-                  {SITE.phone}
-                </a>
-              </li>
-              <li>
-                <a href={mailtoHref(SITE.email)} className={linkClass}>
-                  {SITE.email}
-                </a>
-              </li>
-              {SITE.address.map((line) => (
+              {site?.phone ? (
+                <li>
+                  <a href={telHref(site.phone)} className={linkClass}>
+                    {site.phone}
+                  </a>
+                </li>
+              ) : null}
+              {site?.email ? (
+                <li>
+                  <a href={mailtoHref(site.email)} className={linkClass}>
+                    {site.email}
+                  </a>
+                </li>
+              ) : null}
+              {(site?.address ?? []).map((line) => (
                 <li key={line}>{line}</li>
               ))}
             </ul>
@@ -55,9 +69,27 @@ export function SiteFooter() {
         </div>
         <div className='mt-[46px] flex flex-wrap justify-between gap-4 border-t border-white/10 pt-[22px] text-[13px]'>
           <div>
-            © {new Date().getFullYear()} {SITE.name}
+            © {new Date().getFullYear()} {site?.name}
           </div>
-          <div>KvK-nummer · Algemene voorwaarden · Privacyverklaring</div>
+          <div>
+            {[
+              footer?.legalText,
+              ...(footer?.legalLinks ?? []).map((link) =>
+                link.href ? (
+                  <Link key={link.href} href={link.href} className={linkClass}>
+                    {link.label}
+                  </Link>
+                ) : null,
+              ),
+            ]
+              .filter(Boolean)
+              .map((item, index) => (
+                <span key={index}>
+                  {index > 0 ? ' · ' : null}
+                  {item}
+                </span>
+              ))}
+          </div>
         </div>
       </div>
     </footer>

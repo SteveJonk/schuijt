@@ -3,23 +3,43 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useEffect, useState } from 'react';
 import { buttonClass } from '@/components/ui/Button';
 import { useMobileNav } from '@/hooks/useMobileNav';
 import { useStickyTopbar } from '@/hooks/useStickyTopbar';
-import { MAIN_NAV } from '@/lib/chrome';
 import { cn } from '@/lib/cn';
-import { SITE, telHref } from '@/lib/site';
+import { telHref, type NavLink } from '@/lib/site';
 
 function isActivePath(pathname: string, href: string) {
   if (href.includes('#')) return false;
-  return pathname === href || pathname.startsWith(`${href}/`);
+  const path = pathname.replace(/\/$/, '');
+  const target = href.replace(/\/$/, '');
+  return path === target || path.startsWith(`${target}/`);
 }
 
-export function SiteHeader() {
+export type SiteHeaderProps = {
+  siteName: string;
+  logo: { src: string; width: number; height: number } | null;
+  phone: string | null;
+  links: NavLink[];
+  ctaLabel: string | null;
+  menuOpen: string | null;
+  menuClose: string | null;
+};
+
+export function SiteHeader({ siteName, logo, phone, links, ctaLabel, menuOpen, menuClose }: SiteHeaderProps) {
   const pathname = usePathname();
   const stuck = useStickyTopbar();
   const { open, toggle, close } = useMobileNav();
-  const tel = telHref(SITE.phone);
+  const tel = phone ? telHref(phone) : null;
+
+  // "Offerte aanvragen" jumps to the page's own offerte form (#contact); pages
+  // without one (privacy, 404) send it to /contact/ instead.
+  const [ctaHref, setCtaHref] = useState('#contact');
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setCtaHref(document.getElementById('contact') ? '#contact' : '/contact/');
+  }, [pathname]);
 
   return (
     <>
@@ -35,19 +55,23 @@ export function SiteHeader() {
             stuck ? 'h-[68px]' : 'h-[82px] max-sm:h-[66px]',
           )}
         >
-          <Link href='/' onClick={close}>
-            <Image
-              src='/images/logo.png'
-              alt={SITE.name}
-              width={520}
-              height={174}
-              priority
-              className={cn('w-auto transition-[height] duration-300', stuck ? 'h-[34px]' : 'h-10')}
-            />
+          <Link href='/' onClick={close} aria-label={logo ? undefined : siteName}>
+            {logo ? (
+              <Image
+                src={logo.src}
+                alt={siteName}
+                width={logo.width}
+                height={logo.height}
+                priority
+                className={cn('w-auto transition-[height] duration-300', stuck ? 'h-[34px]' : 'h-10')}
+              />
+            ) : (
+              <span className='font-display text-[18px] font-bold'>{siteName}</span>
+            )}
           </Link>
 
           <nav className='flex gap-1.5 font-display text-[15px] font-medium max-nav:hidden'>
-            {MAIN_NAV.map((link) => {
+            {links.map((link) => {
               const active = isActivePath(pathname, link.href);
               return (
                 <Link
@@ -71,21 +95,25 @@ export function SiteHeader() {
           </nav>
 
           <div className='flex items-center gap-3.5 max-nav:ml-auto max-sm:hidden'>
-            <a
-              href={tel}
-              className='font-display text-[15px] font-semibold whitespace-nowrap text-ink-soft transition-colors duration-200 hover:text-blue-deep'
-            >
-              {SITE.phone}
-            </a>
-            <Link href='#contact' className={buttonClass('primary', 'sm')}>
-              Offerte aanvragen
-            </Link>
+            {tel ? (
+              <a
+                href={tel}
+                className='font-display text-[15px] font-semibold whitespace-nowrap text-ink-soft transition-colors duration-200 hover:text-blue-deep'
+              >
+                {phone}
+              </a>
+            ) : null}
+            {ctaLabel ? (
+              <Link href={ctaHref} className={buttonClass('primary', 'sm')}>
+                {ctaLabel}
+              </Link>
+            ) : null}
           </div>
 
           <button
             type='button'
             onClick={toggle}
-            aria-label={open ? 'Menu sluiten' : 'Menu openen'}
+            aria-label={(open ? menuClose : menuOpen) ?? undefined}
             aria-expanded={open}
             aria-controls='mnav'
             className={cn(
@@ -125,7 +153,7 @@ export function SiteHeader() {
         )}
       >
         <nav className='flex flex-col border-t border-line'>
-          {MAIN_NAV.map((link, index) => (
+          {links.map((link, index) => (
             <Link
               key={link.href}
               href={link.href}
@@ -153,12 +181,16 @@ export function SiteHeader() {
               : 'translate-y-3.5 opacity-0 transition-[opacity,translate] duration-250',
           )}
         >
-          <a href={tel} onClick={close} className={buttonClass('soft', 'md', 'w-full justify-center')}>
-            {SITE.phone}
-          </a>
-          <Link href='#contact' onClick={close} className={buttonClass('primary', 'md', 'w-full justify-center')}>
-            Offerte aanvragen
-          </Link>
+          {tel ? (
+            <a href={tel} onClick={close} className={buttonClass('soft', 'md', 'w-full justify-center')}>
+              {phone}
+            </a>
+          ) : null}
+          {ctaLabel ? (
+            <Link href={ctaHref} onClick={close} className={buttonClass('primary', 'md', 'w-full justify-center')}>
+              {ctaLabel}
+            </Link>
+          ) : null}
         </div>
       </div>
     </>

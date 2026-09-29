@@ -15,24 +15,24 @@
 export declare const internalGroqTypeReferenceTo: unique symbol;
 
 // Source: ../app/src/sanity/schema.json
-export type Highlight = {
-  badge?: string;
-  title?: string;
-  body?: string;
-  cta?: Cta;
+export type Badge = {
+  value?: string;
+  label?: string;
 };
 
-export type Aside = {
-  title?: string;
-  body?: string;
-  items?: Array<{
-    icon: "phone" | "whatsapp" | "mail" | "pin";
-    title: string;
-    subtitle?: string;
-    _type: "contactItem";
-    _key: string;
-  }>;
-  cta?: Cta;
+export type Intro = {
+  _type: "intro";
+  kicker?: string;
+  title: string;
+  text: string;
+};
+
+export type Places = {
+  _type: "places";
+  kicker?: string;
+  title: string;
+  text?: string;
+  places?: Array<string>;
 };
 
 export type SanityImageAssetReference = {
@@ -42,21 +42,34 @@ export type SanityImageAssetReference = {
   [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
 };
 
-export type ObjectImage = {
-  asset?: SanityImageAssetReference;
-  media?: unknown; // Unable to locate the referenced type "object.image.media" in schema
-  hotspot?: SanityImageHotspot;
-  crop?: SanityImageCrop;
-  alt: string;
-  _type: "image";
+export type Card = {
+  _type: "card";
+  image: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  };
+  title: string;
+  text?: string;
+  link?: Link;
 };
 
-export type ItemsObjectImage = {
-  asset?: SanityImageAssetReference;
-  media?: unknown; // Unable to locate the referenced type "items.object.image.media" in schema
-  hotspot?: SanityImageHotspot;
-  crop?: SanityImageCrop;
-  _type: "image";
+export type PhotoTile = {
+  _type: "photoTile";
+  image: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  };
+  title: string;
+  text?: string;
+  size?: "normal" | "wide" | "tall";
 };
 
 export type FormReference = {
@@ -66,229 +79,84 @@ export type FormReference = {
   [internalGroqTypeReferenceTo]?: "form";
 };
 
-export type ContactForm = {
-  _type: "contactForm";
-  eyebrow: string;
+export type CtaSection = {
+  _type: "ctaSection";
   title: string;
-  lead: string;
-  form: FormReference;
-  note?: string;
-  aside?: Aside;
+  text?: string;
+  form?: FormReference;
+  messagePlaceholder?: string;
 };
 
-export type CtaBand = {
-  _type: "ctaBand";
-  image: {
-    asset?: SanityImageAssetReference;
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt: string;
-    _type: "image";
-  };
-  eyebrow: string;
+export type Faq = {
+  _type: "faq";
+  kicker?: string;
   title: string;
-  body: string;
-  primaryCta?: Cta;
-  secondaryCta?: Cta;
-};
-
-export type CrossLinks = {
-  _type: "crossLinks";
-  items: Array<{
-    title: string;
-    body: string;
-    link: Link;
-    _key: string;
-  }>;
-};
-
-export type FaqReference = {
-  _ref: string;
-  _type: "reference";
-  _weak?: boolean;
-  [internalGroqTypeReferenceTo]?: "faq";
-};
-
-export type Faqs = {
-  _type: "faqs";
-  eyebrow: string;
-  title: string;
-  intro: string;
-  link?: Cta;
-  faqs: Array<
+  items?: Array<
     {
       _key: string;
-    } & FaqReference
+    } & FaqItem
   >;
 };
 
-export type Steps = {
-  _type: "steps";
-  eyebrow: string;
-  title: string;
-  lead: string;
-  cta?: Cta;
-  items: Array<{
-    number: string;
-    title: string;
-    body: string;
-    image: ItemsObjectImage;
-    _key: string;
-  }>;
+export type FaqItem = {
+  _type: "faqItem";
+  question: string;
+  answer: string;
+  open?: boolean;
 };
 
-export type Benefits = {
-  _type: "benefits";
-  eyebrow: string;
+export type Werkwijze = {
+  _type: "werkwijze";
+  kicker?: string;
   title: string;
-  lead: string;
-  image: {
-    asset?: SanityImageAssetReference;
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt: string;
-    _type: "image";
-  };
-  items: Array<{
-    icon:
-      "person" | "camera" | "chart" | "doc" | "house" | "renovate" | "scale";
-    title: string;
-    body: string;
-    _key: string;
-  }>;
+  lead?: string;
+  steps?: Array<
+    {
+      _key: string;
+    } & Step
+  >;
 };
 
-export type PageHero = {
-  _type: "pageHero";
-  image: {
-    asset?: SanityImageAssetReference;
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt: string;
-    _type: "image";
-  };
-  breadcrumbLabel?: string;
-  eyebrow: string;
+export type Step = {
+  _type: "step";
   title: string;
-  titleHighlight?: string;
-  lead: string;
-  primaryCta?: Cta;
-  secondaryCta?: Cta;
-};
-
-export type MediaText = {
-  _type: "mediaText";
-  eyebrow: string;
-  title: string;
-  paragraphs: Array<string>;
-  cta?: Cta;
-  image: {
-    asset?: SanityImageAssetReference;
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt: string;
-    _type: "image";
-  };
-};
-
-export type Services = {
-  _type: "services";
-  title: string;
-  lead: string;
-  items: Array<{
-    label: string;
-    title: string;
-    description: string;
-    image: ObjectImage;
-    link: Link;
-    _key: string;
-  }>;
-  highlight?: Highlight;
-};
-
-export type Intro = {
-  _type: "intro";
-  image: {
-    asset?: SanityImageAssetReference;
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt: string;
-    _type: "image";
-  };
-  stampValue: string;
-  stampLabel: string;
-  eyebrow: string;
-  title: string;
-  titleHighlight?: string;
-  leads: Array<string>;
-  facts?: Array<{
-    value: string;
-    label: string;
-    _key: string;
-  }>;
-  link?: Cta;
+  text?: string;
 };
 
 export type Hero = {
   _type: "hero";
-  slides: Array<{
+  kicker?: string;
+  titleBefore?: string;
+  titleHighlight: string;
+  titleAfter?: string;
+  lead: string;
+  primaryCta?: Link;
+  usps?: Array<string>;
+  image: {
     asset?: SanityImageAssetReference;
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
-    alt: string;
+    alt?: string;
     _type: "image";
-    _key: string;
-  }>;
-  eyebrow: string;
-  title: string;
-  titleHighlight?: string;
-  lead: string;
-  primaryCta: Cta;
-  secondaryCta: Cta;
-  badgeLabel: string;
+  };
+  imageSmall: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  };
+  badge?: Badge;
 };
 
-export type PageBuilder = Array<
-  | ({
-      _key: string;
-    } & Hero)
-  | ({
-      _key: string;
-    } & PageHero)
-  | ({
-      _key: string;
-    } & Intro)
-  | ({
-      _key: string;
-    } & Services)
-  | ({
-      _key: string;
-    } & MediaText)
-  | ({
-      _key: string;
-    } & Benefits)
-  | ({
-      _key: string;
-    } & Steps)
-  | ({
-      _key: string;
-    } & Faqs)
-  | ({
-      _key: string;
-    } & ContactForm)
-  | ({
-      _key: string;
-    } & CrossLinks)
-  | ({
-      _key: string;
-    } & CtaBand)
->;
+export type SectionHead = {
+  _type: "sectionHead";
+  kicker?: string;
+  title: string;
+  lead?: string;
+};
 
 export type FormField = {
   _type: "formField";
@@ -315,25 +183,99 @@ export type FormField = {
   checkboxOptions?: Array<string>;
 };
 
-export type PageReference = {
+export type HomePageReference = {
   _ref: string;
   _type: "reference";
   _weak?: boolean;
-  [internalGroqTypeReferenceTo]?: "page";
+  [internalGroqTypeReferenceTo]?: "homePage";
 };
 
-export type Cta = {
-  _type: "cta";
-  label: string;
-  linkType: "internal" | "external";
-  internalLink?: PageReference;
-  href?: string;
+export type ServicePageReference = {
+  _ref: string;
+  _type: "reference";
+  _weak?: boolean;
+  [internalGroqTypeReferenceTo]?: "servicePage";
+};
+
+export type ProjectReference = {
+  _ref: string;
+  _type: "reference";
+  _weak?: boolean;
+  [internalGroqTypeReferenceTo]?: "project";
+};
+
+export type BlogPostReference = {
+  _ref: string;
+  _type: "reference";
+  _weak?: boolean;
+  [internalGroqTypeReferenceTo]?: "blogPost";
+};
+
+export type TextPageReference = {
+  _ref: string;
+  _type: "reference";
+  _weak?: boolean;
+  [internalGroqTypeReferenceTo]?: "textPage";
+};
+
+export type ZakelijkPageReference = {
+  _ref: string;
+  _type: "reference";
+  _weak?: boolean;
+  [internalGroqTypeReferenceTo]?: "zakelijkPage";
+};
+
+export type ProjectsPageReference = {
+  _ref: string;
+  _type: "reference";
+  _weak?: boolean;
+  [internalGroqTypeReferenceTo]?: "projectsPage";
+};
+
+export type ZakelijkProjectsPageReference = {
+  _ref: string;
+  _type: "reference";
+  _weak?: boolean;
+  [internalGroqTypeReferenceTo]?: "zakelijkProjectsPage";
+};
+
+export type ReviewsPageReference = {
+  _ref: string;
+  _type: "reference";
+  _weak?: boolean;
+  [internalGroqTypeReferenceTo]?: "reviewsPage";
+};
+
+export type BlogPageReference = {
+  _ref: string;
+  _type: "reference";
+  _weak?: boolean;
+  [internalGroqTypeReferenceTo]?: "blogPage";
+};
+
+export type ContactPageReference = {
+  _ref: string;
+  _type: "reference";
+  _weak?: boolean;
+  [internalGroqTypeReferenceTo]?: "contactPage";
 };
 
 export type Link = {
   _type: "link";
+  label?: string;
   linkType: "internal" | "external";
-  internalLink?: PageReference;
+  internalLink?:
+    | HomePageReference
+    | ServicePageReference
+    | ProjectReference
+    | BlogPostReference
+    | TextPageReference
+    | ZakelijkPageReference
+    | ProjectsPageReference
+    | ZakelijkProjectsPageReference
+    | ReviewsPageReference
+    | BlogPageReference
+    | ContactPageReference;
   href?: string;
 };
 
@@ -351,12 +293,529 @@ export type Seo = {
   noIndex?: boolean;
 };
 
+export type TextPage = {
+  _id: string;
+  _type: "textPage";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title: string;
+  slug: Slug;
+  breadcrumb?: string;
+  body?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "normal" | "h2" | "h3";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }>;
+  seo?: Seo;
+};
+
+export type Slug = {
+  _type: "slug";
+  current: string;
+  source?: string;
+};
+
+export type Review = {
+  _id: string;
+  _type: "review";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name: string;
+  initials: string;
+  audience: "particulier" | "zakelijk";
+  location?: string;
+  service?: string;
+  text: string;
+  order?: number;
+};
+
+export type CategoryReference = {
+  _ref: string;
+  _type: "reference";
+  _weak?: boolean;
+  [internalGroqTypeReferenceTo]?: "category";
+};
+
+export type BlogPost = {
+  _id: string;
+  _type: "blogPost";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title: string;
+  slug: Slug;
+  category: CategoryReference;
+  date?: string;
+  readTime?: string;
+  featured?: boolean;
+  image: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  };
+  excerpt: string;
+  body?: Array<
+    | {
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?: "normal" | "h2";
+        listItem?: "bullet";
+        markDefs?: Array<{
+          href?: string;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
+        _key: string;
+      }
+    | {
+        title?: string;
+        text: string;
+        _type: "callout";
+        _key: string;
+      }
+  >;
+  ctaTitle?: string;
+  related?: Array<
+    {
+      _key: string;
+    } & BlogPostReference
+  >;
+  seo?: Seo;
+};
+
+export type SanityImageCrop = {
+  _type: "sanity.imageCrop";
+  top: number;
+  bottom: number;
+  left: number;
+  right: number;
+};
+
+export type SanityImageHotspot = {
+  _type: "sanity.imageHotspot";
+  x: number;
+  y: number;
+  height: number;
+  width: number;
+};
+
+export type Project = {
+  _id: string;
+  _type: "project";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title: string;
+  slug: Slug;
+  date: string;
+  category: CategoryReference;
+  image: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  };
+  subline?: string;
+  meta?: Array<{
+    label: string;
+    value: string;
+    _type: "metaItem";
+    _key: string;
+  }>;
+  intro?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "normal";
+    listItem?: never;
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }>;
+  works?: Array<string>;
+  gallery?: Array<{
+    image: {
+      asset?: SanityImageAssetReference;
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: "image";
+    };
+    wide?: boolean;
+    _type: "galleryImage";
+    _key: string;
+  }>;
+  cardTag?: string;
+  cardTitle?: string;
+  cardText?: string;
+  cardImage?: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  };
+  cardStats?: Array<{
+    value: string;
+    label: string;
+    _type: "stat";
+    _key: string;
+  }>;
+  audience?: "vve" | "corporatie" | "bedrijf";
+  seo?: Seo;
+};
+
+export type Category = {
+  _id: string;
+  _type: "category";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title: string;
+  isZakelijk?: boolean;
+  relatedPage?: ServicePageReference;
+  order?: number;
+};
+
+export type ServicePage = {
+  _id: string;
+  _type: "servicePage";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  kind: "dienst" | "lokaal" | "zakelijk";
+  title: string;
+  slug: Slug;
+  breadcrumb?: string;
+  parent?: ServicePageReference;
+  hero?: Hero;
+  nearby?: Places;
+  types?: {
+    head?: SectionHead;
+    items?: Array<
+      {
+        _key: string;
+      } & Card
+    >;
+  };
+  werkwijze?: Werkwijze;
+  materials?: {
+    kicker?: string;
+    title?: string;
+    text?: string;
+    points?: Array<string>;
+    ctaLabel?: string;
+    photos?: Array<{
+      asset?: SanityImageAssetReference;
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: "image";
+      _key: string;
+    }>;
+  };
+  projects?: {
+    head?: SectionHead;
+    tiles?: Array<
+      {
+        _key: string;
+      } & PhotoTile
+    >;
+    link?: Link;
+  };
+  faq?: Faq;
+  cta?: CtaSection;
+  seo?: Seo;
+};
+
+export type ContactPage = {
+  _id: string;
+  _type: "contactPage";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title: string;
+  intro?: Intro;
+  badges?: Array<string>;
+  infoCards?: Array<{
+    icon?: "phone" | "mail" | "pin";
+    title: string;
+    text?: string;
+    show?: "none" | "phone" | "email";
+    _type: "infoCard";
+    _key: string;
+  }>;
+  hours?: {
+    title?: string;
+    rows?: Array<{
+      day: string;
+      time: string;
+      _type: "hoursRow";
+      _key: string;
+    }>;
+  };
+  form: FormReference;
+  formLead?: string;
+  werkgebied?: Places;
+  faq?: Faq;
+  seo?: Seo;
+};
+
+export type BlogPage = {
+  _id: string;
+  _type: "blogPage";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title: string;
+  intro?: Intro;
+  filterAll?: string;
+  readMore?: string;
+  cta?: CtaSection;
+  seo?: Seo;
+};
+
+export type ReviewsPage = {
+  _id: string;
+  _type: "reviewsPage";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title: string;
+  intro?: Intro;
+  scoreCaption?: string;
+  googleLabel?: string;
+  filterAll?: string;
+  leave?: {
+    kicker?: string;
+    title?: string;
+    text?: string;
+    button?: string;
+  };
+  cta?: CtaSection;
+  seo?: Seo;
+};
+
+export type ZakelijkProjectsPage = {
+  _id: string;
+  _type: "zakelijkProjectsPage";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title: string;
+  breadcrumb?: string;
+  intro?: Intro;
+  filterAll?: string;
+  filterVve?: string;
+  filterCorporatie?: string;
+  filterBedrijf?: string;
+  soonTitle?: string;
+  soonText?: string;
+  cta?: CtaSection;
+  seo?: Seo;
+};
+
+export type ProjectsPage = {
+  _id: string;
+  _type: "projectsPage";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title: string;
+  intro?: Intro;
+  filterAll?: string;
+  cta?: CtaSection;
+  seo?: Seo;
+};
+
+export type ZakelijkPage = {
+  _id: string;
+  _type: "zakelijkPage";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title: string;
+  hero?: Hero;
+  stats?: Array<{
+    value: string;
+    label: string;
+    _type: "stat";
+    _key: string;
+  }>;
+  audiences?: {
+    head?: SectionHead;
+    cards?: Array<
+      {
+        _key: string;
+      } & Card
+    >;
+  };
+  services?: {
+    head?: SectionHead;
+    items?: Array<string>;
+  };
+  werkwijze?: Werkwijze;
+  projects?: {
+    head?: SectionHead;
+    items?: Array<
+      {
+        _key: string;
+      } & ProjectReference
+    >;
+    link?: Link;
+  };
+  trust?: Array<{
+    icon?: "pin" | "check" | "clock";
+    title: string;
+    text?: string;
+    _type: "trustItem";
+    _key: string;
+  }>;
+  faq?: Faq;
+  cta?: CtaSection;
+  seo?: Seo;
+};
+
+export type ReviewReference = {
+  _ref: string;
+  _type: "reference";
+  _weak?: boolean;
+  [internalGroqTypeReferenceTo]?: "review";
+};
+
+export type HomePage = {
+  _id: string;
+  _type: "homePage";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  hero?: Hero;
+  paths?: Array<{
+    image: {
+      asset?: SanityImageAssetReference;
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: "image";
+    };
+    tag?: string;
+    title: string;
+    text?: string;
+    link?: Link;
+    _type: "pathCard";
+    _key: string;
+  }>;
+  services?: {
+    head?: SectionHead;
+    cards?: Array<
+      {
+        _key: string;
+      } & Card
+    >;
+  };
+  werkwijze?: Werkwijze;
+  zakelijk?: {
+    kicker?: string;
+    title?: string;
+    text?: string;
+    points?: Array<string>;
+    stats?: Array<{
+      value: number;
+      suffix?: string;
+      label: string;
+      _type: "stat";
+      _key: string;
+    }>;
+    primaryCta?: Link;
+    secondaryCta?: Link;
+    photos?: Array<{
+      asset?: SanityImageAssetReference;
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: "image";
+      _key: string;
+    }>;
+  };
+  projects?: {
+    head?: SectionHead;
+    tiles?: Array<
+      {
+        _key: string;
+      } & PhotoTile
+    >;
+  };
+  reviews?: {
+    head?: SectionHead;
+    items?: Array<
+      {
+        _key: string;
+      } & ReviewReference
+    >;
+  };
+  werkgebied?: {
+    kicker?: string;
+    title?: string;
+    text?: string;
+    image?: {
+      asset?: SanityImageAssetReference;
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: "image";
+    };
+  };
+  cta?: CtaSection;
+  seo?: Seo;
+};
+
 export type FormGeneralSettings = {
   _id: string;
   _type: "formGeneralSettings";
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
+  defaultForm?: FormReference;
   adminEmail: string;
   fromEmail?: string;
   fromName?: string;
@@ -376,22 +835,6 @@ export type FormGeneralSettings = {
   recaptchaEnabled?: boolean;
   recaptchaSiteKey?: string;
   recaptchaSecretKey?: string;
-};
-
-export type SanityImageCrop = {
-  _type: "sanity.imageCrop";
-  top: number;
-  bottom: number;
-  left: number;
-  right: number;
-};
-
-export type SanityImageHotspot = {
-  _type: "sanity.imageHotspot";
-  x: number;
-  y: number;
-  height: number;
-  width: number;
 };
 
 export type Form = {
@@ -433,33 +876,47 @@ export type Form = {
   copyMessage?: string;
 };
 
-export type SiteInformation = {
+export type UiText = {
   _id: string;
-  _type: "siteInformation";
+  _type: "uiText";
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  name: string;
-  description?: string;
-  logo?: {
-    asset?: SanityImageAssetReference;
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    _type: "image";
-  };
-  language?: string;
-  phone?: string;
-  email?: string;
-  address?: Array<string>;
-  addressCountry?: string;
-  socialLinks?: Array<{
-    platform: string;
-    url: string;
-    _type: "socialLink";
-    _key: string;
-  }>;
-  badges?: Array<string>;
+  breadcrumbHome?: string;
+  breadcrumbServices?: Link;
+  heroPrimaryCta?: string;
+  callPrefix?: string;
+  ctaKicker?: string;
+  ctaText?: string;
+  starsLabel?: string;
+  particulierLabel?: string;
+  zakelijkLabel?: string;
+  viewProject?: string;
+  projectKickerParticulier?: string;
+  projectKickerZakelijk?: string;
+  projectAbout?: string;
+  projectWorks?: string;
+  projectGalleryKicker?: string;
+  projectGalleryTitle?: string;
+  projectRelatedLabel?: string;
+  projectRelatedButton?: string;
+  projectCtaParticulier?: string;
+  projectCtaZakelijk?: string;
+  blogAuthorInitials?: string;
+  blogCtaTitle?: string;
+  blogCtaText?: string;
+  blogCtaButton?: string;
+  blogRelatedKicker?: string;
+  blogRelatedTitle?: string;
+  formNote?: string;
+  formSending?: string;
+  formError?: string;
+  formRecaptchaMissing?: string;
+  formStep?: string;
+  notFoundKicker?: string;
+  notFoundTitle?: string;
+  notFoundText?: string;
+  notFoundButton?: string;
 };
 
 export type Footer = {
@@ -468,20 +925,23 @@ export type Footer = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  linkGroups?: Array<{
+  groups?: Array<{
     title: string;
-    links?: Array<{
-      label: string;
-      linkType: "internal" | "external";
-      internalLink?: PageReference;
-      href?: string;
-      _type: "footerLink";
-      _key: string;
-    }>;
+    links?: Array<
+      {
+        _key: string;
+      } & Link
+    >;
     _type: "linkGroup";
     _key: string;
   }>;
-  copyright?: string;
+  contactTitle?: string;
+  legalText?: string;
+  legalLinks?: Array<
+    {
+      _key: string;
+    } & Link
+  >;
 };
 
 export type Navigation = {
@@ -490,52 +950,42 @@ export type Navigation = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  navLeft?: Array<{
-    label: string;
-    linkType: "internal" | "external";
-    internalLink?: PageReference;
-    href?: string;
-    _type: "navLink";
-    _key: string;
-  }>;
-  navRight?: Array<{
-    label: string;
-    linkType: "internal" | "external";
-    internalLink?: PageReference;
-    href?: string;
-    _type: "navLink";
-    _key: string;
-  }>;
+  links?: Array<
+    {
+      _key: string;
+    } & Link
+  >;
+  ctaLabel?: string;
+  menuOpen?: string;
+  menuClose?: string;
 };
 
-export type Faq = {
+export type SiteSettings = {
   _id: string;
-  _type: "faq";
+  _type: "siteSettings";
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  title: string;
-  answer: string;
-  link?: Cta;
-  afterLink?: string;
-};
-
-export type Page = {
-  _id: string;
-  _type: "page";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  title: string;
-  slug: Slug;
-  seo?: Seo;
-  content?: PageBuilder;
-};
-
-export type Slug = {
-  _type: "slug";
-  current: string;
-  source?: string;
+  name: string;
+  description?: string;
+  logo: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  };
+  language?: string;
+  phone?: string;
+  email?: string;
+  address?: Array<string>;
+  addressCountry?: string;
+  places?: Array<string>;
+  socialLinks?: Array<string>;
+  googleReviewUrl?: string;
+  reviewScore?: string;
+  reviewCount?: number;
 };
 
 export type SanityImagePaletteSwatch = {
@@ -636,40 +1086,58 @@ export type Geopoint = {
 };
 
 export type AllSanitySchemaTypes =
-  | Highlight
-  | Aside
-  | SanityImageAssetReference
-  | ObjectImage
-  | ItemsObjectImage
-  | FormReference
-  | ContactForm
-  | CtaBand
-  | CrossLinks
-  | FaqReference
-  | Faqs
-  | Steps
-  | Benefits
-  | PageHero
-  | MediaText
-  | Services
+  | Badge
   | Intro
+  | Places
+  | SanityImageAssetReference
+  | Card
+  | PhotoTile
+  | FormReference
+  | CtaSection
+  | Faq
+  | FaqItem
+  | Werkwijze
+  | Step
   | Hero
-  | PageBuilder
+  | SectionHead
   | FormField
-  | PageReference
-  | Cta
+  | HomePageReference
+  | ServicePageReference
+  | ProjectReference
+  | BlogPostReference
+  | TextPageReference
+  | ZakelijkPageReference
+  | ProjectsPageReference
+  | ZakelijkProjectsPageReference
+  | ReviewsPageReference
+  | BlogPageReference
+  | ContactPageReference
   | Link
   | Seo
-  | FormGeneralSettings
+  | TextPage
+  | Slug
+  | Review
+  | CategoryReference
+  | BlogPost
   | SanityImageCrop
   | SanityImageHotspot
+  | Project
+  | Category
+  | ServicePage
+  | ContactPage
+  | BlogPage
+  | ReviewsPage
+  | ZakelijkProjectsPage
+  | ProjectsPage
+  | ZakelijkPage
+  | ReviewReference
+  | HomePage
+  | FormGeneralSettings
   | Form
-  | SiteInformation
+  | UiText
   | Footer
   | Navigation
-  | Faq
-  | Page
-  | Slug
+  | SiteSettings
   | SanityImagePaletteSwatch
   | SanityImagePalette
   | SanityImageDimensions
@@ -680,72 +1148,586 @@ export type AllSanitySchemaTypes =
   | Geopoint;
 
 // Source: ../app/src/sanity/queries.ts
-// Variable: PAGE_QUERY
-// Query: *[_type == "page" && slug.current == $slug][0]{    _id,    title,    slug,    seo,    content[]{      ...,      primaryCta{  ...,  internalLink->{    "slug": slug.current  }},      secondaryCta{  ...,  internalLink->{    "slug": slug.current  }},      link{  ...,  internalLink->{    "slug": slug.current  }},      cta{  ...,  internalLink->{    "slug": slug.current  }},      highlight{        ...,        cta{  ...,  internalLink->{    "slug": slug.current  }}      },      items[]{        ...,        link{  ...,  internalLink->{    "slug": slug.current  }},        cta{  ...,  internalLink->{    "slug": slug.current  }}      },      // The form lives in its own document so several pages can share it, and      // the public half of the reCAPTCHA settings rides along — the secret      // stays server-side, in the submit route.      _type == "contactForm" => {        form->{  _id,  title,  showTitle,  mode,  fields[],  steps[]{    title,    fields[]  },  submitButtonText,  nextButtonText,  backButtonText,  successTitle,  successBody,  redirectAfterSubmit,  redirectLink{  ...,  internalLink->{    "slug": slug.current  }}},        // The panel's own CTA is nested, so the top-level link projections do        // not reach it — an internal link would arrive as a bare reference.        aside{          ...,          cta{  ...,  internalLink->{    "slug": slug.current  }}        },        "recaptcha": *[_type == "formGeneralSettings"][0]{          recaptchaEnabled,          recaptchaSiteKey        }      },      _type == "faqs" => {        ...,        faqs[]->{          ...,          link{  ...,  internalLink->{    "slug": slug.current  }}        },        link{  ...,  internalLink->{    "slug": slug.current  }}      }    }  }
-export type PAGE_QUERY_RESULT = {
-  _id: string;
-  title: string;
-  slug: Slug;
-  seo: Seo | null;
-  content: Array<
-    | {
-        _key: string;
-        _type: "benefits";
-        eyebrow: string;
-        title: string;
-        lead: string;
-        image: {
-          asset?: SanityImageAssetReference;
-          media?: unknown;
-          hotspot?: SanityImageHotspot;
-          crop?: SanityImageCrop;
-          alt: string;
-          _type: "image";
-        };
-        items: Array<{
-          icon:
-            | "camera"
-            | "chart"
-            | "doc"
-            | "house"
-            | "person"
-            | "renovate"
-            | "scale";
-          title: string;
-          body: string;
-          _key: string;
-          link: null;
-          cta: null;
+// Variable: LAYOUT_QUERY
+// Query: {  "site": *[_type == "siteSettings"][0]{    name,    description,    logo {  asset,  hotspot,  crop,  alt,  "dimensions": asset->metadata.dimensions{ width, height }},    language,    phone,    email,    address,    addressCountry,    places,    socialLinks,    googleReviewUrl,    reviewScore,    reviewCount  },  "navigation": *[_type == "navigation"][0]{ links[] {  label,  "href": select(    linkType == "external" => href,    internalLink->_type == "homePage" => "/",    internalLink->_type == "zakelijkPage" => "/zakelijk/",    internalLink->_type == "projectsPage" => "/projecten/",    internalLink->_type == "zakelijkProjectsPage" => "/zakelijk/projecten/",    internalLink->_type == "reviewsPage" => "/reviews/",    internalLink->_type == "blogPage" => "/blog/",    internalLink->_type == "contactPage" => "/contact/",    internalLink->_type == "blogPost" => "/blog/" + internalLink->slug.current + "/",    internalLink->_type == "servicePage" && internalLink->kind == "zakelijk" =>      "/zakelijk/" + internalLink->slug.current + "/",    defined(internalLink->slug.current) => "/" + internalLink->slug.current + "/"  )}, ctaLabel, menuOpen, menuClose },  "footer": *[_type == "footer"][0]{    groups[]{ _key, title, links[] {  label,  "href": select(    linkType == "external" => href,    internalLink->_type == "homePage" => "/",    internalLink->_type == "zakelijkPage" => "/zakelijk/",    internalLink->_type == "projectsPage" => "/projecten/",    internalLink->_type == "zakelijkProjectsPage" => "/zakelijk/projecten/",    internalLink->_type == "reviewsPage" => "/reviews/",    internalLink->_type == "blogPage" => "/blog/",    internalLink->_type == "contactPage" => "/contact/",    internalLink->_type == "blogPost" => "/blog/" + internalLink->slug.current + "/",    internalLink->_type == "servicePage" && internalLink->kind == "zakelijk" =>      "/zakelijk/" + internalLink->slug.current + "/",    defined(internalLink->slug.current) => "/" + internalLink->slug.current + "/"  )} },    contactTitle,    legalText,    legalLinks[] {  label,  "href": select(    linkType == "external" => href,    internalLink->_type == "homePage" => "/",    internalLink->_type == "zakelijkPage" => "/zakelijk/",    internalLink->_type == "projectsPage" => "/projecten/",    internalLink->_type == "zakelijkProjectsPage" => "/zakelijk/projecten/",    internalLink->_type == "reviewsPage" => "/reviews/",    internalLink->_type == "blogPage" => "/blog/",    internalLink->_type == "contactPage" => "/contact/",    internalLink->_type == "blogPost" => "/blog/" + internalLink->slug.current + "/",    internalLink->_type == "servicePage" && internalLink->kind == "zakelijk" =>      "/zakelijk/" + internalLink->slug.current + "/",    defined(internalLink->slug.current) => "/" + internalLink->slug.current + "/"  )}  },  "ui": *[_type == "uiText"][0]{ ..., breadcrumbServices {  label,  "href": select(    linkType == "external" => href,    internalLink->_type == "homePage" => "/",    internalLink->_type == "zakelijkPage" => "/zakelijk/",    internalLink->_type == "projectsPage" => "/projecten/",    internalLink->_type == "zakelijkProjectsPage" => "/zakelijk/projecten/",    internalLink->_type == "reviewsPage" => "/reviews/",    internalLink->_type == "blogPage" => "/blog/",    internalLink->_type == "contactPage" => "/contact/",    internalLink->_type == "blogPost" => "/blog/" + internalLink->slug.current + "/",    internalLink->_type == "servicePage" && internalLink->kind == "zakelijk" =>      "/zakelijk/" + internalLink->slug.current + "/",    defined(internalLink->slug.current) => "/" + internalLink->slug.current + "/"  )} },  "recaptcha": *[_type == "formGeneralSettings"][0]{ recaptchaEnabled, recaptchaSiteKey },  "zakelijkTitle": *[_type == "zakelijkPage"][0].title,  "projectsTitle": *[_type == "projectsPage"][0].title,  "zakelijkProjectsTitle": *[_type == "zakelijkProjectsPage"][0].title}
+export type LAYOUT_QUERY_RESULT = {
+  site: {
+    name: string;
+    description: string | null;
+    logo: {
+      asset: SanityImageAssetReference | null;
+      hotspot: SanityImageHotspot | null;
+      crop: SanityImageCrop | null;
+      alt: string | null;
+      dimensions: {
+        width: number;
+        height: number;
+      } | null;
+    };
+    language: string | null;
+    phone: string | null;
+    email: string | null;
+    address: Array<string> | null;
+    addressCountry: string | null;
+    places: Array<string> | null;
+    socialLinks: Array<string> | null;
+    googleReviewUrl: string | null;
+    reviewScore: string | null;
+    reviewCount: number | null;
+  } | null;
+  navigation: {
+    links: Array<{
+      label: string | null;
+      href:
+        | string
+        | "/"
+        | "/blog/"
+        | "/contact/"
+        | "/projecten/"
+        | "/reviews/"
+        | "/zakelijk/"
+        | "/zakelijk/projecten/"
+        | null;
+    }> | null;
+    ctaLabel: string | null;
+    menuOpen: string | null;
+    menuClose: string | null;
+  } | null;
+  footer: {
+    groups: Array<{
+      _key: string;
+      title: string;
+      links: Array<{
+        label: string | null;
+        href:
+          | string
+          | "/"
+          | "/blog/"
+          | "/contact/"
+          | "/projecten/"
+          | "/reviews/"
+          | "/zakelijk/"
+          | "/zakelijk/projecten/"
+          | null;
+      }> | null;
+    }> | null;
+    contactTitle: string | null;
+    legalText: string | null;
+    legalLinks: Array<{
+      label: string | null;
+      href:
+        | string
+        | "/"
+        | "/blog/"
+        | "/contact/"
+        | "/projecten/"
+        | "/reviews/"
+        | "/zakelijk/"
+        | "/zakelijk/projecten/"
+        | null;
+    }> | null;
+  } | null;
+  ui: {
+    _id: string;
+    _type: "uiText";
+    _createdAt: string;
+    _updatedAt: string;
+    _rev: string;
+    breadcrumbHome?: string;
+    breadcrumbServices: {
+      label: string | null;
+      href:
+        | string
+        | "/"
+        | "/blog/"
+        | "/contact/"
+        | "/projecten/"
+        | "/reviews/"
+        | "/zakelijk/"
+        | "/zakelijk/projecten/"
+        | null;
+    } | null;
+    heroPrimaryCta?: string;
+    callPrefix?: string;
+    ctaKicker?: string;
+    ctaText?: string;
+    starsLabel?: string;
+    particulierLabel?: string;
+    zakelijkLabel?: string;
+    viewProject?: string;
+    projectKickerParticulier?: string;
+    projectKickerZakelijk?: string;
+    projectAbout?: string;
+    projectWorks?: string;
+    projectGalleryKicker?: string;
+    projectGalleryTitle?: string;
+    projectRelatedLabel?: string;
+    projectRelatedButton?: string;
+    projectCtaParticulier?: string;
+    projectCtaZakelijk?: string;
+    blogAuthorInitials?: string;
+    blogCtaTitle?: string;
+    blogCtaText?: string;
+    blogCtaButton?: string;
+    blogRelatedKicker?: string;
+    blogRelatedTitle?: string;
+    formNote?: string;
+    formSending?: string;
+    formError?: string;
+    formRecaptchaMissing?: string;
+    formStep?: string;
+    notFoundKicker?: string;
+    notFoundTitle?: string;
+    notFoundText?: string;
+    notFoundButton?: string;
+  } | null;
+  recaptcha: {
+    recaptchaEnabled: boolean | null;
+    recaptchaSiteKey: string | null;
+  } | null;
+  zakelijkTitle: string | null;
+  projectsTitle: string | null;
+  zakelijkProjectsTitle: string | null;
+};
+
+// Source: ../app/src/sanity/queries.ts
+// Variable: HOME_QUERY
+// Query: *[_type == "homePage"][0]{  hero {  kicker,  titleBefore,  titleHighlight,  titleAfter,  lead,  primaryCta {  label,  "href": select(    linkType == "external" => href,    internalLink->_type == "homePage" => "/",    internalLink->_type == "zakelijkPage" => "/zakelijk/",    internalLink->_type == "projectsPage" => "/projecten/",    internalLink->_type == "zakelijkProjectsPage" => "/zakelijk/projecten/",    internalLink->_type == "reviewsPage" => "/reviews/",    internalLink->_type == "blogPage" => "/blog/",    internalLink->_type == "contactPage" => "/contact/",    internalLink->_type == "blogPost" => "/blog/" + internalLink->slug.current + "/",    internalLink->_type == "servicePage" && internalLink->kind == "zakelijk" =>      "/zakelijk/" + internalLink->slug.current + "/",    defined(internalLink->slug.current) => "/" + internalLink->slug.current + "/"  )},  usps,  image {  asset,  hotspot,  crop,  alt,  "dimensions": asset->metadata.dimensions{ width, height }},  imageSmall {  asset,  hotspot,  crop,  alt,  "dimensions": asset->metadata.dimensions{ width, height }},  badge},  paths[]{ _key, image {  asset,  hotspot,  crop,  alt,  "dimensions": asset->metadata.dimensions{ width, height }}, tag, title, text, link {  label,  "href": select(    linkType == "external" => href,    internalLink->_type == "homePage" => "/",    internalLink->_type == "zakelijkPage" => "/zakelijk/",    internalLink->_type == "projectsPage" => "/projecten/",    internalLink->_type == "zakelijkProjectsPage" => "/zakelijk/projecten/",    internalLink->_type == "reviewsPage" => "/reviews/",    internalLink->_type == "blogPage" => "/blog/",    internalLink->_type == "contactPage" => "/contact/",    internalLink->_type == "blogPost" => "/blog/" + internalLink->slug.current + "/",    internalLink->_type == "servicePage" && internalLink->kind == "zakelijk" =>      "/zakelijk/" + internalLink->slug.current + "/",    defined(internalLink->slug.current) => "/" + internalLink->slug.current + "/"  )} },  services{ head { kicker, title, lead }, cards[] { _key, image {  asset,  hotspot,  crop,  alt,  "dimensions": asset->metadata.dimensions{ width, height }}, title, text, link {  label,  "href": select(    linkType == "external" => href,    internalLink->_type == "homePage" => "/",    internalLink->_type == "zakelijkPage" => "/zakelijk/",    internalLink->_type == "projectsPage" => "/projecten/",    internalLink->_type == "zakelijkProjectsPage" => "/zakelijk/projecten/",    internalLink->_type == "reviewsPage" => "/reviews/",    internalLink->_type == "blogPage" => "/blog/",    internalLink->_type == "contactPage" => "/contact/",    internalLink->_type == "blogPost" => "/blog/" + internalLink->slug.current + "/",    internalLink->_type == "servicePage" && internalLink->kind == "zakelijk" =>      "/zakelijk/" + internalLink->slug.current + "/",    defined(internalLink->slug.current) => "/" + internalLink->slug.current + "/"  )} } },  werkwijze { kicker, title, lead, steps[]{ _key, title, text } },  zakelijk{    kicker,    title,    text,    points,    stats[]{ _key, value, suffix, label },    primaryCta {  label,  "href": select(    linkType == "external" => href,    internalLink->_type == "homePage" => "/",    internalLink->_type == "zakelijkPage" => "/zakelijk/",    internalLink->_type == "projectsPage" => "/projecten/",    internalLink->_type == "zakelijkProjectsPage" => "/zakelijk/projecten/",    internalLink->_type == "reviewsPage" => "/reviews/",    internalLink->_type == "blogPage" => "/blog/",    internalLink->_type == "contactPage" => "/contact/",    internalLink->_type == "blogPost" => "/blog/" + internalLink->slug.current + "/",    internalLink->_type == "servicePage" && internalLink->kind == "zakelijk" =>      "/zakelijk/" + internalLink->slug.current + "/",    defined(internalLink->slug.current) => "/" + internalLink->slug.current + "/"  )},    secondaryCta {  label,  "href": select(    linkType == "external" => href,    internalLink->_type == "homePage" => "/",    internalLink->_type == "zakelijkPage" => "/zakelijk/",    internalLink->_type == "projectsPage" => "/projecten/",    internalLink->_type == "zakelijkProjectsPage" => "/zakelijk/projecten/",    internalLink->_type == "reviewsPage" => "/reviews/",    internalLink->_type == "blogPage" => "/blog/",    internalLink->_type == "contactPage" => "/contact/",    internalLink->_type == "blogPost" => "/blog/" + internalLink->slug.current + "/",    internalLink->_type == "servicePage" && internalLink->kind == "zakelijk" =>      "/zakelijk/" + internalLink->slug.current + "/",    defined(internalLink->slug.current) => "/" + internalLink->slug.current + "/"  )},    photos[] {  asset,  hotspot,  crop,  alt,  "dimensions": asset->metadata.dimensions{ width, height }}  },  projects{ head { kicker, title, lead }, tiles[] { _key, image {  asset,  hotspot,  crop,  alt,  "dimensions": asset->metadata.dimensions{ width, height }}, title, text, size } },  reviews{ head { kicker, title, lead }, items[]-> { _id, name, initials, audience, location, service, text } },  werkgebied{ kicker, title, text, image {  asset,  hotspot,  crop,  alt,  "dimensions": asset->metadata.dimensions{ width, height }} },  cta {  title,  text,  messagePlaceholder,  "form": coalesce(form, *[_type == "formGeneralSettings"][0].defaultForm)-> {  _id,  title,  showTitle,  mode,  fields[] {  label,  name,  type,  isRequired,  width,  placeholder,  helpText,  defaultValue,  selectOptions,  radioOptions,  checkboxOptions},  steps[]{ title, fields[] {  label,  name,  type,  isRequired,  width,  placeholder,  helpText,  defaultValue,  selectOptions,  radioOptions,  checkboxOptions} },  submitButtonText,  nextButtonText,  backButtonText,  successTitle,  successBody,  redirectAfterSubmit,  redirectLink {  label,  "href": select(    linkType == "external" => href,    internalLink->_type == "homePage" => "/",    internalLink->_type == "zakelijkPage" => "/zakelijk/",    internalLink->_type == "projectsPage" => "/projecten/",    internalLink->_type == "zakelijkProjectsPage" => "/zakelijk/projecten/",    internalLink->_type == "reviewsPage" => "/reviews/",    internalLink->_type == "blogPage" => "/blog/",    internalLink->_type == "contactPage" => "/contact/",    internalLink->_type == "blogPost" => "/blog/" + internalLink->slug.current + "/",    internalLink->_type == "servicePage" && internalLink->kind == "zakelijk" =>      "/zakelijk/" + internalLink->slug.current + "/",    defined(internalLink->slug.current) => "/" + internalLink->slug.current + "/"  )}}},  seo { title, description, noIndex, ogImage {  asset,  hotspot,  crop,  alt,  "dimensions": asset->metadata.dimensions{ width, height }} }}
+export type HOME_QUERY_RESULT = {
+  hero: {
+    kicker: string | null;
+    titleBefore: string | null;
+    titleHighlight: string;
+    titleAfter: string | null;
+    lead: string;
+    primaryCta: {
+      label: string | null;
+      href:
+        | string
+        | "/"
+        | "/blog/"
+        | "/contact/"
+        | "/projecten/"
+        | "/reviews/"
+        | "/zakelijk/"
+        | "/zakelijk/projecten/"
+        | null;
+    } | null;
+    usps: Array<string> | null;
+    image: {
+      asset: SanityImageAssetReference | null;
+      hotspot: SanityImageHotspot | null;
+      crop: SanityImageCrop | null;
+      alt: string | null;
+      dimensions: {
+        width: number;
+        height: number;
+      } | null;
+    };
+    imageSmall: {
+      asset: SanityImageAssetReference | null;
+      hotspot: SanityImageHotspot | null;
+      crop: SanityImageCrop | null;
+      alt: string | null;
+      dimensions: {
+        width: number;
+        height: number;
+      } | null;
+    };
+    badge: Badge | null;
+  } | null;
+  paths: Array<{
+    _key: string;
+    image: {
+      asset: SanityImageAssetReference | null;
+      hotspot: SanityImageHotspot | null;
+      crop: SanityImageCrop | null;
+      alt: string | null;
+      dimensions: {
+        width: number;
+        height: number;
+      } | null;
+    };
+    tag: string | null;
+    title: string;
+    text: string | null;
+    link: {
+      label: string | null;
+      href:
+        | string
+        | "/"
+        | "/blog/"
+        | "/contact/"
+        | "/projecten/"
+        | "/reviews/"
+        | "/zakelijk/"
+        | "/zakelijk/projecten/"
+        | null;
+    } | null;
+  }> | null;
+  services: {
+    head: {
+      kicker: string | null;
+      title: string;
+      lead: string | null;
+    } | null;
+    cards: Array<{
+      _key: string;
+      image: {
+        asset: SanityImageAssetReference | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+        alt: string | null;
+        dimensions: {
+          width: number;
+          height: number;
+        } | null;
+      };
+      title: string;
+      text: string | null;
+      link: {
+        label: string | null;
+        href:
+          | string
+          | "/"
+          | "/blog/"
+          | "/contact/"
+          | "/projecten/"
+          | "/reviews/"
+          | "/zakelijk/"
+          | "/zakelijk/projecten/"
+          | null;
+      } | null;
+    }> | null;
+  } | null;
+  werkwijze: {
+    kicker: string | null;
+    title: string;
+    lead: string | null;
+    steps: Array<{
+      _key: string;
+      title: string;
+      text: string | null;
+    }> | null;
+  } | null;
+  zakelijk: {
+    kicker: string | null;
+    title: string | null;
+    text: string | null;
+    points: Array<string> | null;
+    stats: Array<{
+      _key: string;
+      value: number;
+      suffix: string | null;
+      label: string;
+    }> | null;
+    primaryCta: {
+      label: string | null;
+      href:
+        | string
+        | "/"
+        | "/blog/"
+        | "/contact/"
+        | "/projecten/"
+        | "/reviews/"
+        | "/zakelijk/"
+        | "/zakelijk/projecten/"
+        | null;
+    } | null;
+    secondaryCta: {
+      label: string | null;
+      href:
+        | string
+        | "/"
+        | "/blog/"
+        | "/contact/"
+        | "/projecten/"
+        | "/reviews/"
+        | "/zakelijk/"
+        | "/zakelijk/projecten/"
+        | null;
+    } | null;
+    photos: Array<{
+      asset: SanityImageAssetReference | null;
+      hotspot: SanityImageHotspot | null;
+      crop: SanityImageCrop | null;
+      alt: string | null;
+      dimensions: {
+        width: number;
+        height: number;
+      } | null;
+    }> | null;
+  } | null;
+  projects: {
+    head: {
+      kicker: string | null;
+      title: string;
+      lead: string | null;
+    } | null;
+    tiles: Array<{
+      _key: string;
+      image: {
+        asset: SanityImageAssetReference | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+        alt: string | null;
+        dimensions: {
+          width: number;
+          height: number;
+        } | null;
+      };
+      title: string;
+      text: string | null;
+      size: "normal" | "tall" | "wide" | null;
+    }> | null;
+  } | null;
+  reviews: {
+    head: {
+      kicker: string | null;
+      title: string;
+      lead: string | null;
+    } | null;
+    items: Array<{
+      _id: string;
+      name: string;
+      initials: string;
+      audience: "particulier" | "zakelijk";
+      location: string | null;
+      service: string | null;
+      text: string;
+    }> | null;
+  } | null;
+  werkgebied: {
+    kicker: string | null;
+    title: string | null;
+    text: string | null;
+    image: {
+      asset: SanityImageAssetReference | null;
+      hotspot: SanityImageHotspot | null;
+      crop: SanityImageCrop | null;
+      alt: string | null;
+      dimensions: {
+        width: number;
+        height: number;
+      } | null;
+    } | null;
+  } | null;
+  cta: {
+    title: string;
+    text: string | null;
+    messagePlaceholder: string | null;
+    form: {
+      _id: string;
+      title: string;
+      showTitle: boolean | null;
+      mode: "simple" | "steps";
+      fields: Array<{
+        label: string;
+        name: string;
+        type:
+          | "checkbox"
+          | "email"
+          | "file"
+          | "hidden"
+          | "radio"
+          | "select"
+          | "tel"
+          | "text"
+          | "textarea"
+          | "url";
+        isRequired: boolean | null;
+        width: "full" | "half" | null;
+        placeholder: string | null;
+        helpText: string | null;
+        defaultValue: string | null;
+        selectOptions: Array<string> | null;
+        radioOptions: Array<string> | null;
+        checkboxOptions: Array<string> | null;
+      }> | null;
+      steps: Array<{
+        title: string | null;
+        fields: Array<{
+          label: string;
+          name: string;
+          type:
+            | "checkbox"
+            | "email"
+            | "file"
+            | "hidden"
+            | "radio"
+            | "select"
+            | "tel"
+            | "text"
+            | "textarea"
+            | "url";
+          isRequired: boolean | null;
+          width: "full" | "half" | null;
+          placeholder: string | null;
+          helpText: string | null;
+          defaultValue: string | null;
+          selectOptions: Array<string> | null;
+          radioOptions: Array<string> | null;
+          checkboxOptions: Array<string> | null;
         }>;
-        primaryCta: null;
-        secondaryCta: null;
-        link: null;
-        cta: null;
-        highlight: null;
-      }
-    | {
+      }> | null;
+      submitButtonText: string;
+      nextButtonText: string | null;
+      backButtonText: string | null;
+      successTitle: string | null;
+      successBody: string | null;
+      redirectAfterSubmit: boolean | null;
+      redirectLink: {
+        label: string | null;
+        href:
+          | string
+          | "/"
+          | "/blog/"
+          | "/contact/"
+          | "/projecten/"
+          | "/reviews/"
+          | "/zakelijk/"
+          | "/zakelijk/projecten/"
+          | null;
+      } | null;
+    } | null;
+  } | null;
+  seo: {
+    title: string | null;
+    description: string | null;
+    noIndex: boolean | null;
+    ogImage: {
+      asset: SanityImageAssetReference | null;
+      hotspot: SanityImageHotspot | null;
+      crop: SanityImageCrop | null;
+      alt: null;
+      dimensions: {
+        width: number;
+        height: number;
+      } | null;
+    } | null;
+  } | null;
+} | null;
+
+// Source: ../app/src/sanity/queries.ts
+// Variable: ROOT_PAGE_QUERY
+// Query: *[  slug.current == $slug &&  (_type in ["project", "textPage"] || (_type == "servicePage" && kind != "zakelijk"))][0]{  _type == "servicePage" => {  _type,  kind,  title,  breadcrumb,  "path": select(  kind == "zakelijk" => "/zakelijk/" + slug.current + "/",  "/" + slug.current + "/"),  parent->{ title, breadcrumb, "path": select(  kind == "zakelijk" => "/zakelijk/" + slug.current + "/",  "/" + slug.current + "/") },  hero {  kicker,  titleBefore,  titleHighlight,  titleAfter,  lead,  primaryCta {  label,  "href": select(    linkType == "external" => href,    internalLink->_type == "homePage" => "/",    internalLink->_type == "zakelijkPage" => "/zakelijk/",    internalLink->_type == "projectsPage" => "/projecten/",    internalLink->_type == "zakelijkProjectsPage" => "/zakelijk/projecten/",    internalLink->_type == "reviewsPage" => "/reviews/",    internalLink->_type == "blogPage" => "/blog/",    internalLink->_type == "contactPage" => "/contact/",    internalLink->_type == "blogPost" => "/blog/" + internalLink->slug.current + "/",    internalLink->_type == "servicePage" && internalLink->kind == "zakelijk" =>      "/zakelijk/" + internalLink->slug.current + "/",    defined(internalLink->slug.current) => "/" + internalLink->slug.current + "/"  )},  usps,  image {  asset,  hotspot,  crop,  alt,  "dimensions": asset->metadata.dimensions{ width, height }},  imageSmall {  asset,  hotspot,  crop,  alt,  "dimensions": asset->metadata.dimensions{ width, height }},  badge},  nearby { kicker, title, text, places },  types{ head { kicker, title, lead }, items[] { _key, image {  asset,  hotspot,  crop,  alt,  "dimensions": asset->metadata.dimensions{ width, height }}, title, text, link {  label,  "href": select(    linkType == "external" => href,    internalLink->_type == "homePage" => "/",    internalLink->_type == "zakelijkPage" => "/zakelijk/",    internalLink->_type == "projectsPage" => "/projecten/",    internalLink->_type == "zakelijkProjectsPage" => "/zakelijk/projecten/",    internalLink->_type == "reviewsPage" => "/reviews/",    internalLink->_type == "blogPage" => "/blog/",    internalLink->_type == "contactPage" => "/contact/",    internalLink->_type == "blogPost" => "/blog/" + internalLink->slug.current + "/",    internalLink->_type == "servicePage" && internalLink->kind == "zakelijk" =>      "/zakelijk/" + internalLink->slug.current + "/",    defined(internalLink->slug.current) => "/" + internalLink->slug.current + "/"  )} } },  werkwijze { kicker, title, lead, steps[]{ _key, title, text } },  materials{ kicker, title, text, points, ctaLabel, photos[] {  asset,  hotspot,  crop,  alt,  "dimensions": asset->metadata.dimensions{ width, height }} },  projects{ head { kicker, title, lead }, tiles[] { _key, image {  asset,  hotspot,  crop,  alt,  "dimensions": asset->metadata.dimensions{ width, height }}, title, text, size }, link {  label,  "href": select(    linkType == "external" => href,    internalLink->_type == "homePage" => "/",    internalLink->_type == "zakelijkPage" => "/zakelijk/",    internalLink->_type == "projectsPage" => "/projecten/",    internalLink->_type == "zakelijkProjectsPage" => "/zakelijk/projecten/",    internalLink->_type == "reviewsPage" => "/reviews/",    internalLink->_type == "blogPage" => "/blog/",    internalLink->_type == "contactPage" => "/contact/",    internalLink->_type == "blogPost" => "/blog/" + internalLink->slug.current + "/",    internalLink->_type == "servicePage" && internalLink->kind == "zakelijk" =>      "/zakelijk/" + internalLink->slug.current + "/",    defined(internalLink->slug.current) => "/" + internalLink->slug.current + "/"  )} },  faq { kicker, title, items[]{ _key, question, answer, open } },  cta {  title,  text,  messagePlaceholder,  "form": coalesce(form, *[_type == "formGeneralSettings"][0].defaultForm)-> {  _id,  title,  showTitle,  mode,  fields[] {  label,  name,  type,  isRequired,  width,  placeholder,  helpText,  defaultValue,  selectOptions,  radioOptions,  checkboxOptions},  steps[]{ title, fields[] {  label,  name,  type,  isRequired,  width,  placeholder,  helpText,  defaultValue,  selectOptions,  radioOptions,  checkboxOptions} },  submitButtonText,  nextButtonText,  backButtonText,  successTitle,  successBody,  redirectAfterSubmit,  redirectLink {  label,  "href": select(    linkType == "external" => href,    internalLink->_type == "homePage" => "/",    internalLink->_type == "zakelijkPage" => "/zakelijk/",    internalLink->_type == "projectsPage" => "/projecten/",    internalLink->_type == "zakelijkProjectsPage" => "/zakelijk/projecten/",    internalLink->_type == "reviewsPage" => "/reviews/",    internalLink->_type == "blogPage" => "/blog/",    internalLink->_type == "contactPage" => "/contact/",    internalLink->_type == "blogPost" => "/blog/" + internalLink->slug.current + "/",    internalLink->_type == "servicePage" && internalLink->kind == "zakelijk" =>      "/zakelijk/" + internalLink->slug.current + "/",    defined(internalLink->slug.current) => "/" + internalLink->slug.current + "/"  )}}},  seo { title, description, noIndex, ogImage {  asset,  hotspot,  crop,  alt,  "dimensions": asset->metadata.dimensions{ width, height }} }},  _type == "project" => {  _type,  title,  date,  image {  asset,  hotspot,  crop,  alt,  "dimensions": asset->metadata.dimensions{ width, height }},  subline,  meta[]{ _key, label, value },  intro,  works,  gallery[]{ _key, image {  asset,  hotspot,  crop,  alt,  "dimensions": asset->metadata.dimensions{ width, height }}, wide },  category->{    title,    isZakelijk,    relatedPage->{ title, breadcrumb, "path": select(  kind == "zakelijk" => "/zakelijk/" + slug.current + "/",  "/" + slug.current + "/") }  },  "cta": *[_type == "formGeneralSettings"][0]{ "form": defaultForm-> {  _id,  title,  showTitle,  mode,  fields[] {  label,  name,  type,  isRequired,  width,  placeholder,  helpText,  defaultValue,  selectOptions,  radioOptions,  checkboxOptions},  steps[]{ title, fields[] {  label,  name,  type,  isRequired,  width,  placeholder,  helpText,  defaultValue,  selectOptions,  radioOptions,  checkboxOptions} },  submitButtonText,  nextButtonText,  backButtonText,  successTitle,  successBody,  redirectAfterSubmit,  redirectLink {  label,  "href": select(    linkType == "external" => href,    internalLink->_type == "homePage" => "/",    internalLink->_type == "zakelijkPage" => "/zakelijk/",    internalLink->_type == "projectsPage" => "/projecten/",    internalLink->_type == "zakelijkProjectsPage" => "/zakelijk/projecten/",    internalLink->_type == "reviewsPage" => "/reviews/",    internalLink->_type == "blogPage" => "/blog/",    internalLink->_type == "contactPage" => "/contact/",    internalLink->_type == "blogPost" => "/blog/" + internalLink->slug.current + "/",    internalLink->_type == "servicePage" && internalLink->kind == "zakelijk" =>      "/zakelijk/" + internalLink->slug.current + "/",    defined(internalLink->slug.current) => "/" + internalLink->slug.current + "/"  )}} },  seo { title, description, noIndex, ogImage {  asset,  hotspot,  crop,  alt,  "dimensions": asset->metadata.dimensions{ width, height }} }},  _type == "textPage" => { _type, title, breadcrumb, body, seo { title, description, noIndex, ogImage {  asset,  hotspot,  crop,  alt,  "dimensions": asset->metadata.dimensions{ width, height }} } }}
+export type ROOT_PAGE_QUERY_RESULT =
+  | {
+      _type: "project";
+      title: string;
+      date: string;
+      image: {
+        asset: SanityImageAssetReference | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+        alt: string | null;
+        dimensions: {
+          width: number;
+          height: number;
+        } | null;
+      };
+      subline: string | null;
+      meta: Array<{
         _key: string;
-        _type: "contactForm";
-        eyebrow: string;
+        label: string;
+        value: string;
+      }> | null;
+      intro: Array<{
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?: "normal";
+        listItem?: never;
+        markDefs?: Array<{
+          href?: string;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
+        _key: string;
+      }> | null;
+      works: Array<string> | null;
+      gallery: Array<{
+        _key: string;
+        image: {
+          asset: SanityImageAssetReference | null;
+          hotspot: SanityImageHotspot | null;
+          crop: SanityImageCrop | null;
+          alt: string | null;
+          dimensions: {
+            width: number;
+            height: number;
+          } | null;
+        };
+        wide: boolean | null;
+      }> | null;
+      category: {
         title: string;
-        lead: string;
+        isZakelijk: boolean | null;
+        relatedPage: {
+          title: string;
+          breadcrumb: string | null;
+          path: string;
+        } | null;
+      };
+      cta: {
         form: {
           _id: string;
           title: string;
           showTitle: boolean | null;
           mode: "simple" | "steps";
-          fields: Array<
-            {
-              _key: string;
-            } & FormField
-          > | null;
+          fields: Array<{
+            label: string;
+            name: string;
+            type:
+              | "checkbox"
+              | "email"
+              | "file"
+              | "hidden"
+              | "radio"
+              | "select"
+              | "tel"
+              | "text"
+              | "textarea"
+              | "url";
+            isRequired: boolean | null;
+            width: "full" | "half" | null;
+            placeholder: string | null;
+            helpText: string | null;
+            defaultValue: string | null;
+            selectOptions: Array<string> | null;
+            radioOptions: Array<string> | null;
+            checkboxOptions: Array<string> | null;
+          }> | null;
           steps: Array<{
             title: string | null;
-            fields: Array<
-              {
-                _key: string;
-              } & FormField
-            >;
+            fields: Array<{
+              label: string;
+              name: string;
+              type:
+                | "checkbox"
+                | "email"
+                | "file"
+                | "hidden"
+                | "radio"
+                | "select"
+                | "tel"
+                | "text"
+                | "textarea"
+                | "url";
+              isRequired: boolean | null;
+              width: "full" | "half" | null;
+              placeholder: string | null;
+              helpText: string | null;
+              defaultValue: string | null;
+              selectOptions: Array<string> | null;
+              radioOptions: Array<string> | null;
+              checkboxOptions: Array<string> | null;
+            }>;
           }> | null;
           submitButtonText: string;
           nextButtonText: string | null;
@@ -754,470 +1736,1736 @@ export type PAGE_QUERY_RESULT = {
           successBody: string | null;
           redirectAfterSubmit: boolean | null;
           redirectLink: {
-            _type: "link";
-            linkType: "external" | "internal";
-            internalLink: {
-              slug: string;
-            } | null;
-            href?: string;
-          } | null;
-        };
-        note?: string;
-        aside: {
-          title?: string;
-          body?: string;
-          items?: Array<{
-            icon: "mail" | "phone" | "pin" | "whatsapp";
-            title: string;
-            subtitle?: string;
-            _type: "contactItem";
-            _key: string;
-          }>;
-          cta: {
-            _type: "cta";
-            label: string;
-            linkType: "external" | "internal";
-            internalLink: {
-              slug: string;
-            } | null;
-            href?: string;
+            label: string | null;
+            href:
+              | string
+              | "/"
+              | "/blog/"
+              | "/contact/"
+              | "/projecten/"
+              | "/reviews/"
+              | "/zakelijk/"
+              | "/zakelijk/projecten/"
+              | null;
           } | null;
         } | null;
-        primaryCta: null;
-        secondaryCta: null;
-        link: null;
-        cta: null;
-        highlight: null;
-        items: null;
-        recaptcha: {
-          recaptchaEnabled: boolean | null;
-          recaptchaSiteKey: string | null;
+      } | null;
+      seo: {
+        title: string | null;
+        description: string | null;
+        noIndex: boolean | null;
+        ogImage: {
+          asset: SanityImageAssetReference | null;
+          hotspot: SanityImageHotspot | null;
+          crop: SanityImageCrop | null;
+          alt: null;
+          dimensions: {
+            width: number;
+            height: number;
+          } | null;
         } | null;
-      }
-    | {
-        _key: string;
-        _type: "crossLinks";
-        items: Array<{
-          title: string;
-          body: string;
-          link: {
-            _type: "link";
-            linkType: "external" | "internal";
-            internalLink: {
-              slug: string;
-            } | null;
-            href?: string;
-          };
-          _key: string;
-          cta: null;
-        }>;
-        primaryCta: null;
-        secondaryCta: null;
-        link: null;
-        cta: null;
-        highlight: null;
-      }
-    | {
-        _key: string;
-        _type: "ctaBand";
-        image: {
-          asset?: SanityImageAssetReference;
-          media?: unknown;
-          hotspot?: SanityImageHotspot;
-          crop?: SanityImageCrop;
-          alt: string;
-          _type: "image";
-        };
-        eyebrow: string;
+      } | null;
+    }
+  | {
+      _type: "servicePage";
+      kind: "dienst" | "lokaal" | "zakelijk";
+      title: string;
+      breadcrumb: string | null;
+      path: string;
+      parent: {
         title: string;
-        body: string;
+        breadcrumb: string | null;
+        path: string;
+      } | null;
+      hero: {
+        kicker: string | null;
+        titleBefore: string | null;
+        titleHighlight: string;
+        titleAfter: string | null;
+        lead: string;
         primaryCta: {
-          _type: "cta";
-          label: string;
-          linkType: "external" | "internal";
-          internalLink: {
-            slug: string;
-          } | null;
-          href?: string;
+          label: string | null;
+          href:
+            | string
+            | "/"
+            | "/blog/"
+            | "/contact/"
+            | "/projecten/"
+            | "/reviews/"
+            | "/zakelijk/"
+            | "/zakelijk/projecten/"
+            | null;
         } | null;
-        secondaryCta: {
-          _type: "cta";
-          label: string;
-          linkType: "external" | "internal";
-          internalLink: {
-            slug: string;
+        usps: Array<string> | null;
+        image: {
+          asset: SanityImageAssetReference | null;
+          hotspot: SanityImageHotspot | null;
+          crop: SanityImageCrop | null;
+          alt: string | null;
+          dimensions: {
+            width: number;
+            height: number;
           } | null;
-          href?: string;
-        } | null;
-        link: null;
-        cta: null;
-        highlight: null;
-        items: null;
-      }
-    | {
-        _key: string;
-        _type: "faqs";
-        eyebrow: string;
+        };
+        imageSmall: {
+          asset: SanityImageAssetReference | null;
+          hotspot: SanityImageHotspot | null;
+          crop: SanityImageCrop | null;
+          alt: string | null;
+          dimensions: {
+            width: number;
+            height: number;
+          } | null;
+        };
+        badge: Badge | null;
+      } | null;
+      nearby: {
+        kicker: string | null;
         title: string;
-        intro: string;
-        link: {
-          _type: "cta";
-          label: string;
-          linkType: "external" | "internal";
-          internalLink: {
-            slug: string;
-          } | null;
-          href?: string;
-        } | null;
-        faqs: Array<{
-          _id: string;
-          _type: "faq";
-          _createdAt: string;
-          _updatedAt: string;
-          _rev: string;
+        text: string | null;
+        places: Array<string> | null;
+      } | null;
+      types: {
+        head: {
+          kicker: string | null;
           title: string;
+          lead: string | null;
+        } | null;
+        items: Array<{
+          _key: string;
+          image: {
+            asset: SanityImageAssetReference | null;
+            hotspot: SanityImageHotspot | null;
+            crop: SanityImageCrop | null;
+            alt: string | null;
+            dimensions: {
+              width: number;
+              height: number;
+            } | null;
+          };
+          title: string;
+          text: string | null;
+          link: {
+            label: string | null;
+            href:
+              | string
+              | "/"
+              | "/blog/"
+              | "/contact/"
+              | "/projecten/"
+              | "/reviews/"
+              | "/zakelijk/"
+              | "/zakelijk/projecten/"
+              | null;
+          } | null;
+        }> | null;
+      } | null;
+      werkwijze: {
+        kicker: string | null;
+        title: string;
+        lead: string | null;
+        steps: Array<{
+          _key: string;
+          title: string;
+          text: string | null;
+        }> | null;
+      } | null;
+      materials: {
+        kicker: string | null;
+        title: string | null;
+        text: string | null;
+        points: Array<string> | null;
+        ctaLabel: string | null;
+        photos: Array<{
+          asset: SanityImageAssetReference | null;
+          hotspot: SanityImageHotspot | null;
+          crop: SanityImageCrop | null;
+          alt: string | null;
+          dimensions: {
+            width: number;
+            height: number;
+          } | null;
+        }> | null;
+      } | null;
+      projects: {
+        head: {
+          kicker: string | null;
+          title: string;
+          lead: string | null;
+        } | null;
+        tiles: Array<{
+          _key: string;
+          image: {
+            asset: SanityImageAssetReference | null;
+            hotspot: SanityImageHotspot | null;
+            crop: SanityImageCrop | null;
+            alt: string | null;
+            dimensions: {
+              width: number;
+              height: number;
+            } | null;
+          };
+          title: string;
+          text: string | null;
+          size: "normal" | "tall" | "wide" | null;
+        }> | null;
+        link: {
+          label: string | null;
+          href:
+            | string
+            | "/"
+            | "/blog/"
+            | "/contact/"
+            | "/projecten/"
+            | "/reviews/"
+            | "/zakelijk/"
+            | "/zakelijk/projecten/"
+            | null;
+        } | null;
+      } | null;
+      faq: {
+        kicker: string | null;
+        title: string;
+        items: Array<{
+          _key: string;
+          question: string;
           answer: string;
-          link: {
-            _type: "cta";
-            label: string;
-            linkType: "external" | "internal";
-            internalLink: {
-              slug: string;
-            } | null;
-            href?: string;
-          } | null;
-          afterLink?: string;
-        }>;
-        primaryCta: null;
-        secondaryCta: null;
-        cta: null;
-        highlight: null;
-        items: null;
-      }
-    | {
-        _key: string;
-        _type: "hero";
-        slides: Array<{
-          asset?: SanityImageAssetReference;
-          media?: unknown;
-          hotspot?: SanityImageHotspot;
-          crop?: SanityImageCrop;
-          alt: string;
-          _type: "image";
-          _key: string;
-        }>;
-        eyebrow: string;
+          open: boolean | null;
+        }> | null;
+      } | null;
+      cta: {
         title: string;
-        titleHighlight?: string;
-        lead: string;
-        primaryCta: {
-          _type: "cta";
-          label: string;
-          linkType: "external" | "internal";
-          internalLink: {
-            slug: string;
-          } | null;
-          href?: string;
-        };
-        secondaryCta: {
-          _type: "cta";
-          label: string;
-          linkType: "external" | "internal";
-          internalLink: {
-            slug: string;
-          } | null;
-          href?: string;
-        };
-        badgeLabel: string;
-        link: null;
-        cta: null;
-        highlight: null;
-        items: null;
-      }
-    | {
-        _key: string;
-        _type: "intro";
-        image: {
-          asset?: SanityImageAssetReference;
-          media?: unknown;
-          hotspot?: SanityImageHotspot;
-          crop?: SanityImageCrop;
-          alt: string;
-          _type: "image";
-        };
-        stampValue: string;
-        stampLabel: string;
-        eyebrow: string;
-        title: string;
-        titleHighlight?: string;
-        leads: Array<string>;
-        facts?: Array<{
-          value: string;
-          label: string;
-          _key: string;
-        }>;
-        link: {
-          _type: "cta";
-          label: string;
-          linkType: "external" | "internal";
-          internalLink: {
-            slug: string;
-          } | null;
-          href?: string;
-        } | null;
-        primaryCta: null;
-        secondaryCta: null;
-        cta: null;
-        highlight: null;
-        items: null;
-      }
-    | {
-        _key: string;
-        _type: "mediaText";
-        eyebrow: string;
-        title: string;
-        paragraphs: Array<string>;
-        cta: {
-          _type: "cta";
-          label: string;
-          linkType: "external" | "internal";
-          internalLink: {
-            slug: string;
-          } | null;
-          href?: string;
-        } | null;
-        image: {
-          asset?: SanityImageAssetReference;
-          media?: unknown;
-          hotspot?: SanityImageHotspot;
-          crop?: SanityImageCrop;
-          alt: string;
-          _type: "image";
-        };
-        primaryCta: null;
-        secondaryCta: null;
-        link: null;
-        highlight: null;
-        items: null;
-      }
-    | {
-        _key: string;
-        _type: "pageHero";
-        image: {
-          asset?: SanityImageAssetReference;
-          media?: unknown;
-          hotspot?: SanityImageHotspot;
-          crop?: SanityImageCrop;
-          alt: string;
-          _type: "image";
-        };
-        breadcrumbLabel?: string;
-        eyebrow: string;
-        title: string;
-        titleHighlight?: string;
-        lead: string;
-        primaryCta: {
-          _type: "cta";
-          label: string;
-          linkType: "external" | "internal";
-          internalLink: {
-            slug: string;
-          } | null;
-          href?: string;
-        } | null;
-        secondaryCta: {
-          _type: "cta";
-          label: string;
-          linkType: "external" | "internal";
-          internalLink: {
-            slug: string;
-          } | null;
-          href?: string;
-        } | null;
-        link: null;
-        cta: null;
-        highlight: null;
-        items: null;
-      }
-    | {
-        _key: string;
-        _type: "services";
-        title: string;
-        lead: string;
-        items: Array<{
-          label: string;
+        text: string | null;
+        messagePlaceholder: string | null;
+        form: {
+          _id: string;
           title: string;
-          description: string;
-          image: ObjectImage;
-          link: {
-            _type: "link";
-            linkType: "external" | "internal";
-            internalLink: {
-              slug: string;
-            } | null;
-            href?: string;
-          };
-          _key: string;
-          cta: null;
-        }>;
-        highlight: {
-          badge?: string;
-          title?: string;
-          body?: string;
-          cta: {
-            _type: "cta";
+          showTitle: boolean | null;
+          mode: "simple" | "steps";
+          fields: Array<{
             label: string;
-            linkType: "external" | "internal";
-            internalLink: {
-              slug: string;
-            } | null;
-            href?: string;
+            name: string;
+            type:
+              | "checkbox"
+              | "email"
+              | "file"
+              | "hidden"
+              | "radio"
+              | "select"
+              | "tel"
+              | "text"
+              | "textarea"
+              | "url";
+            isRequired: boolean | null;
+            width: "full" | "half" | null;
+            placeholder: string | null;
+            helpText: string | null;
+            defaultValue: string | null;
+            selectOptions: Array<string> | null;
+            radioOptions: Array<string> | null;
+            checkboxOptions: Array<string> | null;
+          }> | null;
+          steps: Array<{
+            title: string | null;
+            fields: Array<{
+              label: string;
+              name: string;
+              type:
+                | "checkbox"
+                | "email"
+                | "file"
+                | "hidden"
+                | "radio"
+                | "select"
+                | "tel"
+                | "text"
+                | "textarea"
+                | "url";
+              isRequired: boolean | null;
+              width: "full" | "half" | null;
+              placeholder: string | null;
+              helpText: string | null;
+              defaultValue: string | null;
+              selectOptions: Array<string> | null;
+              radioOptions: Array<string> | null;
+              checkboxOptions: Array<string> | null;
+            }>;
+          }> | null;
+          submitButtonText: string;
+          nextButtonText: string | null;
+          backButtonText: string | null;
+          successTitle: string | null;
+          successBody: string | null;
+          redirectAfterSubmit: boolean | null;
+          redirectLink: {
+            label: string | null;
+            href:
+              | string
+              | "/"
+              | "/blog/"
+              | "/contact/"
+              | "/projecten/"
+              | "/reviews/"
+              | "/zakelijk/"
+              | "/zakelijk/projecten/"
+              | null;
           } | null;
         } | null;
-        primaryCta: null;
-        secondaryCta: null;
-        link: null;
-        cta: null;
-      }
-    | {
-        _key: string;
-        _type: "steps";
-        eyebrow: string;
-        title: string;
-        lead: string;
-        cta: {
-          _type: "cta";
-          label: string;
-          linkType: "external" | "internal";
-          internalLink: {
-            slug: string;
+      } | null;
+      seo: {
+        title: string | null;
+        description: string | null;
+        noIndex: boolean | null;
+        ogImage: {
+          asset: SanityImageAssetReference | null;
+          hotspot: SanityImageHotspot | null;
+          crop: SanityImageCrop | null;
+          alt: null;
+          dimensions: {
+            width: number;
+            height: number;
           } | null;
-          href?: string;
         } | null;
-        items: Array<{
-          number: string;
-          title: string;
-          body: string;
-          image: ItemsObjectImage;
+      } | null;
+    }
+  | {
+      _type: "textPage";
+      title: string;
+      breadcrumb: string | null;
+      body: Array<{
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
           _key: string;
-          link: null;
-          cta: null;
         }>;
-        primaryCta: null;
-        secondaryCta: null;
-        link: null;
-        highlight: null;
-      }
-  > | null;
+        style?: "h2" | "h3" | "normal";
+        listItem?: "bullet" | "number";
+        markDefs?: Array<{
+          href?: string;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
+        _key: string;
+      }> | null;
+      seo: {
+        title: string | null;
+        description: string | null;
+        noIndex: boolean | null;
+        ogImage: {
+          asset: SanityImageAssetReference | null;
+          hotspot: SanityImageHotspot | null;
+          crop: SanityImageCrop | null;
+          alt: null;
+          dimensions: {
+            width: number;
+            height: number;
+          } | null;
+        } | null;
+      } | null;
+    }
+  | null;
+
+// Source: ../app/src/sanity/queries.ts
+// Variable: ROOT_SLUGS_QUERY
+// Query: *[  defined(slug.current) &&  (_type in ["project", "textPage"] || (_type == "servicePage" && kind != "zakelijk"))].slug.current
+export type ROOT_SLUGS_QUERY_RESULT = Array<string>;
+
+// Source: ../app/src/sanity/queries.ts
+// Variable: ZAKELIJK_SERVICE_QUERY
+// Query: *[_type == "servicePage" && kind == "zakelijk" && slug.current == $slug][0] {  _type,  kind,  title,  breadcrumb,  "path": select(  kind == "zakelijk" => "/zakelijk/" + slug.current + "/",  "/" + slug.current + "/"),  parent->{ title, breadcrumb, "path": select(  kind == "zakelijk" => "/zakelijk/" + slug.current + "/",  "/" + slug.current + "/") },  hero {  kicker,  titleBefore,  titleHighlight,  titleAfter,  lead,  primaryCta {  label,  "href": select(    linkType == "external" => href,    internalLink->_type == "homePage" => "/",    internalLink->_type == "zakelijkPage" => "/zakelijk/",    internalLink->_type == "projectsPage" => "/projecten/",    internalLink->_type == "zakelijkProjectsPage" => "/zakelijk/projecten/",    internalLink->_type == "reviewsPage" => "/reviews/",    internalLink->_type == "blogPage" => "/blog/",    internalLink->_type == "contactPage" => "/contact/",    internalLink->_type == "blogPost" => "/blog/" + internalLink->slug.current + "/",    internalLink->_type == "servicePage" && internalLink->kind == "zakelijk" =>      "/zakelijk/" + internalLink->slug.current + "/",    defined(internalLink->slug.current) => "/" + internalLink->slug.current + "/"  )},  usps,  image {  asset,  hotspot,  crop,  alt,  "dimensions": asset->metadata.dimensions{ width, height }},  imageSmall {  asset,  hotspot,  crop,  alt,  "dimensions": asset->metadata.dimensions{ width, height }},  badge},  nearby { kicker, title, text, places },  types{ head { kicker, title, lead }, items[] { _key, image {  asset,  hotspot,  crop,  alt,  "dimensions": asset->metadata.dimensions{ width, height }}, title, text, link {  label,  "href": select(    linkType == "external" => href,    internalLink->_type == "homePage" => "/",    internalLink->_type == "zakelijkPage" => "/zakelijk/",    internalLink->_type == "projectsPage" => "/projecten/",    internalLink->_type == "zakelijkProjectsPage" => "/zakelijk/projecten/",    internalLink->_type == "reviewsPage" => "/reviews/",    internalLink->_type == "blogPage" => "/blog/",    internalLink->_type == "contactPage" => "/contact/",    internalLink->_type == "blogPost" => "/blog/" + internalLink->slug.current + "/",    internalLink->_type == "servicePage" && internalLink->kind == "zakelijk" =>      "/zakelijk/" + internalLink->slug.current + "/",    defined(internalLink->slug.current) => "/" + internalLink->slug.current + "/"  )} } },  werkwijze { kicker, title, lead, steps[]{ _key, title, text } },  materials{ kicker, title, text, points, ctaLabel, photos[] {  asset,  hotspot,  crop,  alt,  "dimensions": asset->metadata.dimensions{ width, height }} },  projects{ head { kicker, title, lead }, tiles[] { _key, image {  asset,  hotspot,  crop,  alt,  "dimensions": asset->metadata.dimensions{ width, height }}, title, text, size }, link {  label,  "href": select(    linkType == "external" => href,    internalLink->_type == "homePage" => "/",    internalLink->_type == "zakelijkPage" => "/zakelijk/",    internalLink->_type == "projectsPage" => "/projecten/",    internalLink->_type == "zakelijkProjectsPage" => "/zakelijk/projecten/",    internalLink->_type == "reviewsPage" => "/reviews/",    internalLink->_type == "blogPage" => "/blog/",    internalLink->_type == "contactPage" => "/contact/",    internalLink->_type == "blogPost" => "/blog/" + internalLink->slug.current + "/",    internalLink->_type == "servicePage" && internalLink->kind == "zakelijk" =>      "/zakelijk/" + internalLink->slug.current + "/",    defined(internalLink->slug.current) => "/" + internalLink->slug.current + "/"  )} },  faq { kicker, title, items[]{ _key, question, answer, open } },  cta {  title,  text,  messagePlaceholder,  "form": coalesce(form, *[_type == "formGeneralSettings"][0].defaultForm)-> {  _id,  title,  showTitle,  mode,  fields[] {  label,  name,  type,  isRequired,  width,  placeholder,  helpText,  defaultValue,  selectOptions,  radioOptions,  checkboxOptions},  steps[]{ title, fields[] {  label,  name,  type,  isRequired,  width,  placeholder,  helpText,  defaultValue,  selectOptions,  radioOptions,  checkboxOptions} },  submitButtonText,  nextButtonText,  backButtonText,  successTitle,  successBody,  redirectAfterSubmit,  redirectLink {  label,  "href": select(    linkType == "external" => href,    internalLink->_type == "homePage" => "/",    internalLink->_type == "zakelijkPage" => "/zakelijk/",    internalLink->_type == "projectsPage" => "/projecten/",    internalLink->_type == "zakelijkProjectsPage" => "/zakelijk/projecten/",    internalLink->_type == "reviewsPage" => "/reviews/",    internalLink->_type == "blogPage" => "/blog/",    internalLink->_type == "contactPage" => "/contact/",    internalLink->_type == "blogPost" => "/blog/" + internalLink->slug.current + "/",    internalLink->_type == "servicePage" && internalLink->kind == "zakelijk" =>      "/zakelijk/" + internalLink->slug.current + "/",    defined(internalLink->slug.current) => "/" + internalLink->slug.current + "/"  )}}},  seo { title, description, noIndex, ogImage {  asset,  hotspot,  crop,  alt,  "dimensions": asset->metadata.dimensions{ width, height }} }}
+export type ZAKELIJK_SERVICE_QUERY_RESULT = {
+  _type: "servicePage";
+  kind: "dienst" | "lokaal" | "zakelijk";
+  title: string;
+  breadcrumb: string | null;
+  path: string;
+  parent: {
+    title: string;
+    breadcrumb: string | null;
+    path: string;
+  } | null;
+  hero: {
+    kicker: string | null;
+    titleBefore: string | null;
+    titleHighlight: string;
+    titleAfter: string | null;
+    lead: string;
+    primaryCta: {
+      label: string | null;
+      href:
+        | string
+        | "/"
+        | "/blog/"
+        | "/contact/"
+        | "/projecten/"
+        | "/reviews/"
+        | "/zakelijk/"
+        | "/zakelijk/projecten/"
+        | null;
+    } | null;
+    usps: Array<string> | null;
+    image: {
+      asset: SanityImageAssetReference | null;
+      hotspot: SanityImageHotspot | null;
+      crop: SanityImageCrop | null;
+      alt: string | null;
+      dimensions: {
+        width: number;
+        height: number;
+      } | null;
+    };
+    imageSmall: {
+      asset: SanityImageAssetReference | null;
+      hotspot: SanityImageHotspot | null;
+      crop: SanityImageCrop | null;
+      alt: string | null;
+      dimensions: {
+        width: number;
+        height: number;
+      } | null;
+    };
+    badge: Badge | null;
+  } | null;
+  nearby: {
+    kicker: string | null;
+    title: string;
+    text: string | null;
+    places: Array<string> | null;
+  } | null;
+  types: {
+    head: {
+      kicker: string | null;
+      title: string;
+      lead: string | null;
+    } | null;
+    items: Array<{
+      _key: string;
+      image: {
+        asset: SanityImageAssetReference | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+        alt: string | null;
+        dimensions: {
+          width: number;
+          height: number;
+        } | null;
+      };
+      title: string;
+      text: string | null;
+      link: {
+        label: string | null;
+        href:
+          | string
+          | "/"
+          | "/blog/"
+          | "/contact/"
+          | "/projecten/"
+          | "/reviews/"
+          | "/zakelijk/"
+          | "/zakelijk/projecten/"
+          | null;
+      } | null;
+    }> | null;
+  } | null;
+  werkwijze: {
+    kicker: string | null;
+    title: string;
+    lead: string | null;
+    steps: Array<{
+      _key: string;
+      title: string;
+      text: string | null;
+    }> | null;
+  } | null;
+  materials: {
+    kicker: string | null;
+    title: string | null;
+    text: string | null;
+    points: Array<string> | null;
+    ctaLabel: string | null;
+    photos: Array<{
+      asset: SanityImageAssetReference | null;
+      hotspot: SanityImageHotspot | null;
+      crop: SanityImageCrop | null;
+      alt: string | null;
+      dimensions: {
+        width: number;
+        height: number;
+      } | null;
+    }> | null;
+  } | null;
+  projects: {
+    head: {
+      kicker: string | null;
+      title: string;
+      lead: string | null;
+    } | null;
+    tiles: Array<{
+      _key: string;
+      image: {
+        asset: SanityImageAssetReference | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+        alt: string | null;
+        dimensions: {
+          width: number;
+          height: number;
+        } | null;
+      };
+      title: string;
+      text: string | null;
+      size: "normal" | "tall" | "wide" | null;
+    }> | null;
+    link: {
+      label: string | null;
+      href:
+        | string
+        | "/"
+        | "/blog/"
+        | "/contact/"
+        | "/projecten/"
+        | "/reviews/"
+        | "/zakelijk/"
+        | "/zakelijk/projecten/"
+        | null;
+    } | null;
+  } | null;
+  faq: {
+    kicker: string | null;
+    title: string;
+    items: Array<{
+      _key: string;
+      question: string;
+      answer: string;
+      open: boolean | null;
+    }> | null;
+  } | null;
+  cta: {
+    title: string;
+    text: string | null;
+    messagePlaceholder: string | null;
+    form: {
+      _id: string;
+      title: string;
+      showTitle: boolean | null;
+      mode: "simple" | "steps";
+      fields: Array<{
+        label: string;
+        name: string;
+        type:
+          | "checkbox"
+          | "email"
+          | "file"
+          | "hidden"
+          | "radio"
+          | "select"
+          | "tel"
+          | "text"
+          | "textarea"
+          | "url";
+        isRequired: boolean | null;
+        width: "full" | "half" | null;
+        placeholder: string | null;
+        helpText: string | null;
+        defaultValue: string | null;
+        selectOptions: Array<string> | null;
+        radioOptions: Array<string> | null;
+        checkboxOptions: Array<string> | null;
+      }> | null;
+      steps: Array<{
+        title: string | null;
+        fields: Array<{
+          label: string;
+          name: string;
+          type:
+            | "checkbox"
+            | "email"
+            | "file"
+            | "hidden"
+            | "radio"
+            | "select"
+            | "tel"
+            | "text"
+            | "textarea"
+            | "url";
+          isRequired: boolean | null;
+          width: "full" | "half" | null;
+          placeholder: string | null;
+          helpText: string | null;
+          defaultValue: string | null;
+          selectOptions: Array<string> | null;
+          radioOptions: Array<string> | null;
+          checkboxOptions: Array<string> | null;
+        }>;
+      }> | null;
+      submitButtonText: string;
+      nextButtonText: string | null;
+      backButtonText: string | null;
+      successTitle: string | null;
+      successBody: string | null;
+      redirectAfterSubmit: boolean | null;
+      redirectLink: {
+        label: string | null;
+        href:
+          | string
+          | "/"
+          | "/blog/"
+          | "/contact/"
+          | "/projecten/"
+          | "/reviews/"
+          | "/zakelijk/"
+          | "/zakelijk/projecten/"
+          | null;
+      } | null;
+    } | null;
+  } | null;
+  seo: {
+    title: string | null;
+    description: string | null;
+    noIndex: boolean | null;
+    ogImage: {
+      asset: SanityImageAssetReference | null;
+      hotspot: SanityImageHotspot | null;
+      crop: SanityImageCrop | null;
+      alt: null;
+      dimensions: {
+        width: number;
+        height: number;
+      } | null;
+    } | null;
+  } | null;
 } | null;
 
 // Source: ../app/src/sanity/queries.ts
-// Variable: PAGE_SLUGS_QUERY
-// Query: *[_type == "page" && defined(slug.current)]{    "slug": slug.current,    _updatedAt  }
-export type PAGE_SLUGS_QUERY_RESULT = Array<{
-  slug: string;
-  _updatedAt: string;
-}>;
+// Variable: ZAKELIJK_SLUGS_QUERY
+// Query: *[_type == "servicePage" && kind == "zakelijk" && defined(slug.current)].slug.current
+export type ZAKELIJK_SLUGS_QUERY_RESULT = Array<string>;
 
 // Source: ../app/src/sanity/queries.ts
-// Variable: NAVIGATION_QUERY
-// Query: *[_id == "navigation"][0]{    navLeft[]{  ...,  internalLink->{    "slug": slug.current  }},    navRight[]{  ...,  internalLink->{    "slug": slug.current  }}  }
-export type NAVIGATION_QUERY_RESULT =
-  | {
-      navLeft: null;
-      navRight: null;
-    }
-  | {
-      navLeft: Array<{
-        label: string;
-        linkType: "external" | "internal";
-        internalLink: {
-          slug: string;
+// Variable: ZAKELIJK_PAGE_QUERY
+// Query: *[_type == "zakelijkPage"][0]{  title,  hero {  kicker,  titleBefore,  titleHighlight,  titleAfter,  lead,  primaryCta {  label,  "href": select(    linkType == "external" => href,    internalLink->_type == "homePage" => "/",    internalLink->_type == "zakelijkPage" => "/zakelijk/",    internalLink->_type == "projectsPage" => "/projecten/",    internalLink->_type == "zakelijkProjectsPage" => "/zakelijk/projecten/",    internalLink->_type == "reviewsPage" => "/reviews/",    internalLink->_type == "blogPage" => "/blog/",    internalLink->_type == "contactPage" => "/contact/",    internalLink->_type == "blogPost" => "/blog/" + internalLink->slug.current + "/",    internalLink->_type == "servicePage" && internalLink->kind == "zakelijk" =>      "/zakelijk/" + internalLink->slug.current + "/",    defined(internalLink->slug.current) => "/" + internalLink->slug.current + "/"  )},  usps,  image {  asset,  hotspot,  crop,  alt,  "dimensions": asset->metadata.dimensions{ width, height }},  imageSmall {  asset,  hotspot,  crop,  alt,  "dimensions": asset->metadata.dimensions{ width, height }},  badge},  stats[]{ _key, value, label },  audiences{ head { kicker, title, lead }, cards[] { _key, image {  asset,  hotspot,  crop,  alt,  "dimensions": asset->metadata.dimensions{ width, height }}, title, text, link {  label,  "href": select(    linkType == "external" => href,    internalLink->_type == "homePage" => "/",    internalLink->_type == "zakelijkPage" => "/zakelijk/",    internalLink->_type == "projectsPage" => "/projecten/",    internalLink->_type == "zakelijkProjectsPage" => "/zakelijk/projecten/",    internalLink->_type == "reviewsPage" => "/reviews/",    internalLink->_type == "blogPage" => "/blog/",    internalLink->_type == "contactPage" => "/contact/",    internalLink->_type == "blogPost" => "/blog/" + internalLink->slug.current + "/",    internalLink->_type == "servicePage" && internalLink->kind == "zakelijk" =>      "/zakelijk/" + internalLink->slug.current + "/",    defined(internalLink->slug.current) => "/" + internalLink->slug.current + "/"  )} } },  services{ head { kicker, title, lead }, items },  werkwijze { kicker, title, lead, steps[]{ _key, title, text } },  projects{ head { kicker, title, lead }, items[]-> {  _id,  "href": "/" + slug.current + "/",  "title": coalesce(cardTitle, title),  "tag": cardTag,  "text": cardText,  "image": coalesce(cardImage, image) {  asset,  hotspot,  crop,  alt,  "dimensions": asset->metadata.dimensions{ width, height }},  "stats": cardStats[]{ _key, value, label },  audience}, link {  label,  "href": select(    linkType == "external" => href,    internalLink->_type == "homePage" => "/",    internalLink->_type == "zakelijkPage" => "/zakelijk/",    internalLink->_type == "projectsPage" => "/projecten/",    internalLink->_type == "zakelijkProjectsPage" => "/zakelijk/projecten/",    internalLink->_type == "reviewsPage" => "/reviews/",    internalLink->_type == "blogPage" => "/blog/",    internalLink->_type == "contactPage" => "/contact/",    internalLink->_type == "blogPost" => "/blog/" + internalLink->slug.current + "/",    internalLink->_type == "servicePage" && internalLink->kind == "zakelijk" =>      "/zakelijk/" + internalLink->slug.current + "/",    defined(internalLink->slug.current) => "/" + internalLink->slug.current + "/"  )} },  trust[]{ _key, icon, title, text },  faq { kicker, title, items[]{ _key, question, answer, open } },  cta {  title,  text,  messagePlaceholder,  "form": coalesce(form, *[_type == "formGeneralSettings"][0].defaultForm)-> {  _id,  title,  showTitle,  mode,  fields[] {  label,  name,  type,  isRequired,  width,  placeholder,  helpText,  defaultValue,  selectOptions,  radioOptions,  checkboxOptions},  steps[]{ title, fields[] {  label,  name,  type,  isRequired,  width,  placeholder,  helpText,  defaultValue,  selectOptions,  radioOptions,  checkboxOptions} },  submitButtonText,  nextButtonText,  backButtonText,  successTitle,  successBody,  redirectAfterSubmit,  redirectLink {  label,  "href": select(    linkType == "external" => href,    internalLink->_type == "homePage" => "/",    internalLink->_type == "zakelijkPage" => "/zakelijk/",    internalLink->_type == "projectsPage" => "/projecten/",    internalLink->_type == "zakelijkProjectsPage" => "/zakelijk/projecten/",    internalLink->_type == "reviewsPage" => "/reviews/",    internalLink->_type == "blogPage" => "/blog/",    internalLink->_type == "contactPage" => "/contact/",    internalLink->_type == "blogPost" => "/blog/" + internalLink->slug.current + "/",    internalLink->_type == "servicePage" && internalLink->kind == "zakelijk" =>      "/zakelijk/" + internalLink->slug.current + "/",    defined(internalLink->slug.current) => "/" + internalLink->slug.current + "/"  )}}},  seo { title, description, noIndex, ogImage {  asset,  hotspot,  crop,  alt,  "dimensions": asset->metadata.dimensions{ width, height }} }}
+export type ZAKELIJK_PAGE_QUERY_RESULT = {
+  title: string;
+  hero: {
+    kicker: string | null;
+    titleBefore: string | null;
+    titleHighlight: string;
+    titleAfter: string | null;
+    lead: string;
+    primaryCta: {
+      label: string | null;
+      href:
+        | string
+        | "/"
+        | "/blog/"
+        | "/contact/"
+        | "/projecten/"
+        | "/reviews/"
+        | "/zakelijk/"
+        | "/zakelijk/projecten/"
+        | null;
+    } | null;
+    usps: Array<string> | null;
+    image: {
+      asset: SanityImageAssetReference | null;
+      hotspot: SanityImageHotspot | null;
+      crop: SanityImageCrop | null;
+      alt: string | null;
+      dimensions: {
+        width: number;
+        height: number;
+      } | null;
+    };
+    imageSmall: {
+      asset: SanityImageAssetReference | null;
+      hotspot: SanityImageHotspot | null;
+      crop: SanityImageCrop | null;
+      alt: string | null;
+      dimensions: {
+        width: number;
+        height: number;
+      } | null;
+    };
+    badge: Badge | null;
+  } | null;
+  stats: Array<{
+    _key: string;
+    value: string;
+    label: string;
+  }> | null;
+  audiences: {
+    head: {
+      kicker: string | null;
+      title: string;
+      lead: string | null;
+    } | null;
+    cards: Array<{
+      _key: string;
+      image: {
+        asset: SanityImageAssetReference | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+        alt: string | null;
+        dimensions: {
+          width: number;
+          height: number;
         } | null;
-        href?: string;
-        _type: "navLink";
-        _key: string;
-      }> | null;
-      navRight: Array<{
-        label: string;
-        linkType: "external" | "internal";
-        internalLink: {
-          slug: string;
+      };
+      title: string;
+      text: string | null;
+      link: {
+        label: string | null;
+        href:
+          | string
+          | "/"
+          | "/blog/"
+          | "/contact/"
+          | "/projecten/"
+          | "/reviews/"
+          | "/zakelijk/"
+          | "/zakelijk/projecten/"
+          | null;
+      } | null;
+    }> | null;
+  } | null;
+  services: {
+    head: {
+      kicker: string | null;
+      title: string;
+      lead: string | null;
+    } | null;
+    items: Array<string> | null;
+  } | null;
+  werkwijze: {
+    kicker: string | null;
+    title: string;
+    lead: string | null;
+    steps: Array<{
+      _key: string;
+      title: string;
+      text: string | null;
+    }> | null;
+  } | null;
+  projects: {
+    head: {
+      kicker: string | null;
+      title: string;
+      lead: string | null;
+    } | null;
+    items: Array<{
+      _id: string;
+      href: string;
+      title: string;
+      tag: string | null;
+      text: string | null;
+      image: {
+        asset: SanityImageAssetReference | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+        alt: string | null;
+        dimensions: {
+          width: number;
+          height: number;
         } | null;
-        href?: string;
-        _type: "navLink";
+      };
+      stats: Array<{
         _key: string;
+        value: string;
+        label: string;
       }> | null;
-    }
-  | null;
-
-// Source: ../app/src/sanity/queries.ts
-// Variable: SITE_INFORMATION_QUERY
-// Query: *[_id == "siteInformation"][0]{    name,    description,    language,    phone,    email,    address,    addressCountry,    badges,    // Only the URLs: they become sameAs in the structured data.    "socialLinks": socialLinks[].url,    "logoUrl": logo.asset->url  }
-export type SITE_INFORMATION_QUERY_RESULT =
-  | {
-      name: null;
-      description: null;
-      language: null;
-      phone: null;
-      email: null;
-      address: null;
-      addressCountry: null;
-      badges: null;
-      socialLinks: null;
-      logoUrl: null;
-    }
-  | {
-      name: null;
-      description: string | null;
-      language: null;
-      phone: null;
-      email: null;
-      address: null;
-      addressCountry: null;
-      badges: null;
-      socialLinks: null;
-      logoUrl: null;
-    }
-  | {
-      name: string;
-      description: string | null;
-      language: string | null;
-      phone: string | null;
-      email: string | null;
-      address: Array<string> | null;
-      addressCountry: string | null;
-      badges: Array<string> | null;
-      socialLinks: Array<string> | null;
-      logoUrl: string | null;
-    }
-  | null;
-
-// Source: ../app/src/sanity/queries.ts
-// Variable: FOOTER_QUERY
-// Query: *[_id == "footer"][0]{    linkGroups[]{      title,      links[]{  ...,  internalLink->{    "slug": slug.current  }}    },    copyright  }
-export type FOOTER_QUERY_RESULT =
-  | {
-      linkGroups: null;
-      copyright: null;
-    }
-  | {
-      linkGroups: Array<{
-        title: string;
-        links: Array<{
+      audience: "bedrijf" | "corporatie" | "vve" | null;
+    }> | null;
+    link: {
+      label: string | null;
+      href:
+        | string
+        | "/"
+        | "/blog/"
+        | "/contact/"
+        | "/projecten/"
+        | "/reviews/"
+        | "/zakelijk/"
+        | "/zakelijk/projecten/"
+        | null;
+    } | null;
+  } | null;
+  trust: Array<{
+    _key: string;
+    icon: "check" | "clock" | "pin" | null;
+    title: string;
+    text: string | null;
+  }> | null;
+  faq: {
+    kicker: string | null;
+    title: string;
+    items: Array<{
+      _key: string;
+      question: string;
+      answer: string;
+      open: boolean | null;
+    }> | null;
+  } | null;
+  cta: {
+    title: string;
+    text: string | null;
+    messagePlaceholder: string | null;
+    form: {
+      _id: string;
+      title: string;
+      showTitle: boolean | null;
+      mode: "simple" | "steps";
+      fields: Array<{
+        label: string;
+        name: string;
+        type:
+          | "checkbox"
+          | "email"
+          | "file"
+          | "hidden"
+          | "radio"
+          | "select"
+          | "tel"
+          | "text"
+          | "textarea"
+          | "url";
+        isRequired: boolean | null;
+        width: "full" | "half" | null;
+        placeholder: string | null;
+        helpText: string | null;
+        defaultValue: string | null;
+        selectOptions: Array<string> | null;
+        radioOptions: Array<string> | null;
+        checkboxOptions: Array<string> | null;
+      }> | null;
+      steps: Array<{
+        title: string | null;
+        fields: Array<{
           label: string;
-          linkType: "external" | "internal";
-          internalLink: {
-            slug: string;
-          } | null;
-          href?: string;
-          _type: "footerLink";
-          _key: string;
-        }> | null;
+          name: string;
+          type:
+            | "checkbox"
+            | "email"
+            | "file"
+            | "hidden"
+            | "radio"
+            | "select"
+            | "tel"
+            | "text"
+            | "textarea"
+            | "url";
+          isRequired: boolean | null;
+          width: "full" | "half" | null;
+          placeholder: string | null;
+          helpText: string | null;
+          defaultValue: string | null;
+          selectOptions: Array<string> | null;
+          radioOptions: Array<string> | null;
+          checkboxOptions: Array<string> | null;
+        }>;
       }> | null;
-      copyright: string | null;
+      submitButtonText: string;
+      nextButtonText: string | null;
+      backButtonText: string | null;
+      successTitle: string | null;
+      successBody: string | null;
+      redirectAfterSubmit: boolean | null;
+      redirectLink: {
+        label: string | null;
+        href:
+          | string
+          | "/"
+          | "/blog/"
+          | "/contact/"
+          | "/projecten/"
+          | "/reviews/"
+          | "/zakelijk/"
+          | "/zakelijk/projecten/"
+          | null;
+      } | null;
+    } | null;
+  } | null;
+  seo: {
+    title: string | null;
+    description: string | null;
+    noIndex: boolean | null;
+    ogImage: {
+      asset: SanityImageAssetReference | null;
+      hotspot: SanityImageHotspot | null;
+      crop: SanityImageCrop | null;
+      alt: null;
+      dimensions: {
+        width: number;
+        height: number;
+      } | null;
+    } | null;
+  } | null;
+} | null;
+
+// Source: ../app/src/sanity/queries.ts
+// Variable: PROJECTS_PAGE_QUERY
+// Query: {  "page": *[_type == "projectsPage"][0]{ title, intro { kicker, title, text }, filterAll, cta {  title,  text,  messagePlaceholder,  "form": coalesce(form, *[_type == "formGeneralSettings"][0].defaultForm)-> {  _id,  title,  showTitle,  mode,  fields[] {  label,  name,  type,  isRequired,  width,  placeholder,  helpText,  defaultValue,  selectOptions,  radioOptions,  checkboxOptions},  steps[]{ title, fields[] {  label,  name,  type,  isRequired,  width,  placeholder,  helpText,  defaultValue,  selectOptions,  radioOptions,  checkboxOptions} },  submitButtonText,  nextButtonText,  backButtonText,  successTitle,  successBody,  redirectAfterSubmit,  redirectLink {  label,  "href": select(    linkType == "external" => href,    internalLink->_type == "homePage" => "/",    internalLink->_type == "zakelijkPage" => "/zakelijk/",    internalLink->_type == "projectsPage" => "/projecten/",    internalLink->_type == "zakelijkProjectsPage" => "/zakelijk/projecten/",    internalLink->_type == "reviewsPage" => "/reviews/",    internalLink->_type == "blogPage" => "/blog/",    internalLink->_type == "contactPage" => "/contact/",    internalLink->_type == "blogPost" => "/blog/" + internalLink->slug.current + "/",    internalLink->_type == "servicePage" && internalLink->kind == "zakelijk" =>      "/zakelijk/" + internalLink->slug.current + "/",    defined(internalLink->slug.current) => "/" + internalLink->slug.current + "/"  )}}}, seo { title, description, noIndex, ogImage {  asset,  hotspot,  crop,  alt,  "dimensions": asset->metadata.dimensions{ width, height }} } },  "categories": *[_type == "category" && isZakelijk != true] | order(order asc){ _id, title },  "projects": *[_type == "project" && category->isZakelijk != true] | order(date desc) {  _id,  title,  "href": "/" + slug.current + "/",  image {  asset,  hotspot,  crop,  alt,  "dimensions": asset->metadata.dimensions{ width, height }},  "category": category->{ _id, title }}}
+export type PROJECTS_PAGE_QUERY_RESULT = {
+  page: {
+    title: string;
+    intro: {
+      kicker: string | null;
+      title: string;
+      text: string;
+    } | null;
+    filterAll: string | null;
+    cta: {
+      title: string;
+      text: string | null;
+      messagePlaceholder: string | null;
+      form: {
+        _id: string;
+        title: string;
+        showTitle: boolean | null;
+        mode: "simple" | "steps";
+        fields: Array<{
+          label: string;
+          name: string;
+          type:
+            | "checkbox"
+            | "email"
+            | "file"
+            | "hidden"
+            | "radio"
+            | "select"
+            | "tel"
+            | "text"
+            | "textarea"
+            | "url";
+          isRequired: boolean | null;
+          width: "full" | "half" | null;
+          placeholder: string | null;
+          helpText: string | null;
+          defaultValue: string | null;
+          selectOptions: Array<string> | null;
+          radioOptions: Array<string> | null;
+          checkboxOptions: Array<string> | null;
+        }> | null;
+        steps: Array<{
+          title: string | null;
+          fields: Array<{
+            label: string;
+            name: string;
+            type:
+              | "checkbox"
+              | "email"
+              | "file"
+              | "hidden"
+              | "radio"
+              | "select"
+              | "tel"
+              | "text"
+              | "textarea"
+              | "url";
+            isRequired: boolean | null;
+            width: "full" | "half" | null;
+            placeholder: string | null;
+            helpText: string | null;
+            defaultValue: string | null;
+            selectOptions: Array<string> | null;
+            radioOptions: Array<string> | null;
+            checkboxOptions: Array<string> | null;
+          }>;
+        }> | null;
+        submitButtonText: string;
+        nextButtonText: string | null;
+        backButtonText: string | null;
+        successTitle: string | null;
+        successBody: string | null;
+        redirectAfterSubmit: boolean | null;
+        redirectLink: {
+          label: string | null;
+          href:
+            | string
+            | "/"
+            | "/blog/"
+            | "/contact/"
+            | "/projecten/"
+            | "/reviews/"
+            | "/zakelijk/"
+            | "/zakelijk/projecten/"
+            | null;
+        } | null;
+      } | null;
+    } | null;
+    seo: {
+      title: string | null;
+      description: string | null;
+      noIndex: boolean | null;
+      ogImage: {
+        asset: SanityImageAssetReference | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+        alt: null;
+        dimensions: {
+          width: number;
+          height: number;
+        } | null;
+      } | null;
+    } | null;
+  } | null;
+  categories: Array<{
+    _id: string;
+    title: string;
+  }>;
+  projects: Array<{
+    _id: string;
+    title: string;
+    href: string;
+    image: {
+      asset: SanityImageAssetReference | null;
+      hotspot: SanityImageHotspot | null;
+      crop: SanityImageCrop | null;
+      alt: string | null;
+      dimensions: {
+        width: number;
+        height: number;
+      } | null;
+    };
+    category: {
+      _id: string;
+      title: string;
+    };
+  }>;
+};
+
+// Source: ../app/src/sanity/queries.ts
+// Variable: ZAKELIJK_PROJECTS_PAGE_QUERY
+// Query: {  "page": *[_type == "zakelijkProjectsPage"][0]{    title,    breadcrumb,    intro { kicker, title, text },    filterAll,    filterVve,    filterCorporatie,    filterBedrijf,    soonTitle,    soonText,    cta {  title,  text,  messagePlaceholder,  "form": coalesce(form, *[_type == "formGeneralSettings"][0].defaultForm)-> {  _id,  title,  showTitle,  mode,  fields[] {  label,  name,  type,  isRequired,  width,  placeholder,  helpText,  defaultValue,  selectOptions,  radioOptions,  checkboxOptions},  steps[]{ title, fields[] {  label,  name,  type,  isRequired,  width,  placeholder,  helpText,  defaultValue,  selectOptions,  radioOptions,  checkboxOptions} },  submitButtonText,  nextButtonText,  backButtonText,  successTitle,  successBody,  redirectAfterSubmit,  redirectLink {  label,  "href": select(    linkType == "external" => href,    internalLink->_type == "homePage" => "/",    internalLink->_type == "zakelijkPage" => "/zakelijk/",    internalLink->_type == "projectsPage" => "/projecten/",    internalLink->_type == "zakelijkProjectsPage" => "/zakelijk/projecten/",    internalLink->_type == "reviewsPage" => "/reviews/",    internalLink->_type == "blogPage" => "/blog/",    internalLink->_type == "contactPage" => "/contact/",    internalLink->_type == "blogPost" => "/blog/" + internalLink->slug.current + "/",    internalLink->_type == "servicePage" && internalLink->kind == "zakelijk" =>      "/zakelijk/" + internalLink->slug.current + "/",    defined(internalLink->slug.current) => "/" + internalLink->slug.current + "/"  )}}},    seo { title, description, noIndex, ogImage {  asset,  hotspot,  crop,  alt,  "dimensions": asset->metadata.dimensions{ width, height }} }  },  "projects": *[_type == "project" && category->isZakelijk == true] | order(date desc) {  _id,  "href": "/" + slug.current + "/",  "title": coalesce(cardTitle, title),  "tag": cardTag,  "text": cardText,  "image": coalesce(cardImage, image) {  asset,  hotspot,  crop,  alt,  "dimensions": asset->metadata.dimensions{ width, height }},  "stats": cardStats[]{ _key, value, label },  audience}}
+export type ZAKELIJK_PROJECTS_PAGE_QUERY_RESULT = {
+  page: {
+    title: string;
+    breadcrumb: string | null;
+    intro: {
+      kicker: string | null;
+      title: string;
+      text: string;
+    } | null;
+    filterAll: string | null;
+    filterVve: string | null;
+    filterCorporatie: string | null;
+    filterBedrijf: string | null;
+    soonTitle: string | null;
+    soonText: string | null;
+    cta: {
+      title: string;
+      text: string | null;
+      messagePlaceholder: string | null;
+      form: {
+        _id: string;
+        title: string;
+        showTitle: boolean | null;
+        mode: "simple" | "steps";
+        fields: Array<{
+          label: string;
+          name: string;
+          type:
+            | "checkbox"
+            | "email"
+            | "file"
+            | "hidden"
+            | "radio"
+            | "select"
+            | "tel"
+            | "text"
+            | "textarea"
+            | "url";
+          isRequired: boolean | null;
+          width: "full" | "half" | null;
+          placeholder: string | null;
+          helpText: string | null;
+          defaultValue: string | null;
+          selectOptions: Array<string> | null;
+          radioOptions: Array<string> | null;
+          checkboxOptions: Array<string> | null;
+        }> | null;
+        steps: Array<{
+          title: string | null;
+          fields: Array<{
+            label: string;
+            name: string;
+            type:
+              | "checkbox"
+              | "email"
+              | "file"
+              | "hidden"
+              | "radio"
+              | "select"
+              | "tel"
+              | "text"
+              | "textarea"
+              | "url";
+            isRequired: boolean | null;
+            width: "full" | "half" | null;
+            placeholder: string | null;
+            helpText: string | null;
+            defaultValue: string | null;
+            selectOptions: Array<string> | null;
+            radioOptions: Array<string> | null;
+            checkboxOptions: Array<string> | null;
+          }>;
+        }> | null;
+        submitButtonText: string;
+        nextButtonText: string | null;
+        backButtonText: string | null;
+        successTitle: string | null;
+        successBody: string | null;
+        redirectAfterSubmit: boolean | null;
+        redirectLink: {
+          label: string | null;
+          href:
+            | string
+            | "/"
+            | "/blog/"
+            | "/contact/"
+            | "/projecten/"
+            | "/reviews/"
+            | "/zakelijk/"
+            | "/zakelijk/projecten/"
+            | null;
+        } | null;
+      } | null;
+    } | null;
+    seo: {
+      title: string | null;
+      description: string | null;
+      noIndex: boolean | null;
+      ogImage: {
+        asset: SanityImageAssetReference | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+        alt: null;
+        dimensions: {
+          width: number;
+          height: number;
+        } | null;
+      } | null;
+    } | null;
+  } | null;
+  projects: Array<{
+    _id: string;
+    href: string;
+    title: string;
+    tag: string | null;
+    text: string | null;
+    image: {
+      asset: SanityImageAssetReference | null;
+      hotspot: SanityImageHotspot | null;
+      crop: SanityImageCrop | null;
+      alt: string | null;
+      dimensions: {
+        width: number;
+        height: number;
+      } | null;
+    };
+    stats: Array<{
+      _key: string;
+      value: string;
+      label: string;
+    }> | null;
+    audience: "bedrijf" | "corporatie" | "vve" | null;
+  }>;
+};
+
+// Source: ../app/src/sanity/queries.ts
+// Variable: REVIEWS_PAGE_QUERY
+// Query: {  "page": *[_type == "reviewsPage"][0]{    title,    intro { kicker, title, text },    scoreCaption,    googleLabel,    filterAll,    leave,    cta {  title,  text,  messagePlaceholder,  "form": coalesce(form, *[_type == "formGeneralSettings"][0].defaultForm)-> {  _id,  title,  showTitle,  mode,  fields[] {  label,  name,  type,  isRequired,  width,  placeholder,  helpText,  defaultValue,  selectOptions,  radioOptions,  checkboxOptions},  steps[]{ title, fields[] {  label,  name,  type,  isRequired,  width,  placeholder,  helpText,  defaultValue,  selectOptions,  radioOptions,  checkboxOptions} },  submitButtonText,  nextButtonText,  backButtonText,  successTitle,  successBody,  redirectAfterSubmit,  redirectLink {  label,  "href": select(    linkType == "external" => href,    internalLink->_type == "homePage" => "/",    internalLink->_type == "zakelijkPage" => "/zakelijk/",    internalLink->_type == "projectsPage" => "/projecten/",    internalLink->_type == "zakelijkProjectsPage" => "/zakelijk/projecten/",    internalLink->_type == "reviewsPage" => "/reviews/",    internalLink->_type == "blogPage" => "/blog/",    internalLink->_type == "contactPage" => "/contact/",    internalLink->_type == "blogPost" => "/blog/" + internalLink->slug.current + "/",    internalLink->_type == "servicePage" && internalLink->kind == "zakelijk" =>      "/zakelijk/" + internalLink->slug.current + "/",    defined(internalLink->slug.current) => "/" + internalLink->slug.current + "/"  )}}},    seo { title, description, noIndex, ogImage {  asset,  hotspot,  crop,  alt,  "dimensions": asset->metadata.dimensions{ width, height }} }  },  "reviews": *[_type == "review"] | order(order asc) { _id, name, initials, audience, location, service, text }}
+export type REVIEWS_PAGE_QUERY_RESULT = {
+  page: {
+    title: string;
+    intro: {
+      kicker: string | null;
+      title: string;
+      text: string;
+    } | null;
+    scoreCaption: string | null;
+    googleLabel: string | null;
+    filterAll: string | null;
+    leave: {
+      kicker?: string;
+      title?: string;
+      text?: string;
+      button?: string;
+    } | null;
+    cta: {
+      title: string;
+      text: string | null;
+      messagePlaceholder: string | null;
+      form: {
+        _id: string;
+        title: string;
+        showTitle: boolean | null;
+        mode: "simple" | "steps";
+        fields: Array<{
+          label: string;
+          name: string;
+          type:
+            | "checkbox"
+            | "email"
+            | "file"
+            | "hidden"
+            | "radio"
+            | "select"
+            | "tel"
+            | "text"
+            | "textarea"
+            | "url";
+          isRequired: boolean | null;
+          width: "full" | "half" | null;
+          placeholder: string | null;
+          helpText: string | null;
+          defaultValue: string | null;
+          selectOptions: Array<string> | null;
+          radioOptions: Array<string> | null;
+          checkboxOptions: Array<string> | null;
+        }> | null;
+        steps: Array<{
+          title: string | null;
+          fields: Array<{
+            label: string;
+            name: string;
+            type:
+              | "checkbox"
+              | "email"
+              | "file"
+              | "hidden"
+              | "radio"
+              | "select"
+              | "tel"
+              | "text"
+              | "textarea"
+              | "url";
+            isRequired: boolean | null;
+            width: "full" | "half" | null;
+            placeholder: string | null;
+            helpText: string | null;
+            defaultValue: string | null;
+            selectOptions: Array<string> | null;
+            radioOptions: Array<string> | null;
+            checkboxOptions: Array<string> | null;
+          }>;
+        }> | null;
+        submitButtonText: string;
+        nextButtonText: string | null;
+        backButtonText: string | null;
+        successTitle: string | null;
+        successBody: string | null;
+        redirectAfterSubmit: boolean | null;
+        redirectLink: {
+          label: string | null;
+          href:
+            | string
+            | "/"
+            | "/blog/"
+            | "/contact/"
+            | "/projecten/"
+            | "/reviews/"
+            | "/zakelijk/"
+            | "/zakelijk/projecten/"
+            | null;
+        } | null;
+      } | null;
+    } | null;
+    seo: {
+      title: string | null;
+      description: string | null;
+      noIndex: boolean | null;
+      ogImage: {
+        asset: SanityImageAssetReference | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+        alt: null;
+        dimensions: {
+          width: number;
+          height: number;
+        } | null;
+      } | null;
+    } | null;
+  } | null;
+  reviews: Array<{
+    _id: string;
+    name: string;
+    initials: string;
+    audience: "particulier" | "zakelijk";
+    location: string | null;
+    service: string | null;
+    text: string;
+  }>;
+};
+
+// Source: ../app/src/sanity/queries.ts
+// Variable: BLOG_PAGE_QUERY
+// Query: {  "page": *[_type == "blogPage"][0]{ title, intro { kicker, title, text }, filterAll, readMore, cta {  title,  text,  messagePlaceholder,  "form": coalesce(form, *[_type == "formGeneralSettings"][0].defaultForm)-> {  _id,  title,  showTitle,  mode,  fields[] {  label,  name,  type,  isRequired,  width,  placeholder,  helpText,  defaultValue,  selectOptions,  radioOptions,  checkboxOptions},  steps[]{ title, fields[] {  label,  name,  type,  isRequired,  width,  placeholder,  helpText,  defaultValue,  selectOptions,  radioOptions,  checkboxOptions} },  submitButtonText,  nextButtonText,  backButtonText,  successTitle,  successBody,  redirectAfterSubmit,  redirectLink {  label,  "href": select(    linkType == "external" => href,    internalLink->_type == "homePage" => "/",    internalLink->_type == "zakelijkPage" => "/zakelijk/",    internalLink->_type == "projectsPage" => "/projecten/",    internalLink->_type == "zakelijkProjectsPage" => "/zakelijk/projecten/",    internalLink->_type == "reviewsPage" => "/reviews/",    internalLink->_type == "blogPage" => "/blog/",    internalLink->_type == "contactPage" => "/contact/",    internalLink->_type == "blogPost" => "/blog/" + internalLink->slug.current + "/",    internalLink->_type == "servicePage" && internalLink->kind == "zakelijk" =>      "/zakelijk/" + internalLink->slug.current + "/",    defined(internalLink->slug.current) => "/" + internalLink->slug.current + "/"  )}}}, seo { title, description, noIndex, ogImage {  asset,  hotspot,  crop,  alt,  "dimensions": asset->metadata.dimensions{ width, height }} } },  "categories": *[_type == "category"] | order(order asc){ _id, title },  "posts": *[_type == "blogPost"] | order(featured desc, date desc) {  _id,  title,  "href": "/blog/" + slug.current + "/",  excerpt,  readTime,  image {  asset,  hotspot,  crop,  alt,  "dimensions": asset->metadata.dimensions{ width, height }},  "category": category->{ _id, title }}}
+export type BLOG_PAGE_QUERY_RESULT = {
+  page: {
+    title: string;
+    intro: {
+      kicker: string | null;
+      title: string;
+      text: string;
+    } | null;
+    filterAll: string | null;
+    readMore: string | null;
+    cta: {
+      title: string;
+      text: string | null;
+      messagePlaceholder: string | null;
+      form: {
+        _id: string;
+        title: string;
+        showTitle: boolean | null;
+        mode: "simple" | "steps";
+        fields: Array<{
+          label: string;
+          name: string;
+          type:
+            | "checkbox"
+            | "email"
+            | "file"
+            | "hidden"
+            | "radio"
+            | "select"
+            | "tel"
+            | "text"
+            | "textarea"
+            | "url";
+          isRequired: boolean | null;
+          width: "full" | "half" | null;
+          placeholder: string | null;
+          helpText: string | null;
+          defaultValue: string | null;
+          selectOptions: Array<string> | null;
+          radioOptions: Array<string> | null;
+          checkboxOptions: Array<string> | null;
+        }> | null;
+        steps: Array<{
+          title: string | null;
+          fields: Array<{
+            label: string;
+            name: string;
+            type:
+              | "checkbox"
+              | "email"
+              | "file"
+              | "hidden"
+              | "radio"
+              | "select"
+              | "tel"
+              | "text"
+              | "textarea"
+              | "url";
+            isRequired: boolean | null;
+            width: "full" | "half" | null;
+            placeholder: string | null;
+            helpText: string | null;
+            defaultValue: string | null;
+            selectOptions: Array<string> | null;
+            radioOptions: Array<string> | null;
+            checkboxOptions: Array<string> | null;
+          }>;
+        }> | null;
+        submitButtonText: string;
+        nextButtonText: string | null;
+        backButtonText: string | null;
+        successTitle: string | null;
+        successBody: string | null;
+        redirectAfterSubmit: boolean | null;
+        redirectLink: {
+          label: string | null;
+          href:
+            | string
+            | "/"
+            | "/blog/"
+            | "/contact/"
+            | "/projecten/"
+            | "/reviews/"
+            | "/zakelijk/"
+            | "/zakelijk/projecten/"
+            | null;
+        } | null;
+      } | null;
+    } | null;
+    seo: {
+      title: string | null;
+      description: string | null;
+      noIndex: boolean | null;
+      ogImage: {
+        asset: SanityImageAssetReference | null;
+        hotspot: SanityImageHotspot | null;
+        crop: SanityImageCrop | null;
+        alt: null;
+        dimensions: {
+          width: number;
+          height: number;
+        } | null;
+      } | null;
+    } | null;
+  } | null;
+  categories: Array<{
+    _id: string;
+    title: string;
+  }>;
+  posts: Array<{
+    _id: string;
+    title: string;
+    href: string;
+    excerpt: string;
+    readTime: string | null;
+    image: {
+      asset: SanityImageAssetReference | null;
+      hotspot: SanityImageHotspot | null;
+      crop: SanityImageCrop | null;
+      alt: string | null;
+      dimensions: {
+        width: number;
+        height: number;
+      } | null;
+    };
+    category: {
+      _id: string;
+      title: string;
+    };
+  }>;
+};
+
+// Source: ../app/src/sanity/queries.ts
+// Variable: BLOG_POST_QUERY
+// Query: *[_type == "blogPost" && slug.current == $slug][0]{  _id,  title,  date,  readTime,  excerpt,  image {  asset,  hotspot,  crop,  alt,  "dimensions": asset->metadata.dimensions{ width, height }},  "category": category->{ title },  body,  ctaTitle,  "related": coalesce(    related[]-> {  _id,  title,  "href": "/blog/" + slug.current + "/",  excerpt,  readTime,  image {  asset,  hotspot,  crop,  alt,  "dimensions": asset->metadata.dimensions{ width, height }},  "category": category->{ _id, title }},    *[_type == "blogPost" && slug.current != $slug] | order(date desc)[0...3] {  _id,  title,  "href": "/blog/" + slug.current + "/",  excerpt,  readTime,  image {  asset,  hotspot,  crop,  alt,  "dimensions": asset->metadata.dimensions{ width, height }},  "category": category->{ _id, title }}  ),  "blogTitle": *[_type == "blogPage"][0].title,  "cta": *[_type == "blogPage"][0].cta {  title,  text,  messagePlaceholder,  "form": coalesce(form, *[_type == "formGeneralSettings"][0].defaultForm)-> {  _id,  title,  showTitle,  mode,  fields[] {  label,  name,  type,  isRequired,  width,  placeholder,  helpText,  defaultValue,  selectOptions,  radioOptions,  checkboxOptions},  steps[]{ title, fields[] {  label,  name,  type,  isRequired,  width,  placeholder,  helpText,  defaultValue,  selectOptions,  radioOptions,  checkboxOptions} },  submitButtonText,  nextButtonText,  backButtonText,  successTitle,  successBody,  redirectAfterSubmit,  redirectLink {  label,  "href": select(    linkType == "external" => href,    internalLink->_type == "homePage" => "/",    internalLink->_type == "zakelijkPage" => "/zakelijk/",    internalLink->_type == "projectsPage" => "/projecten/",    internalLink->_type == "zakelijkProjectsPage" => "/zakelijk/projecten/",    internalLink->_type == "reviewsPage" => "/reviews/",    internalLink->_type == "blogPage" => "/blog/",    internalLink->_type == "contactPage" => "/contact/",    internalLink->_type == "blogPost" => "/blog/" + internalLink->slug.current + "/",    internalLink->_type == "servicePage" && internalLink->kind == "zakelijk" =>      "/zakelijk/" + internalLink->slug.current + "/",    defined(internalLink->slug.current) => "/" + internalLink->slug.current + "/"  )}}},  seo { title, description, noIndex, ogImage {  asset,  hotspot,  crop,  alt,  "dimensions": asset->metadata.dimensions{ width, height }} }}
+export type BLOG_POST_QUERY_RESULT = {
+  _id: string;
+  title: string;
+  date: string | null;
+  readTime: string | null;
+  excerpt: string;
+  image: {
+    asset: SanityImageAssetReference | null;
+    hotspot: SanityImageHotspot | null;
+    crop: SanityImageCrop | null;
+    alt: string | null;
+    dimensions: {
+      width: number;
+      height: number;
+    } | null;
+  };
+  category: {
+    title: string;
+  };
+  body: Array<
+    | {
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
+          _key: string;
+        }>;
+        style?: "h2" | "normal";
+        listItem?: "bullet";
+        markDefs?: Array<{
+          href?: string;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
+        _key: string;
+      }
+    | {
+        title?: string;
+        text: string;
+        _type: "callout";
+        _key: string;
+      }
+  > | null;
+  ctaTitle: string | null;
+  related: Array<{
+    _id: string;
+    title: string;
+    href: string;
+    excerpt: string;
+    readTime: string | null;
+    image: {
+      asset: SanityImageAssetReference | null;
+      hotspot: SanityImageHotspot | null;
+      crop: SanityImageCrop | null;
+      alt: string | null;
+      dimensions: {
+        width: number;
+        height: number;
+      } | null;
+    };
+    category: {
+      _id: string;
+      title: string;
+    };
+  }>;
+  blogTitle: string | null;
+  cta: {
+    title: string;
+    text: string | null;
+    messagePlaceholder: string | null;
+    form: {
+      _id: string;
+      title: string;
+      showTitle: boolean | null;
+      mode: "simple" | "steps";
+      fields: Array<{
+        label: string;
+        name: string;
+        type:
+          | "checkbox"
+          | "email"
+          | "file"
+          | "hidden"
+          | "radio"
+          | "select"
+          | "tel"
+          | "text"
+          | "textarea"
+          | "url";
+        isRequired: boolean | null;
+        width: "full" | "half" | null;
+        placeholder: string | null;
+        helpText: string | null;
+        defaultValue: string | null;
+        selectOptions: Array<string> | null;
+        radioOptions: Array<string> | null;
+        checkboxOptions: Array<string> | null;
+      }> | null;
+      steps: Array<{
+        title: string | null;
+        fields: Array<{
+          label: string;
+          name: string;
+          type:
+            | "checkbox"
+            | "email"
+            | "file"
+            | "hidden"
+            | "radio"
+            | "select"
+            | "tel"
+            | "text"
+            | "textarea"
+            | "url";
+          isRequired: boolean | null;
+          width: "full" | "half" | null;
+          placeholder: string | null;
+          helpText: string | null;
+          defaultValue: string | null;
+          selectOptions: Array<string> | null;
+          radioOptions: Array<string> | null;
+          checkboxOptions: Array<string> | null;
+        }>;
+      }> | null;
+      submitButtonText: string;
+      nextButtonText: string | null;
+      backButtonText: string | null;
+      successTitle: string | null;
+      successBody: string | null;
+      redirectAfterSubmit: boolean | null;
+      redirectLink: {
+        label: string | null;
+        href:
+          | string
+          | "/"
+          | "/blog/"
+          | "/contact/"
+          | "/projecten/"
+          | "/reviews/"
+          | "/zakelijk/"
+          | "/zakelijk/projecten/"
+          | null;
+      } | null;
+    } | null;
+  } | null;
+  seo: {
+    title: string | null;
+    description: string | null;
+    noIndex: boolean | null;
+    ogImage: {
+      asset: SanityImageAssetReference | null;
+      hotspot: SanityImageHotspot | null;
+      crop: SanityImageCrop | null;
+      alt: null;
+      dimensions: {
+        width: number;
+        height: number;
+      } | null;
+    } | null;
+  } | null;
+} | null;
+
+// Source: ../app/src/sanity/queries.ts
+// Variable: BLOG_SLUGS_QUERY
+// Query: *[_type == "blogPost" && defined(slug.current)].slug.current
+export type BLOG_SLUGS_QUERY_RESULT = Array<string>;
+
+// Source: ../app/src/sanity/queries.ts
+// Variable: CONTACT_PAGE_QUERY
+// Query: *[_type == "contactPage"][0]{  title,  intro { kicker, title, text },  badges,  infoCards[]{ _key, icon, title, text, show },  hours{ title, rows[]{ _key, day, time } },  "form": form-> {  _id,  title,  showTitle,  mode,  fields[] {  label,  name,  type,  isRequired,  width,  placeholder,  helpText,  defaultValue,  selectOptions,  radioOptions,  checkboxOptions},  steps[]{ title, fields[] {  label,  name,  type,  isRequired,  width,  placeholder,  helpText,  defaultValue,  selectOptions,  radioOptions,  checkboxOptions} },  submitButtonText,  nextButtonText,  backButtonText,  successTitle,  successBody,  redirectAfterSubmit,  redirectLink {  label,  "href": select(    linkType == "external" => href,    internalLink->_type == "homePage" => "/",    internalLink->_type == "zakelijkPage" => "/zakelijk/",    internalLink->_type == "projectsPage" => "/projecten/",    internalLink->_type == "zakelijkProjectsPage" => "/zakelijk/projecten/",    internalLink->_type == "reviewsPage" => "/reviews/",    internalLink->_type == "blogPage" => "/blog/",    internalLink->_type == "contactPage" => "/contact/",    internalLink->_type == "blogPost" => "/blog/" + internalLink->slug.current + "/",    internalLink->_type == "servicePage" && internalLink->kind == "zakelijk" =>      "/zakelijk/" + internalLink->slug.current + "/",    defined(internalLink->slug.current) => "/" + internalLink->slug.current + "/"  )}},  formLead,  werkgebied { kicker, title, text, places },  faq { kicker, title, items[]{ _key, question, answer, open } },  seo { title, description, noIndex, ogImage {  asset,  hotspot,  crop,  alt,  "dimensions": asset->metadata.dimensions{ width, height }} }}
+export type CONTACT_PAGE_QUERY_RESULT = {
+  title: string;
+  intro: {
+    kicker: string | null;
+    title: string;
+    text: string;
+  } | null;
+  badges: Array<string> | null;
+  infoCards: Array<{
+    _key: string;
+    icon: "mail" | "phone" | "pin" | null;
+    title: string;
+    text: string | null;
+    show: "email" | "none" | "phone" | null;
+  }> | null;
+  hours: {
+    title: string | null;
+    rows: Array<{
+      _key: string;
+      day: string;
+      time: string;
+    }> | null;
+  } | null;
+  form: {
+    _id: string;
+    title: string;
+    showTitle: boolean | null;
+    mode: "simple" | "steps";
+    fields: Array<{
+      label: string;
+      name: string;
+      type:
+        | "checkbox"
+        | "email"
+        | "file"
+        | "hidden"
+        | "radio"
+        | "select"
+        | "tel"
+        | "text"
+        | "textarea"
+        | "url";
+      isRequired: boolean | null;
+      width: "full" | "half" | null;
+      placeholder: string | null;
+      helpText: string | null;
+      defaultValue: string | null;
+      selectOptions: Array<string> | null;
+      radioOptions: Array<string> | null;
+      checkboxOptions: Array<string> | null;
+    }> | null;
+    steps: Array<{
+      title: string | null;
+      fields: Array<{
+        label: string;
+        name: string;
+        type:
+          | "checkbox"
+          | "email"
+          | "file"
+          | "hidden"
+          | "radio"
+          | "select"
+          | "tel"
+          | "text"
+          | "textarea"
+          | "url";
+        isRequired: boolean | null;
+        width: "full" | "half" | null;
+        placeholder: string | null;
+        helpText: string | null;
+        defaultValue: string | null;
+        selectOptions: Array<string> | null;
+        radioOptions: Array<string> | null;
+        checkboxOptions: Array<string> | null;
+      }>;
+    }> | null;
+    submitButtonText: string;
+    nextButtonText: string | null;
+    backButtonText: string | null;
+    successTitle: string | null;
+    successBody: string | null;
+    redirectAfterSubmit: boolean | null;
+    redirectLink: {
+      label: string | null;
+      href:
+        | string
+        | "/"
+        | "/blog/"
+        | "/contact/"
+        | "/projecten/"
+        | "/reviews/"
+        | "/zakelijk/"
+        | "/zakelijk/projecten/"
+        | null;
+    } | null;
+  };
+  formLead: string | null;
+  werkgebied: {
+    kicker: string | null;
+    title: string;
+    text: string | null;
+    places: Array<string> | null;
+  } | null;
+  faq: {
+    kicker: string | null;
+    title: string;
+    items: Array<{
+      _key: string;
+      question: string;
+      answer: string;
+      open: boolean | null;
+    }> | null;
+  } | null;
+  seo: {
+    title: string | null;
+    description: string | null;
+    noIndex: boolean | null;
+    ogImage: {
+      asset: SanityImageAssetReference | null;
+      hotspot: SanityImageHotspot | null;
+      crop: SanityImageCrop | null;
+      alt: null;
+      dimensions: {
+        width: number;
+        height: number;
+      } | null;
+    } | null;
+  } | null;
+} | null;
+
+// Source: ../app/src/sanity/queries.ts
+// Variable: SITEMAP_QUERY
+// Query: *[  _type in ["servicePage", "project", "textPage", "blogPost"] && defined(slug.current) && seo.noIndex != true]{  _type,  _updatedAt,  "path": select(    _type == "blogPost" => "/blog/" + slug.current + "/",    _type == "servicePage" && kind == "zakelijk" => "/zakelijk/" + slug.current + "/",    "/" + slug.current + "/"  )}
+export type SITEMAP_QUERY_RESULT = Array<
+  | {
+      _type: "blogPost";
+      _updatedAt: string;
+      path: string;
     }
-  | null;
+  | {
+      _type: "project";
+      _updatedAt: string;
+      path: string;
+    }
+  | {
+      _type: "servicePage";
+      _updatedAt: string;
+      path: string;
+    }
+  | {
+      _type: "textPage";
+      _updatedAt: string;
+      path: string;
+    }
+>;
 
 // Source: ../app/src/sanity/queries.ts
 // Variable: FORM_QUERY
@@ -1251,7 +3499,7 @@ export type FORM_QUERY_RESULT = {
 
 // Source: ../app/src/sanity/queries.ts
 // Variable: FORM_SETTINGS_QUERY
-// Query: *[_type == "formGeneralSettings"][0]{    adminEmail,    fromEmail,    fromName,    mailLogo,    primaryColor,    textColor,    mailjetApiKey,    mailjetApiSecret,    confirmationSubject,    confirmationMessage,    recaptchaEnabled,    recaptchaSecretKey  }
+// Query: *[_type == "formGeneralSettings"][0]{    adminEmail,    fromEmail,    fromName,    mailLogo,    primaryColor,    textColor,    mailjetApiKey,    mailjetApiSecret,    confirmationSubject,    confirmationMessage,    recaptchaEnabled,    recaptchaSecretKey,    "siteName": *[_type == "siteSettings"][0].name  }
 export type FORM_SETTINGS_QUERY_RESULT = {
   adminEmail: string;
   fromEmail: string | null;
@@ -1271,18 +3519,29 @@ export type FORM_SETTINGS_QUERY_RESULT = {
   confirmationMessage: string | null;
   recaptchaEnabled: boolean | null;
   recaptchaSecretKey: string | null;
+  siteName: string | null;
 } | null;
 
 // Query TypeMap
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    '\n  *[_type == "page" && slug.current == $slug][0]{\n    _id,\n    title,\n    slug,\n    seo,\n    content[]{\n      ...,\n      primaryCta{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n},\n      secondaryCta{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n},\n      link{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n},\n      cta{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n},\n      highlight{\n        ...,\n        cta{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n      },\n      items[]{\n        ...,\n        link{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n},\n        cta{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n      },\n      // The form lives in its own document so several pages can share it, and\n      // the public half of the reCAPTCHA settings rides along \u2014 the secret\n      // stays server-side, in the submit route.\n      _type == "contactForm" => {\n        form->{\n  _id,\n  title,\n  showTitle,\n  mode,\n  fields[],\n  steps[]{\n    title,\n    fields[]\n  },\n  submitButtonText,\n  nextButtonText,\n  backButtonText,\n  successTitle,\n  successBody,\n  redirectAfterSubmit,\n  redirectLink{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n},\n        // The panel\'s own CTA is nested, so the top-level link projections do\n        // not reach it \u2014 an internal link would arrive as a bare reference.\n        aside{\n          ...,\n          cta{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n        },\n        "recaptcha": *[_type == "formGeneralSettings"][0]{\n          recaptchaEnabled,\n          recaptchaSiteKey\n        }\n      },\n      _type == "faqs" => {\n        ...,\n        faqs[]->{\n          ...,\n          link{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n        },\n        link{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n      }\n    }\n  }\n': PAGE_QUERY_RESULT;
-    '\n  *[_type == "page" && defined(slug.current)]{\n    "slug": slug.current,\n    _updatedAt\n  }\n': PAGE_SLUGS_QUERY_RESULT;
-    '\n  *[_id == "navigation"][0]{\n    navLeft[]{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n},\n    navRight[]{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n  }\n': NAVIGATION_QUERY_RESULT;
-    '\n  *[_id == "siteInformation"][0]{\n    name,\n    description,\n    language,\n    phone,\n    email,\n    address,\n    addressCountry,\n    badges,\n    // Only the URLs: they become sameAs in the structured data.\n    "socialLinks": socialLinks[].url,\n    "logoUrl": logo.asset->url\n  }\n': SITE_INFORMATION_QUERY_RESULT;
-    '\n  *[_id == "footer"][0]{\n    linkGroups[]{\n      title,\n      links[]{\n  ...,\n  internalLink->{\n    "slug": slug.current\n  }\n}\n    },\n    copyright\n  }\n': FOOTER_QUERY_RESULT;
+    '{\n  "site": *[_type == "siteSettings"][0]{\n    name,\n    description,\n    logo {\n  asset,\n  hotspot,\n  crop,\n  alt,\n  "dimensions": asset->metadata.dimensions{ width, height }\n},\n    language,\n    phone,\n    email,\n    address,\n    addressCountry,\n    places,\n    socialLinks,\n    googleReviewUrl,\n    reviewScore,\n    reviewCount\n  },\n  "navigation": *[_type == "navigation"][0]{ links[] {\n  label,\n  "href": select(\n    linkType == "external" => href,\n    internalLink->_type == "homePage" => "/",\n    internalLink->_type == "zakelijkPage" => "/zakelijk/",\n    internalLink->_type == "projectsPage" => "/projecten/",\n    internalLink->_type == "zakelijkProjectsPage" => "/zakelijk/projecten/",\n    internalLink->_type == "reviewsPage" => "/reviews/",\n    internalLink->_type == "blogPage" => "/blog/",\n    internalLink->_type == "contactPage" => "/contact/",\n    internalLink->_type == "blogPost" => "/blog/" + internalLink->slug.current + "/",\n    internalLink->_type == "servicePage" && internalLink->kind == "zakelijk" =>\n      "/zakelijk/" + internalLink->slug.current + "/",\n    defined(internalLink->slug.current) => "/" + internalLink->slug.current + "/"\n  )\n}, ctaLabel, menuOpen, menuClose },\n  "footer": *[_type == "footer"][0]{\n    groups[]{ _key, title, links[] {\n  label,\n  "href": select(\n    linkType == "external" => href,\n    internalLink->_type == "homePage" => "/",\n    internalLink->_type == "zakelijkPage" => "/zakelijk/",\n    internalLink->_type == "projectsPage" => "/projecten/",\n    internalLink->_type == "zakelijkProjectsPage" => "/zakelijk/projecten/",\n    internalLink->_type == "reviewsPage" => "/reviews/",\n    internalLink->_type == "blogPage" => "/blog/",\n    internalLink->_type == "contactPage" => "/contact/",\n    internalLink->_type == "blogPost" => "/blog/" + internalLink->slug.current + "/",\n    internalLink->_type == "servicePage" && internalLink->kind == "zakelijk" =>\n      "/zakelijk/" + internalLink->slug.current + "/",\n    defined(internalLink->slug.current) => "/" + internalLink->slug.current + "/"\n  )\n} },\n    contactTitle,\n    legalText,\n    legalLinks[] {\n  label,\n  "href": select(\n    linkType == "external" => href,\n    internalLink->_type == "homePage" => "/",\n    internalLink->_type == "zakelijkPage" => "/zakelijk/",\n    internalLink->_type == "projectsPage" => "/projecten/",\n    internalLink->_type == "zakelijkProjectsPage" => "/zakelijk/projecten/",\n    internalLink->_type == "reviewsPage" => "/reviews/",\n    internalLink->_type == "blogPage" => "/blog/",\n    internalLink->_type == "contactPage" => "/contact/",\n    internalLink->_type == "blogPost" => "/blog/" + internalLink->slug.current + "/",\n    internalLink->_type == "servicePage" && internalLink->kind == "zakelijk" =>\n      "/zakelijk/" + internalLink->slug.current + "/",\n    defined(internalLink->slug.current) => "/" + internalLink->slug.current + "/"\n  )\n}\n  },\n  "ui": *[_type == "uiText"][0]{ ..., breadcrumbServices {\n  label,\n  "href": select(\n    linkType == "external" => href,\n    internalLink->_type == "homePage" => "/",\n    internalLink->_type == "zakelijkPage" => "/zakelijk/",\n    internalLink->_type == "projectsPage" => "/projecten/",\n    internalLink->_type == "zakelijkProjectsPage" => "/zakelijk/projecten/",\n    internalLink->_type == "reviewsPage" => "/reviews/",\n    internalLink->_type == "blogPage" => "/blog/",\n    internalLink->_type == "contactPage" => "/contact/",\n    internalLink->_type == "blogPost" => "/blog/" + internalLink->slug.current + "/",\n    internalLink->_type == "servicePage" && internalLink->kind == "zakelijk" =>\n      "/zakelijk/" + internalLink->slug.current + "/",\n    defined(internalLink->slug.current) => "/" + internalLink->slug.current + "/"\n  )\n} },\n  "recaptcha": *[_type == "formGeneralSettings"][0]{ recaptchaEnabled, recaptchaSiteKey },\n  "zakelijkTitle": *[_type == "zakelijkPage"][0].title,\n  "projectsTitle": *[_type == "projectsPage"][0].title,\n  "zakelijkProjectsTitle": *[_type == "zakelijkProjectsPage"][0].title\n}': LAYOUT_QUERY_RESULT;
+    '*[_type == "homePage"][0]{\n  hero {\n  kicker,\n  titleBefore,\n  titleHighlight,\n  titleAfter,\n  lead,\n  primaryCta {\n  label,\n  "href": select(\n    linkType == "external" => href,\n    internalLink->_type == "homePage" => "/",\n    internalLink->_type == "zakelijkPage" => "/zakelijk/",\n    internalLink->_type == "projectsPage" => "/projecten/",\n    internalLink->_type == "zakelijkProjectsPage" => "/zakelijk/projecten/",\n    internalLink->_type == "reviewsPage" => "/reviews/",\n    internalLink->_type == "blogPage" => "/blog/",\n    internalLink->_type == "contactPage" => "/contact/",\n    internalLink->_type == "blogPost" => "/blog/" + internalLink->slug.current + "/",\n    internalLink->_type == "servicePage" && internalLink->kind == "zakelijk" =>\n      "/zakelijk/" + internalLink->slug.current + "/",\n    defined(internalLink->slug.current) => "/" + internalLink->slug.current + "/"\n  )\n},\n  usps,\n  image {\n  asset,\n  hotspot,\n  crop,\n  alt,\n  "dimensions": asset->metadata.dimensions{ width, height }\n},\n  imageSmall {\n  asset,\n  hotspot,\n  crop,\n  alt,\n  "dimensions": asset->metadata.dimensions{ width, height }\n},\n  badge\n},\n  paths[]{ _key, image {\n  asset,\n  hotspot,\n  crop,\n  alt,\n  "dimensions": asset->metadata.dimensions{ width, height }\n}, tag, title, text, link {\n  label,\n  "href": select(\n    linkType == "external" => href,\n    internalLink->_type == "homePage" => "/",\n    internalLink->_type == "zakelijkPage" => "/zakelijk/",\n    internalLink->_type == "projectsPage" => "/projecten/",\n    internalLink->_type == "zakelijkProjectsPage" => "/zakelijk/projecten/",\n    internalLink->_type == "reviewsPage" => "/reviews/",\n    internalLink->_type == "blogPage" => "/blog/",\n    internalLink->_type == "contactPage" => "/contact/",\n    internalLink->_type == "blogPost" => "/blog/" + internalLink->slug.current + "/",\n    internalLink->_type == "servicePage" && internalLink->kind == "zakelijk" =>\n      "/zakelijk/" + internalLink->slug.current + "/",\n    defined(internalLink->slug.current) => "/" + internalLink->slug.current + "/"\n  )\n} },\n  services{ head { kicker, title, lead }, cards[] { _key, image {\n  asset,\n  hotspot,\n  crop,\n  alt,\n  "dimensions": asset->metadata.dimensions{ width, height }\n}, title, text, link {\n  label,\n  "href": select(\n    linkType == "external" => href,\n    internalLink->_type == "homePage" => "/",\n    internalLink->_type == "zakelijkPage" => "/zakelijk/",\n    internalLink->_type == "projectsPage" => "/projecten/",\n    internalLink->_type == "zakelijkProjectsPage" => "/zakelijk/projecten/",\n    internalLink->_type == "reviewsPage" => "/reviews/",\n    internalLink->_type == "blogPage" => "/blog/",\n    internalLink->_type == "contactPage" => "/contact/",\n    internalLink->_type == "blogPost" => "/blog/" + internalLink->slug.current + "/",\n    internalLink->_type == "servicePage" && internalLink->kind == "zakelijk" =>\n      "/zakelijk/" + internalLink->slug.current + "/",\n    defined(internalLink->slug.current) => "/" + internalLink->slug.current + "/"\n  )\n} } },\n  werkwijze { kicker, title, lead, steps[]{ _key, title, text } },\n  zakelijk{\n    kicker,\n    title,\n    text,\n    points,\n    stats[]{ _key, value, suffix, label },\n    primaryCta {\n  label,\n  "href": select(\n    linkType == "external" => href,\n    internalLink->_type == "homePage" => "/",\n    internalLink->_type == "zakelijkPage" => "/zakelijk/",\n    internalLink->_type == "projectsPage" => "/projecten/",\n    internalLink->_type == "zakelijkProjectsPage" => "/zakelijk/projecten/",\n    internalLink->_type == "reviewsPage" => "/reviews/",\n    internalLink->_type == "blogPage" => "/blog/",\n    internalLink->_type == "contactPage" => "/contact/",\n    internalLink->_type == "blogPost" => "/blog/" + internalLink->slug.current + "/",\n    internalLink->_type == "servicePage" && internalLink->kind == "zakelijk" =>\n      "/zakelijk/" + internalLink->slug.current + "/",\n    defined(internalLink->slug.current) => "/" + internalLink->slug.current + "/"\n  )\n},\n    secondaryCta {\n  label,\n  "href": select(\n    linkType == "external" => href,\n    internalLink->_type == "homePage" => "/",\n    internalLink->_type == "zakelijkPage" => "/zakelijk/",\n    internalLink->_type == "projectsPage" => "/projecten/",\n    internalLink->_type == "zakelijkProjectsPage" => "/zakelijk/projecten/",\n    internalLink->_type == "reviewsPage" => "/reviews/",\n    internalLink->_type == "blogPage" => "/blog/",\n    internalLink->_type == "contactPage" => "/contact/",\n    internalLink->_type == "blogPost" => "/blog/" + internalLink->slug.current + "/",\n    internalLink->_type == "servicePage" && internalLink->kind == "zakelijk" =>\n      "/zakelijk/" + internalLink->slug.current + "/",\n    defined(internalLink->slug.current) => "/" + internalLink->slug.current + "/"\n  )\n},\n    photos[] {\n  asset,\n  hotspot,\n  crop,\n  alt,\n  "dimensions": asset->metadata.dimensions{ width, height }\n}\n  },\n  projects{ head { kicker, title, lead }, tiles[] { _key, image {\n  asset,\n  hotspot,\n  crop,\n  alt,\n  "dimensions": asset->metadata.dimensions{ width, height }\n}, title, text, size } },\n  reviews{ head { kicker, title, lead }, items[]-> { _id, name, initials, audience, location, service, text } },\n  werkgebied{ kicker, title, text, image {\n  asset,\n  hotspot,\n  crop,\n  alt,\n  "dimensions": asset->metadata.dimensions{ width, height }\n} },\n  cta {\n  title,\n  text,\n  messagePlaceholder,\n  "form": coalesce(form, *[_type == "formGeneralSettings"][0].defaultForm)-> {\n  _id,\n  title,\n  showTitle,\n  mode,\n  fields[] {\n  label,\n  name,\n  type,\n  isRequired,\n  width,\n  placeholder,\n  helpText,\n  defaultValue,\n  selectOptions,\n  radioOptions,\n  checkboxOptions\n},\n  steps[]{ title, fields[] {\n  label,\n  name,\n  type,\n  isRequired,\n  width,\n  placeholder,\n  helpText,\n  defaultValue,\n  selectOptions,\n  radioOptions,\n  checkboxOptions\n} },\n  submitButtonText,\n  nextButtonText,\n  backButtonText,\n  successTitle,\n  successBody,\n  redirectAfterSubmit,\n  redirectLink {\n  label,\n  "href": select(\n    linkType == "external" => href,\n    internalLink->_type == "homePage" => "/",\n    internalLink->_type == "zakelijkPage" => "/zakelijk/",\n    internalLink->_type == "projectsPage" => "/projecten/",\n    internalLink->_type == "zakelijkProjectsPage" => "/zakelijk/projecten/",\n    internalLink->_type == "reviewsPage" => "/reviews/",\n    internalLink->_type == "blogPage" => "/blog/",\n    internalLink->_type == "contactPage" => "/contact/",\n    internalLink->_type == "blogPost" => "/blog/" + internalLink->slug.current + "/",\n    internalLink->_type == "servicePage" && internalLink->kind == "zakelijk" =>\n      "/zakelijk/" + internalLink->slug.current + "/",\n    defined(internalLink->slug.current) => "/" + internalLink->slug.current + "/"\n  )\n}\n}\n},\n  seo { title, description, noIndex, ogImage {\n  asset,\n  hotspot,\n  crop,\n  alt,\n  "dimensions": asset->metadata.dimensions{ width, height }\n} }\n}': HOME_QUERY_RESULT;
+    '*[\n  slug.current == $slug &&\n  (_type in ["project", "textPage"] || (_type == "servicePage" && kind != "zakelijk"))\n][0]{\n  _type == "servicePage" => {\n  _type,\n  kind,\n  title,\n  breadcrumb,\n  "path": select(\n  kind == "zakelijk" => "/zakelijk/" + slug.current + "/",\n  "/" + slug.current + "/"\n),\n  parent->{ title, breadcrumb, "path": select(\n  kind == "zakelijk" => "/zakelijk/" + slug.current + "/",\n  "/" + slug.current + "/"\n) },\n  hero {\n  kicker,\n  titleBefore,\n  titleHighlight,\n  titleAfter,\n  lead,\n  primaryCta {\n  label,\n  "href": select(\n    linkType == "external" => href,\n    internalLink->_type == "homePage" => "/",\n    internalLink->_type == "zakelijkPage" => "/zakelijk/",\n    internalLink->_type == "projectsPage" => "/projecten/",\n    internalLink->_type == "zakelijkProjectsPage" => "/zakelijk/projecten/",\n    internalLink->_type == "reviewsPage" => "/reviews/",\n    internalLink->_type == "blogPage" => "/blog/",\n    internalLink->_type == "contactPage" => "/contact/",\n    internalLink->_type == "blogPost" => "/blog/" + internalLink->slug.current + "/",\n    internalLink->_type == "servicePage" && internalLink->kind == "zakelijk" =>\n      "/zakelijk/" + internalLink->slug.current + "/",\n    defined(internalLink->slug.current) => "/" + internalLink->slug.current + "/"\n  )\n},\n  usps,\n  image {\n  asset,\n  hotspot,\n  crop,\n  alt,\n  "dimensions": asset->metadata.dimensions{ width, height }\n},\n  imageSmall {\n  asset,\n  hotspot,\n  crop,\n  alt,\n  "dimensions": asset->metadata.dimensions{ width, height }\n},\n  badge\n},\n  nearby { kicker, title, text, places },\n  types{ head { kicker, title, lead }, items[] { _key, image {\n  asset,\n  hotspot,\n  crop,\n  alt,\n  "dimensions": asset->metadata.dimensions{ width, height }\n}, title, text, link {\n  label,\n  "href": select(\n    linkType == "external" => href,\n    internalLink->_type == "homePage" => "/",\n    internalLink->_type == "zakelijkPage" => "/zakelijk/",\n    internalLink->_type == "projectsPage" => "/projecten/",\n    internalLink->_type == "zakelijkProjectsPage" => "/zakelijk/projecten/",\n    internalLink->_type == "reviewsPage" => "/reviews/",\n    internalLink->_type == "blogPage" => "/blog/",\n    internalLink->_type == "contactPage" => "/contact/",\n    internalLink->_type == "blogPost" => "/blog/" + internalLink->slug.current + "/",\n    internalLink->_type == "servicePage" && internalLink->kind == "zakelijk" =>\n      "/zakelijk/" + internalLink->slug.current + "/",\n    defined(internalLink->slug.current) => "/" + internalLink->slug.current + "/"\n  )\n} } },\n  werkwijze { kicker, title, lead, steps[]{ _key, title, text } },\n  materials{ kicker, title, text, points, ctaLabel, photos[] {\n  asset,\n  hotspot,\n  crop,\n  alt,\n  "dimensions": asset->metadata.dimensions{ width, height }\n} },\n  projects{ head { kicker, title, lead }, tiles[] { _key, image {\n  asset,\n  hotspot,\n  crop,\n  alt,\n  "dimensions": asset->metadata.dimensions{ width, height }\n}, title, text, size }, link {\n  label,\n  "href": select(\n    linkType == "external" => href,\n    internalLink->_type == "homePage" => "/",\n    internalLink->_type == "zakelijkPage" => "/zakelijk/",\n    internalLink->_type == "projectsPage" => "/projecten/",\n    internalLink->_type == "zakelijkProjectsPage" => "/zakelijk/projecten/",\n    internalLink->_type == "reviewsPage" => "/reviews/",\n    internalLink->_type == "blogPage" => "/blog/",\n    internalLink->_type == "contactPage" => "/contact/",\n    internalLink->_type == "blogPost" => "/blog/" + internalLink->slug.current + "/",\n    internalLink->_type == "servicePage" && internalLink->kind == "zakelijk" =>\n      "/zakelijk/" + internalLink->slug.current + "/",\n    defined(internalLink->slug.current) => "/" + internalLink->slug.current + "/"\n  )\n} },\n  faq { kicker, title, items[]{ _key, question, answer, open } },\n  cta {\n  title,\n  text,\n  messagePlaceholder,\n  "form": coalesce(form, *[_type == "formGeneralSettings"][0].defaultForm)-> {\n  _id,\n  title,\n  showTitle,\n  mode,\n  fields[] {\n  label,\n  name,\n  type,\n  isRequired,\n  width,\n  placeholder,\n  helpText,\n  defaultValue,\n  selectOptions,\n  radioOptions,\n  checkboxOptions\n},\n  steps[]{ title, fields[] {\n  label,\n  name,\n  type,\n  isRequired,\n  width,\n  placeholder,\n  helpText,\n  defaultValue,\n  selectOptions,\n  radioOptions,\n  checkboxOptions\n} },\n  submitButtonText,\n  nextButtonText,\n  backButtonText,\n  successTitle,\n  successBody,\n  redirectAfterSubmit,\n  redirectLink {\n  label,\n  "href": select(\n    linkType == "external" => href,\n    internalLink->_type == "homePage" => "/",\n    internalLink->_type == "zakelijkPage" => "/zakelijk/",\n    internalLink->_type == "projectsPage" => "/projecten/",\n    internalLink->_type == "zakelijkProjectsPage" => "/zakelijk/projecten/",\n    internalLink->_type == "reviewsPage" => "/reviews/",\n    internalLink->_type == "blogPage" => "/blog/",\n    internalLink->_type == "contactPage" => "/contact/",\n    internalLink->_type == "blogPost" => "/blog/" + internalLink->slug.current + "/",\n    internalLink->_type == "servicePage" && internalLink->kind == "zakelijk" =>\n      "/zakelijk/" + internalLink->slug.current + "/",\n    defined(internalLink->slug.current) => "/" + internalLink->slug.current + "/"\n  )\n}\n}\n},\n  seo { title, description, noIndex, ogImage {\n  asset,\n  hotspot,\n  crop,\n  alt,\n  "dimensions": asset->metadata.dimensions{ width, height }\n} }\n},\n  _type == "project" => {\n  _type,\n  title,\n  date,\n  image {\n  asset,\n  hotspot,\n  crop,\n  alt,\n  "dimensions": asset->metadata.dimensions{ width, height }\n},\n  subline,\n  meta[]{ _key, label, value },\n  intro,\n  works,\n  gallery[]{ _key, image {\n  asset,\n  hotspot,\n  crop,\n  alt,\n  "dimensions": asset->metadata.dimensions{ width, height }\n}, wide },\n  category->{\n    title,\n    isZakelijk,\n    relatedPage->{ title, breadcrumb, "path": select(\n  kind == "zakelijk" => "/zakelijk/" + slug.current + "/",\n  "/" + slug.current + "/"\n) }\n  },\n  "cta": *[_type == "formGeneralSettings"][0]{ "form": defaultForm-> {\n  _id,\n  title,\n  showTitle,\n  mode,\n  fields[] {\n  label,\n  name,\n  type,\n  isRequired,\n  width,\n  placeholder,\n  helpText,\n  defaultValue,\n  selectOptions,\n  radioOptions,\n  checkboxOptions\n},\n  steps[]{ title, fields[] {\n  label,\n  name,\n  type,\n  isRequired,\n  width,\n  placeholder,\n  helpText,\n  defaultValue,\n  selectOptions,\n  radioOptions,\n  checkboxOptions\n} },\n  submitButtonText,\n  nextButtonText,\n  backButtonText,\n  successTitle,\n  successBody,\n  redirectAfterSubmit,\n  redirectLink {\n  label,\n  "href": select(\n    linkType == "external" => href,\n    internalLink->_type == "homePage" => "/",\n    internalLink->_type == "zakelijkPage" => "/zakelijk/",\n    internalLink->_type == "projectsPage" => "/projecten/",\n    internalLink->_type == "zakelijkProjectsPage" => "/zakelijk/projecten/",\n    internalLink->_type == "reviewsPage" => "/reviews/",\n    internalLink->_type == "blogPage" => "/blog/",\n    internalLink->_type == "contactPage" => "/contact/",\n    internalLink->_type == "blogPost" => "/blog/" + internalLink->slug.current + "/",\n    internalLink->_type == "servicePage" && internalLink->kind == "zakelijk" =>\n      "/zakelijk/" + internalLink->slug.current + "/",\n    defined(internalLink->slug.current) => "/" + internalLink->slug.current + "/"\n  )\n}\n} },\n  seo { title, description, noIndex, ogImage {\n  asset,\n  hotspot,\n  crop,\n  alt,\n  "dimensions": asset->metadata.dimensions{ width, height }\n} }\n},\n  _type == "textPage" => { _type, title, breadcrumb, body, seo { title, description, noIndex, ogImage {\n  asset,\n  hotspot,\n  crop,\n  alt,\n  "dimensions": asset->metadata.dimensions{ width, height }\n} } }\n}': ROOT_PAGE_QUERY_RESULT;
+    '*[\n  defined(slug.current) &&\n  (_type in ["project", "textPage"] || (_type == "servicePage" && kind != "zakelijk"))\n].slug.current': ROOT_SLUGS_QUERY_RESULT;
+    '*[_type == "servicePage" && kind == "zakelijk" && slug.current == $slug][0] {\n  _type,\n  kind,\n  title,\n  breadcrumb,\n  "path": select(\n  kind == "zakelijk" => "/zakelijk/" + slug.current + "/",\n  "/" + slug.current + "/"\n),\n  parent->{ title, breadcrumb, "path": select(\n  kind == "zakelijk" => "/zakelijk/" + slug.current + "/",\n  "/" + slug.current + "/"\n) },\n  hero {\n  kicker,\n  titleBefore,\n  titleHighlight,\n  titleAfter,\n  lead,\n  primaryCta {\n  label,\n  "href": select(\n    linkType == "external" => href,\n    internalLink->_type == "homePage" => "/",\n    internalLink->_type == "zakelijkPage" => "/zakelijk/",\n    internalLink->_type == "projectsPage" => "/projecten/",\n    internalLink->_type == "zakelijkProjectsPage" => "/zakelijk/projecten/",\n    internalLink->_type == "reviewsPage" => "/reviews/",\n    internalLink->_type == "blogPage" => "/blog/",\n    internalLink->_type == "contactPage" => "/contact/",\n    internalLink->_type == "blogPost" => "/blog/" + internalLink->slug.current + "/",\n    internalLink->_type == "servicePage" && internalLink->kind == "zakelijk" =>\n      "/zakelijk/" + internalLink->slug.current + "/",\n    defined(internalLink->slug.current) => "/" + internalLink->slug.current + "/"\n  )\n},\n  usps,\n  image {\n  asset,\n  hotspot,\n  crop,\n  alt,\n  "dimensions": asset->metadata.dimensions{ width, height }\n},\n  imageSmall {\n  asset,\n  hotspot,\n  crop,\n  alt,\n  "dimensions": asset->metadata.dimensions{ width, height }\n},\n  badge\n},\n  nearby { kicker, title, text, places },\n  types{ head { kicker, title, lead }, items[] { _key, image {\n  asset,\n  hotspot,\n  crop,\n  alt,\n  "dimensions": asset->metadata.dimensions{ width, height }\n}, title, text, link {\n  label,\n  "href": select(\n    linkType == "external" => href,\n    internalLink->_type == "homePage" => "/",\n    internalLink->_type == "zakelijkPage" => "/zakelijk/",\n    internalLink->_type == "projectsPage" => "/projecten/",\n    internalLink->_type == "zakelijkProjectsPage" => "/zakelijk/projecten/",\n    internalLink->_type == "reviewsPage" => "/reviews/",\n    internalLink->_type == "blogPage" => "/blog/",\n    internalLink->_type == "contactPage" => "/contact/",\n    internalLink->_type == "blogPost" => "/blog/" + internalLink->slug.current + "/",\n    internalLink->_type == "servicePage" && internalLink->kind == "zakelijk" =>\n      "/zakelijk/" + internalLink->slug.current + "/",\n    defined(internalLink->slug.current) => "/" + internalLink->slug.current + "/"\n  )\n} } },\n  werkwijze { kicker, title, lead, steps[]{ _key, title, text } },\n  materials{ kicker, title, text, points, ctaLabel, photos[] {\n  asset,\n  hotspot,\n  crop,\n  alt,\n  "dimensions": asset->metadata.dimensions{ width, height }\n} },\n  projects{ head { kicker, title, lead }, tiles[] { _key, image {\n  asset,\n  hotspot,\n  crop,\n  alt,\n  "dimensions": asset->metadata.dimensions{ width, height }\n}, title, text, size }, link {\n  label,\n  "href": select(\n    linkType == "external" => href,\n    internalLink->_type == "homePage" => "/",\n    internalLink->_type == "zakelijkPage" => "/zakelijk/",\n    internalLink->_type == "projectsPage" => "/projecten/",\n    internalLink->_type == "zakelijkProjectsPage" => "/zakelijk/projecten/",\n    internalLink->_type == "reviewsPage" => "/reviews/",\n    internalLink->_type == "blogPage" => "/blog/",\n    internalLink->_type == "contactPage" => "/contact/",\n    internalLink->_type == "blogPost" => "/blog/" + internalLink->slug.current + "/",\n    internalLink->_type == "servicePage" && internalLink->kind == "zakelijk" =>\n      "/zakelijk/" + internalLink->slug.current + "/",\n    defined(internalLink->slug.current) => "/" + internalLink->slug.current + "/"\n  )\n} },\n  faq { kicker, title, items[]{ _key, question, answer, open } },\n  cta {\n  title,\n  text,\n  messagePlaceholder,\n  "form": coalesce(form, *[_type == "formGeneralSettings"][0].defaultForm)-> {\n  _id,\n  title,\n  showTitle,\n  mode,\n  fields[] {\n  label,\n  name,\n  type,\n  isRequired,\n  width,\n  placeholder,\n  helpText,\n  defaultValue,\n  selectOptions,\n  radioOptions,\n  checkboxOptions\n},\n  steps[]{ title, fields[] {\n  label,\n  name,\n  type,\n  isRequired,\n  width,\n  placeholder,\n  helpText,\n  defaultValue,\n  selectOptions,\n  radioOptions,\n  checkboxOptions\n} },\n  submitButtonText,\n  nextButtonText,\n  backButtonText,\n  successTitle,\n  successBody,\n  redirectAfterSubmit,\n  redirectLink {\n  label,\n  "href": select(\n    linkType == "external" => href,\n    internalLink->_type == "homePage" => "/",\n    internalLink->_type == "zakelijkPage" => "/zakelijk/",\n    internalLink->_type == "projectsPage" => "/projecten/",\n    internalLink->_type == "zakelijkProjectsPage" => "/zakelijk/projecten/",\n    internalLink->_type == "reviewsPage" => "/reviews/",\n    internalLink->_type == "blogPage" => "/blog/",\n    internalLink->_type == "contactPage" => "/contact/",\n    internalLink->_type == "blogPost" => "/blog/" + internalLink->slug.current + "/",\n    internalLink->_type == "servicePage" && internalLink->kind == "zakelijk" =>\n      "/zakelijk/" + internalLink->slug.current + "/",\n    defined(internalLink->slug.current) => "/" + internalLink->slug.current + "/"\n  )\n}\n}\n},\n  seo { title, description, noIndex, ogImage {\n  asset,\n  hotspot,\n  crop,\n  alt,\n  "dimensions": asset->metadata.dimensions{ width, height }\n} }\n}': ZAKELIJK_SERVICE_QUERY_RESULT;
+    '*[_type == "servicePage" && kind == "zakelijk" && defined(slug.current)].slug.current': ZAKELIJK_SLUGS_QUERY_RESULT;
+    '*[_type == "zakelijkPage"][0]{\n  title,\n  hero {\n  kicker,\n  titleBefore,\n  titleHighlight,\n  titleAfter,\n  lead,\n  primaryCta {\n  label,\n  "href": select(\n    linkType == "external" => href,\n    internalLink->_type == "homePage" => "/",\n    internalLink->_type == "zakelijkPage" => "/zakelijk/",\n    internalLink->_type == "projectsPage" => "/projecten/",\n    internalLink->_type == "zakelijkProjectsPage" => "/zakelijk/projecten/",\n    internalLink->_type == "reviewsPage" => "/reviews/",\n    internalLink->_type == "blogPage" => "/blog/",\n    internalLink->_type == "contactPage" => "/contact/",\n    internalLink->_type == "blogPost" => "/blog/" + internalLink->slug.current + "/",\n    internalLink->_type == "servicePage" && internalLink->kind == "zakelijk" =>\n      "/zakelijk/" + internalLink->slug.current + "/",\n    defined(internalLink->slug.current) => "/" + internalLink->slug.current + "/"\n  )\n},\n  usps,\n  image {\n  asset,\n  hotspot,\n  crop,\n  alt,\n  "dimensions": asset->metadata.dimensions{ width, height }\n},\n  imageSmall {\n  asset,\n  hotspot,\n  crop,\n  alt,\n  "dimensions": asset->metadata.dimensions{ width, height }\n},\n  badge\n},\n  stats[]{ _key, value, label },\n  audiences{ head { kicker, title, lead }, cards[] { _key, image {\n  asset,\n  hotspot,\n  crop,\n  alt,\n  "dimensions": asset->metadata.dimensions{ width, height }\n}, title, text, link {\n  label,\n  "href": select(\n    linkType == "external" => href,\n    internalLink->_type == "homePage" => "/",\n    internalLink->_type == "zakelijkPage" => "/zakelijk/",\n    internalLink->_type == "projectsPage" => "/projecten/",\n    internalLink->_type == "zakelijkProjectsPage" => "/zakelijk/projecten/",\n    internalLink->_type == "reviewsPage" => "/reviews/",\n    internalLink->_type == "blogPage" => "/blog/",\n    internalLink->_type == "contactPage" => "/contact/",\n    internalLink->_type == "blogPost" => "/blog/" + internalLink->slug.current + "/",\n    internalLink->_type == "servicePage" && internalLink->kind == "zakelijk" =>\n      "/zakelijk/" + internalLink->slug.current + "/",\n    defined(internalLink->slug.current) => "/" + internalLink->slug.current + "/"\n  )\n} } },\n  services{ head { kicker, title, lead }, items },\n  werkwijze { kicker, title, lead, steps[]{ _key, title, text } },\n  projects{ head { kicker, title, lead }, items[]-> {\n  _id,\n  "href": "/" + slug.current + "/",\n  "title": coalesce(cardTitle, title),\n  "tag": cardTag,\n  "text": cardText,\n  "image": coalesce(cardImage, image) {\n  asset,\n  hotspot,\n  crop,\n  alt,\n  "dimensions": asset->metadata.dimensions{ width, height }\n},\n  "stats": cardStats[]{ _key, value, label },\n  audience\n}, link {\n  label,\n  "href": select(\n    linkType == "external" => href,\n    internalLink->_type == "homePage" => "/",\n    internalLink->_type == "zakelijkPage" => "/zakelijk/",\n    internalLink->_type == "projectsPage" => "/projecten/",\n    internalLink->_type == "zakelijkProjectsPage" => "/zakelijk/projecten/",\n    internalLink->_type == "reviewsPage" => "/reviews/",\n    internalLink->_type == "blogPage" => "/blog/",\n    internalLink->_type == "contactPage" => "/contact/",\n    internalLink->_type == "blogPost" => "/blog/" + internalLink->slug.current + "/",\n    internalLink->_type == "servicePage" && internalLink->kind == "zakelijk" =>\n      "/zakelijk/" + internalLink->slug.current + "/",\n    defined(internalLink->slug.current) => "/" + internalLink->slug.current + "/"\n  )\n} },\n  trust[]{ _key, icon, title, text },\n  faq { kicker, title, items[]{ _key, question, answer, open } },\n  cta {\n  title,\n  text,\n  messagePlaceholder,\n  "form": coalesce(form, *[_type == "formGeneralSettings"][0].defaultForm)-> {\n  _id,\n  title,\n  showTitle,\n  mode,\n  fields[] {\n  label,\n  name,\n  type,\n  isRequired,\n  width,\n  placeholder,\n  helpText,\n  defaultValue,\n  selectOptions,\n  radioOptions,\n  checkboxOptions\n},\n  steps[]{ title, fields[] {\n  label,\n  name,\n  type,\n  isRequired,\n  width,\n  placeholder,\n  helpText,\n  defaultValue,\n  selectOptions,\n  radioOptions,\n  checkboxOptions\n} },\n  submitButtonText,\n  nextButtonText,\n  backButtonText,\n  successTitle,\n  successBody,\n  redirectAfterSubmit,\n  redirectLink {\n  label,\n  "href": select(\n    linkType == "external" => href,\n    internalLink->_type == "homePage" => "/",\n    internalLink->_type == "zakelijkPage" => "/zakelijk/",\n    internalLink->_type == "projectsPage" => "/projecten/",\n    internalLink->_type == "zakelijkProjectsPage" => "/zakelijk/projecten/",\n    internalLink->_type == "reviewsPage" => "/reviews/",\n    internalLink->_type == "blogPage" => "/blog/",\n    internalLink->_type == "contactPage" => "/contact/",\n    internalLink->_type == "blogPost" => "/blog/" + internalLink->slug.current + "/",\n    internalLink->_type == "servicePage" && internalLink->kind == "zakelijk" =>\n      "/zakelijk/" + internalLink->slug.current + "/",\n    defined(internalLink->slug.current) => "/" + internalLink->slug.current + "/"\n  )\n}\n}\n},\n  seo { title, description, noIndex, ogImage {\n  asset,\n  hotspot,\n  crop,\n  alt,\n  "dimensions": asset->metadata.dimensions{ width, height }\n} }\n}': ZAKELIJK_PAGE_QUERY_RESULT;
+    '{\n  "page": *[_type == "projectsPage"][0]{ title, intro { kicker, title, text }, filterAll, cta {\n  title,\n  text,\n  messagePlaceholder,\n  "form": coalesce(form, *[_type == "formGeneralSettings"][0].defaultForm)-> {\n  _id,\n  title,\n  showTitle,\n  mode,\n  fields[] {\n  label,\n  name,\n  type,\n  isRequired,\n  width,\n  placeholder,\n  helpText,\n  defaultValue,\n  selectOptions,\n  radioOptions,\n  checkboxOptions\n},\n  steps[]{ title, fields[] {\n  label,\n  name,\n  type,\n  isRequired,\n  width,\n  placeholder,\n  helpText,\n  defaultValue,\n  selectOptions,\n  radioOptions,\n  checkboxOptions\n} },\n  submitButtonText,\n  nextButtonText,\n  backButtonText,\n  successTitle,\n  successBody,\n  redirectAfterSubmit,\n  redirectLink {\n  label,\n  "href": select(\n    linkType == "external" => href,\n    internalLink->_type == "homePage" => "/",\n    internalLink->_type == "zakelijkPage" => "/zakelijk/",\n    internalLink->_type == "projectsPage" => "/projecten/",\n    internalLink->_type == "zakelijkProjectsPage" => "/zakelijk/projecten/",\n    internalLink->_type == "reviewsPage" => "/reviews/",\n    internalLink->_type == "blogPage" => "/blog/",\n    internalLink->_type == "contactPage" => "/contact/",\n    internalLink->_type == "blogPost" => "/blog/" + internalLink->slug.current + "/",\n    internalLink->_type == "servicePage" && internalLink->kind == "zakelijk" =>\n      "/zakelijk/" + internalLink->slug.current + "/",\n    defined(internalLink->slug.current) => "/" + internalLink->slug.current + "/"\n  )\n}\n}\n}, seo { title, description, noIndex, ogImage {\n  asset,\n  hotspot,\n  crop,\n  alt,\n  "dimensions": asset->metadata.dimensions{ width, height }\n} } },\n  "categories": *[_type == "category" && isZakelijk != true] | order(order asc){ _id, title },\n  "projects": *[_type == "project" && category->isZakelijk != true] | order(date desc) {\n  _id,\n  title,\n  "href": "/" + slug.current + "/",\n  image {\n  asset,\n  hotspot,\n  crop,\n  alt,\n  "dimensions": asset->metadata.dimensions{ width, height }\n},\n  "category": category->{ _id, title }\n}\n}': PROJECTS_PAGE_QUERY_RESULT;
+    '{\n  "page": *[_type == "zakelijkProjectsPage"][0]{\n    title,\n    breadcrumb,\n    intro { kicker, title, text },\n    filterAll,\n    filterVve,\n    filterCorporatie,\n    filterBedrijf,\n    soonTitle,\n    soonText,\n    cta {\n  title,\n  text,\n  messagePlaceholder,\n  "form": coalesce(form, *[_type == "formGeneralSettings"][0].defaultForm)-> {\n  _id,\n  title,\n  showTitle,\n  mode,\n  fields[] {\n  label,\n  name,\n  type,\n  isRequired,\n  width,\n  placeholder,\n  helpText,\n  defaultValue,\n  selectOptions,\n  radioOptions,\n  checkboxOptions\n},\n  steps[]{ title, fields[] {\n  label,\n  name,\n  type,\n  isRequired,\n  width,\n  placeholder,\n  helpText,\n  defaultValue,\n  selectOptions,\n  radioOptions,\n  checkboxOptions\n} },\n  submitButtonText,\n  nextButtonText,\n  backButtonText,\n  successTitle,\n  successBody,\n  redirectAfterSubmit,\n  redirectLink {\n  label,\n  "href": select(\n    linkType == "external" => href,\n    internalLink->_type == "homePage" => "/",\n    internalLink->_type == "zakelijkPage" => "/zakelijk/",\n    internalLink->_type == "projectsPage" => "/projecten/",\n    internalLink->_type == "zakelijkProjectsPage" => "/zakelijk/projecten/",\n    internalLink->_type == "reviewsPage" => "/reviews/",\n    internalLink->_type == "blogPage" => "/blog/",\n    internalLink->_type == "contactPage" => "/contact/",\n    internalLink->_type == "blogPost" => "/blog/" + internalLink->slug.current + "/",\n    internalLink->_type == "servicePage" && internalLink->kind == "zakelijk" =>\n      "/zakelijk/" + internalLink->slug.current + "/",\n    defined(internalLink->slug.current) => "/" + internalLink->slug.current + "/"\n  )\n}\n}\n},\n    seo { title, description, noIndex, ogImage {\n  asset,\n  hotspot,\n  crop,\n  alt,\n  "dimensions": asset->metadata.dimensions{ width, height }\n} }\n  },\n  "projects": *[_type == "project" && category->isZakelijk == true] | order(date desc) {\n  _id,\n  "href": "/" + slug.current + "/",\n  "title": coalesce(cardTitle, title),\n  "tag": cardTag,\n  "text": cardText,\n  "image": coalesce(cardImage, image) {\n  asset,\n  hotspot,\n  crop,\n  alt,\n  "dimensions": asset->metadata.dimensions{ width, height }\n},\n  "stats": cardStats[]{ _key, value, label },\n  audience\n}\n}': ZAKELIJK_PROJECTS_PAGE_QUERY_RESULT;
+    '{\n  "page": *[_type == "reviewsPage"][0]{\n    title,\n    intro { kicker, title, text },\n    scoreCaption,\n    googleLabel,\n    filterAll,\n    leave,\n    cta {\n  title,\n  text,\n  messagePlaceholder,\n  "form": coalesce(form, *[_type == "formGeneralSettings"][0].defaultForm)-> {\n  _id,\n  title,\n  showTitle,\n  mode,\n  fields[] {\n  label,\n  name,\n  type,\n  isRequired,\n  width,\n  placeholder,\n  helpText,\n  defaultValue,\n  selectOptions,\n  radioOptions,\n  checkboxOptions\n},\n  steps[]{ title, fields[] {\n  label,\n  name,\n  type,\n  isRequired,\n  width,\n  placeholder,\n  helpText,\n  defaultValue,\n  selectOptions,\n  radioOptions,\n  checkboxOptions\n} },\n  submitButtonText,\n  nextButtonText,\n  backButtonText,\n  successTitle,\n  successBody,\n  redirectAfterSubmit,\n  redirectLink {\n  label,\n  "href": select(\n    linkType == "external" => href,\n    internalLink->_type == "homePage" => "/",\n    internalLink->_type == "zakelijkPage" => "/zakelijk/",\n    internalLink->_type == "projectsPage" => "/projecten/",\n    internalLink->_type == "zakelijkProjectsPage" => "/zakelijk/projecten/",\n    internalLink->_type == "reviewsPage" => "/reviews/",\n    internalLink->_type == "blogPage" => "/blog/",\n    internalLink->_type == "contactPage" => "/contact/",\n    internalLink->_type == "blogPost" => "/blog/" + internalLink->slug.current + "/",\n    internalLink->_type == "servicePage" && internalLink->kind == "zakelijk" =>\n      "/zakelijk/" + internalLink->slug.current + "/",\n    defined(internalLink->slug.current) => "/" + internalLink->slug.current + "/"\n  )\n}\n}\n},\n    seo { title, description, noIndex, ogImage {\n  asset,\n  hotspot,\n  crop,\n  alt,\n  "dimensions": asset->metadata.dimensions{ width, height }\n} }\n  },\n  "reviews": *[_type == "review"] | order(order asc) { _id, name, initials, audience, location, service, text }\n}': REVIEWS_PAGE_QUERY_RESULT;
+    '{\n  "page": *[_type == "blogPage"][0]{ title, intro { kicker, title, text }, filterAll, readMore, cta {\n  title,\n  text,\n  messagePlaceholder,\n  "form": coalesce(form, *[_type == "formGeneralSettings"][0].defaultForm)-> {\n  _id,\n  title,\n  showTitle,\n  mode,\n  fields[] {\n  label,\n  name,\n  type,\n  isRequired,\n  width,\n  placeholder,\n  helpText,\n  defaultValue,\n  selectOptions,\n  radioOptions,\n  checkboxOptions\n},\n  steps[]{ title, fields[] {\n  label,\n  name,\n  type,\n  isRequired,\n  width,\n  placeholder,\n  helpText,\n  defaultValue,\n  selectOptions,\n  radioOptions,\n  checkboxOptions\n} },\n  submitButtonText,\n  nextButtonText,\n  backButtonText,\n  successTitle,\n  successBody,\n  redirectAfterSubmit,\n  redirectLink {\n  label,\n  "href": select(\n    linkType == "external" => href,\n    internalLink->_type == "homePage" => "/",\n    internalLink->_type == "zakelijkPage" => "/zakelijk/",\n    internalLink->_type == "projectsPage" => "/projecten/",\n    internalLink->_type == "zakelijkProjectsPage" => "/zakelijk/projecten/",\n    internalLink->_type == "reviewsPage" => "/reviews/",\n    internalLink->_type == "blogPage" => "/blog/",\n    internalLink->_type == "contactPage" => "/contact/",\n    internalLink->_type == "blogPost" => "/blog/" + internalLink->slug.current + "/",\n    internalLink->_type == "servicePage" && internalLink->kind == "zakelijk" =>\n      "/zakelijk/" + internalLink->slug.current + "/",\n    defined(internalLink->slug.current) => "/" + internalLink->slug.current + "/"\n  )\n}\n}\n}, seo { title, description, noIndex, ogImage {\n  asset,\n  hotspot,\n  crop,\n  alt,\n  "dimensions": asset->metadata.dimensions{ width, height }\n} } },\n  "categories": *[_type == "category"] | order(order asc){ _id, title },\n  "posts": *[_type == "blogPost"] | order(featured desc, date desc) {\n  _id,\n  title,\n  "href": "/blog/" + slug.current + "/",\n  excerpt,\n  readTime,\n  image {\n  asset,\n  hotspot,\n  crop,\n  alt,\n  "dimensions": asset->metadata.dimensions{ width, height }\n},\n  "category": category->{ _id, title }\n}\n}': BLOG_PAGE_QUERY_RESULT;
+    '*[_type == "blogPost" && slug.current == $slug][0]{\n  _id,\n  title,\n  date,\n  readTime,\n  excerpt,\n  image {\n  asset,\n  hotspot,\n  crop,\n  alt,\n  "dimensions": asset->metadata.dimensions{ width, height }\n},\n  "category": category->{ title },\n  body,\n  ctaTitle,\n  "related": coalesce(\n    related[]-> {\n  _id,\n  title,\n  "href": "/blog/" + slug.current + "/",\n  excerpt,\n  readTime,\n  image {\n  asset,\n  hotspot,\n  crop,\n  alt,\n  "dimensions": asset->metadata.dimensions{ width, height }\n},\n  "category": category->{ _id, title }\n},\n    *[_type == "blogPost" && slug.current != $slug] | order(date desc)[0...3] {\n  _id,\n  title,\n  "href": "/blog/" + slug.current + "/",\n  excerpt,\n  readTime,\n  image {\n  asset,\n  hotspot,\n  crop,\n  alt,\n  "dimensions": asset->metadata.dimensions{ width, height }\n},\n  "category": category->{ _id, title }\n}\n  ),\n  "blogTitle": *[_type == "blogPage"][0].title,\n  "cta": *[_type == "blogPage"][0].cta {\n  title,\n  text,\n  messagePlaceholder,\n  "form": coalesce(form, *[_type == "formGeneralSettings"][0].defaultForm)-> {\n  _id,\n  title,\n  showTitle,\n  mode,\n  fields[] {\n  label,\n  name,\n  type,\n  isRequired,\n  width,\n  placeholder,\n  helpText,\n  defaultValue,\n  selectOptions,\n  radioOptions,\n  checkboxOptions\n},\n  steps[]{ title, fields[] {\n  label,\n  name,\n  type,\n  isRequired,\n  width,\n  placeholder,\n  helpText,\n  defaultValue,\n  selectOptions,\n  radioOptions,\n  checkboxOptions\n} },\n  submitButtonText,\n  nextButtonText,\n  backButtonText,\n  successTitle,\n  successBody,\n  redirectAfterSubmit,\n  redirectLink {\n  label,\n  "href": select(\n    linkType == "external" => href,\n    internalLink->_type == "homePage" => "/",\n    internalLink->_type == "zakelijkPage" => "/zakelijk/",\n    internalLink->_type == "projectsPage" => "/projecten/",\n    internalLink->_type == "zakelijkProjectsPage" => "/zakelijk/projecten/",\n    internalLink->_type == "reviewsPage" => "/reviews/",\n    internalLink->_type == "blogPage" => "/blog/",\n    internalLink->_type == "contactPage" => "/contact/",\n    internalLink->_type == "blogPost" => "/blog/" + internalLink->slug.current + "/",\n    internalLink->_type == "servicePage" && internalLink->kind == "zakelijk" =>\n      "/zakelijk/" + internalLink->slug.current + "/",\n    defined(internalLink->slug.current) => "/" + internalLink->slug.current + "/"\n  )\n}\n}\n},\n  seo { title, description, noIndex, ogImage {\n  asset,\n  hotspot,\n  crop,\n  alt,\n  "dimensions": asset->metadata.dimensions{ width, height }\n} }\n}': BLOG_POST_QUERY_RESULT;
+    '*[_type == "blogPost" && defined(slug.current)].slug.current': BLOG_SLUGS_QUERY_RESULT;
+    '*[_type == "contactPage"][0]{\n  title,\n  intro { kicker, title, text },\n  badges,\n  infoCards[]{ _key, icon, title, text, show },\n  hours{ title, rows[]{ _key, day, time } },\n  "form": form-> {\n  _id,\n  title,\n  showTitle,\n  mode,\n  fields[] {\n  label,\n  name,\n  type,\n  isRequired,\n  width,\n  placeholder,\n  helpText,\n  defaultValue,\n  selectOptions,\n  radioOptions,\n  checkboxOptions\n},\n  steps[]{ title, fields[] {\n  label,\n  name,\n  type,\n  isRequired,\n  width,\n  placeholder,\n  helpText,\n  defaultValue,\n  selectOptions,\n  radioOptions,\n  checkboxOptions\n} },\n  submitButtonText,\n  nextButtonText,\n  backButtonText,\n  successTitle,\n  successBody,\n  redirectAfterSubmit,\n  redirectLink {\n  label,\n  "href": select(\n    linkType == "external" => href,\n    internalLink->_type == "homePage" => "/",\n    internalLink->_type == "zakelijkPage" => "/zakelijk/",\n    internalLink->_type == "projectsPage" => "/projecten/",\n    internalLink->_type == "zakelijkProjectsPage" => "/zakelijk/projecten/",\n    internalLink->_type == "reviewsPage" => "/reviews/",\n    internalLink->_type == "blogPage" => "/blog/",\n    internalLink->_type == "contactPage" => "/contact/",\n    internalLink->_type == "blogPost" => "/blog/" + internalLink->slug.current + "/",\n    internalLink->_type == "servicePage" && internalLink->kind == "zakelijk" =>\n      "/zakelijk/" + internalLink->slug.current + "/",\n    defined(internalLink->slug.current) => "/" + internalLink->slug.current + "/"\n  )\n}\n},\n  formLead,\n  werkgebied { kicker, title, text, places },\n  faq { kicker, title, items[]{ _key, question, answer, open } },\n  seo { title, description, noIndex, ogImage {\n  asset,\n  hotspot,\n  crop,\n  alt,\n  "dimensions": asset->metadata.dimensions{ width, height }\n} }\n}': CONTACT_PAGE_QUERY_RESULT;
+    '*[\n  _type in ["servicePage", "project", "textPage", "blogPost"] && defined(slug.current) && seo.noIndex != true\n]{\n  _type,\n  _updatedAt,\n  "path": select(\n    _type == "blogPost" => "/blog/" + slug.current + "/",\n    _type == "servicePage" && kind == "zakelijk" => "/zakelijk/" + slug.current + "/",\n    "/" + slug.current + "/"\n  )\n}': SITEMAP_QUERY_RESULT;
     '\n  *[_id == $formId && _type == "form"][0]{\n    _id,\n    title,\n    mailRecipients,\n    mailSubject,\n    mailMessage,\n    sendCopyToSubmitter,\n    copySubject,\n    copyMessage,\n    "fields": select(\n      mode == "steps" => steps[].fields[]{label, name, type, isRequired},\n      fields[]{label, name, type, isRequired}\n    )\n  }\n': FORM_QUERY_RESULT;
-    '\n  *[_type == "formGeneralSettings"][0]{\n    adminEmail,\n    fromEmail,\n    fromName,\n    mailLogo,\n    primaryColor,\n    textColor,\n    mailjetApiKey,\n    mailjetApiSecret,\n    confirmationSubject,\n    confirmationMessage,\n    recaptchaEnabled,\n    recaptchaSecretKey\n  }\n': FORM_SETTINGS_QUERY_RESULT;
+    '\n  *[_type == "formGeneralSettings"][0]{\n    adminEmail,\n    fromEmail,\n    fromName,\n    mailLogo,\n    primaryColor,\n    textColor,\n    mailjetApiKey,\n    mailjetApiSecret,\n    confirmationSubject,\n    confirmationMessage,\n    recaptchaEnabled,\n    recaptchaSecretKey,\n    "siteName": *[_type == "siteSettings"][0].name\n  }\n': FORM_SETTINGS_QUERY_RESULT;
   }
 }

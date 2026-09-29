@@ -1,12 +1,12 @@
 import {defineConfig} from 'sanity'
 import {structureTool} from 'sanity/structure'
 import {visionTool} from '@sanity/vision'
-import {schemaTypes} from './schemaTypes'
+import {SINGLETON_TYPES, schemaTypes} from './schemaTypes'
 import {structure} from './structure'
 
 /**
  * Project id and dataset come from the environment so the studio and the app
- * can share one `.env`. Copy `.env.example` to `.env` before `npm run dev`.
+ * can share one project. Copy `.env.example` to `.env` before `npm run dev`.
  * Sanity exposes only `SANITY_STUDIO_*` variables to the studio bundle.
  */
 const projectId = process.env.SANITY_STUDIO_PROJECT_ID
@@ -18,9 +18,11 @@ if (!projectId) {
   )
 }
 
+const SERVICE_KINDS = {dienst: 'Dienst', lokaal: 'Lokale pagina', zakelijk: 'Zakelijke pagina'}
+
 export default defineConfig({
   name: 'default',
-  title: process.env.SANITY_STUDIO_TITLE || 'Studio',
+  title: process.env.SANITY_STUDIO_TITLE || 'Schuijt Klussenbedrijf',
 
   projectId,
   dataset,
@@ -29,5 +31,23 @@ export default defineConfig({
 
   schema: {
     types: schemaTypes,
+    templates: (templates) => [
+      // Singletons are opened from the menu, never created from "+".
+      ...templates.filter(({schemaType}) => !SINGLETON_TYPES.includes(schemaType)),
+      ...Object.entries(SERVICE_KINDS).map(([kind, title]) => ({
+        id: `servicePage-${kind}`,
+        title,
+        schemaType: 'servicePage',
+        value: {kind},
+      })),
+    ],
+  },
+
+  document: {
+    // A singleton can be edited and published, not deleted or duplicated.
+    actions: (actions, {schemaType}) =>
+      SINGLETON_TYPES.includes(schemaType)
+        ? actions.filter(({action}) => !['delete', 'duplicate', 'unpublish'].includes(action ?? ''))
+        : actions,
   },
 })

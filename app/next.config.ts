@@ -7,17 +7,16 @@ const projectRoot = path.dirname(fileURLToPath(import.meta.url));
 
 const nextConfig: NextConfig = {
   output: 'standalone',
+  // WordPress URLs end in a slash; keep them identical so nothing needs redirecting.
+  trailingSlash: true,
   // Anchor Turbopack to this app; stray ~/ lockfiles otherwise become the root.
   turbopack: {
     root: projectRoot,
   },
   images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'cdn.sanity.io',
-      },
-    ],
+    // Every image comes from Sanity; its CDN does the resizing (see the loader).
+    loader: 'custom',
+    loaderFile: './src/sanity/image-loader.ts',
   },
 };
 

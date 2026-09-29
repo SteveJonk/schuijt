@@ -69,3 +69,30 @@ export function IconMail(props: IconProps) {
     </Svg>
   );
 }
+
+export function IconPin(props: IconProps) {
+  return (
+    <Svg strokeWidth={2.2} {...props}>
+      <path d='M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z' />
+      <circle cx='12' cy='10' r='3' />
+    </Svg>
+  );
+}
+
+export function IconCheckCircle(props: IconProps) {
+  return (
+    <Svg strokeWidth={2.2} {...props}>
+      <path d='M9 12l2 2 4-4' />
+      <circle cx='12' cy='12' r='10' />
+    </Svg>
+  );
+}
+
+export function IconClock(props: IconProps) {
+  return (
+    <Svg strokeWidth={2.2} {...props}>
+      <path d='M12 8v4l3 3' />
+      <circle cx='12' cy='12' r='9' />
+    </Svg>
+  );
+}

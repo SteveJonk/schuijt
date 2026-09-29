@@ -5,6 +5,7 @@ type KickerProps = {
   children: ReactNode;
   /** Light-on-dark version for the navy bands. */
   dark?: boolean;
+  /** Replaces the default bottom margin (mb-4) when given. */
   className?: string;
 };
 
@@ -13,9 +14,9 @@ export function Kicker({ children, dark = false, className }: KickerProps) {
   return (
     <span
       className={cn(
-        'mb-4 inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 font-display text-[13px] font-semibold',
+        'inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 font-display text-[13px] font-semibold',
         dark ? 'bg-white/12 text-[#bfe8fa]' : 'bg-tint text-blue-deep',
-        className,
+        className ?? 'mb-4',
       )}
     >
       <i className='block size-1.5 rounded-full bg-blue' />

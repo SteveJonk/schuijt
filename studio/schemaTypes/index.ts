@@ -1,60 +1,94 @@
-import {benefitsType} from './blocks/benefitsType'
-import {contactFormType} from './blocks/contactFormType'
-import {crossLinksType} from './blocks/crossLinksType'
-import {ctaBandType} from './blocks/ctaBandType'
-import {faqsType} from './blocks/faqsType'
-import {heroType} from './blocks/heroType'
-import {introType} from './blocks/introType'
-import {mediaTextType} from './blocks/mediaTextType'
-import {pageHeroType} from './blocks/pageHeroType'
-import {servicesType} from './blocks/servicesType'
-import {stepsType} from './blocks/stepsType'
-import {faqType} from './faqType'
-import {formGeneralSettingsType} from './formGeneralSettingsType'
-import {formType} from './formType'
-import {footerType} from './footerType'
-import {navigationType} from './navigationType'
-import {ctaType} from './objects/ctaType'
+import {blogPostType} from './documents/blogPost'
+import {categoryType} from './documents/category'
+import {formType} from './documents/formType'
+import {projectType} from './documents/project'
+import {reviewType} from './documents/review'
+import {servicePageType} from './documents/servicePage'
+import {textPageType} from './documents/textPage'
 import {formFieldType} from './objects/formFieldType'
 import {linkType} from './objects/linkType'
-import {seoType} from './objects/seoType'
-import {pageBuilderType} from './pageBuilderType'
-import {pageType} from './pageType'
-import {siteInformationType} from './siteInformationType'
-
-/**
- * Every schema type the studio knows about.
- *
- * ADDING A BLOCK: create `blocks/<name>Type.ts`, import it here, add it to the
- * Blocks list below, and add it to `pageBuilderType.ts` so editors can insert
- * it. Then project any link fields in the app's `queries.ts` and add a case to
- * `PageBuilder.tsx`.
- */
-export const schemaTypes = [
-  // Documents
-  pageType,
+import {
+  cardType,
+  ctaSectionType,
+  faqItemType,
   faqType,
-  navigationType,
-  footerType,
-  siteInformationType,
-  formType,
-  formGeneralSettingsType,
-  // Shared objects
-  seoType,
-  linkType,
-  ctaType,
-  formFieldType,
-  pageBuilderType,
-  // Blocks
   heroType,
   introType,
-  servicesType,
-  mediaTextType,
-  pageHeroType,
-  benefitsType,
-  stepsType,
-  faqsType,
-  crossLinksType,
-  ctaBandType,
-  contactFormType,
+  photoTileType,
+  placesType,
+  sectionHeadType,
+  stepType,
+  werkwijzeType,
+} from './objects/sections'
+import {seoType} from './objects/seoType'
+import {formGeneralSettingsType} from './singletons/formGeneralSettingsType'
+import {
+  blogPageType,
+  contactPageType,
+  homePageType,
+  projectsPageType,
+  reviewsPageType,
+  zakelijkPageType,
+  zakelijkProjectsPageType,
+} from './singletons/pages'
+import {
+  footerType,
+  navigationType,
+  siteSettingsType,
+  uiTextType,
+} from './singletons/settings'
+
+/** Singletons: one document each, with `_id` equal to the type name. */
+export const SINGLETON_TYPES = [
+  'siteSettings',
+  'navigation',
+  'footer',
+  'uiText',
+  'formGeneralSettings',
+  'homePage',
+  'zakelijkPage',
+  'projectsPage',
+  'zakelijkProjectsPage',
+  'reviewsPage',
+  'blogPage',
+  'contactPage',
+]
+
+export const schemaTypes = [
+  // Singletons
+  siteSettingsType,
+  navigationType,
+  footerType,
+  uiTextType,
+  formGeneralSettingsType,
+  homePageType,
+  zakelijkPageType,
+  projectsPageType,
+  zakelijkProjectsPageType,
+  reviewsPageType,
+  blogPageType,
+  contactPageType,
+  // Documents
+  servicePageType,
+  projectType,
+  blogPostType,
+  reviewType,
+  categoryType,
+  textPageType,
+  formType,
+  // Objects
+  seoType,
+  linkType,
+  formFieldType,
+  sectionHeadType,
+  heroType,
+  stepType,
+  werkwijzeType,
+  faqItemType,
+  faqType,
+  ctaSectionType,
+  photoTileType,
+  cardType,
+  placesType,
+  introType,
 ]

@@ -22,7 +22,7 @@ export function buttonClass(
   className?: string,
 ) {
   return cn(
-    'inline-flex items-center gap-[9px] rounded-full border-[1.5px] border-transparent font-display leading-[1.65] font-semibold',
+    'inline-flex items-center gap-[9px] rounded-full border-[1.5px] border-transparent font-display font-semibold',
     'transition-[translate,box-shadow,background-color,color,border-color] duration-250 ease-brand hover:-translate-y-[3px]',
     'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue',
     variantClass[variant],

@@ -1,0 +1,17 @@
+/** /privacy-policy/, carried over from the WordPress page. */
+export const PRIVACY: { type: 'h2' | 'h3' | 'p'; text: string }[] = [
+  { type: 'p', text: 'Wij beseffen goed dat je vertrouwen stelt in ons. We zullen er dan ook alles aan doen om jouw privacy te waarborgen. Op deze pagina geven we je meer informatie over de gegevens die we verzamelen als je onze website bezoekt. Daarnaast verantwoorden we waarom we deze gegevens verzamelen en wat we hier uiteindelijk mee doen. Zo geven wij jou een duidelijk beeld over hoe wij te werk gaan.' },
+  { type: 'p', text: 'Dit privacybeleid geldt voor diensten van Schuijt Klussenbedrijf. Wij zijn niet verantwoordelijk voor het privacybeleid van andere websites en bronnen. Door gebruik te maken van deze website accepteer je ons privacybeleid. Wij respecteren jouw privacy en die van alle andere gebruikers op onze website. Daarom zorgen we ervoor dat alle persoonlijke informatie die je aan ons verschaft, vertrouwelijk wordt behandeld.' },
+  { type: 'h3', text: 'Communicatie' },
+  { type: 'p', text: 'Als je een e-mail of een ander bericht naar ons stuurt, is het mogelijk dat wij deze berichten bewaren. In sommige gevallen kunnen wij vragen naar jouw persoonlijke gegevens. Deze kunnen voor bepaalde situaties relevant zijn. Hierdoor kunnen wij jouw vragen beantwoorden en verwerken. Ook in dit geval zullen deze op een eigen beveiligde server of die van een derde worden opgeslagen. Deze gegevens zullen wij niet combineren met andere gegevens waar wij over beschikken. Voor een zo goed mogelijke dienstverlening verzamelen wij gegevens. Deze gebruiken wij voor onderzoek. Hierdoor krijgen wij een beter inzicht over onze websitebezoekers. Hiermee kunnen wij onze diensten verbeteren.' },
+  { type: 'h3', text: 'Cookies' },
+  { type: 'p', text: 'Deze website maakt gebruik van zogenaamde cookies. Dit zijn tekstbestandjes die op jouw computer worden geplaatst om de website te helpen met het analyseren over hoe gebruikers een website gebruiken. De gegevens die worden verzameld door een cookie kunnen worden overgebracht naar een eigen server of die van een derde. Deze informatie wordt gebruikt om bij te houden hoe jij onze website gebruikt. Hierover stellen wij rapporten op over de website activiteiten van onze gebruikers.' },
+  { type: 'h2', text: 'Doeleinden' },
+  { type: 'p', text: 'Wij verzamelen of gebruiken geen informatie voor andere doeleinden dan de doeleinden die we hebben beschreven in dit privacybeleid. Dit doen wij enkel wanneer wij aan toestemming aan je hebben gevraagd en ook daadwerkelijk verkregen hebben.' },
+  { type: 'h3', text: 'Wijzigingen' },
+  { type: 'p', text: 'Deze privacyverklaring is afgestemd op het gebruik van de mogelijkheden op deze website. Eventuele wijzigingen van deze website kunnen leiden tot veranderingen in deze privacyverklaring. Lees daarom regelmatig deze privacyverklaring door.' },
+  { type: 'h3', text: 'Persoonsgegevens herzien' },
+  { type: 'p', text: 'Wanneer je jouw gegevens uit onze bestanden wilt laten halen, kun je hiervoor contact met ons opnemen.' },
+  { type: 'h3', text: 'Cookies accepteren/weigeren' },
+  { type: 'p', text: 'Veel browsers zijn ingesteld om cookies automatisch te accepteren. Je kunt dit wijzigen zodat je browser alle cookies in eerste instantie weigert. Je kunt dan eenvoudiger zelf bepalen of je de cookies accepteert of weigert. Wanneer je de cookies weigert is het mogelijk dat een aantal functies op onze website niet werken.' },
+];

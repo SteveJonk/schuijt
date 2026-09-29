@@ -1,18 +1,22 @@
 import { Reveal } from '@/components/ui/Reveal';
 import { SectionHead } from '@/components/ui/SectionHead';
 import { Wrap } from '@/components/ui/Wrap';
-import { REVIEWS } from '@/lib/content/home';
+import { getLayout } from '@/sanity/fetch';
+import type { ReviewData, SectionHeadData } from '@/sanity/types';
 
-export function Reviews() {
+export async function Reviews({ reviews }: { reviews: { head: SectionHeadData | null; items: ReviewData[] | null } | null }) {
+  if (!reviews?.items?.length) return null;
+  const { ui } = await getLayout();
+
   return (
     <section id='reviews' className='relative bg-linear-180 from-[#f6fbfe] to-[#edf7fc] py-24'>
       <Wrap>
-        <SectionHead kicker='Reviews' title='Wat klanten over ons zeggen' />
+        <SectionHead head={reviews.head} />
         <div className='grid grid-cols-3 gap-6 max-lg:grid-cols-1'>
-          {REVIEWS.map((review, index) => (
-            <Reveal key={review.name} index={index}>
+          {reviews.items.map((review, index) => (
+            <Reveal key={review._id} index={index}>
               <div className='h-full rounded-card border border-[#dcecf5] bg-white px-7 py-[30px] transition-[translate,box-shadow] duration-350 ease-brand hover:-translate-y-[7px] hover:shadow-soft'>
-                <div className='text-[15px] tracking-[2px] text-gold' aria-label='5 van 5 sterren'>
+                <div className='text-[15px] tracking-[2px] text-gold' aria-label={ui.starsLabel ?? undefined}>
                   ★★★★★
                 </div>
                 <p className='mt-3.5 text-[15px] text-ink-soft'>{review.text}</p>
@@ -23,7 +27,9 @@ export function Reviews() {
                   <div>
                     {review.name}
                     <small className='block font-sans text-[12.5px] font-normal text-muted'>
-                      {review.meta}
+                      {review.audience === 'particulier'
+                        ? [ui.particulierLabel, review.location].filter(Boolean).join(', ')
+                        : review.location}
                     </small>
                   </div>
                 </div>
