@@ -184,7 +184,7 @@ export const HOME_QUERY = defineQuery(`*[_type == "homePage"][0]{
     photos[] ${IMAGE}
   },
   projects{ head ${SECTION_HEAD}, tiles[] ${TILE} },
-  reviews{ head ${SECTION_HEAD}, items[]-> ${REVIEW} },
+  reviews{ head ${SECTION_HEAD}, items[defined(@->_id)]-> ${REVIEW} },
   werkgebied{ kicker, title, text, image ${IMAGE} },
   cta ${CTA},
   seo ${SEO}
@@ -259,7 +259,7 @@ export const ZAKELIJK_PAGE_QUERY = defineQuery(`*[_type == "zakelijkPage"][0]{
   audiences{ head ${SECTION_HEAD}, cards[] ${CARD} },
   services{ head ${SECTION_HEAD}, items },
   werkwijze ${WERKWIJZE},
-  projects{ head ${SECTION_HEAD}, items[]-> ${ZAKELIJK_CARD}, link ${LINK} },
+  projects{ head ${SECTION_HEAD}, items[defined(@->_id)]-> ${ZAKELIJK_CARD}, link ${LINK} },
   trust[]{ _key, icon, title, text },
   faq ${FAQ},
   cta ${CTA},
@@ -330,7 +330,7 @@ export const BLOG_POST_QUERY = defineQuery(`*[_type == "blogPost" && slug.curren
   body,
   ctaTitle,
   "related": coalesce(
-    related[]-> ${BLOG_CARD},
+    related[defined(@->_id)]-> ${BLOG_CARD},
     *[_type == "blogPost" && slug.current != $slug] | order(date desc)[0...3] ${BLOG_CARD}
   ),
   "blogTitle": *[_type == "blogPage"][0].title,
