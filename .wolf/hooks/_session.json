@@ -1,18 +1,12 @@
 {
-  "session_id": "session-2026-09-29-0902",
-  "started": "2026-09-29T07:02:54.898Z",
-  "files_read": {
-    "/Users/stevejonk/Documents/Prive Projecten/schuijt/app/src/lib/site.ts": {
-      "count": 1,
-      "tokens": 1274,
-      "first_read": "2026-09-29T07:03:08.752Z"
-    }
-  },
+  "session_id": "session-2026-09-30-2042",
+  "started": "2026-09-30T20:42:56.527Z",
+  "files_read": {},
   "files_written": [],
   "edit_counts": {},
-  "anatomy_hits": 1,
+  "anatomy_hits": 0,
   "anatomy_misses": 0,
   "repeated_reads_warned": 0,
   "cerebrum_warnings": 0,
-  "stop_count": 16
+  "stop_count": 1
 }
