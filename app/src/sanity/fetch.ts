@@ -4,14 +4,22 @@ import { client } from '@/sanity/client';
 import { LAYOUT_QUERY } from '@/sanity/queries';
 
 /**
- * Every page fetch goes through here. Pages are cached and refreshed at most
- * once a minute, so a publish in the studio is live within 60 seconds without
- * a rebuild.
+ * Every Sanity read that feeds a page carries this one tag. A publish in the
+ * studio fires a webhook to `/api/revalidate`, which expires the tag, so the
+ * change is live within seconds without a rebuild. One tag instead of one per
+ * document type: the queries join navigation, labels and referenced documents,
+ * so a per-type tag would miss pages that show the changed content indirectly.
  */
-export const REVALIDATE = 60;
+export const SANITY_TAG = 'sanity';
+
+/**
+ * Safety net only. If the webhook is misconfigured or a delivery is lost, the
+ * cache still refreshes within an hour instead of staying stale.
+ */
+export const REVALIDATE = 3600;
 
 export function sanityFetch<const Q extends string>(query: Q, params: QueryParams = {}) {
-  return client.fetch(query, params, { next: { revalidate: REVALIDATE } });
+  return client.fetch(query, params, { next: { revalidate: REVALIDATE, tags: [SANITY_TAG] } });
 }
 
 /** Header, footer, labels and site details — one request per page render. */
