@@ -1,11 +1,12 @@
 /**
  * Fills Sanity with the site's current content: every page, project, blog
- * post, review, form and setting, plus all images.
+ * post, form and setting, plus all images. Reviews come from Google instead
+ * (see src/lib/google-reviews.ts); only the Google-koppeling settings are seeded.
  *
  *   npm run seed              create what is missing, leave existing documents alone
  *   npm run seed -- --force   overwrite every seeded document (discards studio edits!)
  *   npm run seed -- --reset   like --force, then delete the old documents whose id
- *                             contains a dot (private in Sanity), e.g. review.1
+ *                             contains a dot (private in Sanity), e.g. page.privacy-policy
  *   npm run seed:dry          no Sanity at all: writes the dataset to
  *                             scripts/seed/dataset.ndjson for `npm run check:queries`
  *
@@ -32,7 +33,6 @@ import {
 import { getLocalPage } from './content/local';
 import { PRIVACY } from './content/privacy';
 import { PROJECTS, ZAKELIJK_CARDS, getProject } from './content/projects';
-import { REVIEWS, SCORE } from './content/reviews';
 import { LOCAL_SLUGS, SERVICE_SLUGS } from './content/routes';
 import { SERVICE_PAGES } from './content/services';
 import { PLACES, type HeroContent, type ServicePage } from './content/types';
@@ -269,8 +269,6 @@ add({
   addressCountry: 'NL',
   places: PLACES,
   googleReviewUrl: 'https://www.google.com/search?q=L.+Schuijt+Klussenbedrijf+Heemskerk+reviews',
-  reviewScore: SCORE.value,
-  reviewCount: SCORE.count,
 });
 
 add({
@@ -330,9 +328,7 @@ add({
   callPrefix: 'Bel',
   ctaKicker: 'Contact',
   ctaText: DEFAULT_CTA_TEXT,
-  starsLabel: '5 van 5 sterren',
-  particulierLabel: 'Particulier',
-  zakelijkLabel: 'Zakelijk',
+  starsLabel: '{score} van 5 sterren',
   viewProject: 'Bekijk dit project',
   formNote: 'We reageren doorgaans binnen één werkdag.',
   formSending: 'Versturen…',
@@ -520,21 +516,6 @@ for (const post of BLOG_POSTS) {
   });
 }
 
-REVIEWS.forEach((review, index) => {
-  const [location, service] = review.meta.split(' · ');
-  add({
-    _id: `review.${index + 1}`,
-    _type: 'review',
-    name: review.name,
-    initials: review.initials,
-    audience: review.category,
-    location,
-    service,
-    text: review.text,
-    order: index + 1,
-  });
-});
-
 add({
   _id: 'page.privacy-policy',
   _type: 'textPage',
@@ -618,8 +599,8 @@ add({
     })),
   },
   reviews: {
+    // No picks: the section shows the three newest synced Google reviews.
     head: { kicker: 'Reviews', title: 'Wat klanten over ons zeggen' },
-    items: [ref('review.1'), ref('review.2'), ref('review.3')],
   },
   werkgebied: {
     kicker: 'Werkgebied',
@@ -722,7 +703,6 @@ add({
   },
   scoreCaption: 'Gebaseerd op {aantal} Google Reviews',
   googleLabel: 'Google Reviews',
-  filterAll: 'Alle reviews',
   leave: {
     kicker: 'Uw ervaring',
     title: 'Tevreden over ons werk?',
@@ -789,6 +769,14 @@ add({
 });
 
 /** Created only when missing, and only these keys: it may hold mail secrets. */
+/** Never overwritten: the sync writes its score and status into it. Place ID still to fill in. */
+const GOOGLE_REVIEWS = {
+  _id: 'googleReviews',
+  _type: 'googleReviews',
+  languageCode: 'nl',
+  enabled: true,
+};
+
 const FORM_SETTINGS = {
   _id: 'formGeneralSettings',
   _type: 'formGeneralSettings',
@@ -842,7 +830,7 @@ function resolveAssets(value: unknown, assets: Map<string, string>): unknown {
 }
 
 async function main() {
-  const all = [...docs, FORM_SETTINGS].map((doc) => undot(withKeys(doc, doc._id)) as Doc);
+  const all = [...docs, FORM_SETTINGS, GOOGLE_REVIEWS].map((doc) => undot(withKeys(doc, doc._id)) as Doc);
   const unused = readdirSync(IMAGES_DIR).filter((file) => !usedImages.has(file));
   console.log(`${all.length} documents, ${usedImages.size} images${unused.length ? ` (unused: ${unused.join(', ')})` : ''}`);
 
@@ -892,7 +880,7 @@ async function main() {
   const resolved = resolveAssets(all, assets) as Doc[];
   const tx = client.transaction();
   for (const doc of resolved) {
-    if (doc._id === 'formGeneralSettings') tx.createIfNotExists(doc);
+    if (doc._id === 'formGeneralSettings' || doc._id === 'googleReviews') tx.createIfNotExists(doc);
     else if (FORCE) tx.createOrReplace(doc);
     else tx.createIfNotExists(doc);
   }

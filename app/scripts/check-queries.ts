@@ -52,7 +52,7 @@ async function main() {
   await check('HOME', Q.HOME_QUERY, {}, (r) => {
     assert.ok(r.hero.titleHighlight && r.hero.image.dimensions);
     assert.equal(r.services.cards.length, 4);
-    assert.equal(r.reviews.items.length, 3);
+    assert.equal(r.reviews.items.length, 0, 'no reviews seeded; they come from Google');
     assert.ok(r.cta.form?._id === 'form.offerte-dienstkeuze');
   });
 
@@ -84,7 +84,11 @@ async function main() {
     assert.ok(r.page.cta.form?._id === 'form.offerte');
   });
   await check('ZAKELIJK_PROJECTS_PAGE', Q.ZAKELIJK_PROJECTS_PAGE_QUERY, {}, (r) => assert.equal(r.projects.length, 2));
-  await check('REVIEWS_PAGE', Q.REVIEWS_PAGE_QUERY, {}, (r) => assert.equal(r.reviews.length, 6));
+  // No reviews are seeded: they come from Google.
+  await check('REVIEWS_PAGE', Q.REVIEWS_PAGE_QUERY, {}, (r) => {
+    assert.equal(r.reviews.length, 0);
+    assert.equal(r.score.count, 0);
+  });
   await check('BLOG_PAGE', Q.BLOG_PAGE_QUERY, {}, (r) => {
     assert.equal(r.posts.length, 7);
     assert.equal(r.posts[0].href, '/blog/sierbestrating-kosten-per-m2/');

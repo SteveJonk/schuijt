@@ -61,6 +61,26 @@ Mailjet. Credentials and reCAPTCHA secrets go in `app/.env`; they win over
 anything stored in Formulierinstellingen. Hidden fields can use `{{path}}` (the
 page) and `{{service}}` (the service on a service page).
 
+## Google reviews
+
+Reviews are synced from Google every hour, no Business Profile manager access
+needed. `app/src/lib/google-reviews.ts` asks the Google Places API (New) for
+the business's score, total count and reviews, and upserts them as `review`
+documents; `POST /api/google-reviews` runs it (header `x-sync-secret`,
+`?dryRun=1` writes nothing). `app/netlify/functions/google-reviews-sync.mts`
+calls that route `@hourly`; the studio page Reviews → Google-koppeling holds the
+Place ID and has dry-run and sync buttons.
+
+- Netlify env: `GOOGLE_PLACES_API_KEY`, `GOOGLE_REVIEWS_SYNC_SECRET`,
+  `SANITY_API_WRITE_TOKEN` (see `app/.env.example`).
+- Google only returns up to 5 review texts per request. The score and count on
+  `/reviews/` are Google's own figures over all reviews; the review texts build
+  up over time, nothing is ever deleted by the sync. Hide one in the studio
+  with "Verbergen op de website".
+- Optional: give the Sanity revalidate webhook the filter
+  `_type != "googleReviews"`. The route revalidates itself when something
+  changed, so the hourly status update does not need to expire the cache.
+
 ## Checks
 
 ```bash

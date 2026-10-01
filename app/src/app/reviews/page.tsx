@@ -2,11 +2,12 @@ import type { Metadata } from 'next';
 import { ContactCta } from '@/components/sections/ContactCta';
 import { PageIntro } from '@/components/sections/PageIntro';
 import { Breadcrumb } from '@/components/ui/Breadcrumb';
-import { FilterButtons, FilterItem, FilterScope } from '@/components/ui/Filter';
 import { Kicker } from '@/components/ui/Kicker';
 import { Reveal } from '@/components/ui/Reveal';
+import { Stars, formatScore } from '@/components/ui/Stars';
 import { Wrap } from '@/components/ui/Wrap';
 import { buttonClass } from '@/components/ui/Button';
+import { initials, reviewMeta } from '@/lib/reviews';
 import { fillLabel, getLayout, sanityFetch } from '@/sanity/fetch';
 import { pageMetadata } from '@/sanity/metadata';
 import { REVIEWS_PAGE_QUERY } from '@/sanity/queries';
@@ -27,13 +28,11 @@ function GoogleLogo() {
   );
 }
 
-function ScoreCard({ score, caption, stars, google }: { score: string; caption: string; stars?: string; google?: string | null }) {
+function ScoreCard({ rating, caption, stars, google }: { rating: number; caption: string; stars?: string; google?: string | null }) {
   return (
     <div className='rounded-card-lg border border-line bg-white p-8 text-center shadow-lift'>
-      <div className='font-display text-[56px] leading-none font-extrabold text-ink'>{score}</div>
-      <div className='mt-2.5 text-[22px] tracking-[3px] text-gold' aria-label={stars}>
-        ★★★★★
-      </div>
+      <div className='font-display text-[56px] leading-none font-extrabold text-ink'>{formatScore(rating)}</div>
+      <Stars rating={rating} label={stars} className='mt-2.5 text-[22px] tracking-[3px]' />
       <div className='mt-2 text-[14px] text-muted'>{caption}</div>
       <div className='mt-[18px] flex items-center justify-center gap-2 border-t border-line pt-4 text-[13.5px] text-muted'>
         <GoogleLogo />
@@ -44,12 +43,11 @@ function ScoreCard({ score, caption, stars, google }: { score: string; caption: 
 }
 
 export default async function ReviewsPage() {
-  const [{ page, reviews }, { site, ui }] = await Promise.all([sanityFetch(REVIEWS_PAGE_QUERY), getLayout()]);
-  const filters = [
-    { value: 'alle', label: page?.filterAll },
-    { value: 'particulier', label: ui.particulierLabel },
-    { value: 'zakelijk', label: ui.zakelijkLabel },
-  ].flatMap((filter) => (filter.label ? [{ value: filter.value, label: filter.label }] : []));
+  const [{ page, reviews, score }, { site, ui }] = await Promise.all([sanityFetch(REVIEWS_PAGE_QUERY), getLayout()]);
+  // Google's own score and count cover every review on Google; without a
+  // sync yet, fall back to the average of the reviews in Sanity.
+  const rating = score.google?.rating ?? (score.count ? score.average : null);
+  const count = score.google?.userRatingCount ?? score.count;
 
   return (
     <main>
@@ -57,11 +55,11 @@ export default async function ReviewsPage() {
       <PageIntro
         intro={page?.intro ?? null}
         aside={
-          site?.reviewScore ? (
+          rating ? (
             <ScoreCard
-              score={site.reviewScore}
-              caption={fillLabel(page?.scoreCaption, { aantal: site.reviewCount ?? '' })}
-              stars={ui.starsLabel ?? undefined}
+              rating={rating}
+              caption={fillLabel(page?.scoreCaption, { aantal: count })}
+              stars={fillLabel(ui.starsLabel, { score: formatScore(rating) })}
               google={page?.googleLabel}
             />
           ) : undefined
@@ -70,41 +68,32 @@ export default async function ReviewsPage() {
 
       <section className='relative pt-5 pb-20'>
         <Wrap>
-          <FilterScope>
-            <Reveal>
-              <FilterButtons options={filters} className='mt-[38px]' />
-            </Reveal>
-            <div className='mt-8 grid grid-cols-3 gap-6 max-lg:grid-cols-2 max-sm:grid-cols-1'>
-              {reviews.map((review, index) => (
-                <FilterItem key={review._id} category={review.audience}>
-                  <Reveal index={index}>
-                    <div className='h-full rounded-card border border-line bg-white px-[26px] py-7 transition-[translate,box-shadow] duration-350 ease-brand hover:-translate-y-[7px] hover:shadow-soft'>
-                      <div className='flex items-start justify-between'>
-                        <div className='text-[15px] tracking-[2px] text-gold' aria-label={ui.starsLabel ?? undefined}>
-                          ★★★★★
-                        </div>
-                        <span className='rounded-full bg-tint px-2.5 py-1 font-display text-[11.5px] font-semibold text-blue-deep'>
-                          {review.audience === 'zakelijk' ? ui.zakelijkLabel : ui.particulierLabel}
-                        </span>
-                      </div>
-                      <p className='mt-3.5 text-[15px] text-ink-soft'>{review.text}</p>
-                      <div className='mt-5 flex items-center gap-[11px]'>
-                        <span className='flex size-[38px] items-center justify-center rounded-full bg-linear-135 from-blue to-blue-light font-display text-[14px] font-semibold text-white'>
-                          {review.initials}
-                        </span>
-                        <div>
-                          <b className='block font-display text-[14.5px] font-semibold'>{review.name}</b>
-                          <small className='block text-[12.5px] text-muted'>
-                            {[review.location, review.service].filter(Boolean).join(' · ')}
-                          </small>
-                        </div>
-                      </div>
+          <div className='mt-[38px] grid grid-cols-3 gap-6 max-lg:grid-cols-2 max-sm:grid-cols-1'>
+            {reviews.map((review, index) => (
+              <Reveal key={review._id} index={index}>
+                <div className='h-full rounded-card border border-line bg-white px-[26px] py-7 transition-[translate,box-shadow] duration-350 ease-brand hover:-translate-y-[7px] hover:shadow-soft'>
+                  <div className='flex items-start justify-between'>
+                    <Stars
+                      rating={review.rating}
+                      label={fillLabel(ui.starsLabel, { score: review.rating })}
+                      className='text-[15px] tracking-[2px]'
+                    />
+                    {review.source === 'google' ? <GoogleLogo /> : null}
+                  </div>
+                  <p className='mt-3.5 text-[15px] text-ink-soft'>{review.text}</p>
+                  <div className='mt-5 flex items-center gap-[11px]'>
+                    <span className='flex size-[38px] items-center justify-center rounded-full bg-linear-135 from-blue to-blue-light font-display text-[14px] font-semibold text-white'>
+                      {review.initials || initials(review.name)}
+                    </span>
+                    <div>
+                      <b className='block font-display text-[14.5px] font-semibold'>{review.name}</b>
+                      <small className='block text-[12.5px] text-muted'>{reviewMeta(review)}</small>
                     </div>
-                  </Reveal>
-                </FilterItem>
-              ))}
-            </div>
-          </FilterScope>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
         </Wrap>
       </section>
 

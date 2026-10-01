@@ -111,7 +111,10 @@ const CTA = /* groq */ `{
   "form": coalesce(form, *[_type == "formGeneralSettings"][0].defaultForm)-> ${FORM}
 }`;
 
-const REVIEW = /* groq */ `{ _id, name, initials, audience, location, service, text }`;
+const REVIEW = /* groq */ `{ _id, name, initials, rating, publishedAt, location, service, text, source }`;
+
+/** Reviews the site may show: not hidden by an editor, with text and stars. */
+const VISIBLE_REVIEW = /* groq */ `_type == "review" && hidden != true && defined(text) && defined(rating)`;
 
 const PROJECT_CARD = /* groq */ `{
   _id,
@@ -148,9 +151,7 @@ export const LAYOUT_QUERY = defineQuery(`{
     addressCountry,
     places,
     socialLinks,
-    googleReviewUrl,
-    reviewScore,
-    reviewCount
+    googleReviewUrl
   },
   "navigation": *[_type == "navigation"][0]{ links[]{ ${LINK_FIELDS}, children[] ${LINK} }, ctaLabel, menuOpen, menuClose },
   "footer": *[_type == "footer"][0]{
@@ -186,7 +187,14 @@ export const HOME_QUERY = defineQuery(`*[_type == "homePage"][0]{
     photos[] ${IMAGE}
   },
   projects{ head ${SECTION_HEAD}, tiles[] ${TILE} },
-  reviews{ head ${SECTION_HEAD}, items[defined(@->_id)]-> ${REVIEW} },
+  reviews{
+    head ${SECTION_HEAD},
+    // The editor's picks; without any, the three newest good reviews.
+    "items": select(
+      count(items[defined(@->_id) && @->hidden != true]) > 0 => items[defined(@->_id) && @->hidden != true]-> ${REVIEW},
+      *[${VISIBLE_REVIEW} && rating >= 4] | order(publishedAt desc)[0...3] ${REVIEW}
+    )
+  },
   werkgebied{ kicker, title, text, image ${IMAGE} },
   cta ${CTA},
   seo ${SEO}
@@ -297,12 +305,17 @@ export const REVIEWS_PAGE_QUERY = defineQuery(`{
     intro ${INTRO},
     scoreCaption,
     googleLabel,
-    filterAll,
     leave,
     cta ${CTA},
     seo ${SEO}
   },
-  "reviews": *[_type == "review"] | order(order asc) ${REVIEW}
+  "reviews": *[${VISIBLE_REVIEW}] | order(publishedAt desc) ${REVIEW},
+  // Google's score covers all its reviews; ours only the ones we have.
+  "score": {
+    "google": *[_type == "googleReviews"][0]{ rating, userRatingCount },
+    "average": math::avg(*[${VISIBLE_REVIEW}].rating),
+    "count": count(*[${VISIBLE_REVIEW}])
+  }
 }`);
 
 const BLOG_CARD = /* groq */ `{

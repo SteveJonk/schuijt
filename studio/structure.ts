@@ -30,6 +30,19 @@ const servicePages = (S: StructureBuilder, kind: string, title: string) =>
         .initialValueTemplates([S.initialValueTemplateItem(`servicePage-${kind}`)]),
     )
 
+/** Reviews, newest first, narrowed by a GROQ filter. */
+const reviewList = (S: StructureBuilder, id: string, title: string, filter: string) =>
+  S.listItem()
+    .title(title)
+    .id(`reviews-${id}`)
+    .schemaType('review')
+    .child(
+      S.documentTypeList('review')
+        .title(title)
+        .filter(filter)
+        .defaultOrdering([{field: 'publishedAt', direction: 'desc'}]),
+    )
+
 export const structure: StructureResolver = (S) =>
   S.list()
     .title('Inhoud')
@@ -72,7 +85,22 @@ export const structure: StructureResolver = (S) =>
             .defaultOrdering([{field: 'date', direction: 'desc'}]),
         ),
       S.documentTypeListItem('blogPost').title('Blog').icon(ComposeIcon),
-      S.documentTypeListItem('review').title('Reviews').icon(StarIcon),
+      S.listItem()
+        .title('Reviews')
+        .id('reviews')
+        .icon(StarIcon)
+        .child(
+          S.list()
+            .title('Reviews')
+            .items([
+              singleton(S, 'googleReviews', 'Google-koppeling'),
+              S.divider(),
+              reviewList(S, 'all', 'Alle reviews', '_type == "review"'),
+              reviewList(S, 'google', 'Van Google', '_type == "review" && source == "google"'),
+              reviewList(S, 'manual', 'Handmatig', '_type == "review" && source != "google"'),
+              reviewList(S, 'hidden', 'Verborgen', '_type == "review" && hidden == true'),
+            ]),
+        ),
       S.documentTypeListItem('category').title('Categorieën').icon(TagIcon),
       S.divider(),
       S.listItem()

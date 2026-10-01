@@ -1,7 +1,9 @@
 import { Reveal } from '@/components/ui/Reveal';
 import { SectionHead } from '@/components/ui/SectionHead';
+import { Stars } from '@/components/ui/Stars';
 import { Wrap } from '@/components/ui/Wrap';
-import { getLayout } from '@/sanity/fetch';
+import { initials, reviewMeta } from '@/lib/reviews';
+import { fillLabel, getLayout } from '@/sanity/fetch';
 import type { ReviewData, SectionHeadData } from '@/sanity/types';
 
 export async function Reviews({ reviews }: { reviews: { head: SectionHeadData | null; items: ReviewData[] | null } | null }) {
@@ -16,20 +18,20 @@ export async function Reviews({ reviews }: { reviews: { head: SectionHeadData | 
           {reviews.items.map((review, index) => (
             <Reveal key={review._id} index={index}>
               <div className='h-full rounded-card border border-[#dcecf5] bg-white px-7 py-[30px] transition-[translate,box-shadow] duration-350 ease-brand hover:-translate-y-[7px] hover:shadow-soft'>
-                <div className='text-[15px] tracking-[2px] text-gold' aria-label={ui.starsLabel ?? undefined}>
-                  ★★★★★
-                </div>
+                <Stars
+                  rating={review.rating}
+                  label={fillLabel(ui.starsLabel, { score: review.rating })}
+                  className='text-[15px] tracking-[2px]'
+                />
                 <p className='mt-3.5 text-[15px] text-ink-soft'>{review.text}</p>
                 <div className='mt-5 flex items-center gap-[11px] font-display text-[14.5px] font-semibold'>
                   <span className='flex size-[38px] items-center justify-center rounded-full bg-linear-135 from-blue to-blue-light text-[14px] text-white'>
-                    {review.initials}
+                    {review.initials || initials(review.name)}
                   </span>
                   <div>
                     {review.name}
                     <small className='block font-sans text-[12.5px] font-normal text-muted'>
-                      {review.audience === 'particulier'
-                        ? [ui.particulierLabel, review.location].filter(Boolean).join(', ')
-                        : review.location}
+                      {reviewMeta(review)}
                     </small>
                   </div>
                 </div>
