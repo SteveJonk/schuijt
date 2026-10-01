@@ -1,4 +1,29 @@
 {
   "version": 1,
-  "bugs": []
+  "bugs": [
+    {
+      "id": "bug-001",
+      "timestamp": "2026-10-01T18:20:00Z",
+      "error_message": "scripts/seed/index.ts(519,1): error TS1128: Declaration or statement expected.",
+      "file": "app/scripts/seed/index.ts",
+      "root_cause": "Removing the REVIEWS.forEach block by searching for the first '});' left the outer closing '});' behind.",
+      "fix": "Removed the stray '});'. When cutting nested blocks with a script, match the outer closer, then run tsc.",
+      "tags": ["seed", "syntax", "scripted-edit"],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-10-01T18:20:00Z"
+    },
+    {
+      "id": "bug-002",
+      "timestamp": "2026-10-01T18:25:00Z",
+      "error_message": "check:queries: assert.ok(r.cta.form?._id === 'form.offerte-dienstkeuze') fails",
+      "file": "app/scripts/check-queries.ts",
+      "root_cause": "Pre-existing on main: seed undot() turns ids into form-offerte-dienstkeuze but the check expects the dotted id. Not fixed (out of scope).",
+      "fix": "None yet — update the expected ids in check-queries.ts to the dashed form.",
+      "tags": ["check-queries", "seed", "ids", "pre-existing"],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-10-01T18:25:00Z"
+    }
+  ]
 }

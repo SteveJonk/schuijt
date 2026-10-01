@@ -110,6 +110,7 @@ export const homePageType = defineType({
           name: 'items',
           title: 'Reviews',
           type: 'array',
+          description: 'Leeg = de drie nieuwste reviews met 4 of 5 sterren.',
           of: [defineArrayMember({type: 'reference', to: [{type: 'review'}]})],
           validation: (r) => r.max(3),
         }),
@@ -261,7 +262,6 @@ export const reviewsPageType = defineType({
     defineField({name: 'intro', title: 'Intro', type: 'intro'}),
     str('scoreCaption', 'Onder de score', {description: 'Gebruik {aantal} voor het aantal reviews.'}),
     str('googleLabel', 'Google-label'),
-    str('filterAll', 'Filter: alle'),
     defineField({
       name: 'leave',
       title: 'Blok "schrijf een review"',

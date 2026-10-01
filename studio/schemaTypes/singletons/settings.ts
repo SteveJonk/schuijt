@@ -41,8 +41,6 @@ export const siteSettingsType = defineType({
       type: 'url',
       group: 'reviews',
     }),
-    str('reviewScore', 'Gemiddelde score', {group: 'reviews', description: 'Bijv. 4,9'}),
-    defineField({name: 'reviewCount', title: 'Aantal Google reviews', type: 'number', group: 'reviews'}),
   ],
   preview: {prepare: () => ({title: 'Website'})},
 })
@@ -114,9 +112,10 @@ export const uiTextType = defineType({
     str('callPrefix', 'Belknop: tekst vóór het nummer', {group: 'general'}),
     str('ctaKicker', 'Contactblok: label', {group: 'general'}),
     txt('ctaText', 'Contactblok: standaardtekst', {group: 'general'}),
-    str('starsLabel', 'Sterren (schermlezer)', {group: 'general'}),
-    str('particulierLabel', 'Label particulier', {group: 'general'}),
-    str('zakelijkLabel', 'Label zakelijk', {group: 'general'}),
+    str('starsLabel', 'Sterren (schermlezer)', {
+      group: 'general',
+      description: 'Gebruik {score} voor het aantal sterren, bijv. "{score} van 5 sterren".',
+    }),
     str('viewProject', 'Link op projectkaart', {group: 'general'}),
     str('projectKickerParticulier', 'Label particulier project', {group: 'project'}),
     str('projectKickerZakelijk', 'Label zakelijk project', {group: 'project'}),

@@ -173,6 +173,10 @@
 - `robots.ts` — Served at `/robots.txt`. (~150 tok)
 - `sitemap.ts` — Every CMS page, listed from the CMS itself. (~313 tok)
 
+## app/src/app/api/google-reviews/
+
+- `route.ts` — POST: Google reviews sync (header x-sync-secret = GOOGLE_REVIEWS_SYNC_SECRET, ?dryRun=1, ?trigger=schedule|studio), CORS for the studio. (~700 tok)
+
 ## app/src/app/api/submit-form/
 
 - `route.ts` — Google's siteverify. Returns false on any doubt — this gate fails closed. (~1540 tok)
@@ -226,6 +230,7 @@
 
 ## app/src/components/ui/
 
+- `Stars.tsx` — Five stars filled to a (fractional) rating; `formatScore` -> "4,6". (~300 tok)
 - `Button.tsx` — Class string for anything that should look like a button (links, submits). (~456 tok)
 - `CountUp.tsx` — Counts from 0 to `value` (ease-out) the first time it is half in view. (~369 tok)
 - `Divider.tsx` — Wavy SVG edge pinned to the bottom of a section, filled with the next section's colour. (~154 tok)
@@ -243,6 +248,8 @@
 
 ## app/src/lib/
 
+- `google-reviews.ts` — syncGoogleReviews: Places API (New) -> upsert `review` docs (id googleReview-<id>) + score/count/lastSync on `googleReviews` singleton; patches drafts too. (~2300 tok)
+- `reviews.ts` — initials(name), reviewMeta(review) for review cards. (~200 tok)
 - `chrome.ts` — Scroll threshold (px) before the header gets the stuck state. (~368 tok)
 - `cn.ts` — Exports cn (~37 tok)
 - `env.ts` — Sanity connection details and analytics ids, read from the environment. (~403 tok)
@@ -341,6 +348,7 @@
 
 ## studio/tools/
 
+- `GoogleReviewsSync.tsx` — Field component on Google-koppeling: secret (localStorage), dry-run / sync buttons, result table. (~1700 tok)
 - `mediaData.ts` — Queries, types and formatting helpers for the Media panel (`MediaTool.tsx`). (~2006 tok)
   - fn `typeLabel` L113-116 (~25 tok)
   - fn `isImage` L117-121 (~71 tok)
@@ -359,3 +367,12 @@
   - fn `MediaCard` L314-349 (~284 tok)
   - fn `MediaDetail` L350-521 (~1435 tok)
 - `panelStyles.ts` — Shared inline styles for custom studio panels — the parts that any panel (~335 tok)
+
+## app/netlify/functions/
+
+- `keep-warm.mts` — pings site every 10 min. (~200 tok)
+- `google-reviews-sync.mts` — @hourly POST /api/google-reviews?trigger=schedule. (~250 tok)
+
+## studio/schemaTypes/singletons/ (addition)
+
+- `googleReviews.ts` — Google-koppeling singleton: placeId, languageCode, enabled, siteUrl; sync-written rating/userRatingCount/lastSync. (~800 tok)

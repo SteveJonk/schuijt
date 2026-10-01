@@ -10,28 +10,23 @@
 
 <!-- Move items here from "🚀 Next phase" when finished. Group by area. -->
 
+- Google reviews sync (2026-10-01): `/api/google-reviews` (secret header, dryRun), Netlify `@hourly` function, `googleReviews` singleton with sync panel, review overview lists in studio, real average from Google on /reviews/, star ratings per review. Removed zakelijk/particulier from reviews (schema `audience`, ui labels, filter, seed mocks).
 - Navbar submenus: `navItem` type (link + `children[]`), click-to-expand header (desktop dropdown, mobile accordion, no hover). Seed updated (Diensten → 6 service pages, Zakelijk → Algemeen/VvE/Woningcorporaties). **Pending:** run `npm run seed` in app/ with .env (token) — and re-run once so existing nav doc switches from `link` to `navItem` members.
 
 ---
 
 ## 🚀 Next phase
 
-**Goal:** _<what we're building next, in 1 sentence>_
+**Goal:** Go live with the Google reviews sync (manual setup, no code).
 
 ### Acceptance criteria
-1. _<concrete user-visible outcome>_
-2. _<...>_
-
-### Files to create / edit
-| Type | File | Content |
-|---|---|---|
-| new | `path/to/file.ts` | _what it does_ |
-
-### Closed decisions
-- _<choice + reasoning>_
+1. Netlify env has GOOGLE_PLACES_API_KEY, GOOGLE_REVIEWS_SYNC_SECRET, SANITY_API_WRITE_TOKEN.
+2. Studio → Reviews → Google-koppeling: Place ID + Website-adres filled and published; dry run OK, then sync.
+3. Old mock reviews (review-1..6) deleted in the studio (they have no rating, so already hidden on the site).
+4. Vaste teksten → "Sterren (schermlezer)" set to "{score} van 5 sterren".
 
 ### Open decisions
-- _<question to ask the user before coding>_
+- Need more than 5 review texts? Only via a paid third-party scraper API (SerpApi/Outscraper) or Business Profile API (needs manager access).
 
 ---
 

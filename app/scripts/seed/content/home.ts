@@ -133,24 +133,3 @@ export const PROJECTS: Project[] = [
     size: 'wide',
   },
 ];
-
-export const REVIEWS = [
-  {
-    text: 'Netjes gewerkt, goede communicatie en precies opgeleverd zoals afgesproken. De tuin ligt er strak bij.',
-    initials: 'MV',
-    name: 'M. de Vries',
-    meta: 'Particulier, Heemskerk',
-  },
-  {
-    text: 'Vooraf duidelijk over de planning en de kosten. Tijdens het werk bleef het terrein gewoon bereikbaar voor de bewoners.',
-    initials: 'VE',
-    name: 'Bestuur VvE',
-    meta: 'Heemskerk',
-  },
-  {
-    text: 'Snelle reactie op de aanvraag en een eerlijke prijs. De schutting staat kaarsrecht en ziet er prachtig uit.',
-    initials: 'JB',
-    name: 'J. Bakker',
-    meta: 'Particulier, Beverwijk',
-  },
-];

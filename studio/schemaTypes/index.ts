@@ -22,6 +22,7 @@ import {
 } from './objects/sections'
 import {seoType} from './objects/seoType'
 import {formGeneralSettingsType} from './singletons/formGeneralSettingsType'
+import {googleReviewsType} from './singletons/googleReviews'
 import {
   blogPageType,
   contactPageType,
@@ -45,6 +46,7 @@ export const SINGLETON_TYPES = [
   'footer',
   'uiText',
   'formGeneralSettings',
+  'googleReviews',
   'homePage',
   'zakelijkPage',
   'projectsPage',
@@ -61,6 +63,7 @@ export const schemaTypes = [
   footerType,
   uiTextType,
   formGeneralSettingsType,
+  googleReviewsType,
   homePageType,
   zakelijkPageType,
   projectsPageType,
