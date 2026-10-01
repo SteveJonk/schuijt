@@ -21,6 +21,8 @@
 - **Typegen:** `cd studio && SANITY_STUDIO_PROJECT_ID=dummy123 npm run typegen`; studio build offline needs `--no-auto-updates`.
 - **Sync writes** to Sanity must also patch `drafts.<id>` if it exists, or publishing the draft reverts them.
 
+- groq-js `evaluate(...).get()` returns a Promise — await it in ad-hoc query tests.
+
 ## Do-Not-Repeat
 
 <!-- Mistakes made and corrected. Each entry prevents the same mistake recurring. -->

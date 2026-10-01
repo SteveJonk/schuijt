@@ -22,7 +22,7 @@
 ### Acceptance criteria
 1. Netlify env has GOOGLE_PLACES_API_KEY, GOOGLE_REVIEWS_SYNC_SECRET, SANITY_API_WRITE_TOKEN.
 2. Studio → Reviews → Google-koppeling: Place ID + Website-adres filled and published; dry run OK, then sync.
-3. Old mock reviews (review-1..6) deleted in the studio (they have no rating, so already hidden on the site).
+3. Old mock reviews deleted: `cd app && npm run reviews:delete-manual:dry`, then `npm run reviews:delete-manual` (or delete in the studio).
 4. Vaste teksten → "Sterren (schermlezer)" set to "{score} van 5 sterren".
 
 ### Open decisions

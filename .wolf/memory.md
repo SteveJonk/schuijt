@@ -20,3 +20,4 @@
 | Time | Action | File(s) | Outcome | ~Tokens |
 |------|--------|---------|---------|--------|
 | 18:30 | Google reviews sync: route, lib, Netlify hourly fn, studio singleton + panel, review schema (no audience), frontend stars/average, seed cleanup | app/src/lib/google-reviews.ts, app/src/app/api/google-reviews/route.ts, studio/* | tsc/lint ok, studio build ok, sync logic tested w/ fakes | ~60k |
+| 19:10 | Added app/scripts/delete-manual-reviews.ts + npm scripts reviews:delete-manual(:dry); branch restarted from main after PR #3 merge | app/scripts/delete-manual-reviews.ts, app/package.json, README.md | tsc/lint ok, GROQ tested with groq-js | ~8k |

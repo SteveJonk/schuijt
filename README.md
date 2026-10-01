@@ -77,6 +77,9 @@ Place ID and has dry-run and sync buttons.
   `/reviews/` are Google's own figures over all reviews; the review texts build
   up over time, nothing is ever deleted by the sync. Hide one in the studio
   with "Verbergen op de website".
+- `npm run reviews:delete-manual:dry` (in `app/`) lists every non-Google review
+  (the old mocks, hand-entered ones); `npm run reviews:delete-manual` deletes
+  them. Reviews still picked on the home page are skipped.
 - Optional: give the Sanity revalidate webhook the filter
   `_type != "googleReviews"`. The route revalidates itself when something
   changed, so the hourly status update does not need to expire the cache.

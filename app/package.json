@@ -13,6 +13,8 @@
     "check:links": "node scripts/check-links.mjs",
     "seed": "tsx --env-file=.env scripts/seed/index.ts",
     "seed:dry": "tsx scripts/seed/index.ts --dry",
+    "reviews:delete-manual": "tsx --env-file=.env scripts/delete-manual-reviews.ts",
+    "reviews:delete-manual:dry": "tsx --env-file=.env scripts/delete-manual-reviews.ts --dry",
     "check:queries": "tsx scripts/check-queries.ts"
   },
   "dependencies": {
