@@ -2,7 +2,7 @@
 
 > Single source of truth for resuming work. Read this FIRST when starting a session.
 > Update this file at the end of every work phase so the next `/clear` resumes in 1 read.
-> Last updated: 2026-09-28
+> Last updated: 2026-10-01
 
 ---
 
@@ -10,7 +10,7 @@
 
 <!-- Move items here from "🚀 Next phase" when finished. Group by area. -->
 
-- (nothing yet — fill in as work completes)
+- Navbar submenus: `navItem` type (link + `children[]`), click-to-expand header (desktop dropdown, mobile accordion, no hover). Seed updated (Diensten → 6 service pages, Zakelijk → Algemeen/VvE/Woningcorporaties). **Pending:** run `npm run seed` in app/ with .env (token) — and re-run once so existing nav doc switches from `link` to `navItem` members.
 
 ---
 

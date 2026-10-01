@@ -6,7 +6,7 @@ import {reviewType} from './documents/review'
 import {servicePageType} from './documents/servicePage'
 import {textPageType} from './documents/textPage'
 import {formFieldType} from './objects/formFieldType'
-import {linkType} from './objects/linkType'
+import {linkType, navItemType} from './objects/linkType'
 import {
   cardType,
   ctaSectionType,
@@ -79,6 +79,7 @@ export const schemaTypes = [
   // Objects
   seoType,
   linkType,
+  navItemType,
   formFieldType,
   sectionHeadType,
   heroType,

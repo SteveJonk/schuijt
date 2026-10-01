@@ -9,7 +9,7 @@ import { SiteFooter } from '@/components/layout/SiteFooter';
 import { SiteHeader } from '@/components/layout/SiteHeader';
 import { TrackingScriptsBody, TrackingScriptsHead } from '@/components/TrackingScripts';
 import { siteJsonLd } from '@/lib/json-ld';
-import { SITE_URL, resolveSiteInformation } from '@/lib/site';
+import { SITE_URL, resolveSiteInformation, type NavItem } from '@/lib/site';
 import { getLayout } from '@/sanity/fetch';
 import { imageUrl } from '@/sanity/image';
 import './globals.css';
@@ -66,9 +66,14 @@ export default async function RootLayout({
           siteName={info.name}
           logo={logoSrc && dims ? { src: logoSrc, width: dims.width, height: dims.height } : null}
           phone={site?.phone ?? null}
-          links={(navigation?.links ?? []).flatMap((link) =>
-            link.href && link.label ? [{ href: link.href, label: link.label }] : [],
-          )}
+          links={(navigation?.links ?? []).flatMap((link): NavItem[] => {
+            const children = (link.children ?? []).flatMap((child) =>
+              child.href && child.label ? [{ href: child.href, label: child.label }] : [],
+            );
+            // An item needs a target, or sub-items to expand.
+            if (!link.label || (!link.href && !children.length)) return [];
+            return [{ label: link.label, href: link.href, children }];
+          })}
           ctaLabel={navigation?.ctaLabel ?? null}
           menuOpen={navigation?.menuOpen ?? null}
           menuClose={navigation?.menuClose ?? null}
