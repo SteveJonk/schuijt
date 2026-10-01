@@ -376,3 +376,7 @@
 ## studio/schemaTypes/singletons/ (addition)
 
 - `googleReviews.ts` — Google-koppeling singleton: placeId, languageCode, enabled, siteUrl; sync-written rating/userRatingCount/lastSync. (~800 tok)
+
+## app/scripts/ (addition)
+
+- `delete-manual-reviews.ts` — deletes non-Google reviews (+drafts), skips referenced ones; `--dry` lists only. (~700 tok)
