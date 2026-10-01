@@ -77,6 +77,12 @@ const internal = (label: string | undefined, id: string) => ({
   linkType: 'internal',
   internalLink: ref(id),
 });
+/** A menu item with a submenu: expands on click, so its own link is only a fallback. */
+const navItem = (link: ReturnType<typeof internal> | ReturnType<typeof external>, children: unknown[] = []) => ({
+  ...link,
+  _type: 'navItem',
+  children,
+});
 const external = (label: string | undefined, href: string) => ({
   _type: 'link',
   label,
@@ -271,12 +277,19 @@ add({
   _id: 'navigation',
   _type: 'navigation',
   links: [
-    external('Diensten', '/#diensten'),
-    internal('Projecten', 'projectsPage'),
-    internal('Zakelijk', 'zakelijkPage'),
-    internal('Reviews', 'reviewsPage'),
-    internal('Blog', 'blogPage'),
-    internal('Contact', 'contactPage'),
+    navItem(
+      external('Diensten', '/#diensten'),
+      SERVICE_SLUGS.map((s) => internal(SERVICE_PAGES[s].crumb, `service.${s}`)),
+    ),
+    navItem(internal('Projecten', 'projectsPage')),
+    navItem(internal('Zakelijk', 'zakelijkPage'), [
+      internal('Algemeen', 'zakelijkPage'),
+      internal('VvE', 'zakelijk.vve-vastgoedbeheer'),
+      internal('Woningcorporaties', 'zakelijk.woningcorporaties'),
+    ]),
+    navItem(internal('Reviews', 'reviewsPage')),
+    navItem(internal('Blog', 'blogPage')),
+    navItem(internal('Contact', 'contactPage')),
   ],
   ctaLabel: 'Offerte aanvragen',
   menuOpen: 'Menu openen',

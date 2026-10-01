@@ -69,3 +69,6 @@ export function mailtoHref(email: string): string {
 }
 
 export type NavLink = { href: string; label: string };
+
+/** A menu item. With `children` it expands on click instead of navigating. */
+export type NavItem = { label: string; href: string | null; children: NavLink[] };

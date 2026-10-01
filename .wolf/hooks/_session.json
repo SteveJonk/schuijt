@@ -1,18 +1,43 @@
 {
-  "session_id": "session-2026-09-29-0902",
-  "started": "2026-09-29T07:02:54.898Z",
+  "session_id": "session-2026-10-01-1600",
+  "started": "2026-10-01T16:00:45.883Z",
   "files_read": {
-    "/Users/stevejonk/Documents/Prive Projecten/schuijt/app/src/lib/site.ts": {
+    "/home/user/schuijt/app/src/components/layout/SiteHeader.tsx": {
       "count": 1,
-      "tokens": 1274,
-      "first_read": "2026-09-29T07:03:08.752Z"
+      "tokens": 1900,
+      "first_read": "2026-10-01T16:01:18.071Z"
+    },
+    "/home/user/schuijt/studio/schemaTypes/singletons/settings.ts": {
+      "count": 1,
+      "tokens": 0,
+      "first_read": "2026-10-01T16:01:20.555Z"
+    },
+    "/home/user/schuijt/app/src/app/layout.tsx": {
+      "count": 1,
+      "tokens": 521,
+      "first_read": "2026-10-01T16:01:21.021Z"
+    },
+    "/home/user/schuijt/app/scripts/seed/index.ts": {
+      "count": 1,
+      "tokens": 0,
+      "first_read": "2026-10-01T16:01:22.516Z"
+    },
+    "/home/user/schuijt/app/src/sanity/queries.ts": {
+      "count": 1,
+      "tokens": 1362,
+      "first_read": "2026-10-01T16:01:24.671Z"
+    },
+    "/home/user/schuijt/studio/schemaTypes/objects/linkType.ts": {
+      "count": 1,
+      "tokens": 54,
+      "first_read": "2026-10-01T16:01:37.925Z"
     }
   },
   "files_written": [],
   "edit_counts": {},
-  "anatomy_hits": 1,
-  "anatomy_misses": 0,
+  "anatomy_hits": 4,
+  "anatomy_misses": 2,
   "repeated_reads_warned": 0,
   "cerebrum_warnings": 0,
-  "stop_count": 16
+  "stop_count": 1
 }

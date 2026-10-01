@@ -17,7 +17,7 @@ const IMAGE = /* groq */ `{
   "dimensions": asset->metadata.dimensions{ width, height }
 }`;
 
-const LINK = /* groq */ `{
+const LINK_FIELDS = /* groq */ `
   label,
   "href": select(
     linkType == "external" => href,
@@ -33,7 +33,9 @@ const LINK = /* groq */ `{
       "/zakelijk/" + internalLink->slug.current + "/",
     defined(internalLink->slug.current) => "/" + internalLink->slug.current + "/"
   )
-}`;
+`;
+
+const LINK = /* groq */ `{${LINK_FIELDS}}`;
 
 /** Path of a servicePage in the current scope. */
 const SERVICE_PATH = /* groq */ `select(
@@ -150,7 +152,7 @@ export const LAYOUT_QUERY = defineQuery(`{
     reviewScore,
     reviewCount
   },
-  "navigation": *[_type == "navigation"][0]{ links[] ${LINK}, ctaLabel, menuOpen, menuClose },
+  "navigation": *[_type == "navigation"][0]{ links[]{ ${LINK_FIELDS}, children[] ${LINK} }, ctaLabel, menuOpen, menuClose },
   "footer": *[_type == "footer"][0]{
     groups[]{ _key, title, links[] ${LINK} },
     contactTitle,

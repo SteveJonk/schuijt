@@ -1293,6 +1293,128 @@
     }
   },
   {
+    "name": "navItem",
+    "type": "type",
+    "value": {
+      "type": "object",
+      "attributes": {
+        "_type": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string",
+            "value": "navItem"
+          }
+        },
+        "label": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
+        },
+        "linkType": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "union",
+            "of": [
+              {
+                "type": "string",
+                "value": "internal"
+              },
+              {
+                "type": "string",
+                "value": "external"
+              }
+            ]
+          },
+          "optional": false
+        },
+        "internalLink": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "union",
+            "of": [
+              {
+                "type": "inline",
+                "name": "homePage.reference"
+              },
+              {
+                "type": "inline",
+                "name": "servicePage.reference"
+              },
+              {
+                "type": "inline",
+                "name": "project.reference"
+              },
+              {
+                "type": "inline",
+                "name": "blogPost.reference"
+              },
+              {
+                "type": "inline",
+                "name": "textPage.reference"
+              },
+              {
+                "type": "inline",
+                "name": "zakelijkPage.reference"
+              },
+              {
+                "type": "inline",
+                "name": "projectsPage.reference"
+              },
+              {
+                "type": "inline",
+                "name": "zakelijkProjectsPage.reference"
+              },
+              {
+                "type": "inline",
+                "name": "reviewsPage.reference"
+              },
+              {
+                "type": "inline",
+                "name": "blogPage.reference"
+              },
+              {
+                "type": "inline",
+                "name": "contactPage.reference"
+              }
+            ]
+          },
+          "optional": true
+        },
+        "href": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string"
+          },
+          "optional": true
+        },
+        "children": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "array",
+            "of": {
+              "type": "object",
+              "attributes": {
+                "_key": {
+                  "type": "objectAttribute",
+                  "value": {
+                    "type": "string"
+                  }
+                }
+              },
+              "rest": {
+                "type": "inline",
+                "name": "link"
+              }
+            }
+          },
+          "optional": true
+        }
+      }
+    }
+  },
+  {
     "name": "link",
     "type": "type",
     "value": {
@@ -5708,7 +5830,7 @@
             },
             "rest": {
               "type": "inline",
-              "name": "link"
+              "name": "navItem"
             }
           }
         },

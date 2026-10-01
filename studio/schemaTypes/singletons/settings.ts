@@ -53,7 +53,7 @@ export const navigationType = defineType({
   type: 'document',
   icon: MenuIcon,
   fields: [
-    defineField({name: 'links', title: 'Menu', type: 'array', of: [defineArrayMember({type: 'link'})]}),
+    defineField({name: 'links', title: 'Menu', type: 'array', of: [defineArrayMember({type: 'navItem'})]}),
     str('ctaLabel', 'Knop rechtsboven', {description: 'Springt naar het offerteformulier.'}),
     str('menuOpen', 'Menuknop: openen (schermlezer)'),
     str('menuClose', 'Menuknop: sluiten (schermlezer)'),

@@ -45,6 +45,7 @@ async function main() {
   assertLinks(layout, 'LAYOUT');
   assert.ok(layout.site.name && layout.site.logo.asset, 'site name/logo');
   assert.equal(layout.navigation.links.length, 6);
+  assert.ok(layout.navigation.links[0].children.length >= 4 && layout.navigation.links[2].children.length === 3, 'nav children');
   assert.ok(layout.ui.breadcrumbHome && layout.ui.breadcrumbServices.href);
   assert.ok(layout.zakelijkTitle && layout.projectsTitle && layout.zakelijkProjectsTitle);
 
