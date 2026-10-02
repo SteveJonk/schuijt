@@ -8,3 +8,7 @@
 [2026-09-28T09:51:02.560Z] [INFO] Dashboard server listening on 127.0.0.1:18795
 [2026-09-28T10:00:00.015Z] [INFO] Executing task: Full anatomy rescan
 [2026-09-28T10:00:00.138Z] [INFO] Task Full anatomy rescan completed in 122ms
+[2026-09-29T10:00:00.040Z] [INFO] Executing task: Full anatomy rescan
+[2026-09-29T10:00:00.183Z] [INFO] Task Full anatomy rescan completed in 143ms
+[2026-09-29T19:42:59.466Z] [INFO] Daemon shutting down...
+[2026-09-29T19:42:59.535Z] [INFO] Daemon stopped

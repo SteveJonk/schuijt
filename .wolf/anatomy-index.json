@@ -1,12 +1,12 @@
 {
   "version": 1,
   "meta": {
-    "lastScanned": "2026-09-28T10:00:00.114Z",
-    "fileCount": 156,
+    "lastScanned": "2026-09-29T10:00:00.157Z",
+    "fileCount": 173,
     "hits": 0,
     "misses": 0,
-    "renderedHash": "4bd57314dc6b2a41e636cda44903db758ff81624b1d6962a8e6b682562da9c47",
-    "storeUpdatedAt": "2026-09-28T10:00:00.115Z"
+    "renderedHash": "003c94bab787ab25a4898e2834d2dec64b2aab4b2459632cf9da79d9d8ee5a5f",
+    "storeUpdatedAt": "2026-09-29T10:00:00.158Z"
   },
   "files": {
     ".claude/commands/reframe.md": {
@@ -15,7 +15,7 @@
       "hash": "17a75695be5d4629",
       "size": 2221,
       "mtimeMs": 1790589062489.8354,
-      "updatedAt": "2026-09-28T10:00:00.034Z",
+      "updatedAt": "2026-09-29T10:00:00.049Z",
       "source": "scan"
     },
     ".claude/commands/security-audit.md": {
@@ -24,16 +24,16 @@
       "hash": "e6f7e0b7337c9c86",
       "size": 2060,
       "mtimeMs": 1790589062489.5464,
-      "updatedAt": "2026-09-28T10:00:00.035Z",
+      "updatedAt": "2026-09-29T10:00:00.052Z",
       "source": "scan"
     },
     ".claude/launch.json": {
       "description": "",
-      "tokens": 48,
-      "hash": "2809eb3b8cff780b",
-      "size": 166,
-      "mtimeMs": 1790587893632.232,
-      "updatedAt": "2026-09-28T10:00:00.036Z",
+      "tokens": 121,
+      "hash": "2269bb2fd872ebd9",
+      "size": 422,
+      "mtimeMs": 1790675461234.3215,
+      "updatedAt": "2026-09-29T10:00:00.053Z",
       "source": "scan"
     },
     ".claude/rules/openwolf.md": {
@@ -42,7 +42,7 @@
       "hash": "6d735b2c1c54a916",
       "size": 1323,
       "mtimeMs": 1790589061844.7742,
-      "updatedAt": "2026-09-28T10:00:00.037Z",
+      "updatedAt": "2026-09-29T10:00:00.054Z",
       "source": "scan"
     },
     ".claude/settings.json": {
@@ -51,7 +51,7 @@
       "hash": "f68759bb50af5ee4",
       "size": 1799,
       "mtimeMs": 1790589061844.345,
-      "updatedAt": "2026-09-28T10:00:00.038Z",
+      "updatedAt": "2026-09-29T10:00:00.056Z",
       "source": "scan"
     },
     ".cursor/rules/openwolf.mdc": {
@@ -60,16 +60,16 @@
       "hash": "25a895da2047ef4d",
       "size": 323,
       "mtimeMs": 1790589062488.7083,
-      "updatedAt": "2026-09-28T10:00:00.039Z",
+      "updatedAt": "2026-09-29T10:00:00.057Z",
       "source": "scan"
     },
     ".DS_Store": {
       "description": "",
-      "tokens": 2186,
-      "hash": "0fe00154a3fc363b",
-      "size": 8196,
-      "mtimeMs": 1790586862902.7468,
-      "updatedAt": "2026-09-28T10:00:00.039Z",
+      "tokens": 2732,
+      "hash": "9d0ecd2d4255f8e9",
+      "size": 10244,
+      "mtimeMs": 1790665311266.9282,
+      "updatedAt": "2026-09-29T10:00:00.058Z",
       "source": "scan"
     },
     ".github/workflows/build-app-image.yml": {
@@ -78,7 +78,7 @@
       "hash": "bf84c04ea3934b66",
       "size": 3110,
       "mtimeMs": 1790582563624.138,
-      "updatedAt": "2026-09-28T10:00:00.040Z",
+      "updatedAt": "2026-09-29T10:00:00.059Z",
       "source": "scan"
     },
     ".github/workflows/deploy-sanity-studio.yml": {
@@ -87,7 +87,7 @@
       "hash": "0f6355d3b127c4ce",
       "size": 2620,
       "mtimeMs": 1790582563624.275,
-      "updatedAt": "2026-09-28T10:00:00.040Z",
+      "updatedAt": "2026-09-29T10:00:00.060Z",
       "source": "scan"
     },
     ".opencode/command/reframe.md": {
@@ -96,7 +96,7 @@
       "hash": "17a75695be5d4629",
       "size": 2221,
       "mtimeMs": 1790589062490.2454,
-      "updatedAt": "2026-09-28T10:00:00.041Z",
+      "updatedAt": "2026-09-29T10:00:00.061Z",
       "source": "scan"
     },
     ".opencode/command/security-audit.md": {
@@ -105,7 +105,7 @@
       "hash": "e6f7e0b7337c9c86",
       "size": 2060,
       "mtimeMs": 1790589062490.0703,
-      "updatedAt": "2026-09-28T10:00:00.041Z",
+      "updatedAt": "2026-09-29T10:00:00.061Z",
       "source": "scan"
     },
     ".opencode/plugin/openwolf/anatomy.ts": {
@@ -114,7 +114,7 @@
       "hash": "de2a14445289179f",
       "size": 10257,
       "mtimeMs": 1790589062484.7732,
-      "updatedAt": "2026-09-28T10:00:00.044Z",
+      "updatedAt": "2026-09-29T10:00:00.061Z",
       "source": "scan",
       "symbols": [
         {
@@ -230,7 +230,7 @@
       "hash": "0193b1022c8e098b",
       "size": 1881,
       "mtimeMs": 1790589062485.1326,
-      "updatedAt": "2026-09-28T10:00:00.045Z",
+      "updatedAt": "2026-09-29T10:00:00.062Z",
       "source": "scan",
       "symbols": [
         {
@@ -311,7 +311,7 @@
       "hash": "5044a1f76c74f535",
       "size": 3782,
       "mtimeMs": 1790589062485.3848,
-      "updatedAt": "2026-09-28T10:00:00.046Z",
+      "updatedAt": "2026-09-29T10:00:00.062Z",
       "source": "scan"
     },
     ".opencode/plugin/openwolf/post-read.ts": {
@@ -320,7 +320,7 @@
       "hash": "1bc80c56ad0cfd32",
       "size": 2200,
       "mtimeMs": 1790589062485.6528,
-      "updatedAt": "2026-09-28T10:00:00.046Z",
+      "updatedAt": "2026-09-29T10:00:00.063Z",
       "source": "scan",
       "symbols": [
         {
@@ -338,7 +338,7 @@
       "hash": "02ba6ccd8d82475c",
       "size": 11300,
       "mtimeMs": 1790589062485.9824,
-      "updatedAt": "2026-09-28T10:00:00.047Z",
+      "updatedAt": "2026-09-29T10:00:00.064Z",
       "source": "scan",
       "symbols": [
         {
@@ -405,7 +405,7 @@
       "hash": "88c051b64b073c6a",
       "size": 2401,
       "mtimeMs": 1790589062486.4067,
-      "updatedAt": "2026-09-28T10:00:00.047Z",
+      "updatedAt": "2026-09-29T10:00:00.064Z",
       "source": "scan",
       "symbols": [
         {
@@ -423,7 +423,7 @@
       "hash": "c3b34d216601e76f",
       "size": 4092,
       "mtimeMs": 1790589062486.7078,
-      "updatedAt": "2026-09-28T10:00:00.047Z",
+      "updatedAt": "2026-09-29T10:00:00.064Z",
       "source": "scan",
       "symbols": [
         {
@@ -469,7 +469,7 @@
       "hash": "dda2df097f6d5874",
       "size": 3340,
       "mtimeMs": 1790589062487.1445,
-      "updatedAt": "2026-09-28T10:00:00.048Z",
+      "updatedAt": "2026-09-29T10:00:00.065Z",
       "source": "scan",
       "symbols": [
         {
@@ -508,7 +508,7 @@
       "hash": "5f8633a3904ee5ce",
       "size": 5057,
       "mtimeMs": 1790589062487.4653,
-      "updatedAt": "2026-09-28T10:00:00.048Z",
+      "updatedAt": "2026-09-29T10:00:00.065Z",
       "source": "scan",
       "symbols": [
         {
@@ -547,7 +547,7 @@
       "hash": "47f4dfb03abf55f9",
       "size": 757,
       "mtimeMs": 1790589062487.8105,
-      "updatedAt": "2026-09-28T10:00:00.049Z",
+      "updatedAt": "2026-09-29T10:00:00.065Z",
       "source": "scan"
     },
     ".opencode/plugin/openwolf.ts": {
@@ -556,7 +556,7 @@
       "hash": "a29f91aadb9a324d",
       "size": 261,
       "mtimeMs": 1790589062487.971,
-      "updatedAt": "2026-09-28T10:00:00.049Z",
+      "updatedAt": "2026-09-29T10:00:00.066Z",
       "source": "scan"
     },
     "AGENTS.md": {
@@ -565,25 +565,25 @@
       "hash": "8c90778623bf50ac",
       "size": 271,
       "mtimeMs": 1790589062488.3596,
-      "updatedAt": "2026-09-28T10:00:00.050Z",
+      "updatedAt": "2026-09-29T10:00:00.066Z",
       "source": "scan"
     },
     "app/.DS_Store": {
       "description": "",
-      "tokens": 1640,
-      "hash": "02ca0ad8f6af0692",
-      "size": 6148,
-      "mtimeMs": 1790584683198.2363,
-      "updatedAt": "2026-09-28T10:00:00.051Z",
+      "tokens": 2186,
+      "hash": "7dca37d1592702c8",
+      "size": 8196,
+      "mtimeMs": 1790668092156.8977,
+      "updatedAt": "2026-09-29T10:00:00.067Z",
       "source": "scan"
     },
     "app/.gitignore": {
       "description": "Git ignore rules",
-      "tokens": 150,
-      "hash": "db0fefc72f568fbb",
-      "size": 564,
-      "mtimeMs": 1790586841800.3047,
-      "updatedAt": "2026-09-28T10:00:00.051Z",
+      "tokens": 164,
+      "hash": "f97f9bf972543249",
+      "size": 615,
+      "mtimeMs": 1790596099420.7224,
+      "updatedAt": "2026-09-29T10:00:00.067Z",
       "source": "scan"
     },
     "app/design/blog-artikel-voorbeeld.html": {
@@ -592,7 +592,7 @@
       "hash": "ab4b32e36db16d93",
       "size": 924988,
       "mtimeMs": 1790586074116.3813,
-      "updatedAt": "2026-09-28T10:00:00.058Z",
+      "updatedAt": "2026-09-29T10:00:00.072Z",
       "source": "scan"
     },
     "app/design/contact.html": {
@@ -601,7 +601,7 @@
       "hash": "36342e607d7316c6",
       "size": 38077,
       "mtimeMs": 1790586074119.4915,
-      "updatedAt": "2026-09-28T10:00:00.059Z",
+      "updatedAt": "2026-09-29T10:00:00.074Z",
       "source": "scan"
     },
     "app/design/index.html": {
@@ -610,7 +610,7 @@
       "hash": "9b5c90942878bf27",
       "size": 5055,
       "mtimeMs": 1790586074123.876,
-      "updatedAt": "2026-09-28T10:00:00.059Z",
+      "updatedAt": "2026-09-29T10:00:00.074Z",
       "source": "scan"
     },
     "app/design/project-zakelijk-voorbeeld.html": {
@@ -619,7 +619,7 @@
       "hash": "565c9a9324ce51a4",
       "size": 304605,
       "mtimeMs": 1790586074131.5283,
-      "updatedAt": "2026-09-28T10:00:00.062Z",
+      "updatedAt": "2026-09-29T10:00:00.076Z",
       "source": "scan"
     },
     "app/design/reviews.html": {
@@ -628,7 +628,7 @@
       "hash": "2ade610580f8e146",
       "size": 37829,
       "mtimeMs": 1790586074132.2136,
-      "updatedAt": "2026-09-28T10:00:00.063Z",
+      "updatedAt": "2026-09-29T10:00:00.076Z",
       "source": "scan"
     },
     "app/design/zakelijk-hub-v2.html": {
@@ -637,7 +637,7 @@
       "hash": "386e5594e1e8807a",
       "size": 771160,
       "mtimeMs": 1790586074148.6326,
-      "updatedAt": "2026-09-28T10:00:00.068Z",
+      "updatedAt": "2026-09-29T10:00:00.082Z",
       "source": "scan"
     },
     "app/design/zakelijk-projecten.html": {
@@ -646,7 +646,7 @@
       "hash": "162f1650b06c552e",
       "size": 34941,
       "mtimeMs": 1790586074149.295,
-      "updatedAt": "2026-09-28T10:00:00.069Z",
+      "updatedAt": "2026-09-29T10:00:00.083Z",
       "source": "scan"
     },
     "app/design/zakelijk-vve-vastgoedbeheer.html": {
@@ -655,7 +655,7 @@
       "hash": "c14f89b7b783bb0b",
       "size": 994958,
       "mtimeMs": 1790586074150.9111,
-      "updatedAt": "2026-09-28T10:00:00.075Z",
+      "updatedAt": "2026-09-29T10:00:00.088Z",
       "source": "scan"
     },
     "app/Dockerfile": {
@@ -664,7 +664,7 @@
       "hash": "c8a0488797cac4e8",
       "size": 1100,
       "mtimeMs": 1790582563624.9915,
-      "updatedAt": "2026-09-28T10:00:00.075Z",
+      "updatedAt": "2026-09-29T10:00:00.089Z",
       "source": "scan"
     },
     "app/eslint.config.mjs": {
@@ -673,7 +673,16 @@
       "hash": "870f1adccecf3051",
       "size": 465,
       "mtimeMs": 1790582563625.1084,
-      "updatedAt": "2026-09-28T10:00:00.076Z",
+      "updatedAt": "2026-09-29T10:00:00.089Z",
+      "source": "scan"
+    },
+    "app/netlify.toml": {
+      "description": "",
+      "tokens": 135,
+      "hash": "40d74e945730fae0",
+      "size": 470,
+      "mtimeMs": 1790667889786.468,
+      "updatedAt": "2026-09-29T10:00:00.089Z",
       "source": "scan"
     },
     "app/next-env.d.ts": {
@@ -681,17 +690,17 @@
       "tokens": 72,
       "hash": "7ad303e40d4fddf4",
       "size": 251,
-      "mtimeMs": 1790587898851.654,
-      "updatedAt": "2026-09-28T10:00:00.076Z",
+      "mtimeMs": 1790666427303.3577,
+      "updatedAt": "2026-09-29T10:00:00.090Z",
       "source": "scan"
     },
     "app/next.config.ts": {
       "description": "Next.js configuration",
-      "tokens": 526,
-      "hash": "8a7393f02ec13739",
-      "size": 1840,
-      "mtimeMs": 1790582563625.2266,
-      "updatedAt": "2026-09-28T10:00:00.076Z",
+      "tokens": 570,
+      "hash": "8d4a96e330ca6683",
+      "size": 1993,
+      "mtimeMs": 1790596218537.6377,
+      "updatedAt": "2026-09-29T10:00:00.090Z",
       "source": "scan"
     },
     "app/package-lock.json": {
@@ -700,16 +709,16 @@
       "hash": "d9585d8e01a25eb5",
       "size": 729717,
       "mtimeMs": 1790582609347.4048,
-      "updatedAt": "2026-09-28T10:00:00.079Z",
+      "updatedAt": "2026-09-29T10:00:00.093Z",
       "source": "scan"
     },
     "app/package.json": {
       "description": "Node.js package manifest",
-      "tokens": 260,
-      "hash": "48f12de504e58f33",
-      "size": 910,
-      "mtimeMs": 1790587872362.3198,
-      "updatedAt": "2026-09-28T10:00:00.080Z",
+      "tokens": 321,
+      "hash": "d14d7b58e5bfa412",
+      "size": 1122,
+      "mtimeMs": 1790596068550.6106,
+      "updatedAt": "2026-09-29T10:00:00.093Z",
       "source": "scan"
     },
     "app/postcss.config.mjs": {
@@ -718,177 +727,383 @@
       "hash": "dfac7ac2d86d326a",
       "size": 94,
       "mtimeMs": 1790582563627.292,
-      "updatedAt": "2026-09-28T10:00:00.080Z",
-      "source": "scan"
-    },
-    "app/public/__design/blog-artikel-voorbeeld.html": {
-      "description": "Hoeveel kost sierbestrating per m²? Dit bepaalt de prijs — L. Schuijt Klussenbedrijf",
-      "tokens": 6229,
-      "hash": "b40ece396e4ba980",
-      "size": 23375,
-      "mtimeMs": 1790587919946.6245,
-      "updatedAt": "2026-09-28T10:00:00.081Z",
-      "source": "scan"
-    },
-    "app/public/__design/blog-overzicht.html": {
-      "description": "Blog — L. Schuijt Klussenbedrijf",
-      "tokens": 6688,
-      "hash": "8937621caddf8d09",
-      "size": 25086,
-      "mtimeMs": 1790587919947.545,
-      "updatedAt": "2026-09-28T10:00:00.081Z",
-      "source": "scan"
-    },
-    "app/public/__design/contact.html": {
-      "description": "Contact — L. Schuijt Klussenbedrijf",
-      "tokens": 6889,
-      "hash": "cb57312e6f071c09",
-      "size": 25849,
-      "mtimeMs": 1790587919948.397,
-      "updatedAt": "2026-09-28T10:00:00.081Z",
-      "source": "scan"
-    },
-    "app/public/__design/homepage.html": {
-      "description": "L. Schuijt Klussenbedrijf — Sierbestrating, schuttingbouw en tuinaanleg",
-      "tokens": 11896,
-      "hash": "f00a7e0ad7eca18c",
-      "size": 44661,
-      "mtimeMs": 1790587919949.4128,
-      "updatedAt": "2026-09-28T10:00:00.082Z",
-      "source": "scan"
-    },
-    "app/public/__design/particulier-projecten.html": {
-      "description": "Projecten — L. Schuijt Klussenbedrijf",
-      "tokens": 6632,
-      "hash": "859c36b8ad53852c",
-      "size": 24879,
-      "mtimeMs": 1790587919950.1873,
-      "updatedAt": "2026-09-28T10:00:00.082Z",
-      "source": "scan"
-    },
-    "app/public/__design/project-particulier-voorbeeld.html": {
-      "description": "Complete tuinaanleg met verdiepte trampoline — L. Schuijt Klussenbedrijf",
-      "tokens": 6504,
-      "hash": "e9a0447b18bdcd70",
-      "size": 24401,
-      "mtimeMs": 1790587919951.018,
-      "updatedAt": "2026-09-28T10:00:00.083Z",
-      "source": "scan"
-    },
-    "app/public/__design/project-zakelijk-voorbeeld.html": {
-      "description": "Herbestrating gezamenlijke buitenruimte, VvE Heemskerk — L. Schuijt Klussenbedrijf",
-      "tokens": 6427,
-      "hash": "9fd29ac68598800d",
-      "size": 24113,
-      "mtimeMs": 1790587919951.894,
-      "updatedAt": "2026-09-28T10:00:00.083Z",
-      "source": "scan"
-    },
-    "app/public/__design/reviews.html": {
-      "description": "Reviews — L. Schuijt Klussenbedrijf",
-      "tokens": 6805,
-      "hash": "3db84786215c1e52",
-      "size": 25601,
-      "mtimeMs": 1790587919952.5422,
-      "updatedAt": "2026-09-28T10:00:00.083Z",
-      "source": "scan"
-    },
-    "app/public/__design/schuttingbouw.html": {
-      "description": "Schuttingbouw — L. Schuijt Klussenbedrijf",
-      "tokens": 9455,
-      "hash": "0465b26f7826ba91",
-      "size": 35464,
-      "mtimeMs": 1790587919953.252,
-      "updatedAt": "2026-09-28T10:00:00.084Z",
-      "source": "scan"
-    },
-    "app/public/__design/seo-schuttingbouw-heemskerk.html": {
-      "description": "Schuttingbouw in Heemskerk — L. Schuijt Klussenbedrijf",
-      "tokens": 9839,
-      "hash": "6d1103205abb8ace",
-      "size": 36903,
-      "mtimeMs": 1790587919954.1707,
-      "updatedAt": "2026-09-28T10:00:00.084Z",
-      "source": "scan"
-    },
-    "app/public/__design/sierbestrating.html": {
-      "description": "Sierbestrating — L. Schuijt Klussenbedrijf",
-      "tokens": 9483,
-      "hash": "06b7e0dec7e3f6a0",
-      "size": 35568,
-      "mtimeMs": 1790587919954.801,
-      "updatedAt": "2026-09-28T10:00:00.084Z",
-      "source": "scan"
-    },
-    "app/public/__design/terrasreiniging.html": {
-      "description": "Terrasreiniging — L. Schuijt Klussenbedrijf",
-      "tokens": 9439,
-      "hash": "69ddd1966a9084b8",
-      "size": 35408,
-      "mtimeMs": 1790587919955.6055,
-      "updatedAt": "2026-09-28T10:00:00.085Z",
-      "source": "scan"
-    },
-    "app/public/__design/tuinaanleg.html": {
-      "description": "Tuinaanleg — L. Schuijt Klussenbedrijf",
-      "tokens": 9399,
-      "hash": "587a489f594b8f0e",
-      "size": 35256,
-      "mtimeMs": 1790587919956.496,
-      "updatedAt": "2026-09-28T10:00:00.086Z",
-      "source": "scan"
-    },
-    "app/public/__design/zakelijk-hub-v2.html": {
-      "description": "Zakelijk — L. Schuijt Klussenbedrijf",
-      "tokens": 10654,
-      "hash": "96c42d2d65c48619",
-      "size": 39982,
-      "mtimeMs": 1790587919957.049,
-      "updatedAt": "2026-09-28T10:00:00.086Z",
-      "source": "scan"
-    },
-    "app/public/__design/zakelijk-projecten.html": {
-      "description": "Zakelijke projecten — L. Schuijt Klussenbedrijf",
-      "tokens": 6054,
-      "hash": "4784057ebcb60c4e",
-      "size": 22713,
-      "mtimeMs": 1790587919961.145,
-      "updatedAt": "2026-09-28T10:00:00.086Z",
-      "source": "scan"
-    },
-    "app/public/__design/zakelijk-vve-vastgoedbeheer.html": {
-      "description": "VvE &amp; Vastgoedbeheer — L. Schuijt Klussenbedrijf",
-      "tokens": 9580,
-      "hash": "6f03e8a0bdd6d73d",
-      "size": 35945,
-      "mtimeMs": 1790587919962.1023,
-      "updatedAt": "2026-09-28T10:00:00.087Z",
-      "source": "scan"
-    },
-    "app/public/__design/zakelijk-woningcorporaties.html": {
-      "description": "Woningcorporaties — L. Schuijt Klussenbedrijf",
-      "tokens": 9560,
-      "hash": "9a46ba89ccd4e55e",
-      "size": 35867,
-      "mtimeMs": 1790587919963.022,
-      "updatedAt": "2026-09-28T10:00:00.087Z",
+      "updatedAt": "2026-09-29T10:00:00.094Z",
       "source": "scan"
     },
     "app/scripts/check-jsonld.ts": {
       "description": "The smallest thing that fails when the structured data quietly changes.",
-      "tokens": 2615,
-      "hash": "03449dcb6bc36e88",
-      "size": 9161,
-      "mtimeMs": 1790582563628.5178,
-      "updatedAt": "2026-09-28T10:00:00.088Z",
+      "tokens": 2422,
+      "hash": "304bce75e409f640",
+      "size": 8485,
+      "mtimeMs": 1790596179416.59,
+      "updatedAt": "2026-09-29T10:00:00.094Z",
       "source": "scan",
       "symbols": [
         {
           "name": "node",
           "kind": "fn",
           "startLine": 37,
-          "endLine": 230,
-          "tokens": 2266
+          "endLine": 220,
+          "tokens": 2077
+        }
+      ]
+    },
+    "app/scripts/check-links.mjs": {
+      "description": "Crawls every path in /sitemap.xml and checks that each internal link, image",
+      "tokens": 657,
+      "hash": "499b2b77c6a5b807",
+      "size": 2463,
+      "mtimeMs": 1790597176915.9204,
+      "updatedAt": "2026-09-29T10:00:00.095Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "check",
+          "kind": "fn",
+          "startLine": 12,
+          "endLine": 51,
+          "tokens": 523
+        }
+      ]
+    },
+    "app/scripts/check-queries.ts": {
+      "description": "Runs every GROQ query in src/sanity/queries.ts against the seed dataset,",
+      "tokens": 1412,
+      "hash": "07f3bd8a1916dc0d",
+      "size": 4942,
+      "mtimeMs": 1790596773050.1638,
+      "updatedAt": "2026-09-29T10:00:00.095Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "run",
+          "kind": "fn",
+          "startLine": 19,
+          "endLine": 23,
+          "tokens": 70
+        },
+        {
+          "name": "assertLinks",
+          "kind": "fn",
+          "startLine": 24,
+          "endLine": 34,
+          "tokens": 140
+        },
+        {
+          "name": "check",
+          "kind": "fn",
+          "startLine": 35,
+          "endLine": 42,
+          "tokens": 78
+        },
+        {
+          "name": "main",
+          "kind": "fn",
+          "startLine": 43,
+          "endLine": 108,
+          "tokens": 922
+        }
+      ]
+    },
+    "app/scripts/seed/content/blog.ts": {
+      "description": "Heading of the offerte box under the article.",
+      "tokens": 1707,
+      "hash": "97e6d1c494649193",
+      "size": 5978,
+      "mtimeMs": 1790595899083.1694,
+      "updatedAt": "2026-09-29T10:00:00.095Z",
+      "source": "scan"
+    },
+    "app/scripts/seed/content/home.ts": {
+      "description": "Exports HERO, PATHS, SERVICES, STEPS + 5 more",
+      "tokens": 1471,
+      "hash": "0aa3ba3045534c34",
+      "size": 5156,
+      "mtimeMs": 1790595899083.5886,
+      "updatedAt": "2026-09-29T10:00:00.096Z",
+      "source": "scan"
+    },
+    "app/scripts/seed/content/local.ts": {
+      "description": "Builds a local landing page from its service, the way the",
+      "tokens": 1459,
+      "hash": "a92c84b90476d259",
+      "size": 5105,
+      "mtimeMs": 1790595899083.9421,
+      "updatedAt": "2026-09-29T10:00:00.096Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "localPage",
+          "kind": "fn",
+          "startLine": 25,
+          "endLine": 89,
+          "tokens": 1165
+        },
+        {
+          "name": "getLocalPage",
+          "kind": "fn",
+          "startLine": 90,
+          "endLine": 100,
+          "tokens": 80
+        }
+      ]
+    },
+    "app/scripts/seed/content/privacy.ts": {
+      "description": "/privacy-policy/, carried over from the WordPress page.",
+      "tokens": 996,
+      "hash": "dd900aa4064927cc",
+      "size": 3484,
+      "mtimeMs": 1790595899084.2856,
+      "updatedAt": "2026-09-29T10:00:00.096Z",
+      "source": "scan"
+    },
+    "app/scripts/seed/content/projects.ts": {
+      "description": "ponytail: stand-in photos per category until each post's own photos are",
+      "tokens": 2301,
+      "hash": "5da1b03f2ccb179b",
+      "size": 8064,
+      "mtimeMs": 1790595899084.6519,
+      "updatedAt": "2026-09-29T10:00:00.096Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "img",
+          "kind": "fn",
+          "startLine": 40,
+          "endLine": 169,
+          "tokens": 1560
+        },
+        {
+          "name": "getProject",
+          "kind": "fn",
+          "startLine": 170,
+          "endLine": 208,
+          "tokens": 285
+        }
+      ]
+    },
+    "app/scripts/seed/content/reviews.ts": {
+      "description": "ponytail: the design's example reviews; replace with the real Google reviews.",
+      "tokens": 470,
+      "hash": "ed385e6e5e113b95",
+      "size": 1649,
+      "mtimeMs": 1790595899084.9238,
+      "updatedAt": "2026-09-29T10:00:00.097Z",
+      "source": "scan"
+    },
+    "app/scripts/seed/content/routes.ts": {
+      "description": "Every URL that lives at the site root, carried over 1:1 from the WordPress",
+      "tokens": 2586,
+      "hash": "aeb469e1cc92ee9a",
+      "size": 9052,
+      "mtimeMs": 1790595899085.398,
+      "updatedAt": "2026-09-29T10:00:00.097Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "rootPage",
+          "kind": "fn",
+          "startLine": 174,
+          "endLine": 177,
+          "tokens": 34
+        }
+      ]
+    },
+    "app/scripts/seed/content/services.ts": {
+      "description": "Declares DESIGNED",
+      "tokens": 6698,
+      "hash": "239f4946d69a5ca9",
+      "size": 23449,
+      "mtimeMs": 1790595899086.1357,
+      "updatedAt": "2026-09-29T10:00:00.098Z",
+      "source": "scan"
+    },
+    "app/scripts/seed/content/types.ts": {
+      "description": "The shapes the seed content was written in (the pre-Sanity component props).",
+      "tokens": 439,
+      "hash": "a19f00b3c3dca506",
+      "size": 1534,
+      "mtimeMs": 1790595899086.5837,
+      "updatedAt": "2026-09-29T10:00:00.098Z",
+      "source": "scan"
+    },
+    "app/scripts/seed/content/wp-posts.ts": {
+      "description": "Titles and publish dates of the WordPress posts (from wp-json/wp/v2/posts),",
+      "tokens": 3228,
+      "hash": "ea2ea4dc94feda77",
+      "size": 11314,
+      "mtimeMs": 1790595899087.3442,
+      "updatedAt": "2026-09-29T10:00:00.098Z",
+      "source": "scan"
+    },
+    "app/scripts/seed/content/zakelijk-hub.ts": {
+      "description": "Exports HUB_HERO, HUB_STATS, HUB_AUDIENCES, HUB_SERVICES + 3 more",
+      "tokens": 1316,
+      "hash": "0df2d32b69bd7a0d",
+      "size": 4613,
+      "mtimeMs": 1790595899087.8508,
+      "updatedAt": "2026-09-29T10:00:00.098Z",
+      "source": "scan"
+    },
+    "app/scripts/seed/content/zakelijk-pages.ts": {
+      "description": "/zakelijk/<slug>/ audience pages; same template as the services.",
+      "tokens": 3496,
+      "hash": "c40c564dbb73cccd",
+      "size": 12254,
+      "mtimeMs": 1790595899088.459,
+      "updatedAt": "2026-09-29T10:00:00.099Z",
+      "source": "scan"
+    },
+    "app/scripts/seed/dataset.ndjson": {
+      "description": "",
+      "tokens": 154069,
+      "hash": "1eb1c43b54c1d0d6",
+      "size": 578100,
+      "mtimeMs": 1790669053734.6692,
+      "updatedAt": "2026-09-29T10:00:00.102Z",
+      "source": "scan"
+    },
+    "app/scripts/seed/index.ts": {
+      "description": "Fills Sanity with the site's current content: every page, project, blog",
+      "tokens": 9357,
+      "hash": "cb64da2631f051a2",
+      "size": 32782,
+      "mtimeMs": 1790669274639.9092,
+      "updatedAt": "2026-09-29T10:00:00.104Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "add",
+          "kind": "fn",
+          "startLine": 58,
+          "endLine": 65,
+          "tokens": 80
+        },
+        {
+          "name": "image",
+          "kind": "fn",
+          "startLine": 66,
+          "endLine": 72,
+          "tokens": 80
+        },
+        {
+          "name": "ref",
+          "kind": "fn",
+          "startLine": 73,
+          "endLine": 73,
+          "tokens": 18
+        },
+        {
+          "name": "internal",
+          "kind": "fn",
+          "startLine": 74,
+          "endLine": 79,
+          "tokens": 41
+        },
+        {
+          "name": "external",
+          "kind": "fn",
+          "startLine": 80,
+          "endLine": 86,
+          "tokens": 37
+        },
+        {
+          "name": "block",
+          "kind": "fn",
+          "startLine": 87,
+          "endLine": 97,
+          "tokens": 84
+        },
+        {
+          "name": "idSafe",
+          "kind": "fn",
+          "startLine": 98,
+          "endLine": 102,
+          "tokens": 51
+        },
+        {
+          "name": "slug",
+          "kind": "fn",
+          "startLine": 103,
+          "endLine": 105,
+          "tokens": 33
+        },
+        {
+          "name": "linkTo",
+          "kind": "fn",
+          "startLine": 106,
+          "endLine": 125,
+          "tokens": 233
+        },
+        {
+          "name": "hero",
+          "kind": "fn",
+          "startLine": 126,
+          "endLine": 143,
+          "tokens": 197
+        },
+        {
+          "name": "field",
+          "kind": "fn",
+          "startLine": 144,
+          "endLine": 162,
+          "tokens": 154
+        },
+        {
+          "name": "offerteForm",
+          "kind": "fn",
+          "startLine": 163,
+          "endLine": 189,
+          "tokens": 322
+        },
+        {
+          "name": "message",
+          "kind": "fn",
+          "startLine": 190,
+          "endLine": 353,
+          "tokens": 1490
+        },
+        {
+          "name": "servicePage",
+          "kind": "fn",
+          "startLine": 354,
+          "endLine": 477,
+          "tokens": 1144
+        },
+        {
+          "name": "blogId",
+          "kind": "fn",
+          "startLine": 478,
+          "endLine": 794,
+          "tokens": 3345
+        },
+        {
+          "name": "withKeys",
+          "kind": "fn",
+          "startLine": 795,
+          "endLine": 818,
+          "tokens": 247
+        },
+        {
+          "name": "undot",
+          "kind": "fn",
+          "startLine": 819,
+          "endLine": 824,
+          "tokens": 61
+        },
+        {
+          "name": "resolveAssets",
+          "kind": "fn",
+          "startLine": 825,
+          "endLine": 830,
+          "tokens": 66
+        },
+        {
+          "name": "main",
+          "kind": "fn",
+          "startLine": 831,
+          "endLine": 917,
+          "tokens": 1039
         }
       ]
     },
@@ -898,7 +1113,7 @@
       "hash": "a1c8602a5143bb25",
       "size": 256,
       "mtimeMs": 1790582563629.886,
-      "updatedAt": "2026-09-28T10:00:00.088Z",
+      "updatedAt": "2026-09-29T10:00:00.104Z",
       "source": "scan"
     },
     "app/sentry.options.ts": {
@@ -907,7 +1122,7 @@
       "hash": "b89936601be8277c",
       "size": 985,
       "mtimeMs": 1790582563630.0076,
-      "updatedAt": "2026-09-28T10:00:00.088Z",
+      "updatedAt": "2026-09-29T10:00:00.104Z",
       "source": "scan"
     },
     "app/sentry.server.config.ts": {
@@ -916,45 +1131,150 @@
       "hash": "cd70f1e833d830dd",
       "size": 240,
       "mtimeMs": 1790582563630.1338,
-      "updatedAt": "2026-09-28T10:00:00.089Z",
+      "updatedAt": "2026-09-29T10:00:00.105Z",
+      "source": "scan"
+    },
+    "app/src/app/[slug]/page.tsx": {
+      "description": "Everything that lived at the WordPress root renders here — services, local",
+      "tokens": 488,
+      "hash": "51874de4377129e8",
+      "size": 1709,
+      "mtimeMs": 1790596613230.8733,
+      "updatedAt": "2026-09-29T10:00:00.105Z",
       "source": "scan"
     },
     "app/src/app/api/submit-form/route.ts": {
-      "description": "Google's siteverify. Returns false on any doubt — this gate fails closed.",
-      "tokens": 1540,
-      "hash": "5bc74738be6f821c",
-      "size": 5393,
-      "mtimeMs": 1790587624207.855,
-      "updatedAt": "2026-09-28T10:00:00.089Z",
+      "description": "Bigger uploads are rejected rather than silently dropped from the mail.",
+      "tokens": 2564,
+      "hash": "3f2b224e8e7a7d06",
+      "size": 8979,
+      "mtimeMs": 1790596438076.0557,
+      "updatedAt": "2026-09-29T10:00:00.107Z",
       "source": "scan",
       "symbols": [
         {
           "name": "verifyRecaptcha",
           "kind": "fn",
-          "startLine": 9,
-          "endLine": 23,
+          "startLine": 13,
+          "endLine": 27,
           "tokens": 156
         },
         {
           "name": "fail",
           "kind": "fn",
-          "startLine": 24,
-          "endLine": 33,
-          "tokens": 102
+          "startLine": 28,
+          "endLine": 32,
+          "tokens": 57
+        },
+        {
+          "name": "splitEmails",
+          "kind": "fn",
+          "startLine": 33,
+          "endLine": 45,
+          "tokens": 109
         },
         {
           "name": "sendViaMailjet",
           "kind": "fn",
-          "startLine": 34,
-          "endLine": 73,
-          "tokens": 310
+          "startLine": 46,
+          "endLine": 91,
+          "tokens": 396
         },
         {
           "name": "POST",
           "kind": "fn",
-          "startLine": 74,
-          "endLine": 166,
-          "tokens": 880
+          "startLine": 92,
+          "endLine": 257,
+          "tokens": 1708
+        }
+      ]
+    },
+    "app/src/app/blog/[slug]/page.tsx": {
+      "description": "generateStaticParams",
+      "tokens": 1913,
+      "hash": "0f5d9cda8ee04d44",
+      "size": 6695,
+      "mtimeMs": 1790596740998.8074,
+      "updatedAt": "2026-09-29T10:00:00.107Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "generateStaticParams",
+          "kind": "fn",
+          "startLine": 19,
+          "endLine": 23,
+          "tokens": 42
+        },
+        {
+          "name": "getPost",
+          "kind": "fn",
+          "startLine": 24,
+          "endLine": 26,
+          "tokens": 34
+        },
+        {
+          "name": "generateMetadata",
+          "kind": "fn",
+          "startLine": 27,
+          "endLine": 33,
+          "tokens": 92
+        },
+        {
+          "name": "BlogArticlePage",
+          "kind": "fn",
+          "startLine": 34,
+          "endLine": 150,
+          "tokens": 1516
+        }
+      ]
+    },
+    "app/src/app/blog/page.tsx": {
+      "description": "generateMetadata",
+      "tokens": 1417,
+      "hash": "7450696a983bbb59",
+      "size": 4959,
+      "mtimeMs": 1790596740991.2546,
+      "updatedAt": "2026-09-29T10:00:00.108Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "generateMetadata",
+          "kind": "fn",
+          "startLine": 15,
+          "endLine": 19,
+          "tokens": 48
+        },
+        {
+          "name": "BlogPage",
+          "kind": "fn",
+          "startLine": 20,
+          "endLine": 103,
+          "tokens": 1174
+        }
+      ]
+    },
+    "app/src/app/contact/page.tsx": {
+      "description": "ICONS — renders form",
+      "tokens": 1281,
+      "hash": "c8025f8261a6b040",
+      "size": 4482,
+      "mtimeMs": 1790596740986.5955,
+      "updatedAt": "2026-09-29T10:00:00.108Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "generateMetadata",
+          "kind": "fn",
+          "startLine": 18,
+          "endLine": 22,
+          "tokens": 48
+        },
+        {
+          "name": "ContactPage",
+          "kind": "fn",
+          "startLine": 23,
+          "endLine": 106,
+          "tokens": 998
         }
       ]
     },
@@ -964,7 +1284,7 @@
       "hash": "43ef850981c27370",
       "size": 836,
       "mtimeMs": 1790582563630.994,
-      "updatedAt": "2026-09-28T10:00:00.090Z",
+      "updatedAt": "2026-09-29T10:00:00.108Z",
       "source": "scan"
     },
     "app/src/app/globals.css": {
@@ -973,24 +1293,31 @@
       "hash": "a5a79c2dba75f75a",
       "size": 3217,
       "mtimeMs": 1790587393056.6196,
-      "updatedAt": "2026-09-28T10:00:00.090Z",
+      "updatedAt": "2026-09-29T10:00:00.109Z",
       "source": "scan"
     },
     "app/src/app/layout.tsx": {
       "description": "display",
-      "tokens": 521,
-      "hash": "ccc9be0563c86f9e",
-      "size": 1827,
-      "mtimeMs": 1790587548847.417,
-      "updatedAt": "2026-09-28T10:00:00.091Z",
+      "tokens": 763,
+      "hash": "f056baa39662bd1f",
+      "size": 2670,
+      "mtimeMs": 1790596529764.4553,
+      "updatedAt": "2026-09-29T10:00:00.109Z",
       "source": "scan",
       "symbols": [
         {
+          "name": "generateMetadata",
+          "kind": "fn",
+          "startLine": 29,
+          "endLine": 40,
+          "tokens": 99
+        },
+        {
           "name": "RootLayout",
           "kind": "fn",
-          "startLine": 40,
-          "endLine": 66,
-          "tokens": 184
+          "startLine": 41,
+          "endLine": 82,
+          "tokens": 382
         }
       ]
     },
@@ -1000,26 +1327,106 @@
       "hash": "5f0aa6d3efda2301",
       "size": 159,
       "mtimeMs": 1790582563631.4722,
-      "updatedAt": "2026-09-28T10:00:00.091Z",
+      "updatedAt": "2026-09-29T10:00:00.109Z",
       "source": "scan"
     },
     "app/src/app/not-found.tsx": {
       "description": "NotFound",
-      "tokens": 193,
-      "hash": "f94c6e2e512ba813",
-      "size": 675,
-      "mtimeMs": 1790587548851.7263,
-      "updatedAt": "2026-09-28T10:00:00.091Z",
+      "tokens": 204,
+      "hash": "cbba26cb9936b469",
+      "size": 712,
+      "mtimeMs": 1790596481727.8374,
+      "updatedAt": "2026-09-29T10:00:00.109Z",
       "source": "scan"
     },
     "app/src/app/page.tsx": {
-      "description": "HomePage",
-      "tokens": 494,
-      "hash": "f79636086c73f114",
-      "size": 1727,
-      "mtimeMs": 1790587851720.9785,
-      "updatedAt": "2026-09-28T10:00:00.091Z",
-      "source": "scan"
+      "description": "generateMetadata",
+      "tokens": 594,
+      "hash": "c480795141dd3bb1",
+      "size": 2079,
+      "mtimeMs": 1790596529795.613,
+      "updatedAt": "2026-09-29T10:00:00.110Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "generateMetadata",
+          "kind": "fn",
+          "startLine": 19,
+          "endLine": 23,
+          "tokens": 50
+        },
+        {
+          "name": "HomePage",
+          "kind": "fn",
+          "startLine": 24,
+          "endLine": 57,
+          "tokens": 286
+        }
+      ]
+    },
+    "app/src/app/projecten/page.tsx": {
+      "description": "generateMetadata",
+      "tokens": 908,
+      "hash": "c31194eb9f4788cc",
+      "size": 3177,
+      "mtimeMs": 1790596662055.9885,
+      "updatedAt": "2026-09-29T10:00:00.110Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "generateMetadata",
+          "kind": "fn",
+          "startLine": 14,
+          "endLine": 18,
+          "tokens": 49
+        },
+        {
+          "name": "ProjectenPage",
+          "kind": "fn",
+          "startLine": 19,
+          "endLine": 68,
+          "tokens": 678
+        }
+      ]
+    },
+    "app/src/app/reviews/page.tsx": {
+      "description": "generateMetadata",
+      "tokens": 1859,
+      "hash": "c64f1f3be3f2ea9d",
+      "size": 6525,
+      "mtimeMs": 1790596683992.9028,
+      "updatedAt": "2026-09-29T10:00:00.111Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "generateMetadata",
+          "kind": "fn",
+          "startLine": 14,
+          "endLine": 18,
+          "tokens": 49
+        },
+        {
+          "name": "GoogleLogo",
+          "kind": "fn",
+          "startLine": 19,
+          "endLine": 29,
+          "tokens": 204
+        },
+        {
+          "name": "ScoreCard",
+          "kind": "fn",
+          "startLine": 30,
+          "endLine": 45,
+          "tokens": 204
+        },
+        {
+          "name": "ReviewsPage",
+          "kind": "fn",
+          "startLine": 46,
+          "endLine": 136,
+          "tokens": 1210
+        }
+      ]
     },
     "app/src/app/robots.ts": {
       "description": "Served at `/robots.txt`.",
@@ -1027,96 +1434,205 @@
       "hash": "32a9a14000924349",
       "size": 526,
       "mtimeMs": 1790582563631.7917,
-      "updatedAt": "2026-09-28T10:00:00.092Z",
+      "updatedAt": "2026-09-29T10:00:00.111Z",
       "source": "scan"
     },
     "app/src/app/sitemap.ts": {
-      "description": "Every CMS page, listed from the CMS itself.",
-      "tokens": 313,
-      "hash": "ad74d223d7159f6b",
-      "size": 1093,
-      "mtimeMs": 1790582563631.916,
-      "updatedAt": "2026-09-28T10:00:00.092Z",
+      "description": "Fixed routes (their content lives in singletons) plus every published document.",
+      "tokens": 246,
+      "hash": "ffa62e7af4237fd1",
+      "size": 858,
+      "mtimeMs": 1790596741004.6504,
+      "updatedAt": "2026-09-29T10:00:00.111Z",
       "source": "scan"
     },
-    "app/src/components/home/HomeHero.tsx": {
-      "description": "HomeHero",
-      "tokens": 949,
-      "hash": "3bda361fc2e4daa3",
-      "size": 3321,
-      "mtimeMs": 1790587950624.7678,
-      "updatedAt": "2026-09-28T10:00:00.092Z",
+    "app/src/app/zakelijk/[slug]/page.tsx": {
+      "description": "generateStaticParams",
+      "tokens": 306,
+      "hash": "635d66e45fc53e18",
+      "size": 1071,
+      "mtimeMs": 1790596613236.5295,
+      "updatedAt": "2026-09-29T10:00:00.112Z",
+      "source": "scan"
+    },
+    "app/src/app/zakelijk/page.tsx": {
+      "description": "TRUST_ICONS",
+      "tokens": 2172,
+      "hash": "1d9b550af352ad41",
+      "size": 7599,
+      "mtimeMs": 1790596662044.613,
+      "updatedAt": "2026-09-29T10:00:00.112Z",
       "source": "scan",
       "symbols": [
         {
-          "name": "HomeHero",
+          "name": "generateMetadata",
           "kind": "fn",
-          "startLine": 8,
-          "endLine": 71,
-          "tokens": 863
+          "startLine": 23,
+          "endLine": 27,
+          "tokens": 48
+        },
+        {
+          "name": "ZakelijkPage",
+          "kind": "fn",
+          "startLine": 28,
+          "endLine": 164,
+          "tokens": 1799
+        }
+      ]
+    },
+    "app/src/app/zakelijk/projecten/page.tsx": {
+      "description": "generateMetadata",
+      "tokens": 768,
+      "hash": "37eb1533da4e3112",
+      "size": 2685,
+      "mtimeMs": 1790596662052.5588,
+      "updatedAt": "2026-09-29T10:00:00.112Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "generateMetadata",
+          "kind": "fn",
+          "startLine": 13,
+          "endLine": 17,
+          "tokens": 52
+        },
+        {
+          "name": "ZakelijkProjectenPage",
+          "kind": "fn",
+          "startLine": 18,
+          "endLine": 64,
+          "tokens": 531
+        }
+      ]
+    },
+    "app/src/components/form/fields.tsx": {
+      "description": "`compact` is the card in a page's contact band, `stacked` the full card on /contact/.",
+      "tokens": 1391,
+      "hash": "9d6e72012de5972a",
+      "size": 4872,
+      "mtimeMs": 1790596944563.5525,
+      "updatedAt": "2026-09-29T10:00:00.113Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "linkify",
+          "kind": "fn",
+          "startLine": 15,
+          "endLine": 37,
+          "tokens": 204
+        },
+        {
+          "name": "FormField",
+          "kind": "fn",
+          "startLine": 38,
+          "endLine": 145,
+          "tokens": 994
+        }
+      ]
+    },
+    "app/src/components/form/FormCard.tsx": {
+      "description": "For hidden fields: `{{service}}` on service pages.",
+      "tokens": 461,
+      "hash": "7d1cc3d0a5a1c795",
+      "size": 1611,
+      "mtimeMs": 1790596395294.4656,
+      "updatedAt": "2026-09-29T10:00:00.113Z",
+      "source": "scan"
+    },
+    "app/src/components/form/FormRenderer.tsx": {
+      "description": "Public half of the reCAPTCHA settings — the secret stays server-side.",
+      "tokens": 2879,
+      "hash": "bdbb3ee00a49d0e5",
+      "size": 10085,
+      "mtimeMs": 1790596425480.1687,
+      "updatedAt": "2026-09-29T10:00:00.114Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "IconArrowRight",
+          "kind": "fn",
+          "startLine": 46,
+          "endLine": 63,
+          "tokens": 194
+        },
+        {
+          "name": "FormRenderer",
+          "kind": "fn",
+          "startLine": 64,
+          "endLine": 294,
+          "tokens": 2265
         }
       ]
     },
     "app/src/components/home/Paths.tsx": {
       "description": "The two entry cards (particulier / zakelijk) overlapping the hero.",
-      "tokens": 603,
-      "hash": "bd702fdc896f432f",
-      "size": 2108,
-      "mtimeMs": 1790587851704.4917,
-      "updatedAt": "2026-09-28T10:00:00.092Z",
+      "tokens": 700,
+      "hash": "c3bf8b84b933194d",
+      "size": 2450,
+      "mtimeMs": 1790596529769.2944,
+      "updatedAt": "2026-09-29T10:00:00.114Z",
       "source": "scan",
       "symbols": [
         {
           "name": "Paths",
           "kind": "fn",
-          "startLine": 9,
-          "endLine": 45,
-          "tokens": 510
+          "startLine": 11,
+          "endLine": 52,
+          "tokens": 571
         }
       ]
     },
     "app/src/components/home/Reviews.tsx": {
       "description": "Reviews",
-      "tokens": 492,
-      "hash": "d5973242879e03af",
-      "size": 1731,
-      "mtimeMs": 1790587950626.3022,
-      "updatedAt": "2026-09-28T10:00:00.093Z",
-      "source": "scan"
+      "tokens": 602,
+      "hash": "80510e8095400a8f",
+      "size": 2115,
+      "mtimeMs": 1790596529785.432,
+      "updatedAt": "2026-09-29T10:00:00.115Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "Reviews",
+          "kind": "fn",
+          "startLine": 7,
+          "endLine": 44,
+          "tokens": 526
+        }
+      ]
     },
     "app/src/components/home/Services.tsx": {
       "description": "Services",
-      "tokens": 650,
-      "hash": "e8e9e5e7cc25ff1f",
-      "size": 2277,
-      "mtimeMs": 1790587950625.9429,
-      "updatedAt": "2026-09-28T10:00:00.093Z",
+      "tokens": 656,
+      "hash": "78ff47a90269ead3",
+      "size": 2295,
+      "mtimeMs": 1790596529774.1343,
+      "updatedAt": "2026-09-29T10:00:00.115Z",
       "source": "scan",
       "symbols": [
         {
           "name": "Services",
           "kind": "fn",
           "startLine": 9,
-          "endLine": 50,
-          "tokens": 561
+          "endLine": 48,
+          "tokens": 554
         }
       ]
     },
     "app/src/components/home/ZakelijkBand.tsx": {
       "description": "ZakelijkBand",
-      "tokens": 1099,
-      "hash": "5d060ae4736c730e",
-      "size": 3844,
-      "mtimeMs": 1790587851713.498,
-      "updatedAt": "2026-09-28T10:00:00.093Z",
+      "tokens": 1074,
+      "hash": "b5f28077d2735231",
+      "size": 3759,
+      "mtimeMs": 1790596529779.2976,
+      "updatedAt": "2026-09-29T10:00:00.115Z",
       "source": "scan",
       "symbols": [
         {
           "name": "ZakelijkBand",
           "kind": "fn",
-          "startLine": 12,
-          "endLine": 87,
-          "tokens": 957
+          "startLine": 14,
+          "endLine": 79,
+          "tokens": 908
         }
       ]
     },
@@ -1126,163 +1642,271 @@
       "hash": "2f919953f124cec0",
       "size": 342,
       "mtimeMs": 1790582563632.1165,
-      "updatedAt": "2026-09-28T10:00:00.093Z",
+      "updatedAt": "2026-09-29T10:00:00.115Z",
       "source": "scan"
     },
     "app/src/components/layout/SiteFooter.tsx": {
       "description": "SiteFooter",
-      "tokens": 660,
-      "hash": "44761698c126b235",
-      "size": 2311,
-      "mtimeMs": 1790587505767.3455,
-      "updatedAt": "2026-09-28T10:00:00.093Z",
+      "tokens": 964,
+      "hash": "bca29c8edd6c3839",
+      "size": 3373,
+      "mtimeMs": 1790596462807.587,
+      "updatedAt": "2026-09-29T10:00:00.115Z",
       "source": "scan",
       "symbols": [
         {
           "name": "SiteFooter",
           "kind": "fn",
-          "startLine": 6,
-          "endLine": 66,
-          "tokens": 613
+          "startLine": 7,
+          "endLine": 98,
+          "tokens": 906
         }
       ]
     },
     "app/src/components/layout/SiteHeader.tsx": {
-      "description": "isActivePath",
-      "tokens": 1900,
-      "hash": "d40803b754df781e",
-      "size": 6649,
-      "mtimeMs": 1790587520955.3025,
-      "updatedAt": "2026-09-28T10:00:00.094Z",
+      "description": "isActivePath — uses useState, useEffect",
+      "tokens": 2239,
+      "hash": "872f6cd30d61368f",
+      "size": 7836,
+      "mtimeMs": 1790596462781.1196,
+      "updatedAt": "2026-09-29T10:00:00.116Z",
       "source": "scan",
       "symbols": [
         {
           "name": "isActivePath",
           "kind": "fn",
           "startLine": 13,
-          "endLine": 17,
-          "tokens": 46
+          "endLine": 29,
+          "tokens": 140
         },
         {
           "name": "SiteHeader",
           "kind": "fn",
-          "startLine": 18,
-          "endLine": 167,
-          "tokens": 1737
+          "startLine": 30,
+          "endLine": 199,
+          "tokens": 1979
         }
       ]
     },
-    "app/src/components/OfferteForm.tsx": {
-      "description": "`cta` is the short card in every page's contact band; `contact` the full one on /contact.",
-      "tokens": 2342,
-      "hash": "b3836ed998bf5c5c",
-      "size": 8202,
-      "mtimeMs": 1790587974014.395,
-      "updatedAt": "2026-09-28T10:00:00.094Z",
+    "app/src/components/project/ProjectDetailView.tsx": {
+      "description": "A project (a former WordPress post), particulier or zakelijk.",
+      "tokens": 1866,
+      "hash": "cc14394ba95c009c",
+      "size": 6530,
+      "mtimeMs": 1790596613219.5981,
+      "updatedAt": "2026-09-29T10:00:00.116Z",
       "source": "scan",
       "symbols": [
         {
-          "name": "Input",
+          "name": "ProjectDetailView",
           "kind": "fn",
-          "startLine": 34,
-          "endLine": 51,
-          "tokens": 96
-        },
+          "startLine": 15,
+          "endLine": 141,
+          "tokens": 1676
+        }
+      ]
+    },
+    "app/src/components/project/ZakelijkProjectCard.tsx": {
+      "description": "ZakelijkProjectCard",
+      "tokens": 533,
+      "hash": "1b0bda77b5619e8c",
+      "size": 1864,
+      "mtimeMs": 1790596662040.846,
+      "updatedAt": "2026-09-29T10:00:00.116Z",
+      "source": "scan",
+      "symbols": [
         {
-          "name": "Extra",
+          "name": "ZakelijkProjectCard",
           "kind": "fn",
-          "startLine": 52,
-          "endLine": 63,
-          "tokens": 130
-        },
-        {
-          "name": "OfferteForm",
-          "kind": "fn",
-          "startLine": 64,
-          "endLine": 239,
-          "tokens": 1733
+          "startLine": 6,
+          "endLine": 41,
+          "tokens": 477
         }
       ]
     },
     "app/src/components/sections/ContactCta.tsx": {
-      "description": "The contact band with the offerte form that closes every page.",
-      "tokens": 614,
-      "hash": "a2944f02084225e7",
-      "size": 2147,
-      "mtimeMs": 1790587950626.674,
-      "updatedAt": "2026-09-28T10:00:00.095Z",
+      "description": "Heading scale: home 36px, service pages 34px, everything else 32px.",
+      "tokens": 897,
+      "hash": "9b1ac18ffd9137fe",
+      "size": 3139,
+      "mtimeMs": 1790596395299.5088,
+      "updatedAt": "2026-09-29T10:00:00.117Z",
       "source": "scan",
       "symbols": [
         {
           "name": "ContactCta",
           "kind": "fn",
-          "startLine": 14,
-          "endLine": 56,
-          "tokens": 485
+          "startLine": 30,
+          "endLine": 77,
+          "tokens": 563
+        }
+      ]
+    },
+    "app/src/components/sections/Faq.tsx": {
+      "description": "Accordion of <details>. `tinted` sits on the pale-blue band (services, zakelijk);",
+      "tokens": 704,
+      "hash": "44bf89e35e2678b3",
+      "size": 2464,
+      "mtimeMs": 1790596305066.6555,
+      "updatedAt": "2026-09-29T10:00:00.117Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "Faq",
+          "kind": "fn",
+          "startLine": 13,
+          "endLine": 64,
+          "tokens": 576
+        }
+      ]
+    },
+    "app/src/components/sections/Hero.tsx": {
+      "description": "Gradient hero with photo composition. Variants differ only in spacing and type size.",
+      "tokens": 1244,
+      "hash": "17de6f43e65c9f33",
+      "size": 4353,
+      "mtimeMs": 1790596304963.3264,
+      "updatedAt": "2026-09-29T10:00:00.117Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "Hero",
+          "kind": "fn",
+          "startLine": 30,
+          "endLine": 106,
+          "tokens": 957
         }
       ]
     },
     "app/src/components/sections/HeroArt.tsx": {
-      "description": "Service pages use a slightly smaller composition than the homepage.",
-      "tokens": 640,
-      "hash": "df5b75a6cde28243",
-      "size": 2240,
-      "mtimeMs": 1790587950625.373,
-      "updatedAt": "2026-09-28T10:00:00.095Z",
+      "description": "Two overlapping, gently bobbing photos with an optional floating badge.",
+      "tokens": 719,
+      "hash": "70da03b990d2e4a4",
+      "size": 2514,
+      "mtimeMs": 1790596304958.785,
+      "updatedAt": "2026-09-29T10:00:00.118Z",
       "source": "scan",
       "symbols": [
         {
           "name": "HeroArt",
           "kind": "fn",
-          "startLine": 14,
+          "startLine": 30,
+          "endLine": 69,
+          "tokens": 466
+        }
+      ]
+    },
+    "app/src/components/sections/PageIntro.tsx": {
+      "description": "Below the text, e.g. filter buttons or badges.",
+      "tokens": 591,
+      "hash": "a758ced81ec1cc7b",
+      "size": 2066,
+      "mtimeMs": 1790596305067.5679,
+      "updatedAt": "2026-09-29T10:00:00.118Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "PageIntro",
+          "kind": "fn",
+          "startLine": 18,
           "endLine": 57,
-          "tokens": 527
+          "tokens": 401
+        }
+      ]
+    },
+    "app/src/components/sections/PlacesStrip.tsx": {
+      "description": "Centred \"werkgebied\" band with place chips. `contact` is the roomier /contact/ version.",
+      "tokens": 504,
+      "hash": "add0135624bcedbf",
+      "size": 1762,
+      "mtimeMs": 1790596576448.4148,
+      "updatedAt": "2026-09-29T10:00:00.119Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "PlacesStrip",
+          "kind": "fn",
+          "startLine": 9,
+          "endLine": 53,
+          "tokens": 412
         }
       ]
     },
     "app/src/components/sections/ProjectGrid.tsx": {
       "description": "Masonry-ish photo grid with captions that lift on hover.",
-      "tokens": 512,
-      "hash": "3df93582f725b9b8",
-      "size": 1790,
-      "mtimeMs": 1790588023659.469,
-      "updatedAt": "2026-09-28T10:00:00.095Z",
-      "source": "scan",
-      "symbols": [
-        {
-          "name": "ProjectGrid",
-          "kind": "fn",
-          "startLine": 17,
-          "endLine": 45,
-          "tokens": 408
-        }
-      ]
+      "tokens": 487,
+      "hash": "52630e7db03682a6",
+      "size": 1703,
+      "mtimeMs": 1790596304973.6833,
+      "updatedAt": "2026-09-29T10:00:00.119Z",
+      "source": "scan"
     },
     "app/src/components/sections/Werkgebied.tsx": {
-      "description": "PLACES",
-      "tokens": 533,
-      "hash": "1bddb2fd5d9e869c",
-      "size": 1863,
-      "mtimeMs": 1790587950624.234,
-      "updatedAt": "2026-09-28T10:00:00.095Z",
+      "description": "Homepage werkgebied: text with place chips beside a photo. Places come from the site settings.",
+      "tokens": 560,
+      "hash": "7dc6858ba397bbf9",
+      "size": 1958,
+      "mtimeMs": 1790596529790.296,
+      "updatedAt": "2026-09-29T10:00:00.119Z",
       "source": "scan",
       "symbols": [
         {
           "name": "Werkgebied",
           "kind": "fn",
-          "startLine": 18,
-          "endLine": 55,
-          "tokens": 439
+          "startLine": 11,
+          "endLine": 46,
+          "tokens": 418
         }
       ]
     },
     "app/src/components/sections/Werkwijze.tsx": {
       "description": "Wave into the next section.",
-      "tokens": 451,
-      "hash": "0440e74947f94f6b",
-      "size": 1578,
-      "mtimeMs": 1790587805080.702,
-      "updatedAt": "2026-09-28T10:00:00.096Z",
+      "tokens": 450,
+      "hash": "a5ebb4132b22e6c7",
+      "size": 1574,
+      "mtimeMs": 1790596304968.9172,
+      "updatedAt": "2026-09-29T10:00:00.119Z",
+      "source": "scan"
+    },
+    "app/src/components/service/ServicePageView.tsx": {
+      "description": "One template for every service-shaped page: the services themselves",
+      "tokens": 1823,
+      "hash": "7626cf0e9b095e17",
+      "size": 6378,
+      "mtimeMs": 1790596576356.996,
+      "updatedAt": "2026-09-29T10:00:00.123Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "Types",
+          "kind": "fn",
+          "startLine": 21,
+          "endLine": 51,
+          "tokens": 391
+        },
+        {
+          "name": "Materials",
+          "kind": "fn",
+          "startLine": 52,
+          "endLine": 106,
+          "tokens": 651
+        },
+        {
+          "name": "ServicePageView",
+          "kind": "fn",
+          "startLine": 107,
+          "endLine": 156,
+          "tokens": 489
+        }
+      ]
+    },
+    "app/src/components/TextPageView.tsx": {
+      "description": "Plain text pages such as /privacy-policy/, in the blog article's column and type.",
+      "tokens": 462,
+      "hash": "ac6bca54fbf33742",
+      "size": 1617,
+      "mtimeMs": 1790596613224.7507,
+      "updatedAt": "2026-09-29T10:00:00.123Z",
       "source": "scan"
     },
     "app/src/components/TrackingScripts.tsx": {
@@ -1291,7 +1915,7 @@
       "hash": "0a7755b4be8a0b61",
       "size": 3032,
       "mtimeMs": 1790582563632.4517,
-      "updatedAt": "2026-09-28T10:00:00.096Z",
+      "updatedAt": "2026-09-29T10:00:00.123Z",
       "source": "scan",
       "symbols": [
         {
@@ -1310,13 +1934,22 @@
         }
       ]
     },
+    "app/src/components/ui/Breadcrumb.tsx": {
+      "description": "Home / … / current page, above a page hero. The last item is the current page.",
+      "tokens": 368,
+      "hash": "2739365501047b4b",
+      "size": 1288,
+      "mtimeMs": 1790596259327.5808,
+      "updatedAt": "2026-09-29T10:00:00.124Z",
+      "source": "scan"
+    },
     "app/src/components/ui/Button.tsx": {
       "description": "Class string for anything that should look like a button (links, submits).",
-      "tokens": 456,
-      "hash": "dac37b0222983517",
-      "size": 1593,
-      "mtimeMs": 1790587474703.408,
-      "updatedAt": "2026-09-28T10:00:00.096Z",
+      "tokens": 451,
+      "hash": "2610907d74a149d2",
+      "size": 1578,
+      "mtimeMs": 1790591415064.4548,
+      "updatedAt": "2026-09-29T10:00:00.124Z",
       "source": "scan"
     },
     "app/src/components/ui/CountUp.tsx": {
@@ -1325,7 +1958,7 @@
       "hash": "84cbd665ae0037f1",
       "size": 1289,
       "mtimeMs": 1790587805076.4348,
-      "updatedAt": "2026-09-28T10:00:00.096Z",
+      "updatedAt": "2026-09-29T10:00:00.124Z",
       "source": "scan"
     },
     "app/src/components/ui/Divider.tsx": {
@@ -1334,43 +1967,158 @@
       "hash": "4053e0773f58d95c",
       "size": 537,
       "mtimeMs": 1790587474723.9216,
-      "updatedAt": "2026-09-28T10:00:00.097Z",
+      "updatedAt": "2026-09-29T10:00:00.125Z",
       "source": "scan"
+    },
+    "app/src/components/ui/Filter.tsx": {
+      "description": "Category filter whose buttons and items live in different sections (buttons",
+      "tokens": 504,
+      "hash": "1a5bd9e6507bce55",
+      "size": 1762,
+      "mtimeMs": 1790591247060.0593,
+      "updatedAt": "2026-09-29T10:00:00.126Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "FilterScope",
+          "kind": "fn",
+          "startLine": 12,
+          "endLine": 16,
+          "tokens": 54
+        },
+        {
+          "name": "FilterButtons",
+          "kind": "fn",
+          "startLine": 17,
+          "endLine": 48,
+          "tokens": 280
+        },
+        {
+          "name": "FilterItem",
+          "kind": "fn",
+          "startLine": 49,
+          "endLine": 53,
+          "tokens": 61
+        }
+      ]
     },
     "app/src/components/ui/icons.tsx": {
       "description": "Stroke icons from the design. Colour follows `currentColor`.",
-      "tokens": 478,
-      "hash": "7a2ccda9e7565760",
-      "size": 1672,
-      "mtimeMs": 1790587474719.8542,
-      "updatedAt": "2026-09-28T10:00:00.097Z",
-      "source": "scan"
+      "tokens": 649,
+      "hash": "2380a7dcda95ef19",
+      "size": 2269,
+      "mtimeMs": 1790590858526.7937,
+      "updatedAt": "2026-09-29T10:00:00.126Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "Svg",
+          "kind": "fn",
+          "startLine": 8,
+          "endLine": 31,
+          "tokens": 125
+        },
+        {
+          "name": "IconCheck",
+          "kind": "fn",
+          "startLine": 32,
+          "endLine": 39,
+          "tokens": 42
+        },
+        {
+          "name": "IconArrow",
+          "kind": "fn",
+          "startLine": 40,
+          "endLine": 47,
+          "tokens": 45
+        },
+        {
+          "name": "IconStar",
+          "kind": "fn",
+          "startLine": 48,
+          "endLine": 55,
+          "tokens": 55
+        },
+        {
+          "name": "IconPhone",
+          "kind": "fn",
+          "startLine": 56,
+          "endLine": 63,
+          "tokens": 109
+        },
+        {
+          "name": "IconMail",
+          "kind": "fn",
+          "startLine": 64,
+          "endLine": 72,
+          "tokens": 59
+        },
+        {
+          "name": "IconPin",
+          "kind": "fn",
+          "startLine": 73,
+          "endLine": 81,
+          "tokens": 62
+        },
+        {
+          "name": "IconCheckCircle",
+          "kind": "fn",
+          "startLine": 82,
+          "endLine": 90,
+          "tokens": 56
+        },
+        {
+          "name": "IconClock",
+          "kind": "fn",
+          "startLine": 91,
+          "endLine": 99,
+          "tokens": 53
+        }
+      ]
     },
     "app/src/components/ui/Kicker.tsx": {
       "description": "Light-on-dark version for the navy bands.",
-      "tokens": 196,
-      "hash": "d45a4b383f815b05",
-      "size": 686,
-      "mtimeMs": 1790587474707.759,
-      "updatedAt": "2026-09-28T10:00:00.097Z",
+      "tokens": 216,
+      "hash": "1d47ed3fa619980f",
+      "size": 754,
+      "mtimeMs": 1790590703026.8032,
+      "updatedAt": "2026-09-29T10:00:00.126Z",
+      "source": "scan"
+    },
+    "app/src/components/ui/LinkButton.tsx": {
+      "description": "A studio link rendered as a button; renders nothing without a URL or label.",
+      "tokens": 131,
+      "hash": "54aa048078aa01a9",
+      "size": 456,
+      "mtimeMs": 1790596259337.7393,
+      "updatedAt": "2026-09-29T10:00:00.127Z",
       "source": "scan"
     },
     "app/src/components/ui/Reveal.tsx": {
-      "description": "Position among its revealing siblings; staggers the entrance by 90ms a step (max 5).",
-      "tokens": 286,
-      "hash": "9247f91890302eef",
-      "size": 999,
-      "mtimeMs": 1790587474715.4377,
-      "updatedAt": "2026-09-28T10:00:00.097Z",
+      "description": "Position among its revealing siblings; staggers the entrance by `step` ms, capped at `max` steps.",
+      "tokens": 306,
+      "hash": "c1b6d6b79d74f584",
+      "size": 1069,
+      "mtimeMs": 1790590529511.7527,
+      "updatedAt": "2026-09-29T10:00:00.127Z",
+      "source": "scan"
+    },
+    "app/src/components/ui/SanityImage.tsx": {
+      "description": "Overrides the alt text from the studio (e.g. '' for purely decorative use).",
+      "tokens": 238,
+      "hash": "7927b8b8b6a1d9c9",
+      "size": 830,
+      "mtimeMs": 1790596211549.7622,
+      "updatedAt": "2026-09-29T10:00:00.127Z",
       "source": "scan"
     },
     "app/src/components/ui/SectionHead.tsx": {
-      "description": "SectionHead",
-      "tokens": 211,
-      "hash": "5238f31cded9ef75",
-      "size": 738,
-      "mtimeMs": 1790587474711.672,
-      "updatedAt": "2026-09-28T10:00:00.097Z",
+      "description": "Light text for the navy bands.",
+      "tokens": 313,
+      "hash": "cdb9df7521ef47ec",
+      "size": 1093,
+      "mtimeMs": 1790596304942.6858,
+      "updatedAt": "2026-09-29T10:00:00.127Z",
       "source": "scan"
     },
     "app/src/components/ui/Wrap.tsx": {
@@ -1379,7 +2127,7 @@
       "hash": "c2372f5464a3dcf6",
       "size": 324,
       "mtimeMs": 1790587474698.5498,
-      "updatedAt": "2026-09-28T10:00:00.097Z",
+      "updatedAt": "2026-09-29T10:00:00.128Z",
       "source": "scan"
     },
     "app/src/hooks/useMobileNav.ts": {
@@ -1388,7 +2136,7 @@
       "hash": "59f2e48a7765bf83",
       "size": 984,
       "mtimeMs": 1790582563636.6584,
-      "updatedAt": "2026-09-28T10:00:00.098Z",
+      "updatedAt": "2026-09-29T10:00:00.128Z",
       "source": "scan"
     },
     "app/src/hooks/useRevealOnScroll.ts": {
@@ -1397,7 +2145,7 @@
       "hash": "ff5027d1717a5bf1",
       "size": 906,
       "mtimeMs": 1790582563636.8904,
-      "updatedAt": "2026-09-28T10:00:00.098Z",
+      "updatedAt": "2026-09-29T10:00:00.128Z",
       "source": "scan"
     },
     "app/src/hooks/useStickyTopbar.ts": {
@@ -1406,7 +2154,7 @@
       "hash": "73bea92640f59716",
       "size": 468,
       "mtimeMs": 1790587505746.7903,
-      "updatedAt": "2026-09-28T10:00:00.098Z",
+      "updatedAt": "2026-09-29T10:00:00.128Z",
       "source": "scan"
     },
     "app/src/instrumentation-client.ts": {
@@ -1415,7 +2163,7 @@
       "hash": "fd8bd47a20347fe6",
       "size": 976,
       "mtimeMs": 1790582563637.107,
-      "updatedAt": "2026-09-28T10:00:00.098Z",
+      "updatedAt": "2026-09-29T10:00:00.129Z",
       "source": "scan"
     },
     "app/src/instrumentation.ts": {
@@ -1424,16 +2172,16 @@
       "hash": "a53714662dd6eff4",
       "size": 722,
       "mtimeMs": 1790582563637.2139,
-      "updatedAt": "2026-09-28T10:00:00.098Z",
+      "updatedAt": "2026-09-29T10:00:00.129Z",
       "source": "scan"
     },
     "app/src/lib/chrome.ts": {
       "description": "Scroll threshold (px) before the header gets the stuck state.",
-      "tokens": 368,
-      "hash": "56ac602bcddbbda2",
-      "size": 1285,
-      "mtimeMs": 1790587418261.9739,
-      "updatedAt": "2026-09-28T10:00:00.098Z",
+      "tokens": 62,
+      "hash": "69e6d3111cdbbbdd",
+      "size": 215,
+      "mtimeMs": 1790596462681.3623,
+      "updatedAt": "2026-09-29T10:00:00.129Z",
       "source": "scan"
     },
     "app/src/lib/cn.ts": {
@@ -1442,16 +2190,7 @@
       "hash": "ec1499e69cf8ab14",
       "size": 129,
       "mtimeMs": 1790582563637.496,
-      "updatedAt": "2026-09-28T10:00:00.098Z",
-      "source": "scan"
-    },
-    "app/src/lib/content/home.ts": {
-      "description": "Exports HERO_USPS, PATHS, SERVICES, STEPS + 5 more",
-      "tokens": 1366,
-      "hash": "00e29f859908f5fc",
-      "size": 4785,
-      "mtimeMs": 1790587728611.9387,
-      "updatedAt": "2026-09-28T10:00:00.099Z",
+      "updatedAt": "2026-09-29T10:00:00.129Z",
       "source": "scan"
     },
     "app/src/lib/env.ts": {
@@ -1460,8 +2199,54 @@
       "hash": "05051ded0098ef5b",
       "size": 1418,
       "mtimeMs": 1790587548839.293,
-      "updatedAt": "2026-09-28T10:00:00.099Z",
+      "updatedAt": "2026-09-29T10:00:00.130Z",
       "source": "scan"
+    },
+    "app/src/lib/form-fields.ts": {
+      "description": "Shape and layout rules for CMS-authored forms. No React in here, so the",
+      "tokens": 1679,
+      "hash": "7aaed4b1ac4c5a2d",
+      "size": 5882,
+      "mtimeMs": 1790596327760.665,
+      "updatedAt": "2026-09-29T10:00:00.130Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "toRedirect",
+          "kind": "fn",
+          "startLine": 79,
+          "endLine": 93,
+          "tokens": 152
+        },
+        {
+          "name": "toSteps",
+          "kind": "fn",
+          "startLine": 94,
+          "endLine": 105,
+          "tokens": 123
+        },
+        {
+          "name": "fillTokens",
+          "kind": "fn",
+          "startLine": 106,
+          "endLine": 117,
+          "tokens": 126
+        },
+        {
+          "name": "toFieldRows",
+          "kind": "fn",
+          "startLine": 118,
+          "endLine": 136,
+          "tokens": 182
+        },
+        {
+          "name": "toFormDefinition",
+          "kind": "fn",
+          "startLine": 137,
+          "endLine": 180,
+          "tokens": 444
+        }
+      ]
     },
     "app/src/lib/form-mail.ts": {
       "description": "The mails `POST /api/submit-form` sends.",
@@ -1469,7 +2254,7 @@
       "hash": "b537639e4583d7d2",
       "size": 5910,
       "mtimeMs": 1790582563638.1455,
-      "updatedAt": "2026-09-28T10:00:00.099Z",
+      "updatedAt": "2026-09-29T10:00:00.130Z",
       "source": "scan",
       "symbols": [
         {
@@ -1509,22 +2294,13 @@
         }
       ]
     },
-    "app/src/lib/forms.ts": {
-      "description": "The offerte form's fields — the server's allow-list. `POST /api/submit-form`",
-      "tokens": 351,
-      "hash": "6f1d474f5e2e8b49",
-      "size": 1230,
-      "mtimeMs": 1790587614568.686,
-      "updatedAt": "2026-09-28T10:00:00.099Z",
-      "source": "scan"
-    },
     "app/src/lib/json-ld.ts": {
       "description": "Structured data (schema.org JSON-LD), built from what is in the CMS.",
-      "tokens": 2953,
-      "hash": "5659969d69b5c77d",
-      "size": 10350,
-      "mtimeMs": 1790582563638.3835,
-      "updatedAt": "2026-09-28T10:00:00.100Z",
+      "tokens": 2937,
+      "hash": "52dc7169da7be2dc",
+      "size": 10293,
+      "mtimeMs": 1790596158471.0469,
+      "updatedAt": "2026-09-29T10:00:00.131Z",
       "source": "scan",
       "symbols": [
         {
@@ -1560,7 +2336,7 @@
           "kind": "fn",
           "startLine": 97,
           "endLine": 123,
-          "tokens": 287
+          "tokens": 280
         },
         {
           "name": "organizationJsonLd",
@@ -1616,7 +2392,7 @@
           "kind": "fn",
           "startLine": 243,
           "endLine": 269,
-          "tokens": 341
+          "tokens": 336
         },
         {
           "name": "pageJsonLd",
@@ -1627,58 +2403,42 @@
         }
       ]
     },
-    "app/src/lib/links.ts": {
-      "description": "The slug of the page that renders at `/`.",
-      "tokens": 446,
-      "hash": "3a4fd193d899c506",
-      "size": 1563,
-      "mtimeMs": 1790582563638.4976,
-      "updatedAt": "2026-09-28T10:00:00.100Z",
-      "source": "scan"
-    },
     "app/src/lib/site.ts": {
-      "description": "Site-wide details, and the defaults they fall back to.",
-      "tokens": 1274,
-      "hash": "f93501b4c30560b6",
-      "size": 4467,
-      "mtimeMs": 1790587418257.646,
-      "updatedAt": "2026-09-28T10:00:00.100Z",
+      "description": "The site's own details, as the structured data needs them. They come from",
+      "tokens": 612,
+      "hash": "2e84565283bb95a9",
+      "size": 2141,
+      "mtimeMs": 1790665390328.3333,
+      "updatedAt": "2026-09-29T10:00:00.131Z",
       "source": "scan",
       "symbols": [
         {
-          "name": "text",
-          "kind": "fn",
-          "startLine": 72,
-          "endLine": 75,
-          "tokens": 33
-        },
-        {
           "name": "list",
           "kind": "fn",
-          "startLine": 76,
-          "endLine": 90,
-          "tokens": 154
+          "startLine": 43,
+          "endLine": 46,
+          "tokens": 61
         },
         {
           "name": "resolveSiteInformation",
           "kind": "fn",
-          "startLine": 91,
-          "endLine": 106,
-          "tokens": 201
+          "startLine": 47,
+          "endLine": 62,
+          "tokens": 156
         },
         {
           "name": "telHref",
           "kind": "fn",
-          "startLine": 107,
-          "endLine": 110,
+          "startLine": 63,
+          "endLine": 66,
           "tokens": 29
         },
         {
           "name": "mailtoHref",
           "kind": "fn",
-          "startLine": 111,
-          "endLine": 127,
-          "tokens": 113
+          "startLine": 67,
+          "endLine": 72,
+          "tokens": 42
         }
       ]
     },
@@ -1687,78 +2447,80 @@
       "tokens": 301,
       "hash": "3224719ec2ccece7",
       "size": 1055,
-      "mtimeMs": 1790582563638.8252,
-      "updatedAt": "2026-09-28T10:00:00.100Z",
+      "mtimeMs": 1790668814533.3662,
+      "updatedAt": "2026-09-29T10:00:00.131Z",
+      "source": "scan"
+    },
+    "app/src/sanity/fetch.ts": {
+      "description": "Every page fetch goes through here. Pages are cached and refreshed at most",
+      "tokens": 365,
+      "hash": "db1b7bc1f2b06721",
+      "size": 1278,
+      "mtimeMs": 1790596218399.121,
+      "updatedAt": "2026-09-29T10:00:00.132Z",
+      "source": "scan"
+    },
+    "app/src/sanity/image-loader.ts": {
+      "description": "`next/image` loader: Sanity's CDN resizes and picks the format, so Next does",
+      "tokens": 164,
+      "hash": "df0b0f234d45f132",
+      "size": 573,
+      "mtimeMs": 1790596211542.6177,
+      "updatedAt": "2026-09-29T10:00:00.132Z",
       "source": "scan"
     },
     "app/src/sanity/image.ts": {
-      "description": "Exports SanityImage, urlFor, imageSrc, toImage",
-      "tokens": 293,
-      "hash": "b01cf2114cc455b3",
-      "size": 1024,
-      "mtimeMs": 1790582563638.9265,
-      "updatedAt": "2026-09-28T10:00:00.101Z",
+      "description": "An image as the queries project it (see IMAGE in queries.ts).",
+      "tokens": 419,
+      "hash": "ec86ce8b3c28150b",
+      "size": 1464,
+      "mtimeMs": 1790596211538.0068,
+      "updatedAt": "2026-09-29T10:00:00.132Z",
       "source": "scan"
     },
     "app/src/sanity/metadata.ts": {
-      "description": "The OG image for a page's `seo` object, sized for social cards.",
-      "tokens": 635,
-      "hash": "a0c09875b49d2b49",
-      "size": 2223,
-      "mtimeMs": 1790582563639.0452,
-      "updatedAt": "2026-09-28T10:00:00.101Z",
-      "source": "scan",
-      "symbols": [
-        {
-          "name": "seoImageUrl",
-          "kind": "fn",
-          "startLine": 18,
-          "endLine": 39,
-          "tokens": 228
-        },
-        {
-          "name": "pageMetadata",
-          "kind": "fn",
-          "startLine": 40,
-          "endLine": 68,
-          "tokens": 280
-        }
-      ]
+      "description": "A page's metadata from its `seo` fields, falling back to the page title.",
+      "tokens": 248,
+      "hash": "2298b1ac7953776c",
+      "size": 867,
+      "mtimeMs": 1790596481732.3123,
+      "updatedAt": "2026-09-29T10:00:00.132Z",
+      "source": "scan"
     },
     "app/src/sanity/queries.ts": {
-      "description": "Resolve internal page references on link/cta objects.",
-      "tokens": 1362,
-      "hash": "566dd62e4f5c4d82",
-      "size": 4781,
-      "mtimeMs": 1790582563639.2007,
-      "updatedAt": "2026-09-28T10:00:00.101Z",
+      "description": "Path of a servicePage in the current scope.",
+      "tokens": 3358,
+      "hash": "9f0bb2bd809d68f6",
+      "size": 11755,
+      "mtimeMs": 1790665624401.237,
+      "updatedAt": "2026-09-29T10:00:00.133Z",
       "source": "scan"
     },
     "app/src/sanity/sanity.types.ts": {
       "description": "---------------------------------------------------------------------------------",
-      "tokens": 9726,
-      "hash": "41c9799ce6b08024",
-      "size": 34042,
-      "mtimeMs": 1790582563639.3594,
-      "updatedAt": "2026-09-28T10:00:00.102Z",
+      "tokens": 47867,
+      "hash": "637c4d1490171b1a",
+      "size": 167533,
+      "mtimeMs": 1790665643429.8923,
+      "updatedAt": "2026-09-29T10:00:00.134Z",
       "source": "scan"
     },
     "app/src/sanity/schema.json": {
       "description": "",
-      "tokens": 25734,
-      "hash": "a59c242ae384f92e",
-      "size": 90068,
-      "mtimeMs": 1790582563639.59,
-      "updatedAt": "2026-09-28T10:00:00.103Z",
+      "tokens": 44587,
+      "hash": "dc771af09775e0b4",
+      "size": 156053,
+      "mtimeMs": 1790665641095.133,
+      "updatedAt": "2026-09-29T10:00:00.135Z",
       "source": "scan"
     },
-    "app/src/sanity/site-information.ts": {
-      "description": "The site's details, with defaults filled in where the CMS is empty.",
-      "tokens": 308,
-      "hash": "ece6072bc41e7ce8",
-      "size": 1081,
-      "mtimeMs": 1790582563639.714,
-      "updatedAt": "2026-09-28T10:00:00.103Z",
+    "app/src/sanity/types.ts": {
+      "description": "Short names for the query result shapes components render. All derived",
+      "tokens": 578,
+      "hash": "812a5f62e2e1f6ae",
+      "size": 2021,
+      "mtimeMs": 1790596239245.3247,
+      "updatedAt": "2026-09-29T10:00:00.135Z",
       "source": "scan"
     },
     "app/tsconfig.json": {
@@ -1767,16 +2529,16 @@
       "hash": "5c51df4c59f4510d",
       "size": 670,
       "mtimeMs": 1790582563639.83,
-      "updatedAt": "2026-09-28T10:00:00.103Z",
+      "updatedAt": "2026-09-29T10:00:00.136Z",
       "source": "scan"
     },
     "app/tsconfig.tsbuildinfo": {
       "description": "",
-      "tokens": 80606,
-      "hash": "71fe6a8cbd69a350",
-      "size": 302269,
-      "mtimeMs": 1790588013809.861,
-      "updatedAt": "2026-09-28T10:00:00.104Z",
+      "tokens": 83166,
+      "hash": "80cc86012ea5bb5f",
+      "size": 311870,
+      "mtimeMs": 1790669276940.318,
+      "updatedAt": "2026-09-29T10:00:00.137Z",
       "source": "scan"
     },
     "CLAUDE.md": {
@@ -1785,16 +2547,25 @@
       "hash": "b1ca356fa9d5f3a6",
       "size": 225,
       "mtimeMs": 1790589061845.0986,
-      "updatedAt": "2026-09-28T10:00:00.105Z",
+      "updatedAt": "2026-09-29T10:00:00.137Z",
+      "source": "scan"
+    },
+    "docs/handleiding-sanity.md": {
+      "description": "Handleiding: de website beheren in Sanity",
+      "tokens": 3174,
+      "hash": "8de4c812e17c9fd3",
+      "size": 12729,
+      "mtimeMs": 1790675947805.7986,
+      "updatedAt": "2026-09-29T10:00:00.138Z",
       "source": "scan"
     },
     "README.md": {
       "description": "Project documentation",
-      "tokens": 6932,
-      "hash": "15257d97e82129d7",
-      "size": 27878,
-      "mtimeMs": 1790582563624.4817,
-      "updatedAt": "2026-09-28T10:00:00.105Z",
+      "tokens": 705,
+      "hash": "241f5383326f0b6e",
+      "size": 2835,
+      "mtimeMs": 1790597263239.917,
+      "updatedAt": "2026-09-29T10:00:00.138Z",
       "source": "scan"
     },
     "studio/.gitignore": {
@@ -1803,7 +2574,25 @@
       "hash": "b07fe2b926636cc1",
       "size": 537,
       "mtimeMs": 1790582563640.1204,
-      "updatedAt": "2026-09-28T10:00:00.105Z",
+      "updatedAt": "2026-09-29T10:00:00.139Z",
+      "source": "scan"
+    },
+    "studio/.sanity/runtime/app.js": {
+      "description": "This file is auto-generated on 'sanity dev'",
+      "tokens": 88,
+      "hash": "9f3c353621ecc547",
+      "size": 307,
+      "mtimeMs": 1790675464529.4895,
+      "updatedAt": "2026-09-29T10:00:00.139Z",
+      "source": "scan"
+    },
+    "studio/.sanity/runtime/index.html": {
+      "description": "Sanity Studio",
+      "tokens": 2316,
+      "hash": "2d9e304bcfe67fce",
+      "size": 8688,
+      "mtimeMs": 1790675464523.8372,
+      "updatedAt": "2026-09-29T10:00:00.139Z",
       "source": "scan"
     },
     "studio/eslint.config.mjs": {
@@ -1812,34 +2601,34 @@
       "hash": "c5807d719bd7e7fe",
       "size": 78,
       "mtimeMs": 1790582563640.325,
-      "updatedAt": "2026-09-28T10:00:00.105Z",
+      "updatedAt": "2026-09-29T10:00:00.140Z",
       "source": "scan"
     },
     "studio/package-lock.json": {
       "description": "npm lock file",
-      "tokens": 171738,
-      "hash": "6b8df2182ca68269",
-      "size": 601081,
-      "mtimeMs": 1790582563641.8333,
-      "updatedAt": "2026-09-28T10:00:00.107Z",
+      "tokens": 171490,
+      "hash": "473cbe50cba63638",
+      "size": 600212,
+      "mtimeMs": 1790605841096.3071,
+      "updatedAt": "2026-09-29T10:00:00.142Z",
       "source": "scan"
     },
     "studio/package.json": {
       "description": "Node.js package manifest",
       "tokens": 301,
-      "hash": "be311e0cb10e6e95",
-      "size": 1051,
-      "mtimeMs": 1790582563641.9795,
-      "updatedAt": "2026-09-28T10:00:00.107Z",
+      "hash": "49d89ac8417967ed",
+      "size": 1053,
+      "mtimeMs": 1790605840972.049,
+      "updatedAt": "2026-09-29T10:00:00.142Z",
       "source": "scan"
     },
     "studio/README.md": {
       "description": "Project documentation",
-      "tokens": 427,
-      "hash": "3dbf91d1dea727f3",
-      "size": 1720,
-      "mtimeMs": 1790582563640.228,
-      "updatedAt": "2026-09-28T10:00:00.107Z",
+      "tokens": 431,
+      "hash": "94267730e6a50e51",
+      "size": 1735,
+      "mtimeMs": 1790597263526.9517,
+      "updatedAt": "2026-09-29T10:00:00.142Z",
       "source": "scan"
     },
     "studio/sanity.cli.ts": {
@@ -1848,151 +2637,43 @@
       "hash": "0d56f29c93d9de3c",
       "size": 946,
       "mtimeMs": 1790582563642.0789,
-      "updatedAt": "2026-09-28T10:00:00.108Z",
+      "updatedAt": "2026-09-29T10:00:00.143Z",
       "source": "scan"
     },
     "studio/sanity.config.ts": {
       "description": "Project id and dataset come from the environment so the studio and the app",
-      "tokens": 267,
-      "hash": "b7edd634723c05c1",
-      "size": 934,
-      "mtimeMs": 1790582563642.18,
-      "updatedAt": "2026-09-28T10:00:00.108Z",
+      "tokens": 498,
+      "hash": "a183a178ed968309",
+      "size": 1740,
+      "mtimeMs": 1790595035782.1042,
+      "updatedAt": "2026-09-29T10:00:00.143Z",
       "source": "scan"
     },
-    "studio/schemaTypes/blocks/benefitsType.ts": {
-      "description": "Exports benefitsType",
-      "tokens": 638,
-      "hash": "c8fc75e0c430d858",
-      "size": 2232,
-      "mtimeMs": 1790582563642.4092,
-      "updatedAt": "2026-09-28T10:00:00.108Z",
+    "studio/schemaTypes/documents/blogPost.ts": {
+      "description": "/blog/<slug>/",
+      "tokens": 711,
+      "hash": "8f36ebb271b4729b",
+      "size": 2487,
+      "mtimeMs": 1790594923957.4502,
+      "updatedAt": "2026-09-29T10:00:00.143Z",
       "source": "scan"
     },
-    "studio/schemaTypes/blocks/contactFormType.ts": {
-      "description": "A form from Forms, with a contact panel beside it.",
-      "tokens": 798,
-      "hash": "93853ff8c90e06ac",
-      "size": 2792,
-      "mtimeMs": 1790582563642.525,
-      "updatedAt": "2026-09-28T10:00:00.108Z",
+    "studio/schemaTypes/documents/category.ts": {
+      "description": "Sierbestrating, Schuttingbouw, … and Zakelijk. Groups projects and blog posts.",
+      "tokens": 295,
+      "hash": "bca64d1cc622bc90",
+      "size": 1034,
+      "mtimeMs": 1790594923944.2056,
+      "updatedAt": "2026-09-29T10:00:00.144Z",
       "source": "scan"
     },
-    "studio/schemaTypes/blocks/crossLinksType.ts": {
-      "description": "Exports crossLinksType",
-      "tokens": 319,
-      "hash": "84229b651aa969e7",
-      "size": 1115,
-      "mtimeMs": 1790582563642.633,
-      "updatedAt": "2026-09-28T10:00:00.108Z",
-      "source": "scan"
-    },
-    "studio/schemaTypes/blocks/ctaBandType.ts": {
-      "description": "Exports ctaBandType",
-      "tokens": 334,
-      "hash": "9c112bfd109e89c0",
-      "size": 1166,
-      "mtimeMs": 1790582563642.7395,
-      "updatedAt": "2026-09-28T10:00:00.108Z",
-      "source": "scan"
-    },
-    "studio/schemaTypes/blocks/faqsType.ts": {
-      "description": "Exports faqsType",
-      "tokens": 264,
-      "hash": "9f84992a20aef4df",
-      "size": 924,
-      "mtimeMs": 1790582563642.8318,
-      "updatedAt": "2026-09-28T10:00:00.108Z",
-      "source": "scan"
-    },
-    "studio/schemaTypes/blocks/heroType.ts": {
-      "description": "Exports heroType",
-      "tokens": 625,
-      "hash": "754fbb8a0fef4a47",
-      "size": 2186,
-      "mtimeMs": 1790582563642.9326,
-      "updatedAt": "2026-09-28T10:00:00.109Z",
-      "source": "scan"
-    },
-    "studio/schemaTypes/blocks/introType.ts": {
-      "description": "Exports introType",
-      "tokens": 682,
-      "hash": "ae44a87e0aff4737",
-      "size": 2387,
-      "mtimeMs": 1790582563643.0293,
-      "updatedAt": "2026-09-28T10:00:00.109Z",
-      "source": "scan"
-    },
-    "studio/schemaTypes/blocks/mediaTextType.ts": {
-      "description": "Exports mediaTextType",
-      "tokens": 341,
-      "hash": "a2b19db266fc7fc8",
-      "size": 1192,
-      "mtimeMs": 1790582563643.148,
-      "updatedAt": "2026-09-28T10:00:00.109Z",
-      "source": "scan"
-    },
-    "studio/schemaTypes/blocks/pageHeroType.ts": {
-      "description": "Exports pageHeroType",
-      "tokens": 479,
-      "hash": "43e2cb51d144a34b",
-      "size": 1674,
-      "mtimeMs": 1790582563643.2407,
-      "updatedAt": "2026-09-28T10:00:00.109Z",
-      "source": "scan"
-    },
-    "studio/schemaTypes/blocks/servicesType.ts": {
-      "description": "Exports servicesType",
-      "tokens": 681,
-      "hash": "168b18b4fc33daea",
-      "size": 2383,
-      "mtimeMs": 1790582563643.3462,
-      "updatedAt": "2026-09-28T10:00:00.109Z",
-      "source": "scan"
-    },
-    "studio/schemaTypes/blocks/stepsType.ts": {
-      "description": "Exports stepsType",
-      "tokens": 452,
-      "hash": "c748e46a3ca14f11",
-      "size": 1581,
-      "mtimeMs": 1790582563643.435,
-      "updatedAt": "2026-09-28T10:00:00.109Z",
-      "source": "scan"
-    },
-    "studio/schemaTypes/faqType.ts": {
-      "description": "Exports faqType",
-      "tokens": 238,
-      "hash": "1f7a05e01a3cc9f2",
-      "size": 830,
-      "mtimeMs": 1790582563643.5435,
-      "updatedAt": "2026-09-28T10:00:00.109Z",
-      "source": "scan"
-    },
-    "studio/schemaTypes/footerType.ts": {
-      "description": "Exports footerType",
-      "tokens": 584,
-      "hash": "4c3de80938e93040",
-      "size": 2041,
-      "mtimeMs": 1790582563643.6538,
-      "updatedAt": "2026-09-28T10:00:00.109Z",
-      "source": "scan"
-    },
-    "studio/schemaTypes/formGeneralSettingsType.ts": {
-      "description": "Mail and spam settings shared by every `form`. A singleton.",
-      "tokens": 1444,
-      "hash": "cc7e275139a972fe",
-      "size": 5062,
-      "mtimeMs": 1790582563643.8252,
-      "updatedAt": "2026-09-28T10:00:00.110Z",
-      "source": "scan"
-    },
-    "studio/schemaTypes/formType.ts": {
+    "studio/schemaTypes/documents/formType.ts": {
       "description": "Multi-step forms keep their fields under `steps`, simple ones under `fields`.",
       "tokens": 2578,
       "hash": "dccc82fe3141c082",
       "size": 9026,
-      "mtimeMs": 1790582563644.0266,
-      "updatedAt": "2026-09-28T10:00:00.110Z",
+      "mtimeMs": 1790595308088.6497,
+      "updatedAt": "2026-09-29T10:00:00.144Z",
       "source": "scan",
       "symbols": [
         {
@@ -2004,31 +2685,95 @@
         }
       ]
     },
+    "studio/schemaTypes/documents/project.ts": {
+      "description": "A project (a WordPress post): /<slug>/.",
+      "tokens": 1148,
+      "hash": "88f9b5b99c44fa1f",
+      "size": 4021,
+      "mtimeMs": 1790594923953.4417,
+      "updatedAt": "2026-09-29T10:00:00.145Z",
+      "source": "scan"
+    },
+    "studio/schemaTypes/documents/review.ts": {
+      "description": "Exports reviewType",
+      "tokens": 335,
+      "hash": "5716b604041c6d2b",
+      "size": 1170,
+      "mtimeMs": 1790594923963.9666,
+      "updatedAt": "2026-09-29T10:00:00.145Z",
+      "source": "scan"
+    },
+    "studio/schemaTypes/documents/servicePage.ts": {
+      "description": "Every page built on the \"dienst\" design: the services (/sierbestrating/),",
+      "tokens": 1215,
+      "hash": "08dfdd97abc9ced4",
+      "size": 4256,
+      "mtimeMs": 1790594923978.869,
+      "updatedAt": "2026-09-29T10:00:00.145Z",
+      "source": "scan"
+    },
+    "studio/schemaTypes/documents/textPage.ts": {
+      "description": "Plain text pages such as /privacy-policy/.",
+      "tokens": 299,
+      "hash": "49a0d32bad431976",
+      "size": 1045,
+      "mtimeMs": 1790594923968.0574,
+      "updatedAt": "2026-09-29T10:00:00.145Z",
+      "source": "scan"
+    },
+    "studio/schemaTypes/fields.ts": {
+      "description": "Small field helpers so the schema files read as a list of what an editor",
+      "tokens": 680,
+      "hash": "7f6dfc7f0c3d8b7f",
+      "size": 2380,
+      "mtimeMs": 1790597242112.947,
+      "updatedAt": "2026-09-29T10:00:00.146Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "split",
+          "kind": "fn",
+          "startLine": 19,
+          "endLine": 23,
+          "tokens": 39
+        },
+        {
+          "name": "str",
+          "kind": "fn",
+          "startLine": 24,
+          "endLine": 26,
+          "tokens": 38
+        },
+        {
+          "name": "txt",
+          "kind": "fn",
+          "startLine": 27,
+          "endLine": 53,
+          "tokens": 213
+        },
+        {
+          "name": "strList",
+          "kind": "fn",
+          "startLine": 54,
+          "endLine": 56,
+          "tokens": 51
+        },
+        {
+          "name": "imgList",
+          "kind": "fn",
+          "startLine": 57,
+          "endLine": 87,
+          "tokens": 220
+        }
+      ]
+    },
     "studio/schemaTypes/index.ts": {
-      "description": "Every schema type the studio knows about.",
-      "tokens": 527,
-      "hash": "1c3ac94797112c53",
-      "size": 1843,
-      "mtimeMs": 1790582563644.1335,
-      "updatedAt": "2026-09-28T10:00:00.110Z",
-      "source": "scan"
-    },
-    "studio/schemaTypes/navigationType.ts": {
-      "description": "Exports navigationType",
-      "tokens": 363,
-      "hash": "be12c9ef0727712d",
-      "size": 1269,
-      "mtimeMs": 1790582563644.2495,
-      "updatedAt": "2026-09-28T10:00:00.110Z",
-      "source": "scan"
-    },
-    "studio/schemaTypes/objects/ctaType.ts": {
-      "description": "Exports ctaType",
-      "tokens": 94,
-      "hash": "d016fc7939d21106",
-      "size": 326,
-      "mtimeMs": 1790582563644.4268,
-      "updatedAt": "2026-09-28T10:00:00.110Z",
+      "description": "Singletons: one document each, with `_id` equal to the type name.",
+      "tokens": 564,
+      "hash": "e6ff669afc571760",
+      "size": 1972,
+      "mtimeMs": 1790595635138.2434,
+      "updatedAt": "2026-09-29T10:00:00.146Z",
       "source": "scan"
     },
     "studio/schemaTypes/objects/formFieldType.ts": {
@@ -2036,72 +2781,104 @@
       "tokens": 1306,
       "hash": "2cb8c42eae5fee0a",
       "size": 4571,
-      "mtimeMs": 1790582563644.5906,
-      "updatedAt": "2026-09-28T10:00:00.111Z",
-      "source": "scan"
-    },
-    "studio/schemaTypes/objects/linkFields.ts": {
-      "description": "Shared internal/external link fields for `link` and `cta` objects.",
-      "tokens": 407,
-      "hash": "bdc930395402f7a6",
-      "size": 1422,
-      "mtimeMs": 1790582563644.7117,
-      "updatedAt": "2026-09-28T10:00:00.111Z",
+      "mtimeMs": 1790595308134.9053,
+      "updatedAt": "2026-09-29T10:00:00.147Z",
       "source": "scan"
     },
     "studio/schemaTypes/objects/linkType.ts": {
-      "description": "Exports linkType",
-      "tokens": 54,
-      "hash": "4a6dec2e72655f28",
-      "size": 188,
-      "mtimeMs": 1790582563644.8208,
-      "updatedAt": "2026-09-28T10:00:00.111Z",
+      "description": "A link with its own label: either to a page in the studio (keeps working when",
+      "tokens": 583,
+      "hash": "cd370d70a20154da",
+      "size": 2044,
+      "mtimeMs": 1790595308228.8835,
+      "updatedAt": "2026-09-29T10:00:00.147Z",
+      "source": "scan"
+    },
+    "studio/schemaTypes/objects/sections.ts": {
+      "description": "Kicker + heading + intro above a section.",
+      "tokens": 1518,
+      "hash": "d5615430963e18ea",
+      "size": 5313,
+      "mtimeMs": 1790595635138.9026,
+      "updatedAt": "2026-09-29T10:00:00.147Z",
       "source": "scan"
     },
     "studio/schemaTypes/objects/seoType.ts": {
       "description": "Exports seoType",
-      "tokens": 231,
-      "hash": "c3937d54e6fc72e3",
-      "size": 806,
-      "mtimeMs": 1790582563644.9243,
-      "updatedAt": "2026-09-28T10:00:00.111Z",
+      "tokens": 258,
+      "hash": "be1b40c7fc2448d7",
+      "size": 900,
+      "mtimeMs": 1790594872166.231,
+      "updatedAt": "2026-09-29T10:00:00.148Z",
       "source": "scan"
     },
-    "studio/schemaTypes/pageBuilderType.ts": {
-      "description": "The block list editors can insert on a page.",
-      "tokens": 238,
-      "hash": "617f58f2d68669a5",
-      "size": 833,
-      "mtimeMs": 1790582563645.0222,
-      "updatedAt": "2026-09-28T10:00:00.111Z",
+    "studio/schemaTypes/singletons/formGeneralSettingsType.ts": {
+      "description": "Mail and spam settings shared by every `form`. A singleton.",
+      "tokens": 1516,
+      "hash": "6fac0dc031d1168c",
+      "size": 5314,
+      "mtimeMs": 1790595635138.6897,
+      "updatedAt": "2026-09-29T10:00:00.148Z",
       "source": "scan"
     },
-    "studio/schemaTypes/pageType.ts": {
-      "description": "Exports pageType",
-      "tokens": 213,
-      "hash": "302e9947730ed839",
-      "size": 744,
-      "mtimeMs": 1790582563645.126,
-      "updatedAt": "2026-09-28T10:00:00.111Z",
-      "source": "scan"
+    "studio/schemaTypes/singletons/pages.ts": {
+      "description": "Exports homePageType, zakelijkPageType, projectsPageType, zakelijkProjectsPageType + 3 more",
+      "tokens": 3368,
+      "hash": "8eb73e8673f2c5f5",
+      "size": 11793,
+      "mtimeMs": 1790595635139.1384,
+      "updatedAt": "2026-09-29T10:00:00.151Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "title",
+          "kind": "fn",
+          "startLine": 8,
+          "endLine": 10,
+          "tokens": 29
+        },
+        {
+          "name": "statArray",
+          "kind": "fn",
+          "startLine": 11,
+          "endLine": 377,
+          "tokens": 3232
+        }
+      ]
     },
-    "studio/schemaTypes/siteInformationType.ts": {
-      "description": "Who the site belongs to: the details that appear in the header, the footer",
-      "tokens": 1013,
-      "hash": "dad20a1229f10c66",
-      "size": 3548,
-      "mtimeMs": 1790582563645.2302,
-      "updatedAt": "2026-09-28T10:00:00.111Z",
+    "studio/schemaTypes/singletons/settings.ts": {
+      "description": "Every short interface text that is not part of one page's content.",
+      "tokens": 1859,
+      "hash": "87b69cf79be3a451",
+      "size": 6516,
+      "mtimeMs": 1790595953934.905,
+      "updatedAt": "2026-09-29T10:00:00.151Z",
       "source": "scan"
     },
     "studio/structure.ts": {
-      "description": "Documents that exist exactly once. They get a fixed `_id` and a top-level",
-      "tokens": 717,
-      "hash": "0275d94724312302",
-      "size": 2509,
-      "mtimeMs": 1790582563645.3308,
-      "updatedAt": "2026-09-28T10:00:00.111Z",
-      "source": "scan"
+      "description": "Dienstpagina's of one kind, created with that kind preset.",
+      "tokens": 1176,
+      "hash": "db1e928637a71eca",
+      "size": 4122,
+      "mtimeMs": 1790595635138.4534,
+      "updatedAt": "2026-09-29T10:00:00.151Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "singleton",
+          "kind": "fn",
+          "startLine": 11,
+          "endLine": 18,
+          "tokens": 80
+        },
+        {
+          "name": "servicePages",
+          "kind": "fn",
+          "startLine": 19,
+          "endLine": 113,
+          "tokens": 966
+        }
+      ]
     },
     "studio/tools/mediaData.ts": {
       "description": "Queries, types and formatting helpers for the Media panel (`MediaTool.tsx`).",
@@ -2109,7 +2886,7 @@
       "hash": "2afb234e4afe433d",
       "size": 7041,
       "mtimeMs": 1790582563645.9133,
-      "updatedAt": "2026-09-28T10:00:00.112Z",
+      "updatedAt": "2026-09-29T10:00:00.152Z",
       "source": "scan",
       "symbols": [
         {
@@ -2197,16 +2974,16 @@
       "hash": "9c537d6dbd51c896",
       "size": 4958,
       "mtimeMs": 1790582563646.0654,
-      "updatedAt": "2026-09-28T10:00:00.112Z",
+      "updatedAt": "2026-09-29T10:00:00.152Z",
       "source": "scan"
     },
     "studio/tools/MediaTool.tsx": {
       "description": "The media library in the studio: every upload in one place, searchable, with",
       "tokens": 4572,
-      "hash": "dcd34fb382f53316",
+      "hash": "721209c64d747923",
       "size": 16044,
-      "mtimeMs": 1790582563645.6125,
-      "updatedAt": "2026-09-28T10:00:00.112Z",
+      "mtimeMs": 1790668292030.326,
+      "updatedAt": "2026-09-29T10:00:00.153Z",
       "source": "scan",
       "symbols": [
         {
@@ -2238,7 +3015,7 @@
       "hash": "e809be7d33595a60",
       "size": 1174,
       "mtimeMs": 1790582563646.168,
-      "updatedAt": "2026-09-28T10:00:00.112Z",
+      "updatedAt": "2026-09-29T10:00:00.153Z",
       "source": "scan"
     },
     "studio/tsconfig.json": {
@@ -2247,7 +3024,16 @@
       "hash": "e5a67d7d8cdee156",
       "size": 417,
       "mtimeMs": 1790582563646.2756,
-      "updatedAt": "2026-09-28T10:00:00.112Z",
+      "updatedAt": "2026-09-29T10:00:00.153Z",
+      "source": "scan"
+    },
+    "studio/tsconfig.tsbuildinfo": {
+      "description": "",
+      "tokens": 36550,
+      "hash": "5c35f4e062ac626a",
+      "size": 137062,
+      "mtimeMs": 1790597245192.2598,
+      "updatedAt": "2026-09-29T10:00:00.154Z",
       "source": "scan"
     }
   }

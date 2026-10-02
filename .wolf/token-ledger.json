@@ -2,19 +2,19 @@
   "version": 1,
   "created_at": "2026-09-28T09:51:01.839Z",
   "lifetime": {
-    "total_tokens_estimated": 24221,
-    "total_reads": 22,
+    "total_tokens_estimated": 20384,
+    "total_reads": 23,
     "total_writes": 0,
-    "total_sessions": 5,
-    "anatomy_hits": 20,
-    "anatomy_misses": 2,
+    "total_sessions": 2,
+    "anatomy_hits": 16,
+    "anatomy_misses": 7,
     "repeated_reads_blocked": 0,
-    "estimated_savings_vs_bare_cli": 4000,
-    "real_input_tokens": 1124,
-    "real_output_tokens": 175251,
-    "real_cache_read_tokens": 56261861,
-    "real_cache_creation_tokens": 1350260,
-    "real_api_calls": 562
+    "estimated_savings_vs_bare_cli": 3200,
+    "real_input_tokens": 1404,
+    "real_output_tokens": 255122,
+    "real_cache_read_tokens": 69149225,
+    "real_cache_creation_tokens": 1721302,
+    "real_api_calls": 702
   },
   "sessions": [
     {
@@ -498,63 +498,213 @@
       }
     },
     {
-      "id": "session-2026-10-01-1600",
+      "id": "session-2026-09-29-1103",
       "agent": "claude",
-      "started": "2026-10-01T16:00:45.883Z",
-      "ended": "2026-10-01T16:08:32.075Z",
+      "started": "2026-09-29T09:03:38.395Z",
+      "ended": "2026-09-29T09:06:00.196Z",
       "reads": [
         {
-          "file": "/home/user/schuijt/app/src/components/layout/SiteHeader.tsx",
-          "tokens_estimated": 1900,
-          "was_repeated": false,
-          "anatomy_had_description": false
-        },
-        {
-          "file": "/home/user/schuijt/studio/schemaTypes/singletons/settings.ts",
+          "file": "/private/tmp/claude-501/-Users-stevejonk-Documents-Prive-Projecten-schuijt/0ade6a8f-5942-4221-a481-6e2c72867700/scratchpad/handleiding-sanity.pdf.png",
           "tokens_estimated": 0,
-          "was_repeated": false,
-          "anatomy_had_description": false
-        },
-        {
-          "file": "/home/user/schuijt/app/src/app/layout.tsx",
-          "tokens_estimated": 521,
-          "was_repeated": false,
-          "anatomy_had_description": false
-        },
-        {
-          "file": "/home/user/schuijt/app/scripts/seed/index.ts",
-          "tokens_estimated": 0,
-          "was_repeated": false,
-          "anatomy_had_description": false
-        },
-        {
-          "file": "/home/user/schuijt/app/src/sanity/queries.ts",
-          "tokens_estimated": 1362,
-          "was_repeated": false,
-          "anatomy_had_description": false
-        },
-        {
-          "file": "/home/user/schuijt/studio/schemaTypes/objects/linkType.ts",
-          "tokens_estimated": 54,
           "was_repeated": false,
           "anatomy_had_description": false
         }
       ],
       "writes": [],
       "totals": {
-        "input_tokens_estimated": 3837,
+        "input_tokens_estimated": 0,
         "output_tokens_estimated": 0,
-        "reads_count": 6,
+        "reads_count": 1,
         "writes_count": 0,
         "repeated_reads_blocked": 0,
-        "anatomy_lookups": 4
+        "anatomy_lookups": 0
+      },
+      "real_usage": {
+        "input_tokens": 28,
+        "output_tokens": 11042,
+        "cache_read_input_tokens": 1179121,
+        "cache_creation_input_tokens": 56252,
+        "api_calls": 14
+      }
+    },
+    {
+      "id": "session-2026-09-29-1103",
+      "agent": "claude",
+      "started": "2026-09-29T09:03:38.395Z",
+      "ended": "2026-09-29T09:18:22.327Z",
+      "reads": [
+        {
+          "file": "/private/tmp/claude-501/-Users-stevejonk-Documents-Prive-Projecten-schuijt/0ade6a8f-5942-4221-a481-6e2c72867700/scratchpad/handleiding-sanity.pdf.png",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [],
+      "totals": {
+        "input_tokens_estimated": 0,
+        "output_tokens_estimated": 0,
+        "reads_count": 1,
+        "writes_count": 0,
+        "repeated_reads_blocked": 0,
+        "anatomy_lookups": 0
+      },
+      "real_usage": {
+        "input_tokens": 30,
+        "output_tokens": 11466,
+        "cache_read_input_tokens": 1278876,
+        "cache_creation_input_tokens": 56299,
+        "api_calls": 15
+      }
+    },
+    {
+      "id": "session-2026-09-29-1103",
+      "agent": "claude",
+      "started": "2026-09-29T09:03:38.395Z",
+      "ended": "2026-09-29T09:51:22.796Z",
+      "reads": [
+        {
+          "file": "/private/tmp/claude-501/-Users-stevejonk-Documents-Prive-Projecten-schuijt/0ade6a8f-5942-4221-a481-6e2c72867700/scratchpad/handleiding-sanity.pdf.png",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [],
+      "totals": {
+        "input_tokens_estimated": 0,
+        "output_tokens_estimated": 0,
+        "reads_count": 1,
+        "writes_count": 0,
+        "repeated_reads_blocked": 0,
+        "anatomy_lookups": 0
+      },
+      "real_usage": {
+        "input_tokens": 42,
+        "output_tokens": 12277,
+        "cache_read_input_tokens": 1885209,
+        "cache_creation_input_tokens": 58378,
+        "api_calls": 21
+      }
+    },
+    {
+      "id": "session-2026-09-29-1103",
+      "agent": "claude",
+      "started": "2026-09-29T09:03:38.395Z",
+      "ended": "2026-09-29T09:52:40.012Z",
+      "reads": [
+        {
+          "file": "/private/tmp/claude-501/-Users-stevejonk-Documents-Prive-Projecten-schuijt/0ade6a8f-5942-4221-a481-6e2c72867700/scratchpad/handleiding-sanity.pdf.png",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [],
+      "totals": {
+        "input_tokens_estimated": 0,
+        "output_tokens_estimated": 0,
+        "reads_count": 1,
+        "writes_count": 0,
+        "repeated_reads_blocked": 0,
+        "anatomy_lookups": 0
+      },
+      "real_usage": {
+        "input_tokens": 44,
+        "output_tokens": 12674,
+        "cache_read_input_tokens": 1987672,
+        "cache_creation_input_tokens": 58412,
+        "api_calls": 22
+      }
+    },
+    {
+      "id": "session-2026-09-29-1103",
+      "agent": "claude",
+      "started": "2026-09-29T09:03:38.395Z",
+      "ended": "2026-09-29T09:54:17.900Z",
+      "reads": [
+        {
+          "file": "/private/tmp/claude-501/-Users-stevejonk-Documents-Prive-Projecten-schuijt/0ade6a8f-5942-4221-a481-6e2c72867700/scratchpad/handleiding-sanity.pdf.png",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [],
+      "totals": {
+        "input_tokens_estimated": 0,
+        "output_tokens_estimated": 0,
+        "reads_count": 1,
+        "writes_count": 0,
+        "repeated_reads_blocked": 0,
+        "anatomy_lookups": 0
       },
       "real_usage": {
         "input_tokens": 50,
-        "output_tokens": 14299,
-        "cache_read_input_tokens": 2471723,
-        "cache_creation_input_tokens": 75061,
+        "output_tokens": 13203,
+        "cache_read_input_tokens": 2300889,
+        "cache_creation_input_tokens": 63255,
         "api_calls": 25
+      }
+    },
+    {
+      "id": "session-2026-09-29-1103",
+      "agent": "claude",
+      "started": "2026-09-29T09:03:38.395Z",
+      "ended": "2026-09-29T09:56:01.518Z",
+      "reads": [
+        {
+          "file": "/private/tmp/claude-501/-Users-stevejonk-Documents-Prive-Projecten-schuijt/0ade6a8f-5942-4221-a481-6e2c72867700/scratchpad/handleiding-sanity.pdf.png",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [],
+      "totals": {
+        "input_tokens_estimated": 0,
+        "output_tokens_estimated": 0,
+        "reads_count": 1,
+        "writes_count": 0,
+        "repeated_reads_blocked": 0,
+        "anatomy_lookups": 0
+      },
+      "real_usage": {
+        "input_tokens": 52,
+        "output_tokens": 13275,
+        "cache_read_input_tokens": 2408904,
+        "cache_creation_input_tokens": 63288,
+        "api_calls": 26
+      }
+    },
+    {
+      "id": "session-2026-09-29-1103",
+      "agent": "claude",
+      "started": "2026-09-29T09:03:38.395Z",
+      "ended": "2026-09-29T09:59:39.818Z",
+      "reads": [
+        {
+          "file": "/private/tmp/claude-501/-Users-stevejonk-Documents-Prive-Projecten-schuijt/0ade6a8f-5942-4221-a481-6e2c72867700/scratchpad/handleiding-sanity.pdf.png",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [],
+      "totals": {
+        "input_tokens_estimated": 0,
+        "output_tokens_estimated": 0,
+        "reads_count": 1,
+        "writes_count": 0,
+        "repeated_reads_blocked": 0,
+        "anatomy_lookups": 0
+      },
+      "real_usage": {
+        "input_tokens": 84,
+        "output_tokens": 20233,
+        "cache_read_input_tokens": 4318416,
+        "cache_creation_input_tokens": 90219,
+        "api_calls": 42
       }
     }
   ],
