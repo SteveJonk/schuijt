@@ -20,6 +20,8 @@ const FIELD_MASK = 'id,displayName,rating,userRatingCount,googleMapsUri,reviews'
 
 type Trigger = 'schedule' | 'studio' | 'manual';
 
+type GoogleReview = NonNullable<GooglePlace['reviews']>[number];
+
 type GooglePlace = {
   displayName?: { text?: string };
   rating?: number;
@@ -124,8 +126,59 @@ async function fetchPlace(placeId: string, languageCode: string): Promise<Google
   return (await response.json()) as GooglePlace;
 }
 
+/**
+ * Every review of the place, for the one-off backfill (`npm run reviews:backfill`),
+ * since the Places API stops at 5. Comes from SerpApi's Google Maps Reviews
+ * engine, mapped onto the Places shape. Its review_id is the same Maps id the
+ * Places API uses, so both land on the same document.
+ */
+async function fetchAllReviews(placeId: string, languageCode: string): Promise<GoogleReview[]> {
+  const apiKey = process.env.SERPAPI_API_KEY;
+  if (!apiKey) throw new SyncError('SERPAPI_API_KEY is not set.');
+
+  type SerpReview = {
+    review_id: string;
+    rating?: number;
+    snippet?: string;
+    extracted_snippet?: { original?: string };
+    iso_date?: string;
+    link?: string;
+    user?: { name?: string; link?: string; thumbnail?: string };
+  };
+  const all: GoogleReview[] = [];
+  let pageToken: string | undefined;
+  do {
+    const url = new URL('https://serpapi.com/search.json');
+    url.search = new URLSearchParams({ engine: 'google_maps_reviews', place_id: placeId, hl: languageCode, sort_by: 'newestFirst', api_key: apiKey }).toString();
+    // SerpApi refuses `num` on the first page.
+    if (pageToken) {
+      url.searchParams.set('next_page_token', pageToken);
+      url.searchParams.set('num', '20');
+    }
+    const response = await fetch(url, { cache: 'no-store' });
+    const body = (await response.json().catch(() => null)) as {
+      error?: string;
+      reviews?: SerpReview[];
+      serpapi_pagination?: { next_page_token?: string };
+    } | null;
+    if (!response.ok || body?.error) throw new SyncError(`SerpApi ${response.status}: ${body?.error ?? response.statusText}`, 502);
+    for (const r of body?.reviews ?? []) {
+      all.push({
+        name: `places/${placeId}/reviews/${r.review_id}`,
+        rating: r.rating,
+        originalText: { text: r.extracted_snippet?.original ?? r.snippet },
+        authorAttribution: { displayName: r.user?.name, uri: r.user?.link, photoUri: r.user?.thumbnail },
+        publishTime: r.iso_date,
+        googleMapsUri: r.link,
+      });
+    }
+    pageToken = body?.serpapi_pagination?.next_page_token;
+  } while (pageToken);
+  return all;
+}
+
 /** Google's review -> our fields. Null for a rating without text: nothing to show. */
-function toFields(review: NonNullable<GooglePlace['reviews']>[number]): ReviewFields | null {
+function toFields(review: GoogleReview): ReviewFields | null {
   // The original text, not Google's machine translation of it.
   const text = (review.originalText?.text ?? review.text?.text ?? '').trim();
   if (!text || !review.rating) return null;
@@ -155,7 +208,8 @@ function differs(existing: Record<string, unknown>, fields: ReviewFields) {
   );
 }
 
-export async function syncGoogleReviews({ dryRun, trigger }: { dryRun: boolean; trigger: Trigger }): Promise<SyncResult> {
+/** `all`: backfill every review via SerpApi; it only creates, never overwrites what the hourly sync wrote. */
+export async function syncGoogleReviews({ dryRun, trigger, all = false }: { dryRun: boolean; trigger: Trigger; all?: boolean }): Promise<SyncResult> {
   const client = writeClient();
   const config = await client.fetch<Config | null>(`*[_id == $id][0]`, { id: CONFIG_ID });
 
@@ -169,7 +223,8 @@ export async function syncGoogleReviews({ dryRun, trigger }: { dryRun: boolean; 
   const now = new Date().toISOString();
   try {
     const place = await fetchPlace(config.placeId, config.languageCode || 'nl');
-    const incoming = (place.reviews ?? []).map((review) => ({ id: documentId(review.name), fields: toFields(review) }));
+    const raw = all ? await fetchAllReviews(config.placeId, config.languageCode || 'nl') : (place.reviews ?? []);
+    const incoming = raw.map((review) => ({ id: documentId(review.name), fields: toFields(review) }));
     const reviews = incoming.flatMap(({ id, fields }) => (fields ? [{ id, fields }] : []));
 
     const ids = reviews.flatMap(({ id }) => [id, `drafts.${id}`]);
@@ -181,7 +236,8 @@ export async function syncGoogleReviews({ dryRun, trigger }: { dryRun: boolean; 
     for (const { id, fields } of reviews) {
       const published = byId.get(id);
       const draft = byId.get(`drafts.${id}`);
-      const action: ReviewAction = !published && !draft ? 'create' : differs(draft ?? published!, fields) ? 'update' : 'unchanged';
+      const action: ReviewAction =
+        !published && !draft ? 'create' : !all && differs(draft ?? published!, fields) ? 'update' : 'unchanged';
       results.push({ id, author: fields.name, rating: fields.rating, publishedAt: fields.publishedAt, text: fields.text, action });
 
       if (action === 'unchanged') continue;

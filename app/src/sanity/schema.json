@@ -4440,36 +4440,6 @@
     }
   },
   {
-    "type": "type",
-    "name": "review.reference",
-    "value": {
-      "type": "object",
-      "attributes": {
-        "_ref": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "string"
-          }
-        },
-        "_type": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "string",
-            "value": "reference"
-          }
-        },
-        "_weak": {
-          "type": "objectAttribute",
-          "value": {
-            "type": "boolean"
-          },
-          "optional": true
-        }
-      },
-      "dereferencesTo": "review"
-    }
-  },
-  {
     "name": "homePage",
     "type": "document",
     "attributes": {
@@ -4896,28 +4866,6 @@
               "value": {
                 "type": "inline",
                 "name": "sectionHead"
-              },
-              "optional": true
-            },
-            "items": {
-              "type": "objectAttribute",
-              "value": {
-                "type": "array",
-                "of": {
-                  "type": "object",
-                  "attributes": {
-                    "_key": {
-                      "type": "objectAttribute",
-                      "value": {
-                        "type": "string"
-                      }
-                    }
-                  },
-                  "rest": {
-                    "type": "inline",
-                    "name": "review.reference"
-                  }
-                }
               },
               "optional": true
             }

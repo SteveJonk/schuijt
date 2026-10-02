@@ -32,3 +32,15 @@
 | Time | Action | File(s) | Outcome | ~Tokens |
 |------|--------|---------|---------|--------|
 | 09:03 | navigation update script (Diensten submenu + Zakelijk Algemeen/VvE/Woco) | app/scripts/update-navigation.ts, app/package.json | dry run + tsc OK, not run live | ~1500 |
+
+## Session: 2026-10-02 09:53
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 09:54 | all-reviews backfill via SerpApi | app/src/lib/google-reviews.ts, app/scripts/backfill-google-reviews.ts, package.json, .env.example | typecheck+lint ok, dry run reaches SerpApi key check | ~6k |
+
+## Session: 2026-10-02 09:56
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 09:57 | Home reviews block: removed manual picks, always 3 newest (≥4★) | app/src/sanity/queries.ts, studio/schemaTypes/singletons/pages.ts, sanity.types.ts | tsc ok | ~3k |

@@ -528,4 +528,5 @@
 ## app/scripts/ (addition)
 
 - `delete-manual-reviews.ts` — deletes non-Google reviews (+drafts), skips referenced ones; `--dry` lists only. (~700 tok)
+- `backfill-google-reviews.ts` — one-off: all Google reviews via SerpApi (syncGoogleReviews all:true), create-only; `--dry` lists only. (~350 tok)
 - `update-navigation.ts` — patches only `links` of the navigation doc (Diensten submenu per service page, Zakelijk → Algemeen/VvE/Woningcorporaties); `--dry` prints. (~600 tok)

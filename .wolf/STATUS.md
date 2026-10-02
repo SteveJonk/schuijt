@@ -26,7 +26,7 @@
 4. Vaste teksten → "Sterren (schermlezer)" set to "{score} van 5 sterren".
 
 ### Open decisions
-- Need more than 5 review texts? Only via a paid third-party scraper API (SerpApi/Outscraper) or Business Profile API (needs manager access).
+- All review texts: after the first sync, set SERPAPI_API_KEY in app/.env, run `npm run reviews:backfill:dry` (the newest 5 should say `unchanged`), then `npm run reviews:backfill`.
 
 ---
 

@@ -189,11 +189,8 @@ export const HOME_QUERY = defineQuery(`*[_type == "homePage"][0]{
   projects{ head ${SECTION_HEAD}, tiles[] ${TILE} },
   reviews{
     head ${SECTION_HEAD},
-    // The editor's picks; without any, the three newest good reviews.
-    "items": select(
-      count(items[defined(@->_id) && @->hidden != true]) > 0 => items[defined(@->_id) && @->hidden != true]-> ${REVIEW},
-      *[${VISIBLE_REVIEW} && rating >= 4] | order(publishedAt desc)[0...3] ${REVIEW}
-    )
+    // The three newest good reviews.
+    "items": *[${VISIBLE_REVIEW} && rating >= 4] | order(publishedAt desc)[0...3] ${REVIEW}
   },
   werkgebied{ kicker, title, text, image ${IMAGE} },
   cta ${CTA},

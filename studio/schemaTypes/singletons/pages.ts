@@ -106,15 +106,8 @@ export const homePageType = defineType({
       group: 'sections',
       fields: [
         defineField({name: 'head', title: 'Sectiekop', type: 'sectionHead'}),
-        defineField({
-          name: 'items',
-          title: 'Reviews',
-          type: 'array',
-          description: 'Leeg = de drie nieuwste reviews met 4 of 5 sterren.',
-          of: [defineArrayMember({type: 'reference', to: [{type: 'review'}]})],
-          validation: (r) => r.max(3),
-        }),
       ],
+      description: 'Toont automatisch de drie nieuwste reviews met 4 of 5 sterren.',
     }),
     defineField({
       name: 'werkgebied',
