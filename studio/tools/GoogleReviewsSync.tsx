@@ -82,7 +82,7 @@ export function GoogleReviewsSync(props: FieldProps) {
       setBusy(dryRun ? 'dry' : 'sync')
       setResult(null)
       try {
-        const url = new URL('/api/google-reviews', siteUrl)
+        const url = new URL('/api/google-reviews/', siteUrl) // trailing slash: next.config has trailingSlash, and a redirected preflight fails CORS
         url.searchParams.set('trigger', 'studio')
         if (dryRun) url.searchParams.set('dryRun', '1')
         const response = await fetch(url, {method: 'POST', headers: {'x-sync-secret': secret}})

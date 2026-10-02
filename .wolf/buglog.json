@@ -8,7 +8,11 @@
       "file": "app/scripts/seed/index.ts",
       "root_cause": "Removing the REVIEWS.forEach block by searching for the first '});' left the outer closing '});' behind.",
       "fix": "Removed the stray '});'. When cutting nested blocks with a script, match the outer closer, then run tsc.",
-      "tags": ["seed", "syntax", "scripted-edit"],
+      "tags": [
+        "seed",
+        "syntax",
+        "scripted-edit"
+      ],
       "related_bugs": [],
       "occurrences": 1,
       "last_seen": "2026-10-01T18:20:00Z"
@@ -19,11 +23,34 @@
       "error_message": "check:queries: assert.ok(r.cta.form?._id === 'form.offerte-dienstkeuze') fails",
       "file": "app/scripts/check-queries.ts",
       "root_cause": "Pre-existing on main: seed undot() turns ids into form-offerte-dienstkeuze but the check expects the dotted id. Not fixed (out of scope).",
-      "fix": "None yet — update the expected ids in check-queries.ts to the dashed form.",
-      "tags": ["check-queries", "seed", "ids", "pre-existing"],
+      "fix": "None yet \u2014 update the expected ids in check-queries.ts to the dashed form.",
+      "tags": [
+        "check-queries",
+        "seed",
+        "ids",
+        "pre-existing"
+      ],
       "related_bugs": [],
       "occurrences": 1,
       "last_seen": "2026-10-01T18:25:00Z"
+    },
+    {
+      "id": "bug-003",
+      "timestamp": "2026-10-02T08:25:00Z",
+      "error_message": "CORS error calling /api/google-reviews from Sanity studio",
+      "file": "studio/tools/GoogleReviewsSync.tsx",
+      "root_cause": "next.config trailingSlash:true 308-redirects /api/google-reviews to /api/google-reviews/; browsers reject redirects on CORS preflight",
+      "fix": "Call /api/google-reviews/ (with trailing slash) from studio and Netlify job",
+      "tags": [
+        "cors",
+        "trailingSlash",
+        "netlify",
+        "sanity-studio",
+        "redirect"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-10-02T08:25:00Z"
     }
   ]
 }

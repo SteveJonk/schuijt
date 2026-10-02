@@ -24,6 +24,7 @@
 - groq-js `evaluate(...).get()` returns a Promise — await it in ad-hoc query tests.
 
 ## Do-Not-Repeat
+- [2026-10-02] app has `trailingSlash: true` — always call API routes with a trailing slash (`/api/x/`). Cross-origin calls without it get a 308 on the preflight → CORS error.
 
 <!-- Mistakes made and corrected. Each entry prevents the same mistake recurring. -->
 <!-- Format: [YYYY-MM-DD] Description of what went wrong and what to do instead. -->

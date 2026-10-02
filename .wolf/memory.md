@@ -44,3 +44,9 @@
 | Time | Action | File(s) | Outcome | ~Tokens |
 |------|--------|---------|---------|--------|
 | 09:57 | Home reviews block: removed manual picks, always 3 newest (≥4★) | app/src/sanity/queries.ts, studio/schemaTypes/singletons/pages.ts, sanity.types.ts | tsc ok | ~3k |
+
+## Session: 2026-10-02 10:23
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 10:23 | Fix studio google-reviews CORS: trailingSlash 308 on preflight; call /api/google-reviews/ | studio/tools/GoogleReviewsSync.tsx, app/netlify/functions/google-reviews-sync.mts | fixed | ~2k |

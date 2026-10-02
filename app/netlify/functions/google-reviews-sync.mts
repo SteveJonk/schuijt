@@ -15,7 +15,7 @@ const syncGoogleReviews = async () => {
     return;
   }
 
-  const response = await fetch(`${origin}/api/google-reviews?trigger=schedule`, {
+  const response = await fetch(`${origin}/api/google-reviews/?trigger=schedule`, {
     method: 'POST',
     headers: { 'x-sync-secret': secret, 'user-agent': 'netlify-google-reviews-sync' },
   });
