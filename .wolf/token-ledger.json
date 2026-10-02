@@ -2,19 +2,19 @@
   "version": 1,
   "created_at": "2026-09-28T09:51:01.839Z",
   "lifetime": {
-    "total_tokens_estimated": 24221,
-    "total_reads": 22,
+    "total_tokens_estimated": 28058,
+    "total_reads": 28,
     "total_writes": 0,
-    "total_sessions": 2,
-    "anatomy_hits": 20,
-    "anatomy_misses": 2,
+    "total_sessions": 4,
+    "anatomy_hits": 24,
+    "anatomy_misses": 4,
     "repeated_reads_blocked": 0,
-    "estimated_savings_vs_bare_cli": 4000,
-    "real_input_tokens": 1124,
-    "real_output_tokens": 175251,
-    "real_cache_read_tokens": 56261861,
-    "real_cache_creation_tokens": 1350260,
-    "real_api_calls": 562
+    "estimated_savings_vs_bare_cli": 4800,
+    "real_input_tokens": 1184,
+    "real_output_tokens": 190172,
+    "real_cache_read_tokens": 59203054,
+    "real_cache_creation_tokens": 1427170,
+    "real_api_calls": 591
   },
   "sessions": [
     {
@@ -555,6 +555,66 @@
         "cache_read_input_tokens": 2471723,
         "cache_creation_input_tokens": 75061,
         "api_calls": 25
+      }
+    },
+    {
+      "id": "session-2026-10-01-1600",
+      "agent": "claude",
+      "started": "2026-10-01T16:00:45.883Z",
+      "ended": "2026-10-01T16:08:45.092Z",
+      "reads": [
+        {
+          "file": "/home/user/schuijt/app/src/components/layout/SiteHeader.tsx",
+          "tokens_estimated": 1900,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/home/user/schuijt/studio/schemaTypes/singletons/settings.ts",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/home/user/schuijt/app/src/app/layout.tsx",
+          "tokens_estimated": 521,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/home/user/schuijt/app/scripts/seed/index.ts",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/home/user/schuijt/app/src/sanity/queries.ts",
+          "tokens_estimated": 1362,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/home/user/schuijt/studio/schemaTypes/objects/linkType.ts",
+          "tokens_estimated": 54,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [],
+      "totals": {
+        "input_tokens_estimated": 3837,
+        "output_tokens_estimated": 0,
+        "reads_count": 6,
+        "writes_count": 0,
+        "repeated_reads_blocked": 0,
+        "anatomy_lookups": 4
+      },
+      "real_usage": {
+        "input_tokens": 60,
+        "output_tokens": 14921,
+        "cache_read_input_tokens": 2941193,
+        "cache_creation_input_tokens": 76910,
+        "api_calls": 29
       }
     }
   ],

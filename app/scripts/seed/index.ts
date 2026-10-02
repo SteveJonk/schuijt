@@ -6,6 +6,8 @@
  *   npm run seed -- --force   overwrite every seeded document (discards studio edits!)
  *   npm run seed -- --reset   like --force, then delete the old documents whose id
  *                             contains a dot (private in Sanity), e.g. review.1
+ *   npm run seed -- --only=navigation   overwrite just the named documents (comma-separated
+ *                             _ids, e.g. --only=navigation,footer); nothing else is touched
  *   npm run seed:dry          no Sanity at all: writes the dataset to
  *                             scripts/seed/dataset.ndjson for `npm run check:queries`
  *
@@ -50,6 +52,7 @@ import { ZAKELIJK_PAGES } from './content/zakelijk-pages';
 const DIR = path.dirname(fileURLToPath(import.meta.url));
 const IMAGES_DIR = path.join(DIR, 'images');
 const DRY = process.argv.includes('--dry');
+const ONLY = process.argv.find((arg) => arg.startsWith('--only='))?.slice('--only='.length).split(',').filter(Boolean);
 const RESET = process.argv.includes('--reset');
 const FORCE = RESET || process.argv.includes('--force');
 
@@ -873,9 +876,16 @@ async function main() {
     useCdn: false,
   });
 
+  // With --only, just the images those documents use.
+  const selected = ONLY ? all.filter((doc) => ONLY.includes(doc._id)) : all;
+  const missing = ONLY?.filter((id) => !selected.some((doc) => doc._id === id));
+  if (missing?.length) throw new Error(`--only: unknown document id(s): ${missing.join(', ')}`);
+  const selectedJson = JSON.stringify(selected);
+  const imagesToUpload = [...usedImages].filter((file) => !ONLY || selectedJson.includes(file));
+
   console.log('Uploading images…');
   const assets = new Map<string, string>();
-  for (const file of usedImages) {
+  for (const file of imagesToUpload) {
     const existing = await client.fetch<string | null>(
       `*[_type == "sanity.imageAsset" && originalFilename == $file][0]._id`,
       { file },
@@ -889,11 +899,11 @@ async function main() {
   }
   console.log('');
 
-  const resolved = resolveAssets(all, assets) as Doc[];
+  const resolved = resolveAssets(selected, assets) as Doc[];
   const tx = client.transaction();
   for (const doc of resolved) {
     if (doc._id === 'formGeneralSettings') tx.createIfNotExists(doc);
-    else if (FORCE) tx.createOrReplace(doc);
+    else if (FORCE || ONLY) tx.createOrReplace(doc);
     else tx.createIfNotExists(doc);
   }
   // Form settings hold studio-entered credentials, so only repoint its reference.
@@ -920,7 +930,7 @@ async function main() {
     }
     console.log(`Deleted ${total} old documents with a dot in their id.`);
   }
-  console.log(`Done: ${resolved.length} documents ${FORCE ? 'written' : 'created where missing'}.`);
+  console.log(`Done: ${resolved.length} documents ${FORCE || ONLY ? 'written' : 'created where missing'}.`);
 }
 
 main().catch((error) => {
