@@ -6,6 +6,7 @@
  * request reaches the Next.js function instead of being answered from the edge.
  * Scheduled functions only run on the published production deploy.
  */
+
 const keepWarm = async () => {
   const origin = process.env.URL;
   if (!origin) return;

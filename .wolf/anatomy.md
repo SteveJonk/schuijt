@@ -528,3 +528,4 @@
 ## app/scripts/ (addition)
 
 - `delete-manual-reviews.ts` — deletes non-Google reviews (+drafts), skips referenced ones; `--dry` lists only. (~700 tok)
+- `update-navigation.ts` — patches only `links` of the navigation doc (Diensten submenu per service page, Zakelijk → Algemeen/VvE/Woningcorporaties); `--dry` prints. (~600 tok)

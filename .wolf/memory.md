@@ -26,3 +26,9 @@
 
 | Time | Action | File(s) | Outcome | ~Tokens |
 | ---- | ------ | ------- | ------- | ------- |
+
+## Session: 2026-10-02 09:02
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 09:03 | navigation update script (Diensten submenu + Zakelijk Algemeen/VvE/Woco) | app/scripts/update-navigation.ts, app/package.json | dry run + tsc OK, not run live | ~1500 |
