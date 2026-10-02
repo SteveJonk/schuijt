@@ -16,10 +16,15 @@ export const SANITY_TAG = 'sanity';
  * Safety net only. If the webhook is misconfigured or a delivery is lost, the
  * cache still refreshes within an hour instead of staying stale.
  */
-export const REVALIDATE = 3600;
+export const REVALIDATE = 60;
 
-export function sanityFetch<const Q extends string>(query: Q, params: QueryParams = {}) {
-  return client.fetch(query, params, { next: { revalidate: REVALIDATE, tags: [SANITY_TAG] } });
+export function sanityFetch<const Q extends string>(
+  query: Q,
+  params: QueryParams = {},
+) {
+  return client.fetch(query, params, {
+    next: { revalidate: REVALIDATE, tags: [SANITY_TAG] },
+  });
 }
 
 /** Header, footer, labels and site details — one request per page render. */
@@ -36,6 +41,11 @@ export type Layout = Awaited<ReturnType<typeof getLayout>>;
 export type Ui = Layout['ui'];
 
 /** "Gebaseerd op {aantal} reviews" + { aantal: 47 } -> "Gebaseerd op 47 reviews". */
-export function fillLabel(template: string | null | undefined, values: Record<string, string | number>) {
-  return (template ?? '').replace(/\{(\w+)\}/g, (_, key: string) => String(values[key] ?? ''));
+export function fillLabel(
+  template: string | null | undefined,
+  values: Record<string, string | number>,
+) {
+  return (template ?? '').replace(/\{(\w+)\}/g, (_, key: string) =>
+    String(values[key] ?? ''),
+  );
 }
