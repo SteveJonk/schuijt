@@ -50,3 +50,9 @@
 | Time | Action | File(s) | Outcome | ~Tokens |
 |------|--------|---------|---------|--------|
 | 10:23 | Fix studio google-reviews CORS: trailingSlash 308 on preflight; call /api/google-reviews/ | studio/tools/GoogleReviewsSync.tsx, app/netlify/functions/google-reviews-sync.mts | fixed | ~2k |
+
+## Session: 2026-10-03 05:06
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 10:00 | Reviewed /api/revalidate flow (Next 16.2 + Netlify plugin 5.16 source): no hard bug; 'max' profile serves one stale hit after publish | app/src/app/api/revalidate/route.ts, app/src/sanity/fetch.ts | analysis only, no code change | ~25k |
