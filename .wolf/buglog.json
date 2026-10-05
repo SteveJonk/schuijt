@@ -23,7 +23,7 @@
       "error_message": "check:queries: assert.ok(r.cta.form?._id === 'form.offerte-dienstkeuze') fails",
       "file": "app/scripts/check-queries.ts",
       "root_cause": "Pre-existing on main: seed undot() turns ids into form-offerte-dienstkeuze but the check expects the dotted id. Not fixed (out of scope).",
-      "fix": "None yet — update the expected ids in check-queries.ts to the dashed form.",
+      "fix": "None yet \u2014 update the expected ids in check-queries.ts to the dashed form.",
       "tags": [
         "check-queries",
         "seed",
@@ -83,6 +83,22 @@
         "zakelijk",
         "sanity",
         "category"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-10-05T12:00:00Z"
+    },
+    {
+      "id": "bug-006",
+      "timestamp": "2026-10-05T12:00:00Z",
+      "error_message": "On /zakelijk/projecten both 'Algemeen' and 'Projecten' nav links are highlighted",
+      "file": "app/src/components/layout/SiteHeader.tsx",
+      "root_cause": "isActivePath uses prefix match, so parent child link /zakelijk matches nested /zakelijk/projecten",
+      "fix": "isActiveChild: within a dropdown only the longest matching child href is active",
+      "tags": [
+        "nav",
+        "active-link",
+        "pathname"
       ],
       "related_bugs": [],
       "occurrences": 1,

@@ -17,6 +17,12 @@ function isActivePath(pathname: string, href: string) {
   return path === target || path.startsWith(`${target}/`);
 }
 
+// Only the most specific sibling is active, so /zakelijk doesn't light up on /zakelijk/projecten.
+function isActiveChild(pathname: string, children: NavItem['children'], href: string) {
+  const matches = children.filter((c) => isActivePath(pathname, c.href)).map((c) => c.href);
+  return matches.length > 0 && href === matches.reduce((a, b) => (b.length > a.length ? b : a));
+}
+
 function isActiveItem(pathname: string, item: NavItem) {
   return (item.href ? isActivePath(pathname, item.href) : false) || item.children.some((c) => isActivePath(pathname, c.href));
 }
@@ -155,7 +161,7 @@ export function SiteHeader({ siteName, logo, phone, links, ctaLabel, menuOpen, m
                             onClick={() => setDropdown(null)}
                             className={cn(
                               'block rounded-xl px-3.5 py-2.5 whitespace-nowrap transition-colors duration-200',
-                              isActivePath(pathname, child.href)
+                              isActiveChild(pathname, link.children, child.href)
                                 ? 'bg-tint text-blue-deep'
                                 : 'text-ink-soft hover:bg-tint hover:text-ink',
                             )}
@@ -286,7 +292,7 @@ export function SiteHeader({ siteName, logo, phone, links, ctaLabel, menuOpen, m
                           onClick={close}
                           className={cn(
                             'block py-3.5 pr-1 pl-5 font-display text-[18px] font-medium',
-                            isActivePath(pathname, child.href) ? 'text-blue-deep' : 'text-ink-soft',
+                            isActiveChild(pathname, link.children, child.href) ? 'text-blue-deep' : 'text-ink-soft',
                           )}
                         >
                           {child.label}

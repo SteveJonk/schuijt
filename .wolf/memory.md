@@ -69,3 +69,9 @@
 | Time | Action | File(s) | Outcome | ~Tokens |
 |------|--------|---------|---------|--------|
 | 12:00 | zakelijk projecten filter → category instead of audience; removed audience + filterVve/Corporatie/Bedrijf | queries.ts, zakelijk/projecten/page.tsx, studio project.ts/pages.ts, seed | ok | ~6k |
+
+## Session: 2026-10-05 10:49
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 12:00 | Nav: only most specific child link active (Algemeen + Projecten both highlighted on /zakelijk/projecten) | app/src/components/layout/SiteHeader.tsx | fixed, tsc ok | ~2k |
