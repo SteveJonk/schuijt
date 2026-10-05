@@ -19,6 +19,9 @@
     "reviews:backfill:dry": "tsx --env-file=.env scripts/backfill-google-reviews.ts --dry",
     "navigation:update": "tsx --env-file=.env scripts/update-navigation.ts",
     "navigation:update:dry": "tsx --env-file=.env scripts/update-navigation.ts --dry",
+    "projects:fetch": "tsx scripts/projects/fetch-wp.ts",
+    "projects:seed": "tsx --env-file=.env scripts/projects/seed-projects.ts",
+    "projects:seed:dry": "tsx scripts/projects/seed-projects.ts --dry",
     "check:queries": "tsx scripts/check-queries.ts"
   },
   "dependencies": {

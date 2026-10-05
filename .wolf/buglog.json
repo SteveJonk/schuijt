@@ -70,6 +70,23 @@
       "related_bugs": [],
       "occurrences": 1,
       "last_seen": "2026-10-05T06:50:00Z"
+    },
+    {
+      "id": "bug-005",
+      "timestamp": "2026-10-05T12:00:00Z",
+      "error_message": "/zakelijk/projecten/ filter shows Woningcorporaties project under VvE",
+      "file": "app/src/app/zakelijk/projecten/page.tsx",
+      "root_cause": "Filter used project.audience (seeded 'vve' for all) instead of category; two fields for the same thing drifted",
+      "fix": "Filter on category->_id with buttons built from isZakelijk categories (like /projecten/); removed audience + filterVve/Corporatie/Bedrijf fields",
+      "tags": [
+        "filter",
+        "zakelijk",
+        "sanity",
+        "category"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-10-05T12:00:00Z"
     }
   ]
 }

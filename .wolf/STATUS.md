@@ -2,13 +2,15 @@
 
 > Single source of truth for resuming work. Read this FIRST when starting a session.
 > Update this file at the end of every work phase so the next `/clear` resumes in 1 read.
-> Last updated: 2026-10-01
+> Last updated: 2026-10-05
 
 ---
 
 ## ✅ Done
 
 <!-- Move items here from "🚀 Next phase" when finished. Group by area. -->
+
+- Real project content (2026-10-05): `app/scripts/projects/` fetches all 102 WP posts and seeds them (photos, text, AI-written subline/Kenmerken/werkzaamheden/zakelijke kaart, zakelijk → audience `vve`). **Pending:** `cd app && npm run projects:seed`. Note: main `npm run seed -- --force/--reset` would overwrite projects with the old stand-ins again — re-run `projects:seed` after it.
 
 - Google reviews sync (2026-10-01): `/api/google-reviews` (secret header, dryRun), Netlify `@hourly` function, `googleReviews` singleton with sync panel, review overview lists in studio, real average from Google on /reviews/, star ratings per review. Removed zakelijk/particulier from reviews (schema `audience`, ui labels, filter, seed mocks).
 - Navbar submenus: `navItem` type (link + `children[]`), click-to-expand header (desktop dropdown, mobile accordion, no hover). Seed updated (Diensten → 6 service pages, Zakelijk → Algemeen/VvE/Woningcorporaties). **Pending:** run `npm run seed` in app/ with .env (token) — and re-run once so existing nav doc switches from `link` to `navItem` members.

@@ -531,3 +531,7 @@
 - `delete-manual-reviews.ts` — deletes non-Google reviews (+drafts), skips referenced ones; `--dry` lists only. (~700 tok)
 - `backfill-google-reviews.ts` — one-off: all Google reviews via SerpApi (syncGoogleReviews all:true), create-only; `--dry` lists only. (~350 tok)
 - `update-navigation.ts` — patches only `links` of the navigation doc (Diensten submenu per service page, Zakelijk → Algemeen/VvE/Woningcorporaties); `--dry` prints. (~600 tok)
+- `projects/fetch-wp.ts` — `npm run projects:fetch`: all WP posts (paginated) → `projects/wp-projects.json` (slug, title, date, category, featured + gallery original URLs, paragraphs with <strong>). (~1000 tok)
+- `projects/wp-projects.json` — 102 scraped WordPress projects. (~25k tok)
+- `projects/ai-fields.json` — per slug: subline, meta (Kenmerken pairs), works, card (zakelijk only); written by Claude from the post text. (~20k tok)
+- `projects/seed-projects.ts` — `npm run projects:seed[:dry]`: uploads photos (dedup via asset source.id = WP URL), createOrReplace `project-<slug>`, discards project drafts, deletes projects not on WP. (~1500 tok)

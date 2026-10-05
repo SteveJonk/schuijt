@@ -9,6 +9,7 @@
 <!-- How the user likes things done. Code style, tools, patterns, communication. -->
 
 ## Key Learnings
+- Project filters (/projecten/ and /zakelijk/projecten/) both key on `category->_id`; filter buttons come from category docs (isZakelijk splits them). No separate audience field.
 
 - **Project:** schuijt
 - **Description:** A block-based website scaffold: Next.js 16 (App Router, React 19, Tailwind v4)
@@ -21,6 +22,7 @@
 - **Typegen:** `cd studio && SANITY_STUDIO_PROJECT_ID=dummy123 npm run typegen`; studio build offline needs `--no-auto-updates`.
 - **Sync writes** to Sanity must also patch `drafts.<id>` if it exists, or publishing the draft reverts them.
 
+- **Projects** come from `app/scripts/projects/` (real WP content), not `scripts/seed/content/projects.ts` (stand-ins). Main seed `--force`/`--reset` reverts them; run `npm run projects:seed` afterwards. WP REST: `per_page=100` max, `x-wp-totalpages` header; posts repeat galleries in `mobile-only` columns (dedupe img URLs); strip `-WxH` for originals.
 - groq-js `evaluate(...).get()` returns a Promise — await it in ad-hoc query tests.
 
 ## Do-Not-Repeat
@@ -36,4 +38,5 @@
 - [2026-10-02] All-reviews backfill uses SerpApi (local SERPAPI_API_KEY), not Business Profile API (needs manager access + API approval).
 - [2026-10-01] Reviews: 'zakelijk/particulier' distinction removed from reviews only (the Zakelijk site section/projects stay). Average = Google's rating/userRatingCount, fallback avg of visible Sanity reviews. Sync never deletes reviews (texts accumulate); editors hide via `hidden`.
 
+- [2026-10-05] Project AI fields (Kenmerken etc.) generated once by Claude in-session and committed as ai-fields.json, not via API at seed time: deterministic, reviewable, no key/cost. Replace projects by same id (not delete+create) so home-page references survive.
 <!-- Significant technical decisions with rationale. Why X was chosen over Y. -->

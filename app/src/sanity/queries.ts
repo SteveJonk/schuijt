@@ -132,7 +132,7 @@ const ZAKELIJK_CARD = /* groq */ `{
   "text": cardText,
   "image": coalesce(cardImage, image) ${IMAGE},
   "stats": cardStats[]{ _key, value, label },
-  audience
+  "category": category->_id
 }`;
 
 // ---------------------------------------------------------------------------
@@ -285,14 +285,12 @@ export const ZAKELIJK_PROJECTS_PAGE_QUERY = defineQuery(`{
     breadcrumb,
     intro ${INTRO},
     filterAll,
-    filterVve,
-    filterCorporatie,
-    filterBedrijf,
     soonTitle,
     soonText,
     cta ${CTA},
     seo ${SEO}
   },
+  "categories": *[_type == "category" && isZakelijk == true] | order(order asc){ _id, title },
   "projects": *[_type == "project" && category->isZakelijk == true] | order(date desc) ${ZAKELIJK_CARD}
 }`);
 

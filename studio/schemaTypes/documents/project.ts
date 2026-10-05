@@ -101,19 +101,6 @@ export const projectType = defineType({
       ],
       validation: (r) => r.max(2),
     }),
-    defineField({
-      name: 'audience',
-      title: 'Doelgroep (filter)',
-      type: 'string',
-      group: 'zakelijk',
-      options: {
-        list: [
-          {title: 'VvE & vastgoedbeheer', value: 'vve'},
-          {title: 'Woningcorporaties', value: 'corporatie'},
-          {title: 'Bedrijven & instellingen', value: 'bedrijf'},
-        ],
-      },
-    }),
     defineField({name: 'seo', title: 'SEO', type: 'seo', group: 'seo'}),
   ],
   orderings: [{title: 'Nieuwste eerst', name: 'dateDesc', by: [{field: 'date', direction: 'desc'}]}],

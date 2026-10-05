@@ -3,18 +3,18 @@
   "created_at": "2026-09-28T09:51:01.839Z",
   "lifetime": {
     "total_tokens_estimated": 20384,
-    "total_reads": 23,
+    "total_reads": 26,
     "total_writes": 0,
-    "total_sessions": 7,
+    "total_sessions": 9,
     "anatomy_hits": 16,
-    "anatomy_misses": 7,
+    "anatomy_misses": 10,
     "repeated_reads_blocked": 0,
     "estimated_savings_vs_bare_cli": 3200,
-    "real_input_tokens": 1404,
-    "real_output_tokens": 255122,
-    "real_cache_read_tokens": 69149225,
-    "real_cache_creation_tokens": 1721302,
-    "real_api_calls": 702
+    "real_input_tokens": 1478,
+    "real_output_tokens": 301851,
+    "real_cache_read_tokens": 73305728,
+    "real_cache_creation_tokens": 1867834,
+    "real_api_calls": 739
   },
   "sessions": [
     {
@@ -705,6 +705,48 @@
         "cache_read_input_tokens": 4318416,
         "cache_creation_input_tokens": 90219,
         "api_calls": 42
+      }
+    },
+    {
+      "id": "session-2026-10-05-0940",
+      "agent": "claude",
+      "started": "2026-10-05T07:40:46.573Z",
+      "ended": "2026-10-05T08:11:08.614Z",
+      "reads": [
+        {
+          "file": "/Users/stevejonk/.claude/projects/-Users-stevejonk-Documents-Prive-Projecten-schuijt/205ec873-d1c9-4bd3-a6f8-f49bba74d70b/tool-results/b4h526ua4.txt",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/private/tmp/claude-501/-Users-stevejonk-Documents-Prive-Projecten-schuijt/205ec873-d1c9-4bd3-a6f8-f49bba74d70b/scratchpad/t1.txt",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        },
+        {
+          "file": "/private/tmp/claude-501/-Users-stevejonk-Documents-Prive-Projecten-schuijt/205ec873-d1c9-4bd3-a6f8-f49bba74d70b/scratchpad/t2.txt",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [],
+      "totals": {
+        "input_tokens_estimated": 0,
+        "output_tokens_estimated": 0,
+        "reads_count": 3,
+        "writes_count": 0,
+        "repeated_reads_blocked": 0,
+        "anatomy_lookups": 0
+      },
+      "real_usage": {
+        "input_tokens": 74,
+        "output_tokens": 46729,
+        "cache_read_input_tokens": 4156503,
+        "cache_creation_input_tokens": 146532,
+        "api_calls": 37
       }
     }
   ],

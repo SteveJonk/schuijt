@@ -57,3 +57,15 @@
 |------|--------|---------|---------|--------|
 | 08:30 | Review text clipped at 150 chars + 'Lees meer' native <dialog> (home + /reviews); uiText reviewReadMore/reviewClose fields | app/src/components/ui/ReviewText.tsx, app/src/app/reviews/page.tsx, app/src/components/home/Reviews.tsx, studio settings.ts, seed | verified in browser | ~6k |
 | 10:50 | Fix: revalidateTag 'max' -> { expire: 0 } (stale page re-cached at Netlify edge for an hour) | app/src/app/api/revalidate/route.ts, app/src/app/api/google-reviews/route.ts | tsc+eslint clean, pushed to claude/revalidate-expire-now | ~30k |
+
+## Session: 2026-10-05 09:40
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 10:30 | Project seed from live WordPress: fetch script, AI fields for 102 posts, seed script + npm scripts | app/scripts/projects/*, app/package.json | dry run OK, 361 photo URLs 200; real seed not run yet | ~90k |
+
+## Session: 2026-10-05 10:34
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 12:00 | zakelijk projecten filter → category instead of audience; removed audience + filterVve/Corporatie/Bedrijf | queries.ts, zakelijk/projecten/page.tsx, studio project.ts/pages.ts, seed | ok | ~6k |

@@ -88,7 +88,6 @@ const ZAKELIJK: Record<string, ProjectDetail & { image: string; card: ZakelijkCa
         { value: '535 m²', label: 'omvang' },
         { value: 'Gefaseerd', label: 'bewoond complex' },
       ],
-      filter: 'vve',
     },
   },
   'project-vve-amsterdam-aanleg-parkeerterrein-nieuwbouw': {
@@ -122,7 +121,6 @@ const ZAKELIJK: Record<string, ProjectDetail & { image: string; card: ZakelijkCa
         { value: '165 m²', label: 'omvang' },
         { value: 'Waterdoorlatend', label: 'ontwerp' },
       ],
-      filter: 'vve',
     },
   },
 };
@@ -198,7 +196,6 @@ export type ZakelijkCardContent = {
   photo: string;
   stats: { value: string; label: string }[];
   /** Filter on /zakelijk/projecten/. */
-  filter: 'vve' | 'corporatie' | 'bedrijf';
 };
 
 export const ZAKELIJK_CARDS = Object.entries(ZAKELIJK).map(([slug, project]) => ({

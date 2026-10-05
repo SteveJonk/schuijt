@@ -477,7 +477,6 @@ for (const summary of PROJECTS) {
           cardText: card.text,
           cardImage: image(card.photo, card.title),
           cardStats: card.stats,
-          audience: card.filter,
         }
       : {}),
     seo: { description: project.subline },
@@ -681,9 +680,6 @@ add({
     text: 'Van herbestrating bij een VvE tot de aanleg van een compleet parkeerterrein. Een overzicht van de zakelijke projecten die we hebben opgeleverd.',
   },
   filterAll: 'Alle projecten',
-  filterVve: 'VvE & vastgoedbeheer',
-  filterCorporatie: 'Woningcorporaties',
-  filterBedrijf: 'Bedrijven & instellingen',
   soonTitle: 'Meer zakelijke projecten volgen',
   soonText:
     'Momenteel zijn dit onze twee actieve VvE-projecten. Zodra er werk voor woningcorporaties of bedrijven wordt opgeleverd, komt dat hier bij te staan.',

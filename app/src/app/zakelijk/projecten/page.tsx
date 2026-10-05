@@ -16,17 +16,15 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function ZakelijkProjectenPage() {
-  const [{ page, projects }, { ui, zakelijkTitle }] = await Promise.all([
+  const [{ page, categories, projects }, { ui, zakelijkTitle }] = await Promise.all([
     sanityFetch(ZAKELIJK_PROJECTS_PAGE_QUERY),
     getLayout(),
   ]);
 
   const filters = [
-    { value: 'alle', label: page?.filterAll },
-    { value: 'vve', label: page?.filterVve },
-    { value: 'corporatie', label: page?.filterCorporatie },
-    { value: 'bedrijf', label: page?.filterBedrijf },
-  ].flatMap((filter) => (filter.label ? [{ value: filter.value, label: filter.label }] : []));
+    ...(page?.filterAll ? [{ value: 'alle', label: page.filterAll }] : []),
+    ...categories.map((category) => ({ value: category._id, label: category.title })),
+  ];
 
   return (
     <main>
@@ -40,7 +38,7 @@ export default async function ZakelijkProjectenPage() {
         <section className='relative pt-11 pb-20'>
           <Wrap className='grid grid-cols-2 gap-7 max-[760px]:grid-cols-1'>
             {projects.map((card, index) => (
-              <FilterItem key={card._id} category={card.audience ?? ''}>
+              <FilterItem key={card._id} category={card.category ?? ''}>
                 <Reveal index={index}>
                   <ZakelijkProjectCard card={card} linkLabel={ui.viewProject} />
                 </Reveal>

@@ -3059,27 +3059,6 @@
         },
         "optional": true
       },
-      "audience": {
-        "type": "objectAttribute",
-        "value": {
-          "type": "union",
-          "of": [
-            {
-              "type": "string",
-              "value": "vve"
-            },
-            {
-              "type": "string",
-              "value": "corporatie"
-            },
-            {
-              "type": "string",
-              "value": "bedrijf"
-            }
-          ]
-        },
-        "optional": true
-      },
       "seo": {
         "type": "objectAttribute",
         "value": {
@@ -3999,27 +3978,6 @@
         "optional": true
       },
       "filterAll": {
-        "type": "objectAttribute",
-        "value": {
-          "type": "string"
-        },
-        "optional": true
-      },
-      "filterVve": {
-        "type": "objectAttribute",
-        "value": {
-          "type": "string"
-        },
-        "optional": true
-      },
-      "filterCorporatie": {
-        "type": "objectAttribute",
-        "value": {
-          "type": "string"
-        },
-        "optional": true
-      },
-      "filterBedrijf": {
         "type": "objectAttribute",
         "value": {
           "type": "string"
