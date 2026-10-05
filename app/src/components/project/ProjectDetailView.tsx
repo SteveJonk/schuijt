@@ -1,4 +1,5 @@
 import { PortableText } from 'next-sanity';
+import { ProjectGallery } from '@/components/project/ProjectGallery';
 import { ContactCta } from '@/components/sections/ContactCta';
 import { Breadcrumb } from '@/components/ui/Breadcrumb';
 import { Button } from '@/components/ui/Button';
@@ -7,7 +8,6 @@ import { Kicker } from '@/components/ui/Kicker';
 import { Reveal } from '@/components/ui/Reveal';
 import { SanityImage } from '@/components/ui/SanityImage';
 import { Wrap } from '@/components/ui/Wrap';
-import { cn } from '@/lib/cn';
 import { getLayout } from '@/sanity/fetch';
 import type { ProjectPageData } from '@/sanity/types';
 
@@ -96,19 +96,7 @@ export async function ProjectDetailView({ project }: { project: ProjectPageData 
               {ui.projectGalleryKicker ? <Kicker>{ui.projectGalleryKicker}</Kicker> : null}
               <h2 className='text-[28px]'>{ui.projectGalleryTitle}</h2>
             </Reveal>
-            <div className='grid auto-rows-[200px] grid-cols-4 gap-[18px] max-lg:auto-rows-[170px] max-lg:grid-cols-2 max-xs:grid-cols-1'>
-              {project.gallery.map((item, index) => (
-                <Reveal key={item._key} index={index} className={cn(item.wide && 'col-span-2 max-xs:col-span-1')}>
-                  <div className='group relative h-full overflow-hidden rounded-card shadow-soft transition-[translate,box-shadow] duration-350 ease-brand hover:-translate-y-1.5 hover:shadow-lift'>
-                    <SanityImage
-                      image={item.image}
-                      sizes='(max-width: 520px) 100vw, (max-width: 900px) 50vw, 560px'
-                      className='object-cover transition-transform duration-900 ease-brand group-hover:scale-[1.08]'
-                    />
-                  </div>
-                </Reveal>
-              ))}
-            </div>
+            <ProjectGallery items={project.gallery} />
           </Wrap>
         </section>
       ) : null}

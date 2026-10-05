@@ -81,3 +81,4 @@
 
 | Time | Action | File(s) | Outcome | ~Tokens |
 |------|--------|---------|---------|--------|
+| 10:00 | Project gallery lightbox: native <dialog>, arrows/Esc/backdrop close; grid moved into client ProjectGallery | app/src/components/project/ProjectGallery.tsx, ProjectDetailView.tsx | verified in browser | ~3k |

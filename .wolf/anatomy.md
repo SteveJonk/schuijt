@@ -314,6 +314,7 @@
 
 ## app/src/components/project/
 
+- `ProjectGallery.tsx` — Client: project photo grid; click opens photo in native <dialog> lightbox (←/→, Esc, backdrop click). (~900 tok)
 - `ProjectDetailView.tsx` — A project (a former WordPress post), particulier or zakelijk. (~1866 tok)
   - fn `ProjectDetailView` L15-141 (~1676 tok)
 - `ZakelijkProjectCard.tsx` — ZakelijkProjectCard (~533 tok)
