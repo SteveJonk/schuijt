@@ -56,3 +56,4 @@
 | Time | Action | File(s) | Outcome | ~Tokens |
 |------|--------|---------|---------|--------|
 | 08:30 | Review text clipped at 150 chars + 'Lees meer' native <dialog> (home + /reviews); uiText reviewReadMore/reviewClose fields | app/src/components/ui/ReviewText.tsx, app/src/app/reviews/page.tsx, app/src/components/home/Reviews.tsx, studio settings.ts, seed | verified in browser | ~6k |
+| 10:50 | Fix: revalidateTag 'max' -> { expire: 0 } (stale page re-cached at Netlify edge for an hour) | app/src/app/api/revalidate/route.ts, app/src/app/api/google-reviews/route.ts | tsc+eslint clean, pushed to claude/revalidate-expire-now | ~30k |
