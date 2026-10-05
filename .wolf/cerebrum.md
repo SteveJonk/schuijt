@@ -14,7 +14,7 @@
 - **Project:** schuijt
 - **Description:** A block-based website scaffold: Next.js 16 (App Router, React 19, Tailwind v4)
 
-- **Caching:** all page Sanity reads use tag `sanity` (src/sanity/fetch.ts); Sanity webhook POSTs /api/revalidate (secret SANITY_REVALIDATE_SECRET) -> revalidateTag('sanity','max'). Next 16 revalidateTag needs 2nd arg. `npm ci` fails on lockfile sync; use `npm install --no-package-lock`.
+- **Caching:** all page Sanity reads use tag `sanity` (src/sanity/fetch.ts); Sanity webhook POSTs /api/revalidate (secret SANITY_REVALIDATE_SECRET) -> revalidateTag('sanity',{expire:0}). parseBody runs WITHOUT the wait arg (Sanity delivers webhooks serially; 3s wait per call backed up bulk publishes). Webhook URL must end in /api/revalidate/. Next 16 revalidateTag needs 2nd arg. `npm ci` fails on lockfile sync; use `npm install --no-package-lock`.
 
 - **Google reviews:** Places API (New) `places/{id}` with FieldMask incl. `reviews` returns rating + userRatingCount over all reviews but max 5 review texts; no manager access needed (Business Profile API would need it). Show Google's aggregate, never average the 5. Full history: one-off `npm run reviews:backfill` via SerpApi (`syncGoogleReviews({all:true})`, create-only; SerpApi review_id == Places review id).
 - **Studio secrets:** never put secrets in the dataset or SANITY_STUDIO_* env (bundle is public); studio panel keeps the sync secret in localStorage.

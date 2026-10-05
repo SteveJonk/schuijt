@@ -8,7 +8,7 @@ export const runtime = 'nodejs';
 /**
  * Sanity webhook target: expires the cached Sanity reads after a publish.
  *
- * Set up in sanity.io/manage -> API -> Webhooks: URL `<site>/api/revalidate`,
+ * Set up in sanity.io/manage -> API -> Webhooks: URL `<site>/api/revalidate/` (trailing slash),
  * method POST, trigger on create/update/delete, projection `{_type}` and the
  * same secret as SANITY_REVALIDATE_SECRET. Without the secret the route
  * refuses everything, so it can never be called anonymously.
@@ -20,7 +20,9 @@ export async function POST(request: NextRequest) {
   }
 
   try {
-    const { isValidSignature, body } = await parseBody<{ _type?: string }>(request, secret, true);
+    // No wait-for-consistency (3rd arg): reads use useCdn:false, and the ~3s
+    // delay per call made bulk publishes queue up behind each other in Sanity.
+    const { isValidSignature, body } = await parseBody<{ _type?: string }>(request, secret);
     if (!isValidSignature) {
       return NextResponse.json({ message: 'Invalid signature.' }, { status: 401 });
     }

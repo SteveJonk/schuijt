@@ -75,3 +75,9 @@
 | Time | Action | File(s) | Outcome | ~Tokens |
 |------|--------|---------|---------|--------|
 | 12:00 | Nav: only most specific child link active (Algemeen + Projecten both highlighted on /zakelijk/projecten) | app/src/components/layout/SiteHeader.tsx | fixed, tsc ok | ~2k |
+| 12:30 | Revalidate webhook: drop parseBody wait (3s/call queued bulk publishes, later 30s timeouts); webhook URL needs trailing slash | app/src/app/api/revalidate/route.ts | done, tsc ok | ~3k |
+
+## Session: 2026-10-05 11:06
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|

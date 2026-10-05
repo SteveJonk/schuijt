@@ -103,6 +103,24 @@
       "related_bugs": [],
       "occurrences": 1,
       "last_seen": "2026-10-05T12:00:00Z"
+    },
+    {
+      "id": "bug-007",
+      "timestamp": "2026-10-05T12:30:00Z",
+      "error_message": "Sanity webhook revalidate works for one editor but not others; webhook attempts fail with resultCode null after 30s",
+      "file": "app/src/app/api/revalidate/route.ts",
+      "root_cause": "parseBody(req, secret, true) waits ~3s per call; Sanity delivers serially, so a bulk publish (~140 project docs) queued for minutes and later attempts timed out. Webhook URL also lacked trailing slash -> extra 308 per call.",
+      "fix": "Removed wait arg from parseBody (reads use useCdn:false). Webhook URL should be /api/revalidate/ with trailing slash.",
+      "tags": [
+        "sanity",
+        "webhook",
+        "revalidate",
+        "netlify",
+        "timeout"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-10-05T12:30:00Z"
     }
   ]
 }
