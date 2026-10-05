@@ -25,6 +25,8 @@
 
 - **Revalidation (Next 16 + Netlify v5):** `revalidateTag(tag, 'max')` = stale-while-revalidate: Netlify marks the tag stale (not expired) and purges the edge, so the FIRST request after a publish still gets the old page and triggers a background re-render; only the next request is fresh. `revalidateTag(tag, { expire: 0 })` expires immediately (blocking re-render). `updateTag` throws in route handlers. A low REVALIDATE (60) on sanityFetch makes every page ISR every 60s, which masks whether the webhook works at all.
 
+- **Netlify Next cache is deploy-scoped:** the Next runtime stores its page/fetch cache and tag manifests in deploy-specific blob stores (getDeployStore). A Sanity webhook that fires while a new deploy is building revalidates the OLD deploy; the new deploy goes live with whatever the build fetched, and stays stale until REVALIDATE runs out. Fix: publish again (or redeploy) after the build is live.
+
 ## Do-Not-Repeat
 - [2026-10-02] app has `trailingSlash: true` — always call API routes with a trailing slash (`/api/x/`). Cross-origin calls without it get a 308 on the preflight → CORS error.
 

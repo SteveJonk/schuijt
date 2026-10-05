@@ -56,3 +56,4 @@
 | Time | Action | File(s) | Outcome | ~Tokens |
 |------|--------|---------|---------|--------|
 | 10:00 | Reviewed /api/revalidate flow (Next 16.2 + Netlify plugin 5.16 source): no hard bug; 'max' profile serves one stale hit after publish | app/src/app/api/revalidate/route.ts, app/src/sanity/fetch.ts | analysis only, no code change | ~25k |
+| 10:30 | Diagnosed home page staying stale after webhook 200: likely publish during a deploy build (Netlify cache is deploy-scoped) | .wolf/cerebrum.md | analysis only | ~20k |
