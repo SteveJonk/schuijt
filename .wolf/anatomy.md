@@ -428,7 +428,7 @@
 
 - `client.ts` — Fetch that degrades instead of throwing. (~301 tok)
 - `fetch.ts` — Every page fetch goes through here. Pages are cached and refreshed at most (~365 tok)
-- `image-loader.ts` — `next/image` loader: Sanity's CDN resizes and picks the format, so Next does (~164 tok)
+- `image-loader.ts` — global `next/image` loader: Sanity CDN renders each width (q=85, auto=format, fit=max); SVGs unscaled (~380 tok)
 - `image.ts` — An image as the queries project it (see IMAGE in queries.ts). (~419 tok)
 - `metadata.ts` — A page's metadata from its `seo` fields, falling back to the page title. (~248 tok)
 - `queries.ts` — Path of a servicePage in the current scope. (~3358 tok)
