@@ -58,7 +58,7 @@ export async function POST(request: NextRequest) {
       trigger: trigger === 'schedule' || trigger === 'studio' ? trigger : 'manual',
     });
     // The Sanity webhook would get there too; this way it does not depend on it.
-    if (!dryRun && result.changed) revalidateTag(SANITY_TAG, 'max');
+    if (!dryRun && result.changed) revalidateTag(SANITY_TAG, { expire: 0 });
     return reply(result);
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error);

@@ -23,7 +23,7 @@
       "error_message": "check:queries: assert.ok(r.cta.form?._id === 'form.offerte-dienstkeuze') fails",
       "file": "app/scripts/check-queries.ts",
       "root_cause": "Pre-existing on main: seed undot() turns ids into form-offerte-dienstkeuze but the check expects the dotted id. Not fixed (out of scope).",
-      "fix": "None yet \u2014 update the expected ids in check-queries.ts to the dashed form.",
+      "fix": "None yet — update the expected ids in check-queries.ts to the dashed form.",
       "tags": [
         "check-queries",
         "seed",
@@ -51,6 +51,25 @@
       "related_bugs": [],
       "occurrences": 1,
       "last_seen": "2026-10-02T08:25:00Z"
+    },
+    {
+      "id": "bug-004",
+      "timestamp": "2026-10-05T06:50:00Z",
+      "error_message": "Sanity publish not visible on home page for up to an hour although /api/revalidate/ returns 200 {revalidated:'sanity'} (REVALIDATE=3600)",
+      "file": "app/src/app/api/revalidate/route.ts",
+      "root_cause": "revalidateTag(tag,'max') = stale-while-revalidate. On Netlify the edge is purged, the next request gets the STALE page entry, and that response is cached at the edge again with s-maxage=REVALIDATE minus its age (headers: cache-status hit ttl=3249, age 351, x-nextjs-date 4s after the webhook). With REVALIDATE=60 this self-healed within a minute and was masked.",
+      "fix": "revalidateTag(SANITY_TAG, { expire: 0 }) in /api/revalidate and /api/google-reviews: entry is expired, next request does a blocking render with fresh data and that is what the edge caches.",
+      "tags": [
+        "revalidate",
+        "netlify",
+        "isr",
+        "next16",
+        "sanity-webhook",
+        "cache"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-10-05T06:50:00Z"
     }
   ]
 }
