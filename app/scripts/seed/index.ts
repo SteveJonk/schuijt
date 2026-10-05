@@ -330,6 +330,8 @@ add({
   ctaText: DEFAULT_CTA_TEXT,
   starsLabel: '{score} van 5 sterren',
   viewProject: 'Bekijk dit project',
+  reviewReadMore: 'Lees meer',
+  reviewClose: 'Sluiten',
   formNote: 'We reageren doorgaans binnen één werkdag.',
   formSending: 'Versturen…',
   formError: 'Versturen is mislukt. Probeer het later opnieuw.',

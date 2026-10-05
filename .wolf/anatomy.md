@@ -347,6 +347,7 @@
 
 ## app/src/components/ui/
 
+- `ReviewText.tsx` — Client: review text clipped at 150 chars + "Lees meer" button opening the full review in a native <dialog>. (~600 tok)
 - `Stars.tsx` — Five stars filled to a (fractional) rating; `formatScore` -> "4,6". (~300 tok)
 - `Button.tsx` — Class string for anything that should look like a button (links, submits). (~456 tok)
 - `Breadcrumb.tsx` — Home / … / current page, above a page hero. The last item is the current page. (~368 tok)

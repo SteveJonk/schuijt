@@ -25,4 +25,4 @@ const syncGoogleReviews = async () => {
 
 export default syncGoogleReviews;
 
-export const config = { schedule: '@hourly' };
+export const config = { schedule: '@daily' };

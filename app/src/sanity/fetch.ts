@@ -16,7 +16,7 @@ export const SANITY_TAG = 'sanity';
  * Safety net only. If the webhook is misconfigured or a delivery is lost, the
  * cache still refreshes within an hour instead of staying stale.
  */
-export const REVALIDATE = 60;
+export const REVALIDATE = 3600;
 
 export function sanityFetch<const Q extends string>(
   query: Q,

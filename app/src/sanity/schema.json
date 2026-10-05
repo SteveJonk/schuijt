@@ -5635,6 +5635,20 @@
         },
         "optional": true
       },
+      "reviewReadMore": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": true
+      },
+      "reviewClose": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": true
+      },
       "projectKickerParticulier": {
         "type": "objectAttribute",
         "value": {

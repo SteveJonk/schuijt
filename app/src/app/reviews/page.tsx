@@ -4,6 +4,7 @@ import { PageIntro } from '@/components/sections/PageIntro';
 import { Breadcrumb } from '@/components/ui/Breadcrumb';
 import { Kicker } from '@/components/ui/Kicker';
 import { Reveal } from '@/components/ui/Reveal';
+import { ReviewText } from '@/components/ui/ReviewText';
 import { Stars, formatScore } from '@/components/ui/Stars';
 import { Wrap } from '@/components/ui/Wrap';
 import { buttonClass } from '@/components/ui/Button';
@@ -69,30 +70,44 @@ export default async function ReviewsPage() {
       <section className='relative pt-5 pb-20'>
         <Wrap>
           <div className='mt-[38px] grid grid-cols-3 gap-6 max-lg:grid-cols-2 max-sm:grid-cols-1'>
-            {reviews.map((review, index) => (
-              <Reveal key={review._id} index={index}>
-                <div className='h-full rounded-card border border-line bg-white px-[26px] py-7 transition-[translate,box-shadow] duration-350 ease-brand hover:-translate-y-[7px] hover:shadow-soft'>
-                  <div className='flex items-start justify-between'>
-                    <Stars
-                      rating={review.rating}
-                      label={fillLabel(ui.starsLabel, { score: review.rating })}
-                      className='text-[15px] tracking-[2px]'
-                    />
-                    {review.source === 'google' ? <GoogleLogo /> : null}
-                  </div>
-                  <p className='mt-3.5 text-[15px] text-ink-soft'>{review.text}</p>
-                  <div className='mt-5 flex items-center gap-[11px]'>
-                    <span className='flex size-[38px] items-center justify-center rounded-full bg-linear-135 from-blue to-blue-light font-display text-[14px] font-semibold text-white'>
-                      {review.initials || initials(review.name)}
-                    </span>
-                    <div>
-                      <b className='block font-display text-[14.5px] font-semibold'>{review.name}</b>
-                      <small className='block text-[12.5px] text-muted'>{reviewMeta(review)}</small>
-                    </div>
+            {reviews.map((review, index) => {
+              const stars = (
+                <Stars
+                  rating={review.rating}
+                  label={fillLabel(ui.starsLabel, { score: review.rating })}
+                  className='text-[15px] tracking-[2px]'
+                />
+              );
+              const author = (
+                <div className='mt-5 flex items-center gap-[11px]'>
+                  <span className='flex size-[38px] items-center justify-center rounded-full bg-linear-135 from-blue to-blue-light font-display text-[14px] font-semibold text-white'>
+                    {review.initials || initials(review.name)}
+                  </span>
+                  <div>
+                    <b className='block font-display text-[14.5px] font-semibold'>{review.name}</b>
+                    <small className='block text-[12.5px] text-muted'>{reviewMeta(review)}</small>
                   </div>
                 </div>
-              </Reveal>
-            ))}
+              );
+              return (
+                <Reveal key={review._id} index={index}>
+                  <div className='h-full rounded-card border border-line bg-white px-[26px] py-7 transition-[translate,box-shadow] duration-350 ease-brand hover:-translate-y-[7px] hover:shadow-soft'>
+                    <div className='flex items-start justify-between'>
+                      {stars}
+                      {review.source === 'google' ? <GoogleLogo /> : null}
+                    </div>
+                    <ReviewText
+                      text={review.text}
+                      moreLabel={ui.reviewReadMore ?? 'Lees meer'}
+                      closeLabel={ui.reviewClose ?? 'Sluiten'}
+                      header={stars}
+                      footer={author}
+                    />
+                    {author}
+                  </div>
+                </Reveal>
+              );
+            })}
           </div>
         </Wrap>
       </section>

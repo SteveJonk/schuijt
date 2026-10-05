@@ -117,6 +117,8 @@ export const uiTextType = defineType({
       description: 'Gebruik {score} voor het aantal sterren, bijv. "{score} van 5 sterren".',
     }),
     str('viewProject', 'Link op projectkaart', {group: 'general'}),
+    str('reviewReadMore', 'Review: knop volledige tekst', {group: 'general'}),
+    str('reviewClose', 'Review: sluiten (schermlezer)', {group: 'general'}),
     str('projectKickerParticulier', 'Label particulier project', {group: 'project'}),
     str('projectKickerZakelijk', 'Label zakelijk project', {group: 'project'}),
     str('projectAbout', 'Titel omschrijving', {group: 'project'}),

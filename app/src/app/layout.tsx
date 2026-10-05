@@ -55,6 +55,7 @@ export default async function RootLayout({
       className={`${display.variable} ${sans.variable} antialiased`}
     >
       <head>
+        <meta name='apple-mobile-web-app-title' content='Schuijt' />
         <TrackingScriptsHead />
       </head>
       <body>
@@ -64,11 +65,17 @@ export default async function RootLayout({
         <JsonLd data={siteJsonLd(info)} />
         <SiteHeader
           siteName={info.name}
-          logo={logoSrc && dims ? { src: logoSrc, width: dims.width, height: dims.height } : null}
+          logo={
+            logoSrc && dims
+              ? { src: logoSrc, width: dims.width, height: dims.height }
+              : null
+          }
           phone={site?.phone ?? null}
           links={(navigation?.links ?? []).flatMap((link): NavItem[] => {
             const children = (link.children ?? []).flatMap((child) =>
-              child.href && child.label ? [{ href: child.href, label: child.label }] : [],
+              child.href && child.label
+                ? [{ href: child.href, label: child.label }]
+                : [],
             );
             // An item needs a target, or sub-items to expand.
             if (!link.label || (!link.href && !children.length)) return [];

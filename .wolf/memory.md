@@ -50,3 +50,9 @@
 | Time | Action | File(s) | Outcome | ~Tokens |
 |------|--------|---------|---------|--------|
 | 10:23 | Fix studio google-reviews CORS: trailingSlash 308 on preflight; call /api/google-reviews/ | studio/tools/GoogleReviewsSync.tsx, app/netlify/functions/google-reviews-sync.mts | fixed | ~2k |
+
+## Session: 2026-10-05 08:28
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 08:30 | Review text clipped at 150 chars + 'Lees meer' native <dialog> (home + /reviews); uiText reviewReadMore/reviewClose fields | app/src/components/ui/ReviewText.tsx, app/src/app/reviews/page.tsx, app/src/components/home/Reviews.tsx, studio settings.ts, seed | verified in browser | ~6k |

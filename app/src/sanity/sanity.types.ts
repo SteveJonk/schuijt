@@ -936,6 +936,8 @@ export type UiText = {
   ctaText?: string;
   starsLabel?: string;
   viewProject?: string;
+  reviewReadMore?: string;
+  reviewClose?: string;
   projectKickerParticulier?: string;
   projectKickerZakelijk?: string;
   projectAbout?: string;
@@ -1307,6 +1309,8 @@ export type LAYOUT_QUERY_RESULT = {
     ctaText?: string;
     starsLabel?: string;
     viewProject?: string;
+    reviewReadMore?: string;
+    reviewClose?: string;
     projectKickerParticulier?: string;
     projectKickerZakelijk?: string;
     projectAbout?: string;
