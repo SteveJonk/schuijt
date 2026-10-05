@@ -10,7 +10,7 @@
 
 <!-- Move items here from "🚀 Next phase" when finished. Group by area. -->
 
-- Sharper images (2026-10-05): Sanity loader now q=85, SVGs unscaled, `rect` crops preserved (ported from starter PR #8). Branch `claude/image-quality-improvements-3uywyn`.
+- Sharper images (2026-10-05): Sanity loader now q=85, SVGs unscaled, `rect` crops preserved (ported from starter PR #8). Studio media panel: "Delete unused images" button (also from PR #8). Branch `claude/image-quality-improvements-3uywyn`.
 
 - Real project content (2026-10-05): `app/scripts/projects/` fetches all 102 WP posts and seeds them (photos, text, AI-written subline/Kenmerken/werkzaamheden/zakelijke kaart, zakelijk → audience `vve`). **Pending:** `cd app && npm run projects:seed`. Note: main `npm run seed -- --force/--reset` would overwrite projects with the old stand-ins again — re-run `projects:seed` after it.
 
