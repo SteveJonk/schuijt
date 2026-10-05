@@ -82,3 +82,4 @@
 | Time | Action | File(s) | Outcome | ~Tokens |
 |------|--------|---------|---------|--------|
 | 10:00 | Project gallery lightbox: native <dialog>, arrows/Esc/backdrop close; grid moved into client ProjectGallery | app/src/components/project/ProjectGallery.tsx, ProjectDetailView.tsx | verified in browser | ~3k |
+| 19:30 | Ported starter PR #8 image quality: loader q 75→85, SVGs unscaled, crop h kept to aspect, rect commas kept (global loader kept, no ui/Image wrapper needed) | app/src/sanity/image-loader.ts | tsc+eslint clean | ~4k |

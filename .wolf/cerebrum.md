@@ -23,6 +23,7 @@
 - **Sync writes** to Sanity must also patch `drafts.<id>` if it exists, or publishing the draft reverts them.
 
 - **Projects** come from `app/scripts/projects/` (real WP content), not `scripts/seed/content/projects.ts` (stand-ins). Main seed `--force`/`--reset` reverts them; run `npm run projects:seed` afterwards. WP REST: `per_page=100` max, `x-wp-totalpages` header; posts repeat galleries in `mobile-only` columns (dedupe img URLs); strip `-WxH` for originals.
+- **Images:** schuijt uses a GLOBAL `images.loaderFile` (src/sanity/image-loader.ts) since every image is from Sanity — unlike the starter, which wraps next/image in a client `ui/Image` (it has local public/ images). Loader: q=85 default (Next passes quality undefined when no prop), auto=format, fit=max, SVGs pass through unscaled, keeps `rect` commas. Ports from the starter's image components need adapting, not copying.
 - groq-js `evaluate(...).get()` returns a Promise — await it in ad-hoc query tests.
 
 ## Do-Not-Repeat
