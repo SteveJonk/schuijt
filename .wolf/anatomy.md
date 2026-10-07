@@ -216,6 +216,10 @@
 
 - `route.ts` — POST: Google reviews sync (header x-sync-secret = GOOGLE_REVIEWS_SYNC_SECRET, ?dryRun=1, ?trigger=schedule|studio), CORS for the studio. (~700 tok)
 
+## app/src/app/api/sentry-test/
+
+- `route.ts` — GET always throws "Sentry test: server error", reported via onRequestError. (~80 tok)
+
 ## app/src/app/api/submit-form/
 
 - `route.ts` — Bigger uploads are rejected rather than silently dropped from the mail. (~2564 tok)
@@ -259,6 +263,10 @@
   - fn `ScoreCard` L30-45 (~204 tok)
   - fn `ReviewsPage` L46-136 (~1210 tok)
 
+## app/src/app/sentry-test/
+
+- `page.tsx` — Sentry connection test page (/sentry-test/): noindex/nofollow, buttons throw a client error and call /api/sentry-test/ (server error). (~180 tok)
+
 ## app/src/app/zakelijk/
 
 - `page.tsx` — TRUST_ICONS (~2172 tok)
@@ -279,6 +287,7 @@
 
 - `JsonLd.tsx` — Put one graph into the page. (~98 tok)
 - `TextPageView.tsx` — Plain text pages such as /privacy-policy/, in the blog article's column and type. (~462 tok)
+- `SentryTest.tsx` — Client buttons for /sentry-test: throw client error (setTimeout, uncaught) + fetch the failing API route; shows DSN on/off. (~520 tok)
 - `TrackingScripts.tsx` — Google Tag Manager and the Meta (Facebook) pixel, both opt-in. (~866 tok)
   - fn `TrackingScriptsHead` L21-62 (~399 tok)
   - fn `TrackingScriptsBody` L63-92 (~222 tok)

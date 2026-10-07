@@ -85,3 +85,4 @@
 | 19:30 | Ported starter PR #8 image quality: loader q 75→85, SVGs unscaled, crop h kept to aspect, rect commas kept (global loader kept, no ui/Image wrapper needed) | app/src/sanity/image-loader.ts | tsc+eslint clean | ~4k |
 | 19:45 | Ported starter PR #8 media panel 'Delete unused images' (refetch, batches of 50, one-by-one fallback, PDFs kept) | studio/tools/MediaTool.tsx, mediaData.ts | patch applied cleanly; tsc+eslint clean | ~3k |
 | 18:13 | Sentry prep: Sentry DSN/sample rate/org/project added to Netlify SECRETS_SCAN_OMIT_KEYS (en-jonk: netlify.toml created) | app/netlify.toml | done, not committed | ~2k |
+| 12:00 | Sentry test page /sentry-test/ (noindex) + always-failing /api/sentry-test/ + client SentryTest buttons | app/src/app/sentry-test/page.tsx, app/src/app/api/sentry-test/route.ts, app/src/components/SentryTest.tsx | tsc+eslint clean; dev: API 500 + error logged (page needs Sanity, not renderable in sandbox) | ~6k |

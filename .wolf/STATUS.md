@@ -2,13 +2,15 @@
 
 > Single source of truth for resuming work. Read this FIRST when starting a session.
 > Update this file at the end of every work phase so the next `/clear` resumes in 1 read.
-> Last updated: 2026-10-05
+> Last updated: 2026-10-07 (Sentry test page)
 
 ---
 
 ## ✅ Done
 
 <!-- Move items here from "🚀 Next phase" when finished. Group by area. -->
+
+- Sentry test page (2026-10-07, branch `claude/sentry-test-page-route-acohz1`): `/sentry-test/` (noindex/nofollow, not in sitemap) with buttons for a client error and `/api/sentry-test/` (always throws → onRequestError). Same in en-jonk and the starter. **Pending:** after deploying with NEXT_PUBLIC_SENTRY_DSN set, open /sentry-test/, press both, check Sentry → Issues.
 
 - Sharper images (2026-10-05): Sanity loader now q=85, SVGs unscaled, `rect` crops preserved (ported from starter PR #8). Studio media panel: "Delete unused images" button (also from PR #8). Branch `claude/image-quality-improvements-3uywyn`.
 
