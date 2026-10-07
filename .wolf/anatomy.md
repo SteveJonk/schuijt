@@ -218,7 +218,7 @@
 
 ## app/src/app/api/sentry-test/
 
-- `route.ts` — GET always throws "Sentry test: server error", reported via onRequestError. (~80 tok)
+- `route.ts` — GET always throws "Sentry test: server error" (404 without header x-sentry-test-secret = SENTRY_TEST_SECRET), reported via onRequestError. (~80 tok)
 
 ## app/src/app/api/submit-form/
 
@@ -265,7 +265,7 @@
 
 ## app/src/app/sentry-test/
 
-- `page.tsx` — Sentry connection test page (/sentry-test/): noindex/nofollow, buttons throw a client error and call /api/sentry-test/ (server error). (~180 tok)
+- `page.tsx` — Sentry connection test page (/sentry-test/?secret=SENTRY_TEST_SECRET, else 404): noindex/nofollow, no-referrer, buttons throw a client error and call /api/sentry-test/ (server error). (~180 tok)
 
 ## app/src/app/zakelijk/
 
@@ -287,7 +287,7 @@
 
 - `JsonLd.tsx` — Put one graph into the page. (~98 tok)
 - `TextPageView.tsx` — Plain text pages such as /privacy-policy/, in the blog article's column and type. (~462 tok)
-- `SentryTest.tsx` — Client buttons for /sentry-test: throw client error (setTimeout, uncaught) + fetch the failing API route; shows DSN on/off. (~520 tok)
+- `SentryTest.tsx` — Client buttons for /sentry-test: throw client error (setTimeout, uncaught) + fetch the failing API route; shows DSN on/off; strips ?secret from the URL and sends it as a header. (~650 tok)
 - `TrackingScripts.tsx` — Google Tag Manager and the Meta (Facebook) pixel, both opt-in. (~866 tok)
   - fn `TrackingScriptsHead` L21-62 (~399 tok)
   - fn `TrackingScriptsBody` L63-92 (~222 tok)
@@ -392,6 +392,8 @@
 - `useStickyTopbar.ts` — Exports useStickyTopbar (~134 tok)
 
 ## app/src/lib/
+
+- `sentry-test.ts` — isSentryTestSecret(): constant-time compare against SENTRY_TEST_SECRET (false when unset). (~150 tok)
 
 - `google-reviews.ts` — syncGoogleReviews: Places API (New) -> upsert `review` docs (id googleReview-<id>) + score/count/lastSync on `googleReviews` singleton; patches drafts too. (~2300 tok)
 - `reviews.ts` — initials(name), reviewMeta(review) for review cards. (~200 tok)

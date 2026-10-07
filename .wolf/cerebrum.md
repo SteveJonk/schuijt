@@ -37,6 +37,7 @@
 
 ## Decision Log
 
+- [2026-10-07] Sentry test page is gated by server-only SENTRY_TEST_SECRET (user asked for a secret in the URL): page takes `?secret=`, client strips it from the address bar (history.replaceState) and sends it to the API as header `x-sentry-test-secret`; unset/wrong → 404 (not 401, so the page's existence isn't revealed). Not in Netlify SECRETS_SCAN_OMIT_KEYS: it's a real secret and never inlined into the bundle.
 - [2026-10-07] Test/utility pages are kept out of search with `metadata.robots` noindex/nofollow only, NOT a robots.txt Disallow: a disallowed URL is never crawled, so Google can't see the noindex and may still index the bare URL from links.
 
 - [2026-09-30] One global cache tag instead of per-type tags: queries join layout/references across types, so per-type tags could leave pages stale. Netlify ISR pages go through the function, so a keep-warm scheduled function (every 10 min, cache-busting query) hides cold starts.
