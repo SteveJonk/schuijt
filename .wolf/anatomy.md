@@ -222,7 +222,7 @@
 
 ## app/src/app/api/submit-form/
 
-- `route.ts` — Bigger uploads are rejected rather than silently dropped from the mail. (~2564 tok)
+- `route.ts` — submit-form: validates against form schema, sends via Mailjet or SMTP (nodemailer), picked by mailProvider / MAIL_PROVIDER. (~3300 tok)
   - fn `verifyRecaptcha` L13-27 (~156 tok)
   - fn `fail` L28-32 (~57 tok)
   - fn `splitEmails` L33-45 (~109 tok)

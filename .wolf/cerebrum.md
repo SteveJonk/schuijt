@@ -30,6 +30,7 @@
 - groq-js `evaluate(...).get()` returns a Promise — await it in ad-hoc query tests.
 
 ## Do-Not-Repeat
+- [2026-10-09] `tsx -e` evaluates as CJS: no top-level await — wrap ad-hoc scripts in `(async () => {...})()`.
 - [2026-10-02] app has `trailingSlash: true` — always call API routes with a trailing slash (`/api/x/`). Cross-origin calls without it get a 308 on the preflight → CORS error.
 
 <!-- Mistakes made and corrected. Each entry prevents the same mistake recurring. -->
@@ -46,4 +47,6 @@
 - [2026-10-01] Reviews: 'zakelijk/particulier' distinction removed from reviews only (the Zakelijk site section/projects stay). Average = Google's rating/userRatingCount, fallback avg of visible Sanity reviews. Sync never deletes reviews (texts accumulate); editors hide via `hidden`.
 
 - [2026-10-05] Project AI fields (Kenmerken etc.) generated once by Claude in-session and committed as ai-fields.json, not via API at seed time: deterministic, reviewable, no key/cost. Replace projects by same id (not delete+create) so home-page references survive.
+- [2026-10-09] Mail: provider switch Mailjet | SMTP (nodemailer) in submit-form route, `sendMail()` dispatches. No "serverless/no-server" option like WordPress's PHP mail(): that just hands off to the host's sendmail; Netlify functions have none and port 25 is blocked on Lambda, and direct-to-MX from AWS IPs fails SPF/DKIM. SMTP secrets follow the env-wins-over-studio pattern; SMTP timeouts 8s so failure lands inside the function limit.
+- [2026-10-09] Test-mail button: own secret MAIL_TEST_SECRET (not the reviews sync secret — not every site has reviews); recipient may be any address (behind the secret), default admin. Tests PUBLISHED settings like the reviews panel. Shared constant-time compare in app/src/lib/secret.ts.
 <!-- Significant technical decisions with rationale. Why X was chosen over Y. -->

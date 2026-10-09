@@ -863,8 +863,15 @@ export type FormGeneralSettings = {
   fromName?: string;
   confirmationSubject: string;
   confirmationMessage?: string;
+  mailProvider?: "mailjet" | "smtp";
   mailjetApiKey?: string;
   mailjetApiSecret?: string;
+  smtpHost?: string;
+  smtpSecurity?: "starttls" | "ssl" | "none";
+  smtpPort?: number;
+  smtpUser?: string;
+  smtpPassword?: string;
+  mailTest?: string;
   mailLogo?: {
     asset?: SanityImageAssetReference;
     media?: unknown;
@@ -3563,7 +3570,7 @@ export type FORM_QUERY_RESULT = {
 
 // Source: ../app/src/sanity/queries.ts
 // Variable: FORM_SETTINGS_QUERY
-// Query: *[_type == "formGeneralSettings"][0]{    adminEmail,    fromEmail,    fromName,    mailLogo,    primaryColor,    textColor,    mailjetApiKey,    mailjetApiSecret,    confirmationSubject,    confirmationMessage,    recaptchaEnabled,    recaptchaSecretKey,    "siteName": *[_type == "siteSettings"][0].name  }
+// Query: *[_type == "formGeneralSettings"][0]{    adminEmail,    fromEmail,    fromName,    mailLogo,    primaryColor,    textColor,    mailProvider,    mailjetApiKey,    mailjetApiSecret,    smtpHost,    smtpPort,    smtpSecurity,    smtpUser,    smtpPassword,    confirmationSubject,    confirmationMessage,    recaptchaEnabled,    recaptchaSecretKey,    "siteName": *[_type == "siteSettings"][0].name  }
 export type FORM_SETTINGS_QUERY_RESULT = {
   adminEmail: string;
   fromEmail: string | null;
@@ -3577,8 +3584,14 @@ export type FORM_SETTINGS_QUERY_RESULT = {
   } | null;
   primaryColor: string | null;
   textColor: string | null;
+  mailProvider: "mailjet" | "smtp" | null;
   mailjetApiKey: string | null;
   mailjetApiSecret: string | null;
+  smtpHost: string | null;
+  smtpPort: number | null;
+  smtpSecurity: "none" | "ssl" | "starttls" | null;
+  smtpUser: string | null;
+  smtpPassword: string | null;
   confirmationSubject: string;
   confirmationMessage: string | null;
   recaptchaEnabled: boolean | null;
@@ -3605,7 +3618,7 @@ declare global {
     '*[_type == "contactPage"][0]{\n  title,\n  intro { kicker, title, text },\n  badges,\n  infoCards[]{ _key, icon, title, text, show },\n  hours{ title, rows[]{ _key, day, time } },\n  "form": form-> {\n  _id,\n  title,\n  showTitle,\n  mode,\n  fields[] {\n  label,\n  name,\n  type,\n  isRequired,\n  width,\n  placeholder,\n  helpText,\n  defaultValue,\n  selectOptions,\n  radioOptions,\n  checkboxOptions\n},\n  steps[]{ title, fields[] {\n  label,\n  name,\n  type,\n  isRequired,\n  width,\n  placeholder,\n  helpText,\n  defaultValue,\n  selectOptions,\n  radioOptions,\n  checkboxOptions\n} },\n  submitButtonText,\n  nextButtonText,\n  backButtonText,\n  successTitle,\n  successBody,\n  redirectAfterSubmit,\n  redirectLink {\n  label,\n  "href": select(\n    linkType == "external" => href,\n    internalLink->_type == "homePage" => "/",\n    internalLink->_type == "zakelijkPage" => "/zakelijk/",\n    internalLink->_type == "projectsPage" => "/projecten/",\n    internalLink->_type == "zakelijkProjectsPage" => "/zakelijk/projecten/",\n    internalLink->_type == "reviewsPage" => "/reviews/",\n    internalLink->_type == "blogPage" => "/blog/",\n    internalLink->_type == "contactPage" => "/contact/",\n    internalLink->_type == "blogPost" => "/blog/" + internalLink->slug.current + "/",\n    internalLink->_type == "servicePage" && internalLink->kind == "zakelijk" =>\n      "/zakelijk/" + internalLink->slug.current + "/",\n    defined(internalLink->slug.current) => "/" + internalLink->slug.current + "/"\n  )\n}\n},\n  formLead,\n  werkgebied { kicker, title, text, places },\n  faq { kicker, title, items[]{ _key, question, answer, open } },\n  seo { title, description, noIndex, ogImage {\n  asset,\n  hotspot,\n  crop,\n  alt,\n  "dimensions": asset->metadata.dimensions{ width, height }\n} }\n}': CONTACT_PAGE_QUERY_RESULT;
     '*[\n  _type in ["servicePage", "project", "textPage", "blogPost"] && defined(slug.current) && seo.noIndex != true\n]{\n  _type,\n  _updatedAt,\n  "path": select(\n    _type == "blogPost" => "/blog/" + slug.current + "/",\n    _type == "servicePage" && kind == "zakelijk" => "/zakelijk/" + slug.current + "/",\n    "/" + slug.current + "/"\n  )\n}': SITEMAP_QUERY_RESULT;
     '\n  *[_id == $formId && _type == "form"][0]{\n    _id,\n    title,\n    mailRecipients,\n    mailSubject,\n    mailMessage,\n    sendCopyToSubmitter,\n    copySubject,\n    copyMessage,\n    "fields": select(\n      mode == "steps" => steps[].fields[]{label, name, type, isRequired},\n      fields[]{label, name, type, isRequired}\n    )\n  }\n': FORM_QUERY_RESULT;
-    '\n  *[_type == "formGeneralSettings"][0]{\n    adminEmail,\n    fromEmail,\n    fromName,\n    mailLogo,\n    primaryColor,\n    textColor,\n    mailjetApiKey,\n    mailjetApiSecret,\n    confirmationSubject,\n    confirmationMessage,\n    recaptchaEnabled,\n    recaptchaSecretKey,\n    "siteName": *[_type == "siteSettings"][0].name\n  }\n': FORM_SETTINGS_QUERY_RESULT;
+    '\n  *[_type == "formGeneralSettings"][0]{\n    adminEmail,\n    fromEmail,\n    fromName,\n    mailLogo,\n    primaryColor,\n    textColor,\n    mailProvider,\n    mailjetApiKey,\n    mailjetApiSecret,\n    smtpHost,\n    smtpPort,\n    smtpSecurity,\n    smtpUser,\n    smtpPassword,\n    confirmationSubject,\n    confirmationMessage,\n    recaptchaEnabled,\n    recaptchaSecretKey,\n    "siteName": *[_type == "siteSettings"][0].name\n  }\n': FORM_SETTINGS_QUERY_RESULT;
   }
 }
 // Lets @sanity/client releases that predate the global registry read it too

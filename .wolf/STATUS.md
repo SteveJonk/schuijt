@@ -2,13 +2,15 @@
 
 > Single source of truth for resuming work. Read this FIRST when starting a session.
 > Update this file at the end of every work phase so the next `/clear` resumes in 1 read.
-> Last updated: 2026-10-07 (Sentry test page)
+> Last updated: 2026-10-09 (SMTP mail provider)
 
 ---
 
 ## ✅ Done
 
 <!-- Move items here from "🚀 Next phase" when finished. Group by area. -->
+
+- Mail provider choice (2026-10-09, uncommitted on main): Formulierinstellingen → Mail provider = Mailjet | SMTP (host, encryption starttls/ssl/none, port, user, password) via nodemailer in `/api/submit-form`. Env overrides: MAIL_PROVIDER, SMTP_HOST/PORT/SECURITY/USER/PASSWORD, MAIL_FROM_EMAIL (MAILJET_FROM_EMAIL still read). Mail code lives in `app/src/lib/mail.ts` (resolveMailSettings + sendMail). "Send test mail" panel (studio/tools/MailTest.tsx) → `POST /api/test-mail/` guarded by MAIL_TEST_SECRET (localStorage in studio, like the reviews secret); uses published settings, site URL from SANITY_STUDIO_SITE_URL or googleReviews.siteUrl. Verified against a local SMTP sink. **Pending:** set MAIL_TEST_SECRET on Netlify, deploy app + studio; per SMTP client set SMTP_PASSWORD on Netlify (not in studio) and press Send test mail.
 
 - Sentry test page (2026-10-07, branch `claude/sentry-test-page-route-acohz1`): `/sentry-test/` (noindex/nofollow, not in sitemap) with buttons for a client error and `/api/sentry-test/` (always throws → onRequestError). Gated by `SENTRY_TEST_SECRET`: open with `?secret=<value>`, otherwise 404. Same in en-jonk and the starter. **Pending:** set SENTRY_TEST_SECRET on Netlify, deploy with NEXT_PUBLIC_SENTRY_DSN, open /sentry-test/?secret=…, press both, check Sentry → Issues.
 

@@ -1,7 +1,7 @@
-import { createHash, timingSafeEqual } from 'node:crypto';
 import { revalidateTag } from 'next/cache';
 import { type NextRequest, NextResponse } from 'next/server';
 import { SyncError, syncGoogleReviews } from '@/lib/google-reviews';
+import { matchesSecret } from '@/lib/secret';
 import { SANITY_TAG } from '@/sanity/fetch';
 
 export const runtime = 'nodejs';
@@ -30,12 +30,6 @@ function reply(body: Record<string, unknown>, status = 200) {
   return NextResponse.json(body, { status, headers: CORS });
 }
 
-/** Constant-time compare; hashing first evens out the lengths. */
-function matches(given: string, expected: string) {
-  const hash = (value: string) => createHash('sha256').update(value).digest();
-  return timingSafeEqual(hash(given), hash(expected));
-}
-
 export function OPTIONS() {
   return new NextResponse(null, { status: 204, headers: CORS });
 }
@@ -46,7 +40,7 @@ export async function POST(request: NextRequest) {
 
   const given =
     request.headers.get('x-sync-secret') ?? request.headers.get('authorization')?.replace(/^Bearer\s+/i, '') ?? '';
-  if (!given || !matches(given, secret)) return reply({ ok: false, message: 'Ongeldig sync-geheim.' }, 401);
+  if (!given || !matchesSecret(given, secret)) return reply({ ok: false, message: 'Ongeldig sync-geheim.' }, 401);
 
   const params = request.nextUrl.searchParams;
   const dryRun = ['1', 'true'].includes(params.get('dryRun') ?? '');

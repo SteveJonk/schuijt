@@ -57,7 +57,8 @@ a minute; new slugs work without a rebuild.
 
 Forms are built in the studio (Formulieren). `/api/submit-form` reads the
 form's fields from Sanity as its allow-list and mails the answers through
-Mailjet. Credentials and reCAPTCHA secrets go in `app/.env`; they win over
+Mailjet or the client's own SMTP server (Formulierinstellingen → Mail
+provider). Credentials and reCAPTCHA secrets go in `app/.env`; they win over
 anything stored in Formulierinstellingen. Hidden fields can use `{{path}}` (the
 page) and `{{service}}` (the service on a service page).
 

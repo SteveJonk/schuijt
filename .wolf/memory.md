@@ -87,3 +87,11 @@
 | 18:13 | Sentry prep: Sentry DSN/sample rate/org/project added to Netlify SECRETS_SCAN_OMIT_KEYS (en-jonk: netlify.toml created) | app/netlify.toml | done, not committed | ~2k |
 | 12:00 | Sentry test page /sentry-test/ (noindex) + always-failing /api/sentry-test/ + client SentryTest buttons | app/src/app/sentry-test/page.tsx, app/src/app/api/sentry-test/route.ts, app/src/components/SentryTest.tsx | tsc+eslint clean; dev: API 500 + error logged (page needs Sanity, not renderable in sandbox) | ~6k |
 | 13:00 | Sentry test page gated by SENTRY_TEST_SECRET: ?secret= on the page, x-sentry-test-secret header on the API, 404 otherwise/unset; secret stripped from URL; no-referrer | app/src/lib/sentry-test.ts, sentry-test page/route, SentryTest.tsx, .env.example | tsc+eslint clean; dev: API 404/404/404/500, page 404/404/200 (en-jonk; schuijt API only, layout needs Sanity) | ~8k |
+
+## Session: 2026-10-09 09:00
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 09:04 | Mail provider select (Mailjet/SMTP via nodemailer), schema+query+typegen+env example+README; tested vs local SMTP sink | app/src/app/api/submit-form/route.ts, studio/schemaTypes/singletons/formGeneralSettingsType.ts, app/src/sanity/queries.ts, app/.env.example, README.md | ok | ~25k |
+| 09:11 | Send test mail button: lib/mail.ts extracted, lib/secret.ts shared, /api/test-mail route, studio MailTest panel; tested vs SMTP sink | app/src/lib/mail.ts, app/src/lib/secret.ts, app/src/app/api/test-mail/route.ts, studio/tools/MailTest.tsx, formGeneralSettingsType.ts | ok | ~30k |
+| 09:11 | SMTP password field: validation warning when filled (dataset is public) | studio/schemaTypes/singletons/formGeneralSettingsType.ts | ok | ~1k |
