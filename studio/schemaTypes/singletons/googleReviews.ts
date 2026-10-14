@@ -6,11 +6,11 @@ import {GoogleReviewsSync} from '../../tools/GoogleReviewsSync'
 /**
  * Settings for the Google reviews sync, plus the figures the last run wrote
  * back (score, count, status). The sync itself lives in the app at
- * `/api/google-reviews`; a Netlify scheduled function calls it every hour and
+ * `/api/google-reviews`; a Vercel cron (app/vercel.json) calls it daily and
  * the panel at the top of this page can call it on demand.
  *
  * The Google API key and the sync secret are NOT stored here: a dataset can be
- * read by anyone who knows the project id. They live in the Netlify
+ * read by anyone who knows the project id. They live in the Vercel
  * environment (GOOGLE_PLACES_API_KEY, GOOGLE_REVIEWS_SYNC_SECRET).
  */
 export const googleReviewsType = defineType({
@@ -45,7 +45,7 @@ export const googleReviewsType = defineType({
     }),
     defineField({
       name: 'enabled',
-      title: 'Elk uur automatisch ophalen',
+      title: 'Dagelijks automatisch ophalen',
       type: 'boolean',
       group: 'settings',
       initialValue: true,

@@ -13,10 +13,10 @@ export const runtime = 'nodejs';
  *   x-sync-secret: <GOOGLE_REVIEWS_SYNC_SECRET>   (or Authorization: Bearer …)
  *
  * `dryRun=1` fetches from Google and reports what would change, but writes
- * nothing. Callers: the hourly Netlify job (`netlify/functions/
- * google-reviews-sync.mts`) and the buttons in the studio. The studio runs on
- * another origin, hence the CORS headers; the secret is what guards the route,
- * and without it set the route refuses everything.
+ * nothing. Callers: the daily Vercel cron (`vercel.json`, a GET with
+ * `Authorization: Bearer <CRON_SECRET>`) and the buttons in the studio. The
+ * studio runs on another origin, hence the CORS headers; the secret is what
+ * guards the route, and without it set the route refuses everything.
  */
 
 const CORS = {
@@ -40,7 +40,9 @@ export async function POST(request: NextRequest) {
 
   const given =
     request.headers.get('x-sync-secret') ?? request.headers.get('authorization')?.replace(/^Bearer\s+/i, '') ?? '';
-  if (!given || !matchesSecret(given, secret)) return reply({ ok: false, message: 'Ongeldig sync-geheim.' }, 401);
+  const cronSecret = process.env.CRON_SECRET;
+  const valid = matchesSecret(given, secret) || (!!cronSecret && matchesSecret(given, cronSecret));
+  if (!given || !valid) return reply({ ok: false, message: 'Ongeldig sync-geheim.' }, 401);
 
   const params = request.nextUrl.searchParams;
   const dryRun = ['1', 'true'].includes(params.get('dryRun') ?? '');
@@ -60,3 +62,6 @@ export async function POST(request: NextRequest) {
     return reply({ ok: false, dryRun, message }, error instanceof SyncError ? error.status : 500);
   }
 }
+
+// Vercel cron jobs always send GET.
+export const GET = POST;

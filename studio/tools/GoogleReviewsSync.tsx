@@ -5,7 +5,7 @@ import {styles} from './panelStyles'
 /**
  * The buttons on the Google-koppeling page: a dry run (shows what the sync
  * would change, writes nothing) and a real sync. Both call the app's
- * `/api/google-reviews` route — the same one the hourly Netlify job calls.
+ * `/api/google-reviews` route — the same one the daily Vercel cron calls.
  *
  * That route wants the sync secret in a header. The secret is deliberately not
  * stored in the dataset (anyone with the project id can read a public dataset)

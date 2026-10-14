@@ -3,18 +3,18 @@
   "created_at": "2026-09-28T09:51:01.839Z",
   "lifetime": {
     "total_tokens_estimated": 33818,
-    "total_reads": 32,
+    "total_reads": 35,
     "total_writes": 0,
-    "total_sessions": 12,
+    "total_sessions": 14,
     "anatomy_hits": 22,
-    "anatomy_misses": 10,
+    "anatomy_misses": 13,
     "repeated_reads_blocked": 0,
     "estimated_savings_vs_bare_cli": 4400,
-    "real_input_tokens": 1614,
-    "real_output_tokens": 336089,
-    "real_cache_read_tokens": 78663827,
-    "real_cache_creation_tokens": 2173598,
-    "real_api_calls": 807
+    "real_input_tokens": 1686,
+    "real_output_tokens": 358638,
+    "real_cache_read_tokens": 81822159,
+    "real_cache_creation_tokens": 2335804,
+    "real_api_calls": 843
   },
   "sessions": [
     {
@@ -927,6 +927,96 @@
         "cache_read_input_tokens": 1626408,
         "cache_creation_input_tokens": 80903,
         "api_calls": 18
+      }
+    },
+    {
+      "id": "session-2026-10-14-2131",
+      "agent": "claude",
+      "started": "2026-10-14T19:31:50.914Z",
+      "ended": "2026-10-14T19:33:07.162Z",
+      "reads": [
+        {
+          "file": "/Users/stevejonk/Documents/Prive Projecten/schuijt/app/src/app/api/google-reviews/route.ts",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [],
+      "totals": {
+        "input_tokens_estimated": 0,
+        "output_tokens_estimated": 0,
+        "reads_count": 1,
+        "writes_count": 0,
+        "repeated_reads_blocked": 0,
+        "anatomy_lookups": 0
+      },
+      "real_usage": {
+        "input_tokens": 22,
+        "output_tokens": 6732,
+        "cache_read_input_tokens": 954790,
+        "cache_creation_input_tokens": 53345,
+        "api_calls": 11
+      }
+    },
+    {
+      "id": "session-2026-10-14-2131",
+      "agent": "claude",
+      "started": "2026-10-14T19:31:50.914Z",
+      "ended": "2026-10-14T19:36:33.228Z",
+      "reads": [
+        {
+          "file": "/Users/stevejonk/Documents/Prive Projecten/schuijt/app/src/app/api/google-reviews/route.ts",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [],
+      "totals": {
+        "input_tokens_estimated": 0,
+        "output_tokens_estimated": 0,
+        "reads_count": 1,
+        "writes_count": 0,
+        "repeated_reads_blocked": 0,
+        "anatomy_lookups": 0
+      },
+      "real_usage": {
+        "input_tokens": 24,
+        "output_tokens": 7514,
+        "cache_read_input_tokens": 1052553,
+        "cache_creation_input_tokens": 54018,
+        "api_calls": 12
+      }
+    },
+    {
+      "id": "session-2026-10-14-2131",
+      "agent": "claude",
+      "started": "2026-10-14T19:31:50.914Z",
+      "ended": "2026-10-14T19:36:51.143Z",
+      "reads": [
+        {
+          "file": "/Users/stevejonk/Documents/Prive Projecten/schuijt/app/src/app/api/google-reviews/route.ts",
+          "tokens_estimated": 0,
+          "was_repeated": false,
+          "anatomy_had_description": false
+        }
+      ],
+      "writes": [],
+      "totals": {
+        "input_tokens_estimated": 0,
+        "output_tokens_estimated": 0,
+        "reads_count": 1,
+        "writes_count": 0,
+        "repeated_reads_blocked": 0,
+        "anatomy_lookups": 0
+      },
+      "real_usage": {
+        "input_tokens": 26,
+        "output_tokens": 8303,
+        "cache_read_input_tokens": 1150989,
+        "cache_creation_input_tokens": 54843,
+        "api_calls": 13
       }
     }
   ],

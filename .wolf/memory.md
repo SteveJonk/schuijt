@@ -95,3 +95,10 @@
 | 09:04 | Mail provider select (Mailjet/SMTP via nodemailer), schema+query+typegen+env example+README; tested vs local SMTP sink | app/src/app/api/submit-form/route.ts, studio/schemaTypes/singletons/formGeneralSettingsType.ts, app/src/sanity/queries.ts, app/.env.example, README.md | ok | ~25k |
 | 09:11 | Send test mail button: lib/mail.ts extracted, lib/secret.ts shared, /api/test-mail route, studio MailTest panel; tested vs SMTP sink | app/src/lib/mail.ts, app/src/lib/secret.ts, app/src/app/api/test-mail/route.ts, studio/tools/MailTest.tsx, formGeneralSettingsType.ts | ok | ~30k |
 | 09:11 | SMTP password field: validation warning when filled (dataset is public) | studio/schemaTypes/singletons/formGeneralSettingsType.ts | ok | ~1k |
+| 09:25 | Test mail 'Failed to fetch': route not deployed (404 w/o CORS); clearer panel error | studio/tools/MailTest.tsx | ok | ~2k |
+
+## Session: 2026-10-14 21:31
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 21:32 | Netlify scheduled fn → Vercel cron (vercel.json, GET=POST, CRON_SECRET) | app/vercel.json, api/google-reviews/route.ts, studio googleReviews | tsc ok | ~4k |

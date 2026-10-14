@@ -2,7 +2,7 @@
 
 > Single source of truth for resuming work. Read this FIRST when starting a session.
 > Update this file at the end of every work phase so the next `/clear` resumes in 1 read.
-> Last updated: 2026-10-09 (SMTP mail provider)
+> Last updated: 2026-10-14 (Vercel cron)
 
 ---
 
@@ -18,6 +18,7 @@
 
 - Real project content (2026-10-05): `app/scripts/projects/` fetches all 102 WP posts and seeds them (photos, text, AI-written subline/Kenmerken/werkzaamheden/zakelijke kaart, zakelijk → audience `vve`). **Pending:** `cd app && npm run projects:seed`. Note: main `npm run seed -- --force/--reset` would overwrite projects with the old stand-ins again — re-run `projects:seed` after it.
 
+- Vercel cron (2026-10-14): Netlify scheduled function removed; `app/vercel.json` crons GET `/api/google-reviews/?trigger=schedule` daily. Route exports `GET = POST` and also accepts `Bearer CRON_SECRET`.
 - Google reviews sync (2026-10-01): `/api/google-reviews` (secret header, dryRun), Netlify `@hourly` function, `googleReviews` singleton with sync panel, review overview lists in studio, real average from Google on /reviews/, star ratings per review. Removed zakelijk/particulier from reviews (schema `audience`, ui labels, filter, seed mocks).
 - Navbar submenus: `navItem` type (link + `children[]`), click-to-expand header (desktop dropdown, mobile accordion, no hover). Seed updated (Diensten → 6 service pages, Zakelijk → Algemeen/VvE/Woningcorporaties). **Pending:** run `npm run seed` in app/ with .env (token) — and re-run once so existing nav doc switches from `link` to `navItem` members.
 
@@ -28,7 +29,7 @@
 **Goal:** Go live with the Google reviews sync (manual setup, no code).
 
 ### Acceptance criteria
-1. Netlify env has GOOGLE_PLACES_API_KEY, GOOGLE_REVIEWS_SYNC_SECRET, SANITY_API_WRITE_TOKEN.
+1. Vercel env has GOOGLE_PLACES_API_KEY, GOOGLE_REVIEWS_SYNC_SECRET, SANITY_API_WRITE_TOKEN, CRON_SECRET (cron in `app/vercel.json`, daily 00:00 UTC; check Vercel → Settings → Cron Jobs after deploy).
 2. Studio → Reviews → Google-koppeling: Place ID + Website-adres filled and published; dry run OK, then sync.
 3. Old mock reviews deleted: `cd app && npm run reviews:delete-manual:dry`, then `npm run reviews:delete-manual` (or delete in the studio).
 4. Vaste teksten → "Sterren (schermlezer)" set to "{score} van 5 sterren".

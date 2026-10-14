@@ -137,6 +137,23 @@
       "related_bugs": [],
       "occurrences": 1,
       "last_seen": "2026-10-09T00:00:00Z"
+    },
+    {
+      "id": "bug-009",
+      "timestamp": "2026-10-09T00:00:00Z",
+      "error_message": "Studio 'Send test mail': Failed to fetch (mellow-bonbon-0520c6.netlify.app)",
+      "file": "studio/tools/MailTest.tsx",
+      "root_cause": "Local studio had the new panel, but the deployed site had no /api/test-mail/ yet; its 404 has no CORS headers so the browser reports only 'Failed to fetch'",
+      "fix": "Deploy the app (and set MAIL_TEST_SECRET) or point SANITY_STUDIO_SITE_URL at localhost:3000; panel error now names the likely causes",
+      "tags": [
+        "cors",
+        "studio",
+        "deploy",
+        "test-mail"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-10-09T00:00:00Z"
     }
   ]
 }

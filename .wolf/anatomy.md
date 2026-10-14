@@ -529,10 +529,6 @@
   - fn `MediaDetail` L350-521 (~1435 tok)
 - `panelStyles.ts` — Shared inline styles for custom studio panels — the parts that any panel (~335 tok)
 
-## app/netlify/functions/
-
-- `keep-warm.mts` — pings site every 10 min. (~200 tok)
-- `google-reviews-sync.mts` — @hourly POST /api/google-reviews?trigger=schedule. (~250 tok)
 
 ## studio/schemaTypes/singletons/ (addition)
 

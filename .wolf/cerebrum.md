@@ -9,6 +9,7 @@
 <!-- How the user likes things done. Code style, tools, patterns, communication. -->
 
 ## Key Learnings
+- Hosting is Vercel (migrated from Netlify, 2026-10). Crons live in `app/vercel.json`; Vercel cron sends GET with `Authorization: Bearer $CRON_SECRET` and does not follow redirects, so cron paths need the trailing slash (`trailingSlash: true`).
 
 - [2026-10-07] Sentry test: `/sentry-test` page + `/api/sentry-test` (identical across starter, schuijt, en-jonk). Next 16 GET route handlers are dynamic by default (no `force-dynamic` needed; only `force-static` opts into caching) — Next ships its docs in `node_modules/next/dist/docs/`. Client test error is thrown in a `setTimeout` so React doesn't catch it and Sentry's global handler must.
 - Project filters (/projecten/ and /zakelijk/projecten/) both key on `category->_id`; filter buttons come from category docs (isZakelijk splits them). No separate audience field.

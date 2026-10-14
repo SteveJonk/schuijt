@@ -5,7 +5,7 @@ import { initials } from '@/lib/reviews';
 /**
  * Pulls the business's rating and reviews from the Google Places API (New)
  * and mirrors them into Sanity as `review` documents. Called by
- * `/api/google-reviews` — from the hourly Netlify job and from the buttons on
+ * `/api/google-reviews` — from the daily Vercel cron and from the buttons on
  * the "Google-koppeling" page in the studio.
  *
  * Limits of the Places API, which works without being a manager of the Google
@@ -208,7 +208,7 @@ function differs(existing: Record<string, unknown>, fields: ReviewFields) {
   );
 }
 
-/** `all`: backfill every review via SerpApi; it only creates, never overwrites what the hourly sync wrote. */
+/** `all`: backfill every review via SerpApi; it only creates, never overwrites what the scheduled sync wrote. */
 export async function syncGoogleReviews({ dryRun, trigger, all = false }: { dryRun: boolean; trigger: Trigger; all?: boolean }): Promise<SyncResult> {
   const client = writeClient();
   const config = await client.fetch<Config | null>(`*[_id == $id][0]`, { id: CONFIG_ID });
