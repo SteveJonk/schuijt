@@ -9,6 +9,8 @@
 <!-- How the user likes things done. Code style, tools, patterns, communication. -->
 
 ## Key Learnings
+- Mail config errors: `resolveMailSettings().missing` lists missing env var names; routes return them in the JSON `message` (FormRenderer still shows the studio text to visitors, so the detail is only in the Network tab and logs).
+- `/api/submit-form` returns 502 itself when sendMail throws (not a gateway error). Live mail = SMTP smtp.transip.email:465 ssl; SMTP_USER/SMTP_PASSWORD only in env, not in the studio.
 - Hosting is Vercel (migrated from Netlify, 2026-10). Crons live in `app/vercel.json`; Vercel cron sends GET with `Authorization: Bearer $CRON_SECRET` and does not follow redirects, so cron paths need the trailing slash (`trailingSlash: true`).
 
 - [2026-10-07] Sentry test: `/sentry-test` page + `/api/sentry-test` (identical across starter, schuijt, en-jonk). Next 16 GET route handlers are dynamic by default (no `force-dynamic` needed; only `force-static` opts into caching) — Next ships its docs in `node_modules/next/dist/docs/`. Client test error is thrown in a `setTimeout` so React doesn't catch it and Sentry's global handler must.

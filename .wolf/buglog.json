@@ -23,7 +23,7 @@
       "error_message": "check:queries: assert.ok(r.cta.form?._id === 'form.offerte-dienstkeuze') fails",
       "file": "app/scripts/check-queries.ts",
       "root_cause": "Pre-existing on main: seed undot() turns ids into form-offerte-dienstkeuze but the check expects the dotted id. Not fixed (out of scope).",
-      "fix": "None yet \u2014 update the expected ids in check-queries.ts to the dashed form.",
+      "fix": "None yet — update the expected ids in check-queries.ts to the dashed form.",
       "tags": [
         "check-queries",
         "seed",
@@ -154,6 +154,26 @@
       "related_bugs": [],
       "occurrences": 1,
       "last_seen": "2026-10-09T00:00:00Z"
+    },
+    {
+      "id": "bug-010",
+      "timestamp": "2026-10-14T21:50:00Z",
+      "error_message": "502 Bad Gateway on POST https://schuijtklussenbedrijf.nl/api/submit-form/ after migrating Netlify -> Vercel",
+      "file": "app/src/app/api/submit-form/route.ts",
+      "root_cause": "The 502 is the route's own response when sendMail throws. Studio uses SMTP (smtp.transip.email:465 ssl) with smtpUser and smtpPassword empty, so both must come from SMTP_USER/SMTP_PASSWORD env, which were most likely not copied to Vercel (or only set for Preview). Without them TransIP rejects the unauthenticated send. Unconfirmed: Vercel logs not read (project not linked locally).",
+      "fix": "No code change. Add SMTP_USER + SMTP_PASSWORD (and other Netlify env vars) to Vercel Production env, redeploy, check Logs for 'submit-form: sending failed'. Follow-up: resolveMailSettings now returns `missing` (env var names); submit-form/test-mail respond 500 'Mail (smtp) is not configured. Missing: SMTP_USER, SMTP_PASSWORD…' and on send failure 502 with the server's own error text. SMTP with ssl/starttls now requires user+password.",
+      "tags": [
+        "vercel",
+        "migration",
+        "smtp",
+        "env",
+        "submit-form",
+        "502",
+        "error-handling"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-10-14T21:50:00Z"
     }
   ]
 }

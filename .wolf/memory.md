@@ -102,3 +102,5 @@
 | Time | Action | File(s) | Outcome | ~Tokens |
 |------|--------|---------|---------|--------|
 | 21:32 | Netlify scheduled fn → Vercel cron (vercel.json, GET=POST, CRON_SECRET) | app/vercel.json, api/google-reviews/route.ts, studio googleReviews | tsc ok | ~4k |
+| 21:49 | Diagnosed submit-form 502 on Vercel: SMTP send fails, SMTP_USER/PASSWORD env likely not migrated | api/submit-form, lib/mail.ts | no code change | ~6k |
+| 21:53 | Mail error handling: missing settings named in response, send errors include server reason | lib/mail.ts, api/submit-form, api/test-mail | tsc+eslint ok, asserts ok | ~5k |
