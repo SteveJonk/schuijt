@@ -55,3 +55,5 @@
 <!-- Significant technical decisions with rationale. Why X was chosen over Y. -->
 
 - [2026-10-16] Next metadata merge (16.x) iterates child keys incl. explicit `undefined` → it wipes the parent/layout value. Never return `key: undefined` from generateMetadata; spread conditionally. Child `openGraph` replaces the layout's openGraph wholesale (no deep merge).
+- [2026-10-16] Vercel usage: no Sentry tunnelRoute (each browser event would be a function call), traces sample default 0.1, ISR safety-net REVALIDATE = 1 day (webhook + cron expire the tag on real changes). Dashboard-side still recommended: firewall rule for /wp-* and *.php, ignored build step for app/, region fra1.
+- [2026-10-16] Manual cache clear: studio panel reuses SANITY_REVALIDATE_SECRET via x-revalidate-secret header on /api/revalidate (no new env var, no new route); webhook path unchanged (signature).

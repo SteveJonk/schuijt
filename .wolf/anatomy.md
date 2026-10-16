@@ -509,6 +509,7 @@
 
 ## studio/tools/
 
+- `ClearCache.tsx` — Structure panel "Website verversen" (Instellingen): secret (localStorage) + button POSTing /api/revalidate/ to expire the site cache. (~1000 tok)
 - `GoogleReviewsSync.tsx` — Field component on Google-koppeling: secret (localStorage), dry-run / sync buttons, result table. (~1700 tok)
 - `mediaData.ts` — Queries, types and formatting helpers for the Media panel (`MediaTool.tsx`). (~2006 tok)
   - fn `typeLabel` L113-116 (~25 tok)

@@ -3,9 +3,11 @@ import {ComposeIcon} from '@sanity/icons/Compose'
 import {DocumentsIcon} from '@sanity/icons/Documents'
 import {EnvelopeIcon} from '@sanity/icons/Envelope'
 import {ImagesIcon} from '@sanity/icons/Images'
+import {RefreshIcon} from '@sanity/icons/Refresh'
 import {StarIcon} from '@sanity/icons/Star'
 import {TagIcon} from '@sanity/icons/Tag'
 import type {StructureBuilder, StructureResolver} from 'sanity/structure'
+import {ClearCache} from './tools/ClearCache'
 import {MediaLibrary} from './tools/MediaTool'
 
 const singleton = (S: StructureBuilder, type: string, title: string) =>
@@ -127,6 +129,12 @@ export const structure: StructureResolver = (S) =>
               singleton(S, 'navigation', 'Navigatie'),
               singleton(S, 'footer', 'Footer'),
               singleton(S, 'uiText', 'Vaste teksten'),
+              S.divider(),
+              S.listItem()
+                .title('Website verversen')
+                .id('clearCache')
+                .icon(RefreshIcon)
+                .child(S.component(ClearCache).title('Website verversen').id('clearCache')),
             ]),
         ),
       S.divider(),

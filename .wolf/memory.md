@@ -110,3 +110,10 @@
 | Time | Action | File(s) | Outcome | ~Tokens |
 |------|--------|---------|---------|--------|
 | 09:25 | Fix missing og:type (Sentry TypeError) — pageMetadata wiped layout openGraph/description via explicit undefined | app/src/sanity/metadata.ts | verified locally: og:type on /, /contact, /zakelijk/projecten | ~3k |
+
+## Session: 2026-10-16 21:33
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 21:37 | Vercel usage: removed Sentry tunnelRoute, traces default 0.1, REVALIDATE 1 day | app/next.config.ts, app/sentry.options.ts, app/src/sanity/fetch.ts | typecheck ok | ~3k |
+| 21:41 | Studio cache-clear button + /api/revalidate accepts x-revalidate-secret (CORS) | studio/tools/ClearCache.tsx, studio/structure.ts, app/src/app/api/revalidate/route.ts | curl 204/401/200/401, tsc ok | ~6k |
