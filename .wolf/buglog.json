@@ -174,6 +174,23 @@
       "related_bugs": [],
       "occurrences": 1,
       "last_seen": "2026-10-14T21:50:00Z"
+    },
+    {
+      "id": "bug-011",
+      "timestamp": "2026-10-16T07:25:41.472Z",
+      "error_message": "Sentry: TypeError: null is not an object (evaluating document.querySelector(\"meta[property=og:type]\").content)",
+      "file": "app/src/sanity/metadata.ts",
+      "root_cause": "pageMetadata returned openGraph: undefined (and description: undefined). Next merges metadata per key incl. explicit undefined, so the layout og:type/siteName was wiped on every page; a third-party script (in-app browser/extension) reads og:type and crashed.",
+      "fix": "Only set keys that have a value; always return openGraph { type: website, images? }.",
+      "tags": [
+        "sentry",
+        "metadata",
+        "opengraph",
+        "nextjs"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-10-16T07:25:41.472Z"
     }
   ]
 }

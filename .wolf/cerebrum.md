@@ -53,3 +53,5 @@
 - [2026-10-09] Mail: provider switch Mailjet | SMTP (nodemailer) in submit-form route, `sendMail()` dispatches. No "serverless/no-server" option like WordPress's PHP mail(): that just hands off to the host's sendmail; Netlify functions have none and port 25 is blocked on Lambda, and direct-to-MX from AWS IPs fails SPF/DKIM. SMTP secrets follow the env-wins-over-studio pattern; SMTP timeouts 8s so failure lands inside the function limit.
 - [2026-10-09] Test-mail button: own secret MAIL_TEST_SECRET (not the reviews sync secret — not every site has reviews); recipient may be any address (behind the secret), default admin. Tests PUBLISHED settings like the reviews panel. Shared constant-time compare in app/src/lib/secret.ts.
 <!-- Significant technical decisions with rationale. Why X was chosen over Y. -->
+
+- [2026-10-16] Next metadata merge (16.x) iterates child keys incl. explicit `undefined` → it wipes the parent/layout value. Never return `key: undefined` from generateMetadata; spread conditionally. Child `openGraph` replaces the layout's openGraph wholesale (no deep merge).
