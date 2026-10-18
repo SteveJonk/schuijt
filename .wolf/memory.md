@@ -117,3 +117,9 @@
 |------|--------|---------|---------|--------|
 | 21:37 | Vercel usage: removed Sentry tunnelRoute, traces default 0.1, REVALIDATE 1 day | app/next.config.ts, app/sentry.options.ts, app/src/sanity/fetch.ts | typecheck ok | ~3k |
 | 21:41 | Studio cache-clear button + /api/revalidate accepts x-revalidate-secret (CORS) | studio/tools/ClearCache.tsx, studio/structure.ts, app/src/app/api/revalidate/route.ts | curl 204/401/200/401, tsc ok | ~6k |
+
+## Session: 2026-10-18 05:36
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 05:37 | Diagnosed Sentry 'null reading removeChild' (React 19 deletion of hoisted head tag detached by 3rd party) — no code change | app/src/instrumentation-client.ts | pending user Sentry details | ~3k |
