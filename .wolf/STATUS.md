@@ -2,7 +2,7 @@
 
 > Single source of truth for resuming work. Read this FIRST when starting a session.
 > Update this file at the end of every work phase so the next `/clear` resumes in 1 read.
-> Last updated: 2026-10-16 (Vercel usage)
+> Last updated: 2026-10-18 (Sentry removeChild filter)
 
 ---
 
@@ -11,6 +11,7 @@
 <!-- Move items here from "🚀 Next phase" when finished. Group by area. -->
 
 - Studio "Website verversen" (2026-10-16, uncommitted): Instellingen → Website verversen (`studio/tools/ClearCache.tsx`) POSTs `/api/revalidate/` with `x-revalidate-secret: SANITY_REVALIDATE_SECRET` (localStorage, like the other panels); route also still takes the signed webhook, now with CORS. Route verified with curl; studio UI not clicked (login wall). **Pending:** deploy app + studio, give editors the secret once.
+- Sentry noise (2026-10-18, branch `claude/sentry-removechild-diagnosis`): `ignoreErrors` in `app/sentry.options.ts` drops React 19 "null reading removeChild" (head tag removed by extension/translate/in-app browser). Deploy to take effect.
 - Vercel usage (2026-10-16, uncommitted): Sentry `tunnelRoute` removed, traces sample default 0.1, `REVALIDATE` 3600 → 86400. **Pending (dashboard):** Firewall rule denying `/wp-*`, `*.php`, `.env`; Bot Protection on; Ignored Build Step `git diff --quiet HEAD^ HEAD -- .` (root `app`); function region fra1.
 
 - Mail provider choice (2026-10-09, uncommitted on main): Formulierinstellingen → Mail provider = Mailjet | SMTP (host, encryption starttls/ssl/none, port, user, password) via nodemailer in `/api/submit-form`. Env overrides: MAIL_PROVIDER, SMTP_HOST/PORT/SECURITY/USER/PASSWORD, MAIL_FROM_EMAIL (MAILJET_FROM_EMAIL still read). Mail code lives in `app/src/lib/mail.ts` (resolveMailSettings + sendMail). "Send test mail" panel (studio/tools/MailTest.tsx) → `POST /api/test-mail/` guarded by MAIL_TEST_SECRET (localStorage in studio, like the reviews secret); uses published settings, site URL from SANITY_STUDIO_SITE_URL or googleReviews.siteUrl. Verified against a local SMTP sink. **Pending:** set MAIL_TEST_SECRET on Netlify, deploy app + studio; per SMTP client set SMTP_PASSWORD on Netlify (not in studio) and press Send test mail.
