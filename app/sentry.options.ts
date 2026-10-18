@@ -17,6 +17,9 @@ export const sentryOptions = {
   tracesSampleRate: Number(
     process.env.NEXT_PUBLIC_SENTRY_TRACES_SAMPLE_RATE ?? 0.1,
   ),
+  // React 19 crashes removing a <head> tag that an extension, Google Translate
+  // or an in-app browser already removed. Not ours; the next page load recovers.
+  ignoreErrors: [/\(reading 'removeChild'\)|evaluating '[^']*\.removeChild'/],
   dataCollection: {
     // No user data, no request bodies. Widen deliberately if you ever need it:
     // https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/options/#dataCollection

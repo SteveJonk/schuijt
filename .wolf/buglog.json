@@ -191,6 +191,26 @@
       "related_bugs": [],
       "occurrences": 1,
       "last_seen": "2026-10-16T07:25:41.472Z"
+    },
+    {
+      "id": "bug-012",
+      "timestamp": "2026-10-18T05:39:58.890635Z",
+      "error_message": "Sentry: TypeError: Cannot read properties of null (reading 'removeChild') in commitDeletionEffectsOnFiber",
+      "file": "app/sentry.options.ts",
+      "root_cause": "React 19 removes hoisted <head> tags (title/meta/link from metadata) via node.parentNode.removeChild on navigation; a third party (extension, Google Translate, in-app browser) had already detached the node. Not app code.",
+      "fix": "Added ignoreErrors regex (Chrome + Safari wording) to sentryOptions.",
+      "tags": [
+        "sentry",
+        "react19",
+        "hoistable",
+        "third-party",
+        "nextjs"
+      ],
+      "related_bugs": [
+        "bug-011"
+      ],
+      "occurrences": 1,
+      "last_seen": "2026-10-18T05:39:58.890635Z"
     }
   ]
 }
