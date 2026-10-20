@@ -124,3 +124,9 @@
 |------|--------|---------|---------|--------|
 | 05:37 | Diagnosed Sentry 'null reading removeChild' (React 19 deletion of hoisted head tag detached by 3rd party) — no code change | app/src/instrumentation-client.ts | pending user Sentry details | ~3k |
 | 05:39 | Sentry ignoreErrors for 3rd-party removeChild crash | app/sentry.options.ts | done | ~1k |
+
+## Session: 2026-10-20 19:09
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 19:10 | Traced /bedankt/ 404: no seeded textPage 'bedankt', [slug] 404s unknown slugs; seed --reset also deletes drafts.* | app/scripts/seed/index.ts, app/src/app/[slug]/page.tsx | answered, no code change | ~8k |

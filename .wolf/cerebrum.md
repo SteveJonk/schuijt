@@ -9,6 +9,7 @@
 <!-- How the user likes things done. Code style, tools, patterns, communication. -->
 
 ## Key Learnings
+- [2026-10-20] /bedankt/ (or any thank-you page) is NOT seeded: it only exists if a textPage with that slug is published in the studio; `[slug]` 404s every unknown slug. Seed `--reset` deletes every _id containing a dot, which includes `drafts.*` and `versions.*` (unpublished studio drafts).
 - Mail config errors: `resolveMailSettings().missing` lists missing env var names; routes return them in the JSON `message` (FormRenderer still shows the studio text to visitors, so the detail is only in the Network tab and logs).
 - `/api/submit-form` returns 502 itself when sendMail throws (not a gateway error). Live mail = SMTP smtp.transip.email:465 ssl; SMTP_USER/SMTP_PASSWORD only in env, not in the studio.
 - Hosting is Vercel (migrated from Netlify, 2026-10). Crons live in `app/vercel.json`; Vercel cron sends GET with `Authorization: Bearer $CRON_SECRET` and does not follow redirects, so cron paths need the trailing slash (`trailingSlash: true`).
