@@ -124,3 +124,9 @@
 |------|--------|---------|---------|--------|
 | 05:37 | Diagnosed Sentry 'null reading removeChild' (React 19 deletion of hoisted head tag detached by 3rd party) — no code change | app/src/instrumentation-client.ts | pending user Sentry details | ~3k |
 | 05:39 | Sentry ignoreErrors for 3rd-party removeChild crash | app/sentry.options.ts | done | ~1k |
+
+## Session: 2026-10-31 17:58
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 18:05 | Explained Sentry weekly report: chart peaks = NextNodeServer.clientComponentLoading (bogus long span), /:slug = browser pageload p95 ~6s (low sample count, images, full-site expire on revalidate) — no code change | app/sentry.options.ts, app/src/app/api/revalidate/route.ts | answered | ~3k |
