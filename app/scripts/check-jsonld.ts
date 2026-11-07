@@ -17,6 +17,8 @@ import {
   ORGANIZATION_ID,
   WEBSITE_ID,
   absoluteUrl,
+  blogFaqs,
+  faqPageJsonLd,
   breadcrumbJsonLd,
   faqQuestions,
   jsonLdGraph,
@@ -209,6 +211,34 @@ assert.deepEqual(crumbs.itemListElement, [
   { '@type': 'ListItem', position: 2, name: 'About', item: `${SITE_URL}/about` },
 ]);
 assert.equal(breadcrumbJsonLd('/about', []), undefined, 'Home alone is not a breadcrumb');
+
+// 6. FAQ sections and blog FAQ blocks: one FAQPage, rich-text answers flattened.
+assert.equal(faqPageJsonLd([]), null, 'no questions, no FAQPage');
+assert.equal(faqPageJsonLd([{ question: 'Q', answer: '' }]), null, 'a question without answer is dropped');
+const blogFaq = faqPageJsonLd(
+  blogFaqs([
+    { _type: 'block', children: [{ text: 'gewone tekst' }] },
+    {
+      _type: 'faqBlock',
+      items: [
+        {
+          question: 'Wat kost het?',
+          answer: [
+            { _type: 'block', children: [{ text: 'Zie ' }, { text: 'onze prijzen' }, { text: '.' }] },
+            { _type: 'block', children: [{ text: 'Bel gerust.' }] },
+          ],
+        },
+      ],
+    },
+    { _type: 'faqBlock', items: [{ question: 'Hoe lang?', answer: [{ _type: 'block', children: [{ text: 'Een week.' }] }] }] },
+  ]),
+);
+const faqNodes = (blogFaq?.['@graph'] ?? []) as JsonLdNode[];
+assert.equal(faqNodes.length, 1, 'two FAQ blocks on one page are still one FAQPage');
+assert.deepEqual(faqNodes[0].mainEntity, [
+  { '@type': 'Question', name: 'Wat kost het?', acceptedAnswer: { '@type': 'Answer', text: 'Zie onze prijzen.\n\nBel gerust.' } },
+  { '@type': 'Question', name: 'Hoe lang?', acceptedAnswer: { '@type': 'Answer', text: 'Een week.' } },
+]);
 
 // The serialised graph can never close its own script tag.
 assert.ok(
