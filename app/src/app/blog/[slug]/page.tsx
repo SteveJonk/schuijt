@@ -102,33 +102,33 @@ export default async function BlogArticlePage({ params }: PageProps) {
                     {value.text}
                   </div>
                 ),
-                faqBlock: ({ value }) => (
-                  <div className='my-11'>
-                    {value.title ? <h2 className='mb-5 text-[24px] text-ink'>{value.title}</h2> : null}
-                    <div className='grid gap-3.5'>
-                      {value.items?.map((item) => (
-                        <FaqItem key={item._key} question={item.question} white>
-                          <PortableText
-                            value={item.answer ?? []}
-                            components={{
-                              block: { normal: ({ children }) => <p className='mb-3 last:mb-0'>{children}</p> },
-                              marks: {
-                                link: ({ value: link, children }) => (
-                                  <a href={link?.href} className='text-blue-deep underline'>
-                                    {children}
-                                  </a>
-                                ),
-                              },
-                            }}
-                          />
-                        </FaqItem>
-                      ))}
-                    </div>
-                  </div>
-                ),
               },
             }}
           />
+          {post.faq?.items?.length ? (
+            <div className='mt-12'>
+              {post.faq.title ? <h2 className='mb-5 text-[24px] text-ink'>{post.faq.title}</h2> : null}
+              <div className='grid gap-3.5'>
+                {post.faq.items.map((item) => (
+                  <FaqItem key={item._key} question={item.question} white>
+                    <PortableText
+                      value={item.answer ?? []}
+                      components={{
+                        block: { normal: ({ children }) => <p className='mb-3 last:mb-0'>{children}</p> },
+                        marks: {
+                          link: ({ value: link, children }) => (
+                            <a href={link?.href} className='text-blue-deep underline'>
+                              {children}
+                            </a>
+                          ),
+                        },
+                      }}
+                    />
+                  </FaqItem>
+                ))}
+              </div>
+            </div>
+          ) : null}
           <div className='mt-12 flex flex-wrap items-center justify-between gap-5 rounded-card-lg bg-tint px-8 py-[30px]'>
             <div>
               <h3 className='text-[18px]'>{post.ctaTitle || ui.blogCtaTitle}</h3>
@@ -171,7 +171,7 @@ export default async function BlogArticlePage({ params }: PageProps) {
       ) : null}
 
       <ContactCta cta={post.cta} padding='sm' />
-      <JsonLd data={faqPageJsonLd(blogFaqs(post.body))} />
+      <JsonLd data={faqPageJsonLd(blogFaqs(post.faq?.items))} />
     </main>
   );
 }

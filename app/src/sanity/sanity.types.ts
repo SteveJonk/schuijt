@@ -431,35 +431,33 @@ export type BlogPost = {
         _type: "callout";
         _key: string;
       }
-    | {
-        title?: string;
-        items: Array<{
-          question: string;
-          answer: Array<{
-            children?: Array<{
-              marks?: Array<string>;
-              text?: string;
-              _type: "span";
-              _key: string;
-            }>;
-            style?: "normal";
-            listItem?: never;
-            markDefs?: Array<{
-              href?: string;
-              _type: "link";
-              _key: string;
-            }>;
-            level?: number;
-            _type: "block";
-            _key: string;
-          }>;
-          _type: "faqBlockItem";
+  >;
+  faq?: {
+    title?: string;
+    items?: Array<{
+      question: string;
+      answer: Array<{
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
           _key: string;
         }>;
-        _type: "faqBlock";
+        style?: "normal";
+        listItem?: never;
+        markDefs?: Array<{
+          href?: string;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
         _key: string;
-      }
-  >;
+      }>;
+      _type: "blogFaqItem";
+      _key: string;
+    }>;
+  };
   ctaTitle?: string;
   related?: Array<
     {
@@ -3236,7 +3234,7 @@ export type BLOG_PAGE_QUERY_RESULT = {
 
 // Source: ../app/src/sanity/queries.ts
 // Variable: BLOG_POST_QUERY
-// Query: *[_type == "blogPost" && slug.current == $slug][0]{  _id,  title,  date,  readTime,  excerpt,  image {  asset,  hotspot,  crop,  alt,  "dimensions": asset->metadata.dimensions{ width, height }},  "category": category->{ title },  body,  ctaTitle,  "related": coalesce(    related[defined(@->_id)]-> {  _id,  title,  "href": "/blog/" + slug.current + "/",  excerpt,  readTime,  image {  asset,  hotspot,  crop,  alt,  "dimensions": asset->metadata.dimensions{ width, height }},  "category": category->{ _id, title }},    *[_type == "blogPost" && slug.current != $slug] | order(date desc)[0...3] {  _id,  title,  "href": "/blog/" + slug.current + "/",  excerpt,  readTime,  image {  asset,  hotspot,  crop,  alt,  "dimensions": asset->metadata.dimensions{ width, height }},  "category": category->{ _id, title }}  ),  "blogTitle": *[_type == "blogPage"][0].title,  "cta": *[_type == "blogPage"][0].cta {  title,  text,  messagePlaceholder,  "form": coalesce(form, *[_type == "formGeneralSettings"][0].defaultForm)-> {  _id,  title,  showTitle,  mode,  fields[] {  label,  name,  type,  isRequired,  width,  placeholder,  helpText,  defaultValue,  selectOptions,  radioOptions,  checkboxOptions},  steps[]{ title, fields[] {  label,  name,  type,  isRequired,  width,  placeholder,  helpText,  defaultValue,  selectOptions,  radioOptions,  checkboxOptions} },  submitButtonText,  nextButtonText,  backButtonText,  successTitle,  successBody,  redirectAfterSubmit,  redirectLink {  label,  "href": select(    linkType == "external" => href,    internalLink->_type == "homePage" => "/",    internalLink->_type == "zakelijkPage" => "/zakelijk/",    internalLink->_type == "projectsPage" => "/projecten/",    internalLink->_type == "zakelijkProjectsPage" => "/zakelijk/projecten/",    internalLink->_type == "reviewsPage" => "/reviews/",    internalLink->_type == "blogPage" => "/blog/",    internalLink->_type == "contactPage" => "/contact/",    internalLink->_type == "blogPost" => "/blog/" + internalLink->slug.current + "/",    internalLink->_type == "servicePage" && internalLink->kind == "zakelijk" =>      "/zakelijk/" + internalLink->slug.current + "/",    defined(internalLink->slug.current) => "/" + internalLink->slug.current + "/"  )}}},  seo { title, description, noIndex, ogImage {  asset,  hotspot,  crop,  alt,  "dimensions": asset->metadata.dimensions{ width, height }} }}
+// Query: *[_type == "blogPost" && slug.current == $slug][0]{  _id,  title,  date,  readTime,  excerpt,  image {  asset,  hotspot,  crop,  alt,  "dimensions": asset->metadata.dimensions{ width, height }},  "category": category->{ title },  body,  faq,  ctaTitle,  "related": coalesce(    related[defined(@->_id)]-> {  _id,  title,  "href": "/blog/" + slug.current + "/",  excerpt,  readTime,  image {  asset,  hotspot,  crop,  alt,  "dimensions": asset->metadata.dimensions{ width, height }},  "category": category->{ _id, title }},    *[_type == "blogPost" && slug.current != $slug] | order(date desc)[0...3] {  _id,  title,  "href": "/blog/" + slug.current + "/",  excerpt,  readTime,  image {  asset,  hotspot,  crop,  alt,  "dimensions": asset->metadata.dimensions{ width, height }},  "category": category->{ _id, title }}  ),  "blogTitle": *[_type == "blogPage"][0].title,  "cta": *[_type == "blogPage"][0].cta {  title,  text,  messagePlaceholder,  "form": coalesce(form, *[_type == "formGeneralSettings"][0].defaultForm)-> {  _id,  title,  showTitle,  mode,  fields[] {  label,  name,  type,  isRequired,  width,  placeholder,  helpText,  defaultValue,  selectOptions,  radioOptions,  checkboxOptions},  steps[]{ title, fields[] {  label,  name,  type,  isRequired,  width,  placeholder,  helpText,  defaultValue,  selectOptions,  radioOptions,  checkboxOptions} },  submitButtonText,  nextButtonText,  backButtonText,  successTitle,  successBody,  redirectAfterSubmit,  redirectLink {  label,  "href": select(    linkType == "external" => href,    internalLink->_type == "homePage" => "/",    internalLink->_type == "zakelijkPage" => "/zakelijk/",    internalLink->_type == "projectsPage" => "/projecten/",    internalLink->_type == "zakelijkProjectsPage" => "/zakelijk/projecten/",    internalLink->_type == "reviewsPage" => "/reviews/",    internalLink->_type == "blogPage" => "/blog/",    internalLink->_type == "contactPage" => "/contact/",    internalLink->_type == "blogPost" => "/blog/" + internalLink->slug.current + "/",    internalLink->_type == "servicePage" && internalLink->kind == "zakelijk" =>      "/zakelijk/" + internalLink->slug.current + "/",    defined(internalLink->slug.current) => "/" + internalLink->slug.current + "/"  )}}},  seo { title, description, noIndex, ogImage {  asset,  hotspot,  crop,  alt,  "dimensions": asset->metadata.dimensions{ width, height }} }}
 export type BLOG_POST_QUERY_RESULT = {
   _id: string;
   title: string;
@@ -3281,35 +3279,33 @@ export type BLOG_POST_QUERY_RESULT = {
         _type: "callout";
         _key: string;
       }
-    | {
-        title?: string;
-        items: Array<{
-          question: string;
-          answer: Array<{
-            children?: Array<{
-              marks?: Array<string>;
-              text?: string;
-              _type: "span";
-              _key: string;
-            }>;
-            style?: "normal";
-            listItem?: never;
-            markDefs?: Array<{
-              href?: string;
-              _type: "link";
-              _key: string;
-            }>;
-            level?: number;
-            _type: "block";
-            _key: string;
-          }>;
-          _type: "faqBlockItem";
+  > | null;
+  faq: {
+    title?: string;
+    items?: Array<{
+      question: string;
+      answer: Array<{
+        children?: Array<{
+          marks?: Array<string>;
+          text?: string;
+          _type: "span";
           _key: string;
         }>;
-        _type: "faqBlock";
+        style?: "normal";
+        listItem?: never;
+        markDefs?: Array<{
+          href?: string;
+          _type: "link";
+          _key: string;
+        }>;
+        level?: number;
+        _type: "block";
         _key: string;
-      }
-  > | null;
+      }>;
+      _type: "blogFaqItem";
+      _key: string;
+    }>;
+  } | null;
   ctaTitle: string | null;
   related: Array<{
     _id: string;
@@ -3669,7 +3665,7 @@ declare global {
     '{\n  "page": *[_type == "zakelijkProjectsPage"][0]{\n    title,\n    breadcrumb,\n    intro { kicker, title, text },\n    filterAll,\n    soonTitle,\n    soonText,\n    cta {\n  title,\n  text,\n  messagePlaceholder,\n  "form": coalesce(form, *[_type == "formGeneralSettings"][0].defaultForm)-> {\n  _id,\n  title,\n  showTitle,\n  mode,\n  fields[] {\n  label,\n  name,\n  type,\n  isRequired,\n  width,\n  placeholder,\n  helpText,\n  defaultValue,\n  selectOptions,\n  radioOptions,\n  checkboxOptions\n},\n  steps[]{ title, fields[] {\n  label,\n  name,\n  type,\n  isRequired,\n  width,\n  placeholder,\n  helpText,\n  defaultValue,\n  selectOptions,\n  radioOptions,\n  checkboxOptions\n} },\n  submitButtonText,\n  nextButtonText,\n  backButtonText,\n  successTitle,\n  successBody,\n  redirectAfterSubmit,\n  redirectLink {\n  label,\n  "href": select(\n    linkType == "external" => href,\n    internalLink->_type == "homePage" => "/",\n    internalLink->_type == "zakelijkPage" => "/zakelijk/",\n    internalLink->_type == "projectsPage" => "/projecten/",\n    internalLink->_type == "zakelijkProjectsPage" => "/zakelijk/projecten/",\n    internalLink->_type == "reviewsPage" => "/reviews/",\n    internalLink->_type == "blogPage" => "/blog/",\n    internalLink->_type == "contactPage" => "/contact/",\n    internalLink->_type == "blogPost" => "/blog/" + internalLink->slug.current + "/",\n    internalLink->_type == "servicePage" && internalLink->kind == "zakelijk" =>\n      "/zakelijk/" + internalLink->slug.current + "/",\n    defined(internalLink->slug.current) => "/" + internalLink->slug.current + "/"\n  )\n}\n}\n},\n    seo { title, description, noIndex, ogImage {\n  asset,\n  hotspot,\n  crop,\n  alt,\n  "dimensions": asset->metadata.dimensions{ width, height }\n} }\n  },\n  "categories": *[_type == "category" && isZakelijk == true] | order(order asc){ _id, title },\n  "projects": *[_type == "project" && category->isZakelijk == true] | order(date desc) {\n  _id,\n  "href": "/" + slug.current + "/",\n  "title": coalesce(cardTitle, title),\n  "tag": cardTag,\n  "text": cardText,\n  "image": coalesce(cardImage, image) {\n  asset,\n  hotspot,\n  crop,\n  alt,\n  "dimensions": asset->metadata.dimensions{ width, height }\n},\n  "stats": cardStats[]{ _key, value, label },\n  "category": category->_id\n}\n}': ZAKELIJK_PROJECTS_PAGE_QUERY_RESULT;
     '{\n  "page": *[_type == "reviewsPage"][0]{\n    title,\n    intro { kicker, title, text },\n    scoreCaption,\n    googleLabel,\n    leave,\n    cta {\n  title,\n  text,\n  messagePlaceholder,\n  "form": coalesce(form, *[_type == "formGeneralSettings"][0].defaultForm)-> {\n  _id,\n  title,\n  showTitle,\n  mode,\n  fields[] {\n  label,\n  name,\n  type,\n  isRequired,\n  width,\n  placeholder,\n  helpText,\n  defaultValue,\n  selectOptions,\n  radioOptions,\n  checkboxOptions\n},\n  steps[]{ title, fields[] {\n  label,\n  name,\n  type,\n  isRequired,\n  width,\n  placeholder,\n  helpText,\n  defaultValue,\n  selectOptions,\n  radioOptions,\n  checkboxOptions\n} },\n  submitButtonText,\n  nextButtonText,\n  backButtonText,\n  successTitle,\n  successBody,\n  redirectAfterSubmit,\n  redirectLink {\n  label,\n  "href": select(\n    linkType == "external" => href,\n    internalLink->_type == "homePage" => "/",\n    internalLink->_type == "zakelijkPage" => "/zakelijk/",\n    internalLink->_type == "projectsPage" => "/projecten/",\n    internalLink->_type == "zakelijkProjectsPage" => "/zakelijk/projecten/",\n    internalLink->_type == "reviewsPage" => "/reviews/",\n    internalLink->_type == "blogPage" => "/blog/",\n    internalLink->_type == "contactPage" => "/contact/",\n    internalLink->_type == "blogPost" => "/blog/" + internalLink->slug.current + "/",\n    internalLink->_type == "servicePage" && internalLink->kind == "zakelijk" =>\n      "/zakelijk/" + internalLink->slug.current + "/",\n    defined(internalLink->slug.current) => "/" + internalLink->slug.current + "/"\n  )\n}\n}\n},\n    seo { title, description, noIndex, ogImage {\n  asset,\n  hotspot,\n  crop,\n  alt,\n  "dimensions": asset->metadata.dimensions{ width, height }\n} }\n  },\n  "reviews": *[_type == "review" && hidden != true && defined(text) && defined(rating)] | order(publishedAt desc) { _id, name, initials, rating, publishedAt, location, service, text, source },\n  // Google\'s score covers all its reviews; ours only the ones we have.\n  "score": {\n    "google": *[_type == "googleReviews"][0]{ rating, userRatingCount },\n    "average": math::avg(*[_type == "review" && hidden != true && defined(text) && defined(rating)].rating),\n    "count": count(*[_type == "review" && hidden != true && defined(text) && defined(rating)])\n  }\n}': REVIEWS_PAGE_QUERY_RESULT;
     '{\n  "page": *[_type == "blogPage"][0]{ title, intro { kicker, title, text }, filterAll, readMore, cta {\n  title,\n  text,\n  messagePlaceholder,\n  "form": coalesce(form, *[_type == "formGeneralSettings"][0].defaultForm)-> {\n  _id,\n  title,\n  showTitle,\n  mode,\n  fields[] {\n  label,\n  name,\n  type,\n  isRequired,\n  width,\n  placeholder,\n  helpText,\n  defaultValue,\n  selectOptions,\n  radioOptions,\n  checkboxOptions\n},\n  steps[]{ title, fields[] {\n  label,\n  name,\n  type,\n  isRequired,\n  width,\n  placeholder,\n  helpText,\n  defaultValue,\n  selectOptions,\n  radioOptions,\n  checkboxOptions\n} },\n  submitButtonText,\n  nextButtonText,\n  backButtonText,\n  successTitle,\n  successBody,\n  redirectAfterSubmit,\n  redirectLink {\n  label,\n  "href": select(\n    linkType == "external" => href,\n    internalLink->_type == "homePage" => "/",\n    internalLink->_type == "zakelijkPage" => "/zakelijk/",\n    internalLink->_type == "projectsPage" => "/projecten/",\n    internalLink->_type == "zakelijkProjectsPage" => "/zakelijk/projecten/",\n    internalLink->_type == "reviewsPage" => "/reviews/",\n    internalLink->_type == "blogPage" => "/blog/",\n    internalLink->_type == "contactPage" => "/contact/",\n    internalLink->_type == "blogPost" => "/blog/" + internalLink->slug.current + "/",\n    internalLink->_type == "servicePage" && internalLink->kind == "zakelijk" =>\n      "/zakelijk/" + internalLink->slug.current + "/",\n    defined(internalLink->slug.current) => "/" + internalLink->slug.current + "/"\n  )\n}\n}\n}, seo { title, description, noIndex, ogImage {\n  asset,\n  hotspot,\n  crop,\n  alt,\n  "dimensions": asset->metadata.dimensions{ width, height }\n} } },\n  "categories": *[_type == "category"] | order(order asc){ _id, title },\n  "posts": *[_type == "blogPost"] | order(featured desc, date desc) {\n  _id,\n  title,\n  "href": "/blog/" + slug.current + "/",\n  excerpt,\n  readTime,\n  image {\n  asset,\n  hotspot,\n  crop,\n  alt,\n  "dimensions": asset->metadata.dimensions{ width, height }\n},\n  "category": category->{ _id, title }\n}\n}': BLOG_PAGE_QUERY_RESULT;
-    '*[_type == "blogPost" && slug.current == $slug][0]{\n  _id,\n  title,\n  date,\n  readTime,\n  excerpt,\n  image {\n  asset,\n  hotspot,\n  crop,\n  alt,\n  "dimensions": asset->metadata.dimensions{ width, height }\n},\n  "category": category->{ title },\n  body,\n  ctaTitle,\n  "related": coalesce(\n    related[defined(@->_id)]-> {\n  _id,\n  title,\n  "href": "/blog/" + slug.current + "/",\n  excerpt,\n  readTime,\n  image {\n  asset,\n  hotspot,\n  crop,\n  alt,\n  "dimensions": asset->metadata.dimensions{ width, height }\n},\n  "category": category->{ _id, title }\n},\n    *[_type == "blogPost" && slug.current != $slug] | order(date desc)[0...3] {\n  _id,\n  title,\n  "href": "/blog/" + slug.current + "/",\n  excerpt,\n  readTime,\n  image {\n  asset,\n  hotspot,\n  crop,\n  alt,\n  "dimensions": asset->metadata.dimensions{ width, height }\n},\n  "category": category->{ _id, title }\n}\n  ),\n  "blogTitle": *[_type == "blogPage"][0].title,\n  "cta": *[_type == "blogPage"][0].cta {\n  title,\n  text,\n  messagePlaceholder,\n  "form": coalesce(form, *[_type == "formGeneralSettings"][0].defaultForm)-> {\n  _id,\n  title,\n  showTitle,\n  mode,\n  fields[] {\n  label,\n  name,\n  type,\n  isRequired,\n  width,\n  placeholder,\n  helpText,\n  defaultValue,\n  selectOptions,\n  radioOptions,\n  checkboxOptions\n},\n  steps[]{ title, fields[] {\n  label,\n  name,\n  type,\n  isRequired,\n  width,\n  placeholder,\n  helpText,\n  defaultValue,\n  selectOptions,\n  radioOptions,\n  checkboxOptions\n} },\n  submitButtonText,\n  nextButtonText,\n  backButtonText,\n  successTitle,\n  successBody,\n  redirectAfterSubmit,\n  redirectLink {\n  label,\n  "href": select(\n    linkType == "external" => href,\n    internalLink->_type == "homePage" => "/",\n    internalLink->_type == "zakelijkPage" => "/zakelijk/",\n    internalLink->_type == "projectsPage" => "/projecten/",\n    internalLink->_type == "zakelijkProjectsPage" => "/zakelijk/projecten/",\n    internalLink->_type == "reviewsPage" => "/reviews/",\n    internalLink->_type == "blogPage" => "/blog/",\n    internalLink->_type == "contactPage" => "/contact/",\n    internalLink->_type == "blogPost" => "/blog/" + internalLink->slug.current + "/",\n    internalLink->_type == "servicePage" && internalLink->kind == "zakelijk" =>\n      "/zakelijk/" + internalLink->slug.current + "/",\n    defined(internalLink->slug.current) => "/" + internalLink->slug.current + "/"\n  )\n}\n}\n},\n  seo { title, description, noIndex, ogImage {\n  asset,\n  hotspot,\n  crop,\n  alt,\n  "dimensions": asset->metadata.dimensions{ width, height }\n} }\n}': BLOG_POST_QUERY_RESULT;
+    '*[_type == "blogPost" && slug.current == $slug][0]{\n  _id,\n  title,\n  date,\n  readTime,\n  excerpt,\n  image {\n  asset,\n  hotspot,\n  crop,\n  alt,\n  "dimensions": asset->metadata.dimensions{ width, height }\n},\n  "category": category->{ title },\n  body,\n  faq,\n  ctaTitle,\n  "related": coalesce(\n    related[defined(@->_id)]-> {\n  _id,\n  title,\n  "href": "/blog/" + slug.current + "/",\n  excerpt,\n  readTime,\n  image {\n  asset,\n  hotspot,\n  crop,\n  alt,\n  "dimensions": asset->metadata.dimensions{ width, height }\n},\n  "category": category->{ _id, title }\n},\n    *[_type == "blogPost" && slug.current != $slug] | order(date desc)[0...3] {\n  _id,\n  title,\n  "href": "/blog/" + slug.current + "/",\n  excerpt,\n  readTime,\n  image {\n  asset,\n  hotspot,\n  crop,\n  alt,\n  "dimensions": asset->metadata.dimensions{ width, height }\n},\n  "category": category->{ _id, title }\n}\n  ),\n  "blogTitle": *[_type == "blogPage"][0].title,\n  "cta": *[_type == "blogPage"][0].cta {\n  title,\n  text,\n  messagePlaceholder,\n  "form": coalesce(form, *[_type == "formGeneralSettings"][0].defaultForm)-> {\n  _id,\n  title,\n  showTitle,\n  mode,\n  fields[] {\n  label,\n  name,\n  type,\n  isRequired,\n  width,\n  placeholder,\n  helpText,\n  defaultValue,\n  selectOptions,\n  radioOptions,\n  checkboxOptions\n},\n  steps[]{ title, fields[] {\n  label,\n  name,\n  type,\n  isRequired,\n  width,\n  placeholder,\n  helpText,\n  defaultValue,\n  selectOptions,\n  radioOptions,\n  checkboxOptions\n} },\n  submitButtonText,\n  nextButtonText,\n  backButtonText,\n  successTitle,\n  successBody,\n  redirectAfterSubmit,\n  redirectLink {\n  label,\n  "href": select(\n    linkType == "external" => href,\n    internalLink->_type == "homePage" => "/",\n    internalLink->_type == "zakelijkPage" => "/zakelijk/",\n    internalLink->_type == "projectsPage" => "/projecten/",\n    internalLink->_type == "zakelijkProjectsPage" => "/zakelijk/projecten/",\n    internalLink->_type == "reviewsPage" => "/reviews/",\n    internalLink->_type == "blogPage" => "/blog/",\n    internalLink->_type == "contactPage" => "/contact/",\n    internalLink->_type == "blogPost" => "/blog/" + internalLink->slug.current + "/",\n    internalLink->_type == "servicePage" && internalLink->kind == "zakelijk" =>\n      "/zakelijk/" + internalLink->slug.current + "/",\n    defined(internalLink->slug.current) => "/" + internalLink->slug.current + "/"\n  )\n}\n}\n},\n  seo { title, description, noIndex, ogImage {\n  asset,\n  hotspot,\n  crop,\n  alt,\n  "dimensions": asset->metadata.dimensions{ width, height }\n} }\n}': BLOG_POST_QUERY_RESULT;
     '*[_type == "blogPost" && defined(slug.current)].slug.current': BLOG_SLUGS_QUERY_RESULT;
     '*[_type == "contactPage"][0]{\n  title,\n  intro { kicker, title, text },\n  badges,\n  infoCards[]{ _key, icon, title, text, show },\n  hours{ title, rows[]{ _key, day, time } },\n  "form": form-> {\n  _id,\n  title,\n  showTitle,\n  mode,\n  fields[] {\n  label,\n  name,\n  type,\n  isRequired,\n  width,\n  placeholder,\n  helpText,\n  defaultValue,\n  selectOptions,\n  radioOptions,\n  checkboxOptions\n},\n  steps[]{ title, fields[] {\n  label,\n  name,\n  type,\n  isRequired,\n  width,\n  placeholder,\n  helpText,\n  defaultValue,\n  selectOptions,\n  radioOptions,\n  checkboxOptions\n} },\n  submitButtonText,\n  nextButtonText,\n  backButtonText,\n  successTitle,\n  successBody,\n  redirectAfterSubmit,\n  redirectLink {\n  label,\n  "href": select(\n    linkType == "external" => href,\n    internalLink->_type == "homePage" => "/",\n    internalLink->_type == "zakelijkPage" => "/zakelijk/",\n    internalLink->_type == "projectsPage" => "/projecten/",\n    internalLink->_type == "zakelijkProjectsPage" => "/zakelijk/projecten/",\n    internalLink->_type == "reviewsPage" => "/reviews/",\n    internalLink->_type == "blogPage" => "/blog/",\n    internalLink->_type == "contactPage" => "/contact/",\n    internalLink->_type == "blogPost" => "/blog/" + internalLink->slug.current + "/",\n    internalLink->_type == "servicePage" && internalLink->kind == "zakelijk" =>\n      "/zakelijk/" + internalLink->slug.current + "/",\n    defined(internalLink->slug.current) => "/" + internalLink->slug.current + "/"\n  )\n}\n},\n  formLead,\n  werkgebied { kicker, title, text, places },\n  faq { kicker, title, items[]{ _key, question, answer, open } },\n  seo { title, description, noIndex, ogImage {\n  asset,\n  hotspot,\n  crop,\n  alt,\n  "dimensions": asset->metadata.dimensions{ width, height }\n} }\n}': CONTACT_PAGE_QUERY_RESULT;
     '*[\n  _type in ["servicePage", "project", "textPage", "blogPost"] && defined(slug.current) && seo.noIndex != true\n]{\n  _type,\n  _updatedAt,\n  "path": select(\n    _type == "blogPost" => "/blog/" + slug.current + "/",\n    _type == "servicePage" && kind == "zakelijk" => "/zakelijk/" + slug.current + "/",\n    "/" + slug.current + "/"\n  )\n}': SITEMAP_QUERY_RESULT;

@@ -130,3 +130,4 @@
 | Time | Action | File(s) | Outcome | ~Tokens |
 |------|--------|---------|---------|--------|
 | 21:58 | Blog faqBlock + FAQPage JSON-LD on all FAQ pages | studio blogPost.ts, Faq.tsx, json-ld.ts, blog/[slug]/page.tsx, check-jsonld.ts, sanity types | typecheck/lint/check:jsonld pass | ~40k |
+| 09:20 | Blog FAQ moved from body faqBlock to own blogPost.faq field, rendered under body | blogPost.ts, blog/[slug]/page.tsx, json-ld.ts, queries.ts, check-jsonld.ts, types | typecheck/lint/check:jsonld pass | ~15k |

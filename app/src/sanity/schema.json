@@ -2394,217 +2394,203 @@
                     }
                   }
                 }
+              }
+            ]
+          }
+        },
+        "optional": true
+      },
+      "faq": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "object",
+          "attributes": {
+            "title": {
+              "type": "objectAttribute",
+              "value": {
+                "type": "string"
               },
-              {
-                "type": "object",
-                "attributes": {
-                  "title": {
-                    "type": "objectAttribute",
-                    "value": {
-                      "type": "string"
+              "optional": true
+            },
+            "items": {
+              "type": "objectAttribute",
+              "value": {
+                "type": "array",
+                "of": {
+                  "type": "object",
+                  "attributes": {
+                    "question": {
+                      "type": "objectAttribute",
+                      "value": {
+                        "type": "string"
+                      },
+                      "optional": false
                     },
-                    "optional": true
-                  },
-                  "items": {
-                    "type": "objectAttribute",
-                    "value": {
-                      "type": "array",
-                      "of": {
-                        "type": "object",
-                        "attributes": {
-                          "question": {
-                            "type": "objectAttribute",
-                            "value": {
-                              "type": "string"
-                            },
-                            "optional": false
-                          },
-                          "answer": {
-                            "type": "objectAttribute",
-                            "value": {
-                              "type": "array",
-                              "of": {
-                                "type": "object",
-                                "attributes": {
-                                  "children": {
-                                    "type": "objectAttribute",
-                                    "value": {
-                                      "type": "array",
-                                      "of": {
-                                        "type": "object",
-                                        "attributes": {
-                                          "marks": {
-                                            "type": "objectAttribute",
-                                            "value": {
-                                              "type": "array",
-                                              "of": {
-                                                "type": "string"
-                                              }
-                                            },
-                                            "optional": true
-                                          },
-                                          "text": {
-                                            "type": "objectAttribute",
-                                            "value": {
-                                              "type": "string"
-                                            },
-                                            "optional": true
-                                          },
-                                          "_type": {
-                                            "type": "objectAttribute",
-                                            "value": {
-                                              "type": "string",
-                                              "value": "span"
-                                            }
-                                          }
-                                        },
-                                        "rest": {
-                                          "type": "object",
-                                          "attributes": {
-                                            "_key": {
-                                              "type": "objectAttribute",
-                                              "value": {
-                                                "type": "string"
-                                              }
-                                            }
-                                          }
-                                        }
-                                      }
-                                    },
-                                    "optional": true
-                                  },
-                                  "style": {
-                                    "type": "objectAttribute",
-                                    "value": {
-                                      "type": "union",
-                                      "of": [
-                                        {
-                                          "type": "string",
-                                          "value": "normal"
-                                        }
-                                      ]
-                                    },
-                                    "optional": true
-                                  },
-                                  "listItem": {
-                                    "type": "objectAttribute",
-                                    "value": {
-                                      "type": "union",
-                                      "of": []
-                                    },
-                                    "optional": true
-                                  },
-                                  "markDefs": {
-                                    "type": "objectAttribute",
-                                    "value": {
-                                      "type": "array",
-                                      "of": {
-                                        "type": "object",
-                                        "attributes": {
-                                          "href": {
-                                            "type": "objectAttribute",
-                                            "value": {
-                                              "type": "string"
-                                            },
-                                            "optional": true
-                                          },
-                                          "_type": {
-                                            "type": "objectAttribute",
-                                            "value": {
-                                              "type": "string",
-                                              "value": "link"
-                                            }
-                                          }
-                                        },
-                                        "rest": {
-                                          "type": "object",
-                                          "attributes": {
-                                            "_key": {
-                                              "type": "objectAttribute",
-                                              "value": {
-                                                "type": "string"
-                                              }
-                                            }
-                                          }
-                                        }
-                                      }
-                                    },
-                                    "optional": true
-                                  },
-                                  "level": {
-                                    "type": "objectAttribute",
-                                    "value": {
-                                      "type": "number"
-                                    },
-                                    "optional": true
-                                  },
-                                  "_type": {
-                                    "type": "objectAttribute",
-                                    "value": {
-                                      "type": "string",
-                                      "value": "block"
-                                    }
-                                  }
-                                },
-                                "rest": {
+                    "answer": {
+                      "type": "objectAttribute",
+                      "value": {
+                        "type": "array",
+                        "of": {
+                          "type": "object",
+                          "attributes": {
+                            "children": {
+                              "type": "objectAttribute",
+                              "value": {
+                                "type": "array",
+                                "of": {
                                   "type": "object",
                                   "attributes": {
-                                    "_key": {
+                                    "marks": {
+                                      "type": "objectAttribute",
+                                      "value": {
+                                        "type": "array",
+                                        "of": {
+                                          "type": "string"
+                                        }
+                                      },
+                                      "optional": true
+                                    },
+                                    "text": {
                                       "type": "objectAttribute",
                                       "value": {
                                         "type": "string"
+                                      },
+                                      "optional": true
+                                    },
+                                    "_type": {
+                                      "type": "objectAttribute",
+                                      "value": {
+                                        "type": "string",
+                                        "value": "span"
+                                      }
+                                    }
+                                  },
+                                  "rest": {
+                                    "type": "object",
+                                    "attributes": {
+                                      "_key": {
+                                        "type": "objectAttribute",
+                                        "value": {
+                                          "type": "string"
+                                        }
                                       }
                                     }
                                   }
                                 }
-                              }
+                              },
+                              "optional": true
                             },
-                            "optional": false
-                          },
-                          "_type": {
-                            "type": "objectAttribute",
-                            "value": {
-                              "type": "string",
-                              "value": "faqBlockItem"
-                            }
-                          }
-                        },
-                        "rest": {
-                          "type": "object",
-                          "attributes": {
-                            "_key": {
+                            "style": {
                               "type": "objectAttribute",
                               "value": {
-                                "type": "string"
+                                "type": "union",
+                                "of": [
+                                  {
+                                    "type": "string",
+                                    "value": "normal"
+                                  }
+                                ]
+                              },
+                              "optional": true
+                            },
+                            "listItem": {
+                              "type": "objectAttribute",
+                              "value": {
+                                "type": "union",
+                                "of": []
+                              },
+                              "optional": true
+                            },
+                            "markDefs": {
+                              "type": "objectAttribute",
+                              "value": {
+                                "type": "array",
+                                "of": {
+                                  "type": "object",
+                                  "attributes": {
+                                    "href": {
+                                      "type": "objectAttribute",
+                                      "value": {
+                                        "type": "string"
+                                      },
+                                      "optional": true
+                                    },
+                                    "_type": {
+                                      "type": "objectAttribute",
+                                      "value": {
+                                        "type": "string",
+                                        "value": "link"
+                                      }
+                                    }
+                                  },
+                                  "rest": {
+                                    "type": "object",
+                                    "attributes": {
+                                      "_key": {
+                                        "type": "objectAttribute",
+                                        "value": {
+                                          "type": "string"
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              },
+                              "optional": true
+                            },
+                            "level": {
+                              "type": "objectAttribute",
+                              "value": {
+                                "type": "number"
+                              },
+                              "optional": true
+                            },
+                            "_type": {
+                              "type": "objectAttribute",
+                              "value": {
+                                "type": "string",
+                                "value": "block"
+                              }
+                            }
+                          },
+                          "rest": {
+                            "type": "object",
+                            "attributes": {
+                              "_key": {
+                                "type": "objectAttribute",
+                                "value": {
+                                  "type": "string"
+                                }
                               }
                             }
                           }
                         }
-                      }
+                      },
+                      "optional": false
                     },
-                    "optional": false
-                  },
-                  "_type": {
-                    "type": "objectAttribute",
-                    "value": {
-                      "type": "string",
-                      "value": "faqBlock"
-                    }
-                  }
-                },
-                "rest": {
-                  "type": "object",
-                  "attributes": {
-                    "_key": {
+                    "_type": {
                       "type": "objectAttribute",
                       "value": {
-                        "type": "string"
+                        "type": "string",
+                        "value": "blogFaqItem"
+                      }
+                    }
+                  },
+                  "rest": {
+                    "type": "object",
+                    "attributes": {
+                      "_key": {
+                        "type": "objectAttribute",
+                        "value": {
+                          "type": "string"
+                        }
                       }
                     }
                   }
                 }
-              }
-            ]
+              },
+              "optional": true
+            }
           }
         },
         "optional": true
