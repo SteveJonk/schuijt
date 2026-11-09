@@ -188,6 +188,37 @@ export function faqQuestions(faqs: readonly FaqInput[] | null | undefined): Json
     }));
 }
 
+/**
+ * The questions shown on a page, as its one `FAQPage`. Only mark up questions
+ * that are visible on that same page — Google's rule, and AI crawlers read it
+ * the same way.
+ */
+export function faqPageJsonLd(faqs: readonly FaqInput[] | null | undefined): JsonLdNode | null {
+  const questions = faqQuestions(faqs);
+  return questions.length ? jsonLdGraph([{ '@type': 'FAQPage', mainEntity: questions }]) : null;
+}
+
+type PortableBlock = { _type?: string; children?: { text?: string }[] };
+
+/** Rich text to plain text: one paragraph per block. Links keep their text. */
+export function portableTextToPlain(blocks: readonly PortableBlock[] | null | undefined): string {
+  return (blocks ?? [])
+    .map((block) => (block?.children ?? []).map((child) => child?.text ?? '').join(''))
+    .filter((text) => text.trim())
+    .join('\n\n');
+}
+
+/** Every question in the `faqBlock`s of a blog body — all blocks count as one FAQ. */
+export function blogFaqs(body: readonly ContentBlock[] | null | undefined): FaqInput[] {
+  return (body ?? [])
+    .filter((block) => block?._type === 'faqBlock')
+    .flatMap((block) => (Array.isArray(block.items) ? block.items : []))
+    .map((item: { question?: string; answer?: PortableBlock[] }) => ({
+      question: item?.question,
+      answer: portableTextToPlain(item?.answer),
+    }));
+}
+
 /** One page-builder block, seen from the outside. */
 type ContentBlock = { _type?: string } & Record<string, unknown>;
 

@@ -2,13 +2,16 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { PortableText } from 'next-sanity';
+import { JsonLd } from '@/components/JsonLd';
 import { ContactCta } from '@/components/sections/ContactCta';
+import { FaqItem } from '@/components/sections/Faq';
 import { Breadcrumb } from '@/components/ui/Breadcrumb';
 import { Button } from '@/components/ui/Button';
 import { Kicker } from '@/components/ui/Kicker';
 import { Reveal } from '@/components/ui/Reveal';
 import { SanityImage } from '@/components/ui/SanityImage';
 import { Wrap } from '@/components/ui/Wrap';
+import { blogFaqs, faqPageJsonLd } from '@/lib/json-ld';
 import { client } from '@/sanity/client';
 import { getLayout, sanityFetch } from '@/sanity/fetch';
 import { pageMetadata } from '@/sanity/metadata';
@@ -99,6 +102,30 @@ export default async function BlogArticlePage({ params }: PageProps) {
                     {value.text}
                   </div>
                 ),
+                faqBlock: ({ value }) => (
+                  <div className='my-11'>
+                    {value.title ? <h2 className='mb-5 text-[24px] text-ink'>{value.title}</h2> : null}
+                    <div className='grid gap-3.5'>
+                      {value.items?.map((item) => (
+                        <FaqItem key={item._key} question={item.question} white>
+                          <PortableText
+                            value={item.answer ?? []}
+                            components={{
+                              block: { normal: ({ children }) => <p className='mb-3 last:mb-0'>{children}</p> },
+                              marks: {
+                                link: ({ value: link, children }) => (
+                                  <a href={link?.href} className='text-blue-deep underline'>
+                                    {children}
+                                  </a>
+                                ),
+                              },
+                            }}
+                          />
+                        </FaqItem>
+                      ))}
+                    </div>
+                  </div>
+                ),
               },
             }}
           />
@@ -144,6 +171,7 @@ export default async function BlogArticlePage({ params }: PageProps) {
       ) : null}
 
       <ContactCta cta={post.cta} padding='sm' />
+      <JsonLd data={faqPageJsonLd(blogFaqs(post.body))} />
     </main>
   );
 }

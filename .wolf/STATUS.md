@@ -2,13 +2,15 @@
 
 > Single source of truth for resuming work. Read this FIRST when starting a session.
 > Update this file at the end of every work phase so the next `/clear` resumes in 1 read.
-> Last updated: 2026-10-18 (Sentry removeChild filter)
+> Last updated: 2026-11-07 (blog FAQ block + FAQPage JSON-LD)
 
 ---
 
 ## ✅ Done
 
 <!-- Move items here from "🚀 Next phase" when finished. Group by area. -->
+
+- Blog FAQ + FAQPage JSON-LD (2026-11-07, branch `claude/dreamy-johnson-j7ycyp`): blogPost body gets a `faqBlock` (title + items: question, rich-text answer with links). FAQPage JSON-LD on every page with a visible FAQ (service pages, /zakelijk/, /contact/, blog). Typegen rerun; `npm run check:jsonld` covers it. **Pending:** deploy app + studio; move existing plain-text FAQs in blog posts into the new block; check one URL in Google Rich Results Test.
 
 - Studio "Website verversen" (2026-10-16, uncommitted): Instellingen → Website verversen (`studio/tools/ClearCache.tsx`) POSTs `/api/revalidate/` with `x-revalidate-secret: SANITY_REVALIDATE_SECRET` (localStorage, like the other panels); route also still takes the signed webhook, now with CORS. Route verified with curl; studio UI not clicked (login wall). **Pending:** deploy app + studio, give editors the secret once.
 - Sentry noise (2026-10-18, branch `claude/sentry-removechild-diagnosis`): `ignoreErrors` in `app/sentry.options.ts` drops React 19 "null reading removeChild" (head tag removed by extension/translate/in-app browser). Deploy to take effect.

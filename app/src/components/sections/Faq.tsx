@@ -1,8 +1,10 @@
+import { JsonLd } from '@/components/JsonLd';
 import { Kicker } from '@/components/ui/Kicker';
 import { Reveal } from '@/components/ui/Reveal';
 import { SectionHead } from '@/components/ui/SectionHead';
 import { Wrap } from '@/components/ui/Wrap';
 import { cn } from '@/lib/cn';
+import { faqPageJsonLd } from '@/lib/json-ld';
 import type { FaqData } from '@/sanity/types';
 
 
@@ -39,25 +41,44 @@ export function Faq({
         )}
         <Reveal className='mx-auto grid max-w-[820px] gap-3.5'>
           {content.items.map((item) => (
-            <details
-              key={item._key}
-              open={item.open ?? undefined}
-              className={cn(
-                'group overflow-hidden rounded-card border transition-shadow duration-300 open:shadow-soft',
-                white ? 'border-line bg-tint-2' : 'border-[#dcecf5] bg-white',
-              )}
-            >
-              <summary className='flex cursor-pointer list-none items-center justify-between gap-4 px-[26px] py-[22px] font-display text-[16px] font-semibold [&::-webkit-details-marker]:hidden'>
-                {item.question}
-                <span className='flex size-[26px] flex-none items-center justify-center rounded-full bg-tint text-[18px] text-blue-deep transition-transform duration-300 group-open:rotate-45'>
-                  +
-                </span>
-              </summary>
-              <div className='max-w-[640px] px-[26px] pb-6 text-[15px] text-muted'>{item.answer}</div>
-            </details>
+            <FaqItem key={item._key} question={item.question} open={item.open} white={white}>
+              {item.answer}
+            </FaqItem>
           ))}
         </Reveal>
       </Wrap>
+      <JsonLd data={faqPageJsonLd(content.items)} />
     </section>
+  );
+}
+
+/** One question. Also used for the FAQ block inside blog articles. */
+export function FaqItem({
+  question,
+  open,
+  white,
+  children,
+}: {
+  question?: string | null;
+  open?: boolean | null;
+  white?: boolean;
+  children: React.ReactNode;
+}) {
+  return (
+    <details
+      open={open ?? undefined}
+      className={cn(
+        'group overflow-hidden rounded-card border transition-shadow duration-300 open:shadow-soft',
+        white ? 'border-line bg-tint-2' : 'border-[#dcecf5] bg-white',
+      )}
+    >
+      <summary className='flex cursor-pointer list-none items-center justify-between gap-4 px-[26px] py-[22px] font-display text-[16px] font-semibold [&::-webkit-details-marker]:hidden'>
+        {question}
+        <span className='flex size-[26px] flex-none items-center justify-center rounded-full bg-tint text-[18px] text-blue-deep transition-transform duration-300 group-open:rotate-45'>
+          +
+        </span>
+      </summary>
+      <div className='max-w-[640px] px-[26px] pb-6 text-[15px] text-muted'>{children}</div>
+    </details>
   );
 }

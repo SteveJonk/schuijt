@@ -124,3 +124,9 @@
 |------|--------|---------|---------|--------|
 | 05:37 | Diagnosed Sentry 'null reading removeChild' (React 19 deletion of hoisted head tag detached by 3rd party) — no code change | app/src/instrumentation-client.ts | pending user Sentry details | ~3k |
 | 05:39 | Sentry ignoreErrors for 3rd-party removeChild crash | app/sentry.options.ts | done | ~1k |
+
+## Session: 2026-11-07 21:49
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 21:58 | Blog faqBlock + FAQPage JSON-LD on all FAQ pages | studio blogPost.ts, Faq.tsx, json-ld.ts, blog/[slug]/page.tsx, check-jsonld.ts, sanity types | typecheck/lint/check:jsonld pass | ~40k |

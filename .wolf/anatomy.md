@@ -333,7 +333,7 @@
 
 - `ContactCta.tsx` — Heading scale: home 36px, service pages 34px, everything else 32px. (~897 tok)
   - fn `ContactCta` L30-77 (~563 tok)
-- `Faq.tsx` — Accordion of <details>. `tinted` sits on the pale-blue band (services, zakelijk); (~704 tok)
+- `Faq.tsx` — Accordion of <details> + FAQPage JSON-LD. Exports `FaqItem` (reused by blog `faqBlock`). `tinted` sits on the pale-blue band (services, zakelijk); (~900 tok)
   - fn `Faq` L13-64 (~576 tok)
 - `Hero.tsx` — Gradient hero with photo composition. Variants differ only in spacing and type size. (~1244 tok)
   - fn `Hero` L30-106 (~957 tok)
