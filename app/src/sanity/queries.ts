@@ -338,6 +338,7 @@ export const BLOG_POST_QUERY = defineQuery(`*[_type == "blogPost" && slug.curren
   image ${IMAGE},
   "category": category->{ title },
   body,
+  faq,
   ctaTitle,
   "related": coalesce(
     related[defined(@->_id)]-> ${BLOG_CARD},

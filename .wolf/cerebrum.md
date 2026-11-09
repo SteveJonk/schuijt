@@ -5,11 +5,12 @@
 > Last updated: 2026-10-07
 
 ## User Preferences
+- [2026-11-09] Editor-facing features go in visible fields/sections, not hidden in Portable Text insert menus.
 
 <!-- How the user likes things done. Code style, tools, patterns, communication. -->
 
 ## Key Learnings
-- FAQ JSON-LD: `Faq` section emits its own FAQPage (`faqPageJsonLd`), so any page rendering `<Faq>` is covered. Blog FAQs live in body `faqBlock` (rich-text answers); the blog page collects all blocks into ONE FAQPage via `blogFaqs`. Never emit two FAQPage nodes on one URL.
+- FAQ JSON-LD: `Faq` section emits its own FAQPage (`faqPageJsonLd`), so any page rendering `<Faq>` is covered. Blog FAQ is its own `faq` field on blogPost (title + items with rich-text answers), rendered under the body; `blogFaqs(post.faq.items)` feeds the FAQPage. (Was a body `faqBlock` first — editors couldn't find it in the insert menu.) Never emit two FAQPage nodes on one URL.
 - `npm run typegen` (studio) only needs a placeholder: `SANITY_STUDIO_PROJECT_ID=placeholder npm run typegen` — schema extract is local.
 - Prettier --check fails on most app files on main already; don't reformat files wholesale in feature diffs.
 - Mail config errors: `resolveMailSettings().missing` lists missing env var names; routes return them in the JSON `message` (FormRenderer still shows the studio text to visitors, so the detail is only in the Network tab and logs).

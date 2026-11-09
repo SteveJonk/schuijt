@@ -208,15 +208,14 @@ export function portableTextToPlain(blocks: readonly PortableBlock[] | null | un
     .join('\n\n');
 }
 
-/** Every question in the `faqBlock`s of a blog body — all blocks count as one FAQ. */
-export function blogFaqs(body: readonly ContentBlock[] | null | undefined): FaqInput[] {
-  return (body ?? [])
-    .filter((block) => block?._type === 'faqBlock')
-    .flatMap((block) => (Array.isArray(block.items) ? block.items : []))
-    .map((item: { question?: string; answer?: PortableBlock[] }) => ({
-      question: item?.question,
-      answer: portableTextToPlain(item?.answer),
-    }));
+/** The blog post's FAQ, with the rich-text answers as plain text. */
+export function blogFaqs(
+  items: readonly { question?: string | null; answer?: PortableBlock[] | null }[] | null | undefined,
+): FaqInput[] {
+  return (items ?? []).map((item) => ({
+    question: item?.question,
+    answer: portableTextToPlain(item?.answer),
+  }));
 }
 
 /** One page-builder block, seen from the outside. */
