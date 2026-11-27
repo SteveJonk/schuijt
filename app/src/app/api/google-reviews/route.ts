@@ -55,6 +55,12 @@ export async function POST(request: NextRequest) {
     });
     // The Sanity webhook would get there too; this way it does not depend on it.
     if (!dryRun && result.changed) revalidateTag(SANITY_TAG, { expire: 0 });
+    const { trigger: via, created = 0, updated = 0, unchanged = 0, skipped = 0, place } = result;
+    console.log(
+      `google-reviews sync ok (${via}${dryRun ? ', dry run' : ''}): ${created} created, ${updated} updated, ` +
+        `${unchanged} unchanged, ${skipped} skipped; rating ${place?.rating ?? '?'} (${place?.userRatingCount ?? '?'})` +
+        (result.message ? `; ${result.message}` : ''),
+    );
     return reply(result);
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error);
