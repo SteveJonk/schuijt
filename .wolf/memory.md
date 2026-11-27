@@ -137,3 +137,9 @@
 | Time | Action | File(s) | Outcome | ~Tokens |
 |------|--------|---------|---------|--------|
 | 11:38 | Sitemap cleanup: lastmod from Sanity for fixed routes (singleton _updatedAt / newest item), dedupe by URL, singleton noIndex respected | app/src/app/sitemap.ts, app/src/sanity/queries.ts | 149 unique URLs, all with lastmod; tsc ok | ~4k |
+
+## Session: 2026-11-27 12:04
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 12:05 | google-reviews route: console.log summary on successful sync (visible in Vercel cron logs) | app/src/app/api/google-reviews/route.ts | done | ~2k |
