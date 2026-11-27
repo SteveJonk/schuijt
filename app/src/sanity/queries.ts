@@ -366,16 +366,33 @@ export const CONTACT_PAGE_QUERY = defineQuery(`*[_type == "contactPage"][0]{
   seo ${SEO}
 }`);
 
-/** Every routable document, for the sitemap. */
+/**
+ * Every routable document, for the sitemap: the singletons behind the fixed
+ * routes plus every published page. An overview page also reports its newest
+ * listed item (`latestItem`), since a new project changes /projecten/ too.
+ */
 export const SITEMAP_QUERY = defineQuery(`*[
-  _type in ["servicePage", "project", "textPage", "blogPost"] && defined(slug.current) && seo.noIndex != true
-]{
+  _type in ["homePage", "projectsPage", "zakelijkPage", "zakelijkProjectsPage", "reviewsPage", "blogPage", "contactPage"] ||
+  (_type in ["servicePage", "project", "textPage", "blogPost"] && defined(slug.current))
+][seo.noIndex != true]{
   _type,
   _updatedAt,
   "path": select(
+    _type == "homePage" => "/",
+    _type == "projectsPage" => "/projecten/",
+    _type == "zakelijkPage" => "/zakelijk/",
+    _type == "zakelijkProjectsPage" => "/zakelijk/projecten/",
+    _type == "reviewsPage" => "/reviews/",
+    _type == "blogPage" => "/blog/",
+    _type == "contactPage" => "/contact/",
     _type == "blogPost" => "/blog/" + slug.current + "/",
     _type == "servicePage" && kind == "zakelijk" => "/zakelijk/" + slug.current + "/",
     "/" + slug.current + "/"
+  ),
+  "latestItem": select(
+    _type == "projectsPage" => *[_type == "project" && category->isZakelijk != true] | order(_updatedAt desc)[0]._updatedAt,
+    _type == "zakelijkProjectsPage" => *[_type == "project" && category->isZakelijk == true] | order(_updatedAt desc)[0]._updatedAt,
+    _type == "blogPage" => *[_type == "blogPost"] | order(_updatedAt desc)[0]._updatedAt
   )
 }`);
 

@@ -131,3 +131,9 @@
 |------|--------|---------|---------|--------|
 | 21:58 | Blog faqBlock + FAQPage JSON-LD on all FAQ pages | studio blogPost.ts, Faq.tsx, json-ld.ts, blog/[slug]/page.tsx, check-jsonld.ts, sanity types | typecheck/lint/check:jsonld pass | ~40k |
 | 09:20 | Blog FAQ moved from body faqBlock to own blogPost.faq field, rendered under body | blogPost.ts, blog/[slug]/page.tsx, json-ld.ts, queries.ts, check-jsonld.ts, types | typecheck/lint/check:jsonld pass | ~15k |
+
+## Session: 2026-11-27 11:36
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 11:38 | Sitemap cleanup: lastmod from Sanity for fixed routes (singleton _updatedAt / newest item), dedupe by URL, singleton noIndex respected | app/src/app/sitemap.ts, app/src/sanity/queries.ts | 149 unique URLs, all with lastmod; tsc ok | ~4k |

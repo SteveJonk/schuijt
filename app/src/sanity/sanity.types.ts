@@ -3566,27 +3566,73 @@ export type CONTACT_PAGE_QUERY_RESULT = {
 
 // Source: ../app/src/sanity/queries.ts
 // Variable: SITEMAP_QUERY
-// Query: *[  _type in ["servicePage", "project", "textPage", "blogPost"] && defined(slug.current) && seo.noIndex != true]{  _type,  _updatedAt,  "path": select(    _type == "blogPost" => "/blog/" + slug.current + "/",    _type == "servicePage" && kind == "zakelijk" => "/zakelijk/" + slug.current + "/",    "/" + slug.current + "/"  )}
+// Query: *[  _type in ["homePage", "projectsPage", "zakelijkPage", "zakelijkProjectsPage", "reviewsPage", "blogPage", "contactPage"] ||  (_type in ["servicePage", "project", "textPage", "blogPost"] && defined(slug.current))][seo.noIndex != true]{  _type,  _updatedAt,  "path": select(    _type == "homePage" => "/",    _type == "projectsPage" => "/projecten/",    _type == "zakelijkPage" => "/zakelijk/",    _type == "zakelijkProjectsPage" => "/zakelijk/projecten/",    _type == "reviewsPage" => "/reviews/",    _type == "blogPage" => "/blog/",    _type == "contactPage" => "/contact/",    _type == "blogPost" => "/blog/" + slug.current + "/",    _type == "servicePage" && kind == "zakelijk" => "/zakelijk/" + slug.current + "/",    "/" + slug.current + "/"  ),  "latestItem": select(    _type == "projectsPage" => *[_type == "project" && category->isZakelijk != true] | order(_updatedAt desc)[0]._updatedAt,    _type == "zakelijkProjectsPage" => *[_type == "project" && category->isZakelijk == true] | order(_updatedAt desc)[0]._updatedAt,    _type == "blogPage" => *[_type == "blogPost"] | order(_updatedAt desc)[0]._updatedAt  )}
 export type SITEMAP_QUERY_RESULT = Array<
+  | {
+      _type: "blogPage";
+      _updatedAt: string;
+      path: "/blog/";
+      latestItem: string | null;
+    }
   | {
       _type: "blogPost";
       _updatedAt: string;
       path: string;
+      latestItem: null;
+    }
+  | {
+      _type: "contactPage";
+      _updatedAt: string;
+      path: "/contact/";
+      latestItem: null;
+    }
+  | {
+      _type: "homePage";
+      _updatedAt: string;
+      path: "/";
+      latestItem: null;
     }
   | {
       _type: "project";
       _updatedAt: string;
       path: string;
+      latestItem: null;
+    }
+  | {
+      _type: "projectsPage";
+      _updatedAt: string;
+      path: "/projecten/";
+      latestItem: string | null;
+    }
+  | {
+      _type: "reviewsPage";
+      _updatedAt: string;
+      path: "/reviews/";
+      latestItem: null;
     }
   | {
       _type: "servicePage";
       _updatedAt: string;
       path: string;
+      latestItem: null;
     }
   | {
       _type: "textPage";
       _updatedAt: string;
       path: string;
+      latestItem: null;
+    }
+  | {
+      _type: "zakelijkPage";
+      _updatedAt: string;
+      path: "/zakelijk/";
+      latestItem: null;
+    }
+  | {
+      _type: "zakelijkProjectsPage";
+      _updatedAt: string;
+      path: "/zakelijk/projecten/";
+      latestItem: string | null;
     }
 >;
 
@@ -3668,7 +3714,7 @@ declare global {
     '*[_type == "blogPost" && slug.current == $slug][0]{\n  _id,\n  title,\n  date,\n  readTime,\n  excerpt,\n  image {\n  asset,\n  hotspot,\n  crop,\n  alt,\n  "dimensions": asset->metadata.dimensions{ width, height }\n},\n  "category": category->{ title },\n  body,\n  faq,\n  ctaTitle,\n  "related": coalesce(\n    related[defined(@->_id)]-> {\n  _id,\n  title,\n  "href": "/blog/" + slug.current + "/",\n  excerpt,\n  readTime,\n  image {\n  asset,\n  hotspot,\n  crop,\n  alt,\n  "dimensions": asset->metadata.dimensions{ width, height }\n},\n  "category": category->{ _id, title }\n},\n    *[_type == "blogPost" && slug.current != $slug] | order(date desc)[0...3] {\n  _id,\n  title,\n  "href": "/blog/" + slug.current + "/",\n  excerpt,\n  readTime,\n  image {\n  asset,\n  hotspot,\n  crop,\n  alt,\n  "dimensions": asset->metadata.dimensions{ width, height }\n},\n  "category": category->{ _id, title }\n}\n  ),\n  "blogTitle": *[_type == "blogPage"][0].title,\n  "cta": *[_type == "blogPage"][0].cta {\n  title,\n  text,\n  messagePlaceholder,\n  "form": coalesce(form, *[_type == "formGeneralSettings"][0].defaultForm)-> {\n  _id,\n  title,\n  showTitle,\n  mode,\n  fields[] {\n  label,\n  name,\n  type,\n  isRequired,\n  width,\n  placeholder,\n  helpText,\n  defaultValue,\n  selectOptions,\n  radioOptions,\n  checkboxOptions\n},\n  steps[]{ title, fields[] {\n  label,\n  name,\n  type,\n  isRequired,\n  width,\n  placeholder,\n  helpText,\n  defaultValue,\n  selectOptions,\n  radioOptions,\n  checkboxOptions\n} },\n  submitButtonText,\n  nextButtonText,\n  backButtonText,\n  successTitle,\n  successBody,\n  redirectAfterSubmit,\n  redirectLink {\n  label,\n  "href": select(\n    linkType == "external" => href,\n    internalLink->_type == "homePage" => "/",\n    internalLink->_type == "zakelijkPage" => "/zakelijk/",\n    internalLink->_type == "projectsPage" => "/projecten/",\n    internalLink->_type == "zakelijkProjectsPage" => "/zakelijk/projecten/",\n    internalLink->_type == "reviewsPage" => "/reviews/",\n    internalLink->_type == "blogPage" => "/blog/",\n    internalLink->_type == "contactPage" => "/contact/",\n    internalLink->_type == "blogPost" => "/blog/" + internalLink->slug.current + "/",\n    internalLink->_type == "servicePage" && internalLink->kind == "zakelijk" =>\n      "/zakelijk/" + internalLink->slug.current + "/",\n    defined(internalLink->slug.current) => "/" + internalLink->slug.current + "/"\n  )\n}\n}\n},\n  seo { title, description, noIndex, ogImage {\n  asset,\n  hotspot,\n  crop,\n  alt,\n  "dimensions": asset->metadata.dimensions{ width, height }\n} }\n}': BLOG_POST_QUERY_RESULT;
     '*[_type == "blogPost" && defined(slug.current)].slug.current': BLOG_SLUGS_QUERY_RESULT;
     '*[_type == "contactPage"][0]{\n  title,\n  intro { kicker, title, text },\n  badges,\n  infoCards[]{ _key, icon, title, text, show },\n  hours{ title, rows[]{ _key, day, time } },\n  "form": form-> {\n  _id,\n  title,\n  showTitle,\n  mode,\n  fields[] {\n  label,\n  name,\n  type,\n  isRequired,\n  width,\n  placeholder,\n  helpText,\n  defaultValue,\n  selectOptions,\n  radioOptions,\n  checkboxOptions\n},\n  steps[]{ title, fields[] {\n  label,\n  name,\n  type,\n  isRequired,\n  width,\n  placeholder,\n  helpText,\n  defaultValue,\n  selectOptions,\n  radioOptions,\n  checkboxOptions\n} },\n  submitButtonText,\n  nextButtonText,\n  backButtonText,\n  successTitle,\n  successBody,\n  redirectAfterSubmit,\n  redirectLink {\n  label,\n  "href": select(\n    linkType == "external" => href,\n    internalLink->_type == "homePage" => "/",\n    internalLink->_type == "zakelijkPage" => "/zakelijk/",\n    internalLink->_type == "projectsPage" => "/projecten/",\n    internalLink->_type == "zakelijkProjectsPage" => "/zakelijk/projecten/",\n    internalLink->_type == "reviewsPage" => "/reviews/",\n    internalLink->_type == "blogPage" => "/blog/",\n    internalLink->_type == "contactPage" => "/contact/",\n    internalLink->_type == "blogPost" => "/blog/" + internalLink->slug.current + "/",\n    internalLink->_type == "servicePage" && internalLink->kind == "zakelijk" =>\n      "/zakelijk/" + internalLink->slug.current + "/",\n    defined(internalLink->slug.current) => "/" + internalLink->slug.current + "/"\n  )\n}\n},\n  formLead,\n  werkgebied { kicker, title, text, places },\n  faq { kicker, title, items[]{ _key, question, answer, open } },\n  seo { title, description, noIndex, ogImage {\n  asset,\n  hotspot,\n  crop,\n  alt,\n  "dimensions": asset->metadata.dimensions{ width, height }\n} }\n}': CONTACT_PAGE_QUERY_RESULT;
-    '*[\n  _type in ["servicePage", "project", "textPage", "blogPost"] && defined(slug.current) && seo.noIndex != true\n]{\n  _type,\n  _updatedAt,\n  "path": select(\n    _type == "blogPost" => "/blog/" + slug.current + "/",\n    _type == "servicePage" && kind == "zakelijk" => "/zakelijk/" + slug.current + "/",\n    "/" + slug.current + "/"\n  )\n}': SITEMAP_QUERY_RESULT;
+    '*[\n  _type in ["homePage", "projectsPage", "zakelijkPage", "zakelijkProjectsPage", "reviewsPage", "blogPage", "contactPage"] ||\n  (_type in ["servicePage", "project", "textPage", "blogPost"] && defined(slug.current))\n][seo.noIndex != true]{\n  _type,\n  _updatedAt,\n  "path": select(\n    _type == "homePage" => "/",\n    _type == "projectsPage" => "/projecten/",\n    _type == "zakelijkPage" => "/zakelijk/",\n    _type == "zakelijkProjectsPage" => "/zakelijk/projecten/",\n    _type == "reviewsPage" => "/reviews/",\n    _type == "blogPage" => "/blog/",\n    _type == "contactPage" => "/contact/",\n    _type == "blogPost" => "/blog/" + slug.current + "/",\n    _type == "servicePage" && kind == "zakelijk" => "/zakelijk/" + slug.current + "/",\n    "/" + slug.current + "/"\n  ),\n  "latestItem": select(\n    _type == "projectsPage" => *[_type == "project" && category->isZakelijk != true] | order(_updatedAt desc)[0]._updatedAt,\n    _type == "zakelijkProjectsPage" => *[_type == "project" && category->isZakelijk == true] | order(_updatedAt desc)[0]._updatedAt,\n    _type == "blogPage" => *[_type == "blogPost"] | order(_updatedAt desc)[0]._updatedAt\n  )\n}': SITEMAP_QUERY_RESULT;
     '\n  *[_id == $formId && _type == "form"][0]{\n    _id,\n    title,\n    mailRecipients,\n    mailSubject,\n    mailMessage,\n    sendCopyToSubmitter,\n    copySubject,\n    copyMessage,\n    "fields": select(\n      mode == "steps" => steps[].fields[]{label, name, type, isRequired},\n      fields[]{label, name, type, isRequired}\n    )\n  }\n': FORM_QUERY_RESULT;
     '\n  *[_type == "formGeneralSettings"][0]{\n    adminEmail,\n    fromEmail,\n    fromName,\n    mailLogo,\n    primaryColor,\n    textColor,\n    mailProvider,\n    mailjetApiKey,\n    mailjetApiSecret,\n    smtpHost,\n    smtpPort,\n    smtpSecurity,\n    smtpUser,\n    smtpPassword,\n    confirmationSubject,\n    confirmationMessage,\n    recaptchaEnabled,\n    recaptchaSecretKey,\n    "siteName": *[_type == "siteSettings"][0].name\n  }\n': FORM_SETTINGS_QUERY_RESULT;
   }

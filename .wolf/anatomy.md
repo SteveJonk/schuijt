@@ -206,7 +206,7 @@
   - fn `generateMetadata` L19-23 (~50 tok)
   - fn `HomePage` L24-57 (~286 tok)
 - `robots.ts` — Served at `/robots.txt`. (~150 tok)
-- `sitemap.ts` — Fixed routes (their content lives in singletons) plus every published document. (~246 tok)
+- `sitemap.ts` — Singletons (fixed routes) + published docs from SITEMAP_QUERY; lastmod = Sanity _updatedAt (overviews: newest listed item), deduped by URL. (~246 tok)
 
 ## app/src/app/[slug]/
 
