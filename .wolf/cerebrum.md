@@ -10,6 +10,7 @@
 <!-- How the user likes things done. Code style, tools, patterns, communication. -->
 
 ## Key Learnings
+- Sitemap lastmod = Sanity `_updatedAt`. ~100 docs share 2026-10-05T08:13:28Z because the WP migration patch touched them all; that is their real Sanity date, it moves once someone edits them. Fixed routes take it from their singleton (SITEMAP_QUERY).
 - FAQ JSON-LD: `Faq` section emits its own FAQPage (`faqPageJsonLd`), so any page rendering `<Faq>` is covered. Blog FAQ is its own `faq` field on blogPost (title + items with rich-text answers), rendered under the body; `blogFaqs(post.faq.items)` feeds the FAQPage. (Was a body `faqBlock` first — editors couldn't find it in the insert menu.) Never emit two FAQPage nodes on one URL.
 - `npm run typegen` (studio) only needs a placeholder: `SANITY_STUDIO_PROJECT_ID=placeholder npm run typegen` — schema extract is local.
 - Prettier --check fails on most app files on main already; don't reformat files wholesale in feature diffs.
